@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Analytics } from "./analytics"
-import HeadScripts from "./head"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -46,8 +46,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <HeadScripts />
         <Analytics />
+        <Script
+          src="https://va.vercel-scripts.com/v1/script.js"
+          data-endpoint="https://va.vercel-scripts.com/v1/view"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
