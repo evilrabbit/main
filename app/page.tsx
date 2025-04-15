@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { css, Global } from '@emotion/react'
+import { useState, useEffect } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { css, Global } from "@emotion/react"
 
 export default function Home() {
   const currentYear = new Date().getFullYear()
@@ -11,258 +11,258 @@ export default function Home() {
 
   const expertise = [
     {
-      company: 'Vercel',
-      role: 'Founding Designer, Head of Design',
-      period: '2016 - Present'
+      company: "Vercel",
+      role: "Founding Designer, Head of Design",
+      period: "2016 - Present",
     },
     {
-      company: 'Auth0',
-      role: 'Product Designer',
-      period: '2015-2016'
+      company: "Auth0",
+      role: "Product Designer",
+      period: "2015-2016",
     },
     {
-      company: 'Aerolab',
-      role: 'Product Designer',
-      period: '2014-2015'
+      company: "Aerolab",
+      role: "Product Designer",
+      period: "2014-2015",
     },
     {
-      company: 'Viacom',
-      role: 'Head of Design (Latin America)',
-      period: '2010-2014'
+      company: "Viacom",
+      role: "Head of Design (Latin America)",
+      period: "2010-2014",
     },
     {
-      company: 'Identidad',
-      role: 'Designer',
-      period: '2006-2010'
+      company: "Identidad",
+      role: "Designer",
+      period: "2006-2010",
     },
     {
-      company: 'TSYA',
-      role: 'Designer',
-      period: '2006-2008'
+      company: "TSYA",
+      role: "Designer",
+      period: "2006-2008",
     },
     {
-      company: 'Freelance',
-      role: 'Designer',
-      period: '1998-2006'
-    }
+      company: "Freelance",
+      role: "Designer",
+      period: "1998-2006",
+    },
   ]
 
   const projects = {
     product: [
       {
-        year: '2024',
+        year: "2024",
         name: '"Grep" Rebranding',
-        type: 'group',
-        items: [
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%203.43.18%E2%80%AFPM-ZJYcI1ffOmIYfTRfI9FHHc1sVvhQXs.png',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/grep-AjN4JvqJsmKYRxpnclwcPP9QonlPff.png',
-          }
-        ]
-      },
-      {
-        year: '2022',
-        name: '"Vercel Dashboard" Desktop Design',
-        type: 'group',
-        items: [
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-76krPh5ER9SkELMW62z71EKIa9b3fn.png',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-4Sty1ZWVO8QPrMCpCoX9prWgHciQd3.png',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-MR66kny9YxvF0k1y2DcZ28BeTKPprU.png',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-CGUiL9RVhpxt6bSJ5OLibJLoTZHXFK.png',
-          }
-        ]
-      },
-      {
-        year: '2022',
-        name: '"Next.js Conf" Design + Direction',
-        type: 'group',
+        type: "group",
         items: [
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NextjsConf1-KIWXmKnFYlD1bt9HDocmnzTTPkz9E3.mp4',
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%203.43.18%E2%80%AFPM-ZJYcI1ffOmIYfTRfI9FHHc1sVvhQXs.png",
           },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-0FZE1yxPgKYKUvqdV9CRvfuNOiacBc.png',
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/grep-AjN4JvqJsmKYRxpnclwcPP9QonlPff.png",
           },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/09-UsZCFIlbXjiGEHaY14eYEIeyRhPYGi.png',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Conf-vector-MSAWjnq65M9HPKuFcDIOFGtNQ0izde.png',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/08-YWCh6HycJ5wgWKuN4f8jL99N1X1nUI.png',
-          }
-        ]
+        ],
       },
       {
-        year: '2019',
+        year: "2022",
+        name: '"Vercel Dashboard" Desktop Design',
+        type: "group",
+        items: [
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-76krPh5ER9SkELMW62z71EKIa9b3fn.png",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-4Sty1ZWVO8QPrMCpCoX9prWgHciQd3.png",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-MR66kny9YxvF0k1y2DcZ28BeTKPprU.png",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-CGUiL9RVhpxt6bSJ5OLibJLoTZHXFK.png",
+          },
+        ],
+      },
+      {
+        year: "2022",
+        name: '"Next.js Conf" Design + Direction',
+        type: "group",
+        items: [
+          {
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NextjsConf1-KIWXmKnFYlD1bt9HDocmnzTTPkz9E3.mp4",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-0FZE1yxPgKYKUvqdV9CRvfuNOiacBc.png",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/09-UsZCFIlbXjiGEHaY14eYEIeyRhPYGi.png",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Conf-vector-MSAWjnq65M9HPKuFcDIOFGtNQ0izde.png",
+          },
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/08-YWCh6HycJ5wgWKuN4f8jL99N1X1nUI.png",
+          },
+        ],
+      },
+      {
+        year: "2019",
         name: '"Vercel Dashboard" Mobile Design',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20-%20Dashshboard-bGz1ewqQQuHShlT4AI9f9Wo6iOZ3AH.jpeg'
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20-%20Dashshboard-bGz1ewqQQuHShlT4AI9f9Wo6iOZ3AH.jpeg",
       },
       {
-        year: '2018',
+        year: "2018",
         name: '"Now" macOS Desktop App',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Now-desktop-2D9g3xr25Y5Fh944pZ7BOkTBvoVLZO.png'
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Now-desktop-2D9g3xr25Y5Fh944pZ7BOkTBvoVLZO.png",
       },
       {
-        year: '2015',
+        year: "2015",
         name: '"Auth0 Guardian" iOS Mobile App',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Auth0-ZbTIJW8HpChOc63CAGFk37xZecgT0d.png'
-      }
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Auth0-ZbTIJW8HpChOc63CAGFk37xZecgT0d.png",
+      },
     ],
     branding: [
       {
-        year: '2024',
+        year: "2024",
         name: '"Vercel Ship" Creative Direction',
-        type: 'group',
+        type: "group",
         items: [
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-B2ZCyfDdcqB3AisTV0UckUzI3u18Nd.mp4',
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-B2ZCyfDdcqB3AisTV0UckUzI3u18Nd.mp4",
           },
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ship%202-rehaChte5crqmkj5f0kxTszQSzxB2N.mp4',
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ship%202-rehaChte5crqmkj5f0kxTszQSzxB2N.mp4",
           },
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ship3-GtutL3aJroRwYFhZ1g5sur2cvs0vZC.mp4',
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ship3-GtutL3aJroRwYFhZ1g5sur2cvs0vZC.mp4",
           },
           {
-            type: 'image',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Remera%20Ship%20Style-V1BnZYxnKHowUWWq7Lmp437FCUDQRV.jpeg',
-          }
-        ]
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Remera%20Ship%20Style-V1BnZYxnKHowUWWq7Lmp437FCUDQRV.jpeg",
+          },
+        ],
       },
       {
-        year: '2024',
+        year: "2024",
         name: '"Next.js Conf" Creative Direction',
-        type: 'group',
+        type: "group",
         items: [
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NextjsConf2024-2-LP6tzL7RqEUcppubIqSgBifU3c6Kas.jpeg',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nextjs%20Conf%202024-dn7I0lgfKr2OVLupzTvblBQ7m7zewS.jpeg',
-          },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Next.js%20Conf%202024%20award-Pz6Kq6o2jtrIWaR81ckcX1bXgvZmSE.jpeg',
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NextjsConf2024-2-LP6tzL7RqEUcppubIqSgBifU3c6Kas.jpeg",
           },
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/conf%202024%20website-7IF3dXKHAjrP44rGhLR50tq1Vx0qd8.mp4',
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nextjs%20Conf%202024-dn7I0lgfKr2OVLupzTvblBQ7m7zewS.jpeg",
           },
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Next.js%20Lanyard-0WuOpEEyLgupe7YG6Bl1MRAKaMe3Hu.mp4',
-          }
-        ]
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Next.js%20Conf%202024%20award-Pz6Kq6o2jtrIWaR81ckcX1bXgvZmSE.jpeg",
+          },
+          {
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/conf%202024%20website-7IF3dXKHAjrP44rGhLR50tq1Vx0qd8.mp4",
+          },
+          {
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Next.js%20Lanyard-0WuOpEEyLgupe7YG6Bl1MRAKaMe3Hu.mp4",
+          },
+        ],
       },
       {
-        year: '2024',
+        year: "2024",
         name: '"Everybody can cook" v0 Billboard Campaign. San Francisco, CA.',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20Billboard%20-%20Everybody%20can%20cook-4CUsyH8OVzjfeFsCXohwkmNfhSEVID.jpeg'
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20Billboard%20-%20Everybody%20can%20cook-4CUsyH8OVzjfeFsCXohwkmNfhSEVID.jpeg",
       },
       {
-        year: '2024',
-        name: 'Evil Rabbit Poster',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20Evil%20Rabbit%20Billboard-Z27DVWEHMLVQZB5LuvlxCDvRPoNf7k.jpeg'
+        year: "2024",
+        name: "Evil Rabbit Poster",
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20Evil%20Rabbit%20Billboard-Z27DVWEHMLVQZB5LuvlxCDvRPoNf7k.jpeg",
       },
       {
-        year: '2024',
+        year: "2024",
         name: '"AI Night by Vercel" Branding Design',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AI-Night-d5AzW5k7Tf9PgOa3kFSYgDFBH3pj48.png'
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AI-Night-d5AzW5k7Tf9PgOa3kFSYgDFBH3pj48.png",
       },
       {
-        year: '2024',
+        year: "2024",
         name: '"What will you ship?" Billboard Campaign',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20What%20will%20you%20ship%202%20-%20Billboard-CFp5xtVz4Bolnu7oTyeEsDxKJ12G2e.jpeg'
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20What%20will%20you%20ship%202%20-%20Billboard-CFp5xtVz4Bolnu7oTyeEsDxKJ12G2e.jpeg",
       },
       {
-        year: '2023',
+        year: "2023",
         name: '"▲ ~/ npm i ai" Billboard Campaign',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NPM%20AI%20Campaign-x9MmfQjGZBfFPdU2VbvNzp1kFytyjb.jpeg'
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NPM%20AI%20Campaign-x9MmfQjGZBfFPdU2VbvNzp1kFytyjb.jpeg",
       },
       {
-        year: '2023',
+        year: "2023",
         name: '"Geist Font" Creative Direction',
-        type: 'group',
+        type: "group",
         items: [
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Geist%20video%202-4eMuQOhEngEAtDcojhQbRxDdoYxz35.mp4',
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Geist%20video%202-4eMuQOhEngEAtDcojhQbRxDdoYxz35.mp4",
           },
           {
-            type: 'video',
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Geist%20video-hj28jOp5TIgF2ppf3G57lZZ7yGOgFw.mp4',
+            type: "video",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Geist%20video-hj28jOp5TIgF2ppf3G57lZZ7yGOgFw.mp4",
           },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Geist%20Page-WW91iEfa0hWuTQYPGOBvPFjjkCMuH3.png', 
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Geist%20Page-WW91iEfa0hWuTQYPGOBvPFjjkCMuH3.png",
           },
-        ]
+        ],
       },
       {
-        year: '2019',
+        year: "2019",
         name: '"ZEIT to Vercel" Rebranding',
-        type: 'video',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-WCk0E0BIzQEV5VZS8678m4xXPTkz8h.mp4'
+        type: "video",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-WCk0E0BIzQEV5VZS8678m4xXPTkz8h.mp4",
       },
       {
-        year: '2018',
+        year: "2018",
         name: '"MDX" Logotype Design',
-        type: 'image',
-        src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mdx-671NVkYzk112EiESM0wHHlNiKa40Ww.png'
-      }
+        type: "image",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mdx-671NVkYzk112EiESM0wHHlNiKa40Ww.png",
+      },
     ],
     physical: [
       {
-        year: '2018',
-        name: 'ZEIT Keyboard (in collab with Rama Works)',
-        type: 'group',
+        year: "2018",
+        name: "ZEIT Keyboard (in collab with Rama Works)",
+        type: "group",
         items: [
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20Keyboard-LYTRpUq0Ngb0rLL1mAXPS4ZwqAX9Vd.jpeg',
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20Keyboard-LYTRpUq0Ngb0rLL1mAXPS4ZwqAX9Vd.jpeg",
           },
-          { 
-            type: 'image', 
-            src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20Keyboatd%202.jpg-Vbf6Wkxs6aQZU15LPvcnnPxvIMQ6uG.jpeg',
-          }
-        ]
-      }
-    ]
+          {
+            type: "image",
+            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20Keyboatd%202.jpg-Vbf6Wkxs6aQZU15LPvcnnPxvIMQ6uG.jpeg",
+          },
+        ],
+      },
+    ],
   }
 
   useEffect(() => {
@@ -270,17 +270,17 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = entry.target.getAttribute('data-index')
+            const index = entry.target.getAttribute("data-index")
             if (index) {
               setVisibleItems((prev) => [...new Set([...prev, index])])
             }
           }
         })
       },
-      { rootMargin: '100px' }
+      { rootMargin: "100px" },
     )
 
-    document.querySelectorAll('[data-index]').forEach((el) => observer.observe(el))
+    document.querySelectorAll("[data-index]").forEach((el) => observer.observe(el))
 
     return () => observer.disconnect()
   }, [])
@@ -373,7 +373,10 @@ export default function Home() {
 
           <section className="mb-12 fade-in delay-2">
             {expertise.map((item, index) => (
-              <div key={index} className="flex justify-between items-baseline border-b border-[#333] pb-4 expertise-item">
+              <div
+                key={index}
+                className="flex justify-between items-baseline border-b border-[#333] pb-4 expertise-item"
+              >
                 <div>
                   <h2 className="font-normal">{item.company}</h2>
                   <p className="text-[#666]">{item.role}</p>
@@ -429,7 +432,7 @@ export default function Home() {
                           <span className="text-[#666] mx-2">—</span>
                           <span>{item.name === '"Grep" Rebranding' ? '"Grep" Rebranding Direction' : item.name}</span>
                         </p>
-                        {item.type === 'video' && (
+                        {item.type === "video" && (
                           <video
                             src={item.src}
                             className="w-full h-auto rounded-lg outline outline-1 outline-[#333]"
@@ -441,7 +444,7 @@ export default function Home() {
                             Your browser does not support the video tag.
                           </video>
                         )}
-                        {item.type === 'image' && (
+                        {item.type === "image" && (
                           <Image
                             src={item.src}
                             alt={item.name}
@@ -450,11 +453,11 @@ export default function Home() {
                             className="w-full h-auto rounded-lg outline outline-1 outline-[#333]"
                           />
                         )}
-                        {item.type === 'group' && (
+                        {item.type === "group" && (
                           <div className="space-y-4">
                             {item.items.map((groupItem, groupIndex) => (
                               <div key={groupIndex} className="mb-4">
-                                {groupItem.type === 'video' ? (
+                                {groupItem.type === "video" ? (
                                   <video
                                     src={groupItem.src}
                                     className="w-full h-auto rounded-lg outline outline-1 outline-[#333]"
@@ -488,12 +491,30 @@ export default function Home() {
 
           <section className="mb-12 fade-in delay-6">
             <h2 className="text-sm font-bold mb-4">Angel Investor</h2>
-            <p className="mb-4 text-[#666]">Invests in early stage startups focused on creating tools for designers and developers.</p>
+            <p className="mb-4 text-[#666]">
+              Invests in early stage startups focused on creating tools for designers and developers.
+            </p>
             <ul className="space-y-2 mb-12">
-              <li><Link href="https://codecrafters.io/" className="hover:text-gray-300">CodeCrafters</Link></li>
-              <li><Link href="https://langbase.com/" className="hover:text-gray-300">Langbase</Link></li>
-              <li><Link href="https://onboardbase.com/" className="hover:text-gray-300">Onboardbase</Link></li>
-              <li><Link href="https://paper.design/" className="hover:text-gray-300">Paper by Lost Coast</Link></li>
+              <li>
+                <Link href="https://codecrafters.io/" className="hover:text-gray-300">
+                  CodeCrafters
+                </Link>
+              </li>
+              <li>
+                <Link href="https://langbase.com/" className="hover:text-gray-300">
+                  Langbase
+                </Link>
+              </li>
+              <li>
+                <Link href="https://onboardbase.com/" className="hover:text-gray-300">
+                  Onboardbase
+                </Link>
+              </li>
+              <li>
+                <Link href="https://paper.design/" className="hover:text-gray-300">
+                  Paper by Lost Coast
+                </Link>
+              </li>
             </ul>
           </section>
         </div>
@@ -501,18 +522,23 @@ export default function Home() {
         <footer className="w-full border-t border-[#333] mt-8 h-[12.5rem] fade-in delay-6">
           <div className="max-w-[700px] w-full mx-auto px-4 h-full flex justify-between items-center">
             <div className="flex space-x-8">
-              <Link href="https://twitter.com/evilrabbit_" className="hover:text-gray-300">𝕏</Link>
-              <Link href="https://dribbble.com/evilrabbit" className="hover:text-gray-300">Dribbble</Link>
-              <Link href="https://github.com/evilrabbit" className="hover:text-gray-300">GitHub</Link>
-              <Link href="https://www.linkedin.com/in/evilrabbit/" className="hover:text-gray-300">LinkedIn</Link>
+              <Link href="https://twitter.com/evilrabbit_" className="hover:text-gray-300">
+                𝕏
+              </Link>
+              <Link href="https://dribbble.com/evilrabbit" className="hover:text-gray-300">
+                Dribbble
+              </Link>
+              <Link href="https://github.com/evilrabbit" className="hover:text-gray-300">
+                GitHub
+              </Link>
+              <Link href="https://www.linkedin.com/in/evilrabbit/" className="hover:text-gray-300">
+                LinkedIn
+              </Link>
             </div>
-            <div className="text-[#666]">
-              © {currentYear}
-            </div>
+            <div className="text-[#666]">© {currentYear}</div>
           </div>
         </footer>
       </div>
     </>
   )
 }
-

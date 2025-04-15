@@ -9,7 +9,7 @@ const nextConfig = {
   images: {
     // Prevent image optimization on deploys.
     // Can comeback to this post-launch
-    domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com'],
+    domains: ["hebbkx1anhila5yf.public.blob.vercel-storage.com"],
     unoptimized: true,
   },
   experimental: {
@@ -20,4 +20,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
