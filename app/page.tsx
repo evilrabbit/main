@@ -446,7 +446,7 @@ export default function Home() {
                         )}
                         {item.type === "image" && (
                           <Image
-                            src={item.src}
+                            src={item.src || "/placeholder.svg"}
                             alt={item.name}
                             width={700}
                             height={400}
@@ -470,7 +470,7 @@ export default function Home() {
                                   </video>
                                 ) : (
                                   <Image
-                                    src={groupItem.src}
+                                    src={groupItem.src || "/placeholder.svg"}
                                     alt={item.name}
                                     width={700}
                                     height={400}

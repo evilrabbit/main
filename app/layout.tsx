@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Head from "./head"
 import "./globals.css"
-import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Evil Rabbit",
@@ -43,15 +43,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        <Analytics />
-      </body>
+      <Head />
+      <body>{children}</body>
     </html>
   )
 }
-
-import "./globals.css"
 
 
 import './globals.css'
