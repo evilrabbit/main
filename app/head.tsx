@@ -2,7 +2,7 @@
 
 import Script from "next/script"
 
-export default function Head() {
+export default function HeadScripts() {
   return (
     <>
       <Script

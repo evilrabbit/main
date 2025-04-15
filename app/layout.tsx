@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import Head from "./head"
+import { Analytics } from "./analytics"
+import HeadScripts from "./head"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -43,8 +44,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head />
-      <body>{children}</body>
+      <body>
+        {children}
+        <HeadScripts />
+        <Analytics />
+      </body>
     </html>
   )
 }
