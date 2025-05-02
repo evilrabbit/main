@@ -64,29 +64,7 @@ export default function Home() {
           },
         ],
       },
-      {
-        year: "2022",
-        name: '"Vercel Dashboard" Desktop Design',
-        type: "group",
-        items: [
-          {
-            type: "image",
-            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-76krPh5ER9SkELMW62z71EKIa9b3fn.png",
-          },
-          {
-            type: "image",
-            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-4Sty1ZWVO8QPrMCpCoX9prWgHciQd3.png",
-          },
-          {
-            type: "image",
-            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-MR66kny9YxvF0k1y2DcZ28BeTKPprU.png",
-          },
-          {
-            type: "image",
-            src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-CGUiL9RVhpxt6bSJ5OLibJLoTZHXFK.png",
-          },
-        ],
-      },
+      // Removed "Vercel Dashboard" Desktop Design project
       {
         year: "2022",
         name: '"Next.js Conf" Design + Direction',
