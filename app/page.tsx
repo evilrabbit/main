@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { css, Global } from "@emotion/react"
 import Image from "next/image"
 import Link from "next/link"
+import { css, Global } from "@emotion/react"
 
 export default function Home() {
   const currentYear = new Date().getFullYear()
@@ -329,10 +329,10 @@ export default function Home() {
           .infinity-svg {
             display: inline-flex;
             vertical-align: middle;
-            height: 0.51em; /* 30% smaller than 0.73em */
+            height: 0.73em;
             margin-left: 0;
             position: relative;
-            top: 1px; /* Moved 1px up */
+            top: 0.06em;
           }
         `}
       />
@@ -369,24 +369,23 @@ export default function Home() {
                   <h2 className="font-normal">{item.company}</h2>
                   <p className="text-[#666]">{item.role}</p>
                 </div>
-                <div className="flex items-center whitespace-nowrap">
-                  {item.company === "Vercel" ? (
-                    <>
-                      <span className="text-[#666]">{item.period}</span>
-                      <svg
-                        width="17.5" /* 30% smaller than 25 */
-                        height="7.7" /* 30% smaller than 11 */
-                        viewBox="0 0 167 72"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="infinity-svg"
-                        aria-label="Present"
-                        fill="#666"
-                      >
-                        <path d="M83.6096 27.5354C90.1929 21.2022 96.5262 15.8272 102.61 11.4104C108.693 6.91053 113.818 3.91053 117.985 2.41043C122.151 0.910535 126.693 0.160536 131.61 0.160425C141.943 0.160536 150.276 3.61887 156.61 10.5354C163.026 17.3689 166.234 25.6605 166.235 35.4104C166.234 42.0772 164.818 48.2438 161.985 53.9104C159.151 59.5771 155.109 63.8688 149.86 66.7854C144.693 69.7021 138.734 71.1605 131.985 71.1604C123.235 71.1605 115.568 69.2855 108.985 65.5354C102.485 61.7855 94.0262 54.7021 83.6096 44.2854C72.7762 55.0355 64.1512 62.2021 57.7346 65.7854C51.3179 69.3688 43.8596 71.1605 35.3596 71.1604C24.5263 71.1605 16.068 67.7855 9.98465 61.0354C3.98464 54.2855 0.984642 45.7438 0.98465 35.4104C0.984642 25.7438 4.1513 17.4522 10.4846 10.5354C16.9013 3.61887 25.2763 0.160536 35.6096 0.160425C40.6096 0.160536 45.1929 0.910535 49.3596 2.41043C53.5263 3.91053 58.6096 6.91053 64.6096 11.4104C70.6929 15.8272 77.0262 21.2022 83.6096 27.5354ZM91.7346 35.2854C100.568 44.0355 107.818 49.9938 113.485 53.1604C119.235 56.2438 124.943 57.7855 130.61 57.7854C137.693 57.7855 143.234 55.7021 147.235 51.5354C151.234 47.2855 153.234 42.1605 153.235 36.1604C153.234 29.5772 151.234 24.1605 147.235 19.9104C143.318 15.5772 138.109 13.4105 131.61 13.4104C127.943 13.4105 124.401 14.0772 120.985 15.4104C117.568 16.6605 113.485 18.9105 108.735 22.1604C103.985 25.3272 98.3179 29.7022 91.7346 35.2854ZM75.4846 35.2854C69.4846 30.2022 64.1096 26.0355 59.3596 22.7854C54.6096 19.4522 50.4429 17.0772 46.8596 15.6604C43.2763 14.2439 39.3596 13.5355 35.1096 13.5354C29.0263 13.5355 23.9846 15.6605 19.9846 19.9104C15.9846 24.1605 13.9846 29.5772 13.9846 36.1604C13.9846 40.7438 15.0263 44.6188 17.1096 47.7854C19.193 50.9522 21.7346 53.4105 24.7346 55.1604C27.8179 56.9105 31.6513 57.7855 36.2346 57.7854C42.2346 57.7855 48.0679 56.2021 53.7346 53.0354C59.4012 49.8688 66.6512 43.9522 75.4846 35.2854Z" />
-                      </svg>
-                    </>
-                  ) : (
-                    <span className="text-[#666]">{item.period}</span>
+                <div className="text-[#666] flex items-center whitespace-nowrap">
+                  {item.period}
+                  {item.hasSvg && (
+                    <svg
+                      width="17.5"
+                      height="7.7"
+                      viewBox="0 0 167 72"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="infinity-svg"
+                      aria-label="Present"
+                    >
+                      <path
+                        d="M83.6096 27.5354C90.1929 21.2022 96.5262 15.8272 102.61 11.4104C108.693 6.91053 113.818 3.91053 117.985 2.41043C122.151 0.910535 126.693 0.160536 131.61 0.160425C141.943 0.160536 150.276 3.61887 156.61 10.5354C163.026 17.3689 166.234 25.6605 166.235 35.4104C166.234 42.0772 164.818 48.2438 161.985 53.9104C159.151 59.5771 155.109 63.8688 149.86 66.7854C144.693 69.7021 138.734 71.1605 131.985 71.1604C123.235 71.1605 115.568 69.2855 108.985 65.5354C102.485 61.7855 94.0262 54.7021 83.6096 44.2854C72.7762 55.0355 64.1512 62.2021 57.7346 65.7854C51.3179 69.3688 43.8596 71.1605 35.3596 71.1604C24.5263 71.1605 16.068 67.7855 9.98465 61.0354C3.98464 54.2855 0.984642 45.7438 0.98465 35.4104C0.984642 25.7438 4.1513 17.4522 10.4846 10.5354C16.9013 3.61887 25.2763 0.160536 35.6096 0.160425C40.6096 0.160536 45.1929 0.910535 49.3596 2.41043C53.5263 3.91053 58.6096 6.91053 64.6096 11.4104C70.6929 15.8272 77.0262 21.2022 83.6096 27.5354ZM91.7346 35.2854C100.568 44.0355 107.818 49.9938 113.485 53.1604C119.235 56.2438 124.943 57.7855 130.61 57.7854C137.693 57.7855 143.234 55.7021 147.235 51.5354C151.234 47.2855 153.234 42.1605 153.235 36.1604C153.234 29.5772 151.234 24.1605 147.235 19.9104C143.318 15.5772 138.109 13.4105 131.61 13.4104C127.943 13.4105 124.401 14.0772 120.985 15.4104C117.568 16.6605 113.485 18.9105 108.735 22.1604C103.985 25.3272 98.3179 29.7022 91.7346 35.2854ZM75.4846 35.2854C69.4846 30.2022 64.1096 26.0355 59.3596 22.7854C54.6096 19.4522 50.4429 17.0772 46.8596 15.6604C43.2763 14.2439 39.3596 13.5355 35.1096 13.5354C29.0263 13.5355 23.9846 15.6605 19.9846 19.9104C15.9846 24.1605 13.9846 29.5772 13.9846 36.1604C13.9846 40.7438 15.0263 44.6188 17.1096 47.7854C19.193 50.9522 21.7346 53.4105 24.7346 55.1604C27.8179 56.9105 31.6513 57.7855 36.2346 57.7854C42.2346 57.7855 48.0679 56.2021 53.7346 53.0354C59.4012 49.8688 66.6512 43.9522 75.4846 35.2854Z"
+                        fill="#666666"
+                      />
+                    </svg>
                   )}
                 </div>
               </div>
@@ -496,26 +495,55 @@ export default function Home() {
             ))}
           </main>
 
-          <footer className="w-full border-t border-[#333] mt-8 h-[12.5rem] fade-in delay-6">
-            <div className="max-w-[700px] w-full mx-auto px-4 h-full flex justify-between items-center">
-              <div className="flex space-x-8">
-                <Link href="https://twitter.com/evilrabbit_" className="hover:text-gray-300">
-                  𝕏
+          <section className="mb-12 fade-in delay-6">
+            <h2 className="text-sm font-bold mb-4">Angel Investor</h2>
+            <p className="mb-4 text-[#666]">
+              Invests in early stage startups focused on creating tools for designers and developers.
+            </p>
+            <ul className="space-y-2 mb-12">
+              <li>
+                <Link href="https://codecrafters.io/" className="hover:text-gray-300">
+                  CodeCrafters
                 </Link>
-                <Link href="https://dribbble.com/evilrabbit" className="hover:text-gray-300">
-                  Dribbble
+              </li>
+              <li>
+                <Link href="https://langbase.com/" className="hover:text-gray-300">
+                  Langbase
                 </Link>
-                <Link href="https://github.com/evilrabbit" className="hover:text-gray-300">
-                  GitHub
+              </li>
+              <li>
+                <Link href="https://onboardbase.com/" className="hover:text-gray-300">
+                  Onboardbase
                 </Link>
-                <Link href="https://www.linkedin.com/in/evilrabbit/" className="hover:text-gray-300">
-                  LinkedIn
+              </li>
+              <li>
+                <Link href="https://paper.design/" className="hover:text-gray-300">
+                  Paper by Lost Coast
                 </Link>
-              </div>
-              <div className="text-[#666]">© {currentYear}</div>
-            </div>
-          </footer>
+              </li>
+            </ul>
+          </section>
         </div>
+
+        <footer className="w-full border-t border-[#333] mt-8 h-[12.5rem] fade-in delay-6">
+          <div className="max-w-[700px] w-full mx-auto px-4 h-full flex justify-between items-center">
+            <div className="flex space-x-8">
+              <Link href="https://twitter.com/evilrabbit_" className="hover:text-gray-300">
+                𝕏
+              </Link>
+              <Link href="https://dribbble.com/evilrabbit" className="hover:text-gray-300">
+                Dribbble
+              </Link>
+              <Link href="https://github.com/evilrabbit" className="hover:text-gray-300">
+                GitHub
+              </Link>
+              <Link href="https://www.linkedin.com/in/evilrabbit/" className="hover:text-gray-300">
+                LinkedIn
+              </Link>
+            </div>
+            <div className="text-[#666]">© {currentYear}</div>
+          </div>
+        </footer>
       </div>
     </>
   )
