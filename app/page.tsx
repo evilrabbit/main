@@ -5,6 +5,24 @@ import Image from "next/image"
 import Link from "next/link"
 import { css, Global } from "@emotion/react"
 
+interface Collaborator {
+  name: string
+  url?: string
+}
+
+interface Collaboration {
+  collaborators: Collaborator[]
+}
+
+interface ProjectItem {
+  year: string
+  name: string
+  type: string
+  src?: string
+  items?: any[]
+  collaboration?: Collaboration
+}
+
 export default function Home() {
   const currentYear = new Date().getFullYear()
   const [visibleItems, setVisibleItems] = useState<number[]>([])
@@ -48,7 +66,7 @@ export default function Home() {
     },
   ]
 
-  const projects = {
+  const projects: { [key: string]: ProjectItem[] } = {
     product: [
       {
         year: "2024",
@@ -69,6 +87,9 @@ export default function Home() {
       {
         year: "2022",
         name: '"Next.js Conf" Design + Direction',
+        collaboration: {
+          collaborators: [{ name: "Genny Dee", url: "https://x.com/gennyxdavila" }],
+        },
         type: "group",
         items: [
           {
@@ -436,7 +457,45 @@ export default function Home() {
                         <p className="mb-4">
                           <span className="text-[#666]">{item.year}</span>
                           <span className="text-[#666] mx-1">—</span>
-                          <span>{item.name === '"Grep" Rebranding' ? '"Grep" Rebranding Direction' : item.name}</span>
+                          <span>
+                            {item.name === '"Grep" Rebranding' ? (
+                              '"Grep" Rebranding Direction'
+                            ) : item.name === '"Next.js Conf" Design + Direction' ? (
+                              <>
+                                "Next.js Conf" <span className="text-[#666]">Design + Direction</span>
+                                {item.collaboration && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={item.collaboration.collaborators[0].url}
+                                      className="text-[#666] hover:text-white"
+                                    >
+                                      {item.collaboration.collaborators[0].name}
+                                    </Link>
+                                  </>
+                                )}
+                              </>
+                            ) : (
+                              item.name
+                            )}
+                          </span>
+                          {item.collaboration && item.name !== '"Next.js Conf" Design + Direction' && (
+                            <div className="text-[#666] mt-1">
+                              {item.collaboration.collaborators.map((collaborator, i) => (
+                                <span key={i}>
+                                  {collaborator.url ? (
+                                    <Link href={collaborator.url} className="text-[#666] hover:text-white">
+                                      {collaborator.name}
+                                    </Link>
+                                  ) : (
+                                    collaborator.name
+                                  )}
+                                  {i < item.collaboration.collaborators.length - 1 &&
+                                    (i === item.collaboration.collaborators.length - 2 ? " + " : ", ")}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </p>
                         {item.type === "video" && (
                           <video
