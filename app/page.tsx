@@ -138,6 +138,9 @@ export default function Home() {
         year: "2024",
         name: '"Vercel Ship" Creative Direction',
         type: "group",
+        collaboration: {
+          collaborators: [{ name: "Genny Dee", url: "https://x.com/gennyxdavila" }],
+        },
         items: [
           {
             type: "video",
@@ -161,6 +164,9 @@ export default function Home() {
         year: "2024",
         name: '"Next.js Conf" Creative Direction',
         type: "group",
+        collaboration: {
+          collaborators: [{ name: "Genny Dee", url: "https://x.com/gennyxdavila" }],
+        },
         items: [
           {
             type: "image",
@@ -475,27 +481,60 @@ export default function Home() {
                                   </>
                                 )}
                               </>
+                            ) : item.name === '"Vercel Ship" Creative Direction' ? (
+                              <>
+                                "Vercel Ship" <span className="text-[#666]">Creative Direction</span>
+                                {item.collaboration && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={item.collaboration.collaborators[0].url}
+                                      className="text-[#666] hover:text-white"
+                                    >
+                                      {item.collaboration.collaborators[0].name}
+                                    </Link>
+                                  </>
+                                )}
+                              </>
+                            ) : item.name === '"Next.js Conf" Creative Direction' ? (
+                              <>
+                                "Next.js Conf" <span className="text-[#666]">Creative Direction</span>
+                                {item.collaboration && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={item.collaboration.collaborators[0].url}
+                                      className="text-[#666] hover:text-white"
+                                    >
+                                      {item.collaboration.collaborators[0].name}
+                                    </Link>
+                                  </>
+                                )}
+                              </>
                             ) : (
                               item.name
                             )}
                           </span>
-                          {item.collaboration && item.name !== '"Next.js Conf" Design + Direction' && (
-                            <div className="text-[#666] mt-1">
-                              {item.collaboration.collaborators.map((collaborator, i) => (
-                                <span key={i}>
-                                  {collaborator.url ? (
-                                    <Link href={collaborator.url} className="text-[#666] hover:text-white">
-                                      {collaborator.name}
-                                    </Link>
-                                  ) : (
-                                    collaborator.name
-                                  )}
-                                  {i < item.collaboration.collaborators.length - 1 &&
-                                    (i === item.collaboration.collaborators.length - 2 ? " + " : ", ")}
-                                </span>
-                              ))}
-                            </div>
-                          )}
+                          {item.collaboration &&
+                            item.name !== '"Next.js Conf" Design + Direction' &&
+                            item.name !== '"Vercel Ship" Creative Direction' &&
+                            item.name !== '"Next.js Conf" Creative Direction' && (
+                              <div className="text-[#666] mt-1">
+                                {item.collaboration.collaborators.map((collaborator, i) => (
+                                  <span key={i}>
+                                    {collaborator.url ? (
+                                      <Link href={collaborator.url} className="text-[#666] hover:text-white">
+                                        {collaborator.name}
+                                      </Link>
+                                    ) : (
+                                      collaborator.name
+                                    )}
+                                    {i < item.collaboration.collaborators.length - 1 &&
+                                      (i === item.collaboration.collaborators.length - 2 ? " + " : ", ")}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                         </p>
                         {item.type === "video" && (
                           <video
