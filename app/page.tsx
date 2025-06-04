@@ -291,62 +291,6 @@ export default function Home() {
     return () => observer.disconnect()
   }, [])
 
-  const renderProjectName = (item: ProjectItem) => {
-    if (item.name === "Grep Rebranding") {
-      return <>{'"Grep" Rebranding Direction'}</>
-    }
-
-    if (item.name === "Next.js Conf Design + Direction") {
-      return (
-        <>
-          {'"Next.js Conf"'} <span className="text-[#666]">Design + Direction</span>
-          {item.collaboration && (
-            <>
-              {" "}
-              <Link href={item.collaboration.collaborators[0].url || "#"} className="text-[#666] hover:text-white">
-                {item.collaboration.collaborators[0].name}
-              </Link>
-            </>
-          )}
-        </>
-      )
-    }
-
-    if (item.name === "Vercel Ship Creative Direction") {
-      return (
-        <>
-          {'"Vercel Ship"'} <span className="text-[#666]">Creative Direction</span>
-          {item.collaboration && (
-            <>
-              {" "}
-              <Link href={item.collaboration.collaborators[0].url || "#"} className="text-[#666] hover:text-white">
-                {item.collaboration.collaborators[0].name}
-              </Link>
-            </>
-          )}
-        </>
-      )
-    }
-
-    if (item.name === "Next.js Conf Creative Direction") {
-      return (
-        <>
-          {'"Next.js Conf"'} <span className="text-[#666]">Creative Direction</span>
-          {item.collaboration && (
-            <>
-              {" "}
-              <Link href={item.collaboration.collaborators[0].url || "#"} className="text-[#666] hover:text-white">
-                {item.collaboration.collaborators[0].name}
-              </Link>
-            </>
-          )}
-        </>
-      )
-    }
-
-    return <>{item.name.includes('"') ? `"${item.name.replace(/"/g, "")}"` : item.name}</>
-  }
-
   return (
     <>
       <Global
@@ -494,7 +438,7 @@ export default function Home() {
               <p>
                 <span className="text-[#666]">2024</span>
                 <span className="text-[#666] mx-[2px]">—</span>
-                <span>{'Highlighted in "The Book Of Design" by The Network + Framer'}</span>
+                <span>Highlighted in &quot;The Book Of Design&quot; by The Network + Framer</span>
               </p>
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Book%20of%20Design-jqoANW3Z76lqpdFismnllxX3Bd9vw4.jpeg"
@@ -519,7 +463,63 @@ export default function Home() {
                         <p className="mb-4">
                           <span className="text-[#666]">{item.year}</span>
                           <span className="text-[#666] mx-1">—</span>
-                          <span>{renderProjectName(item)}</span>
+                          <span>
+                            {item.name === "Grep Rebranding" && "&quot;Grep&quot; Rebranding Direction"}
+                            {item.name === "Next.js Conf Design + Direction" && (
+                              <>
+                                &quot;Next.js Conf&quot; <span className="text-[#666]">Design + Direction</span>
+                                {item.collaboration && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={item.collaboration.collaborators[0].url || "#"}
+                                      className="text-[#666] hover:text-white"
+                                    >
+                                      {item.collaboration.collaborators[0].name}
+                                    </Link>
+                                  </>
+                                )}
+                              </>
+                            )}
+                            {item.name === "Vercel Ship Creative Direction" && (
+                              <>
+                                &quot;Vercel Ship&quot; <span className="text-[#666]">Creative Direction</span>
+                                {item.collaboration && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={item.collaboration.collaborators[0].url || "#"}
+                                      className="text-[#666] hover:text-white"
+                                    >
+                                      {item.collaboration.collaborators[0].name}
+                                    </Link>
+                                  </>
+                                )}
+                              </>
+                            )}
+                            {item.name === "Next.js Conf Creative Direction" && (
+                              <>
+                                &quot;Next.js Conf&quot; <span className="text-[#666]">Creative Direction</span>
+                                {item.collaboration && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={item.collaboration.collaborators[0].url || "#"}
+                                      className="text-[#666] hover:text-white"
+                                    >
+                                      {item.collaboration.collaborators[0].name}
+                                    </Link>
+                                  </>
+                                )}
+                              </>
+                            )}
+                            {![
+                              "Grep Rebranding",
+                              "Next.js Conf Design + Direction",
+                              "Vercel Ship Creative Direction",
+                              "Next.js Conf Creative Direction",
+                            ].includes(item.name) && item.name}
+                          </span>
                           {item.collaboration &&
                             ![
                               "Next.js Conf Design + Direction",

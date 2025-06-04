@@ -2,9 +2,6 @@ import type React from "react"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -53,10 +50,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/favicon-32x32-dark-mode-QLgJWKqJsmKYRxpnclwcPP9QonlPff.png"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/favicon-32x32-light-mode-QLgJWKqJsmKYRxpnclwcPP9QonlPff.png"
+          media="(prefers-color-scheme: light)"
+        />
+      </head>
       <body className={inter.className}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
-        <SpeedInsights />
+        {children}
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="your-website-id" />
       </body>
     </html>
   )
