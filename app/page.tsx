@@ -25,7 +25,7 @@ interface ProjectItem {
 
 export default function Home() {
   const currentYear = new Date().getFullYear()
-  const [visibleItems, setVisibleItems] = useState<string[]>([])
+  const [visibleItems, setVisibleItems] = useState<number[]>([])
 
   const expertise = [
     {
@@ -70,7 +70,7 @@ export default function Home() {
     product: [
       {
         year: "2024",
-        name: "Grep Rebranding",
+        name: '"Grep" Rebranding',
         type: "group",
         items: [
           {
@@ -83,9 +83,10 @@ export default function Home() {
           },
         ],
       },
+      // Removed "Vercel Dashboard" Desktop Design project
       {
         year: "2022",
-        name: "Next.js Conf Design + Direction",
+        name: '"Next.js Conf" Design + Direction',
         collaboration: {
           collaborators: [{ name: "Genny Dee", url: "https://x.com/gennyxdavila" }],
         },
@@ -115,19 +116,19 @@ export default function Home() {
       },
       {
         year: "2019",
-        name: "Vercel Dashboard Mobile Design",
+        name: '"Vercel Dashboard" Mobile Design',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ZEIT%20-%20Dashshboard-bGz1ewqQQuHShlT4AI9f9Wo6iOZ3AH.jpeg",
       },
       {
         year: "2018",
-        name: "Now macOS Desktop App",
+        name: '"Now" macOS Desktop App',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Now-desktop-2D9g3xr25Y5Fh944pZ7BOkTBvoVLZO.png",
       },
       {
         year: "2015",
-        name: "Auth0 Guardian iOS Mobile App",
+        name: '"Auth0 Guardian" iOS Mobile App',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Auth0-ZbTIJW8HpChOc63CAGFk37xZecgT0d.png",
       },
@@ -135,11 +136,8 @@ export default function Home() {
     branding: [
       {
         year: "2024",
-        name: "Vercel Ship Creative Direction",
+        name: '"Vercel Ship" Creative Direction',
         type: "group",
-        collaboration: {
-          collaborators: [{ name: "Genny Dee", url: "https://x.com/gennyxdavila" }],
-        },
         items: [
           {
             type: "video",
@@ -161,11 +159,8 @@ export default function Home() {
       },
       {
         year: "2024",
-        name: "Next.js Conf Creative Direction",
+        name: '"Next.js Conf" Creative Direction',
         type: "group",
-        collaboration: {
-          collaborators: [{ name: "Genny Dee", url: "https://x.com/gennyxdavila" }],
-        },
         items: [
           {
             type: "image",
@@ -191,7 +186,7 @@ export default function Home() {
       },
       {
         year: "2024",
-        name: "Everybody can cook v0 Billboard Campaign. San Francisco, CA.",
+        name: '"Everybody can cook" v0 Billboard Campaign. San Francisco, CA.',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20Billboard%20-%20Everybody%20can%20cook-4CUsyH8OVzjfeFsCXohwkmNfhSEVID.jpeg",
       },
@@ -203,25 +198,25 @@ export default function Home() {
       },
       {
         year: "2024",
-        name: "AI Night by Vercel Branding Design",
+        name: '"AI Night by Vercel" Branding Design',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AI-Night-d5AzW5k7Tf9PgOa3kFSYgDFBH3pj48.png",
       },
       {
         year: "2024",
-        name: "What will you ship? Billboard Campaign",
+        name: '"What will you ship?" Billboard Campaign',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024%20-%20What%20will%20you%20ship%202%20-%20Billboard-CFp5xtVz4Bolnu7oTyeEsDxKJ12G2e.jpeg",
       },
       {
         year: "2023",
-        name: "npm i ai Billboard Campaign",
+        name: '"▲ ~/ npm i ai" Billboard Campaign',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NPM%20AI%20Campaign-x9MmfQjGZBfFPdU2VbvNzp1kFytyjb.jpeg",
       },
       {
         year: "2023",
-        name: "Geist Font Creative Direction",
+        name: '"Geist Font" Creative Direction',
         type: "group",
         items: [
           {
@@ -240,13 +235,13 @@ export default function Home() {
       },
       {
         year: "2019",
-        name: "ZEIT to Vercel Rebranding",
+        name: '"ZEIT to Vercel" Rebranding',
         type: "video",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-WCk0E0BIzQEV5VZS8678m4xXPTkz8h.mp4",
       },
       {
         year: "2018",
-        name: "MDX Logotype Design",
+        name: '"MDX" Logotype Design',
         type: "image",
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mdx-671NVkYzk112EiESM0wHHlNiKa40Ww.png",
       },
@@ -285,8 +280,7 @@ export default function Home() {
       { rootMargin: "100px" },
     )
 
-    const elements = document.querySelectorAll("[data-index]")
-    elements.forEach((el) => observer.observe(el))
+    document.querySelectorAll("[data-index]").forEach((el) => observer.observe(el))
 
     return () => observer.disconnect()
   }, [])
@@ -438,7 +432,7 @@ export default function Home() {
               <p>
                 <span className="text-[#666]">2024</span>
                 <span className="text-[#666] mx-[2px]">—</span>
-                <span>Highlighted in &quot;The Book Of Design&quot; by The Network + Framer</span>
+                <span>Highlighted in "The Book Of Design" by The Network + Framer</span>
               </p>
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Book%20of%20Design-jqoANW3Z76lqpdFismnllxX3Bd9vw4.jpeg"
@@ -464,15 +458,16 @@ export default function Home() {
                           <span className="text-[#666]">{item.year}</span>
                           <span className="text-[#666] mx-1">—</span>
                           <span>
-                            {item.name === "Grep Rebranding" && "&quot;Grep&quot; Rebranding Direction"}
-                            {item.name === "Next.js Conf Design + Direction" && (
+                            {item.name === '"Grep" Rebranding' ? (
+                              '"Grep" Rebranding Direction'
+                            ) : item.name === '"Next.js Conf" Design + Direction' ? (
                               <>
-                                &quot;Next.js Conf&quot; <span className="text-[#666]">Design + Direction</span>
+                                "Next.js Conf" <span className="text-[#666]">Design + Direction</span>
                                 {item.collaboration && (
                                   <>
                                     {" "}
                                     <Link
-                                      href={item.collaboration.collaborators[0].url || "#"}
+                                      href={item.collaboration.collaborators[0].url}
                                       className="text-[#666] hover:text-white"
                                     >
                                       {item.collaboration.collaborators[0].name}
@@ -480,68 +475,27 @@ export default function Home() {
                                   </>
                                 )}
                               </>
+                            ) : (
+                              item.name
                             )}
-                            {item.name === "Vercel Ship Creative Direction" && (
-                              <>
-                                &quot;Vercel Ship&quot; <span className="text-[#666]">Creative Direction</span>
-                                {item.collaboration && (
-                                  <>
-                                    {" "}
-                                    <Link
-                                      href={item.collaboration.collaborators[0].url || "#"}
-                                      className="text-[#666] hover:text-white"
-                                    >
-                                      {item.collaboration.collaborators[0].name}
-                                    </Link>
-                                  </>
-                                )}
-                              </>
-                            )}
-                            {item.name === "Next.js Conf Creative Direction" && (
-                              <>
-                                &quot;Next.js Conf&quot; <span className="text-[#666]">Creative Direction</span>
-                                {item.collaboration && (
-                                  <>
-                                    {" "}
-                                    <Link
-                                      href={item.collaboration.collaborators[0].url || "#"}
-                                      className="text-[#666] hover:text-white"
-                                    >
-                                      {item.collaboration.collaborators[0].name}
-                                    </Link>
-                                  </>
-                                )}
-                              </>
-                            )}
-                            {![
-                              "Grep Rebranding",
-                              "Next.js Conf Design + Direction",
-                              "Vercel Ship Creative Direction",
-                              "Next.js Conf Creative Direction",
-                            ].includes(item.name) && item.name}
                           </span>
-                          {item.collaboration &&
-                            ![
-                              "Next.js Conf Design + Direction",
-                              "Vercel Ship Creative Direction",
-                              "Next.js Conf Creative Direction",
-                            ].includes(item.name) && (
-                              <div className="text-[#666] mt-1">
-                                {item.collaboration.collaborators.map((collaborator, i) => (
-                                  <span key={i}>
-                                    {collaborator.url ? (
-                                      <Link href={collaborator.url} className="text-[#666] hover:text-white">
-                                        {collaborator.name}
-                                      </Link>
-                                    ) : (
-                                      collaborator.name
-                                    )}
-                                    {i < item.collaboration.collaborators.length - 1 &&
-                                      (i === item.collaboration.collaborators.length - 2 ? " + " : ", ")}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
+                          {item.collaboration && item.name !== '"Next.js Conf" Design + Direction' && (
+                            <div className="text-[#666] mt-1">
+                              {item.collaboration.collaborators.map((collaborator, i) => (
+                                <span key={i}>
+                                  {collaborator.url ? (
+                                    <Link href={collaborator.url} className="text-[#666] hover:text-white">
+                                      {collaborator.name}
+                                    </Link>
+                                  ) : (
+                                    collaborator.name
+                                  )}
+                                  {i < item.collaboration.collaborators.length - 1 &&
+                                    (i === item.collaboration.collaborators.length - 2 ? " + " : ", ")}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </p>
                         {item.type === "video" && (
                           <video
@@ -566,7 +520,7 @@ export default function Home() {
                         )}
                         {item.type === "group" && (
                           <div className="space-y-4">
-                            {item.items?.map((groupItem, groupIndex) => (
+                            {item.items.map((groupItem, groupIndex) => (
                               <div key={groupIndex} className="mb-4">
                                 {groupItem.type === "video" ? (
                                   <video
