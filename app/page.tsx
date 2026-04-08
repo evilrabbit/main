@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
       <Link 
-        href={`/${currentYear}`}
-        className="flex flex-col items-center gap-6 group transition-opacity hover:opacity-70"
+        href="/"
+        className="flex flex-col items-center gap-6 transition-opacity hover:opacity-70"
       >
         <svg
           viewBox="0 0 308 320"
