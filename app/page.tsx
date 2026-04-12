@@ -6,7 +6,7 @@ export default function Home() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center gap-16">
       <Link 
         href="/"
         className="flex flex-col items-center gap-6 transition-opacity hover:opacity-70"
@@ -22,6 +22,16 @@ export default function Home() {
         </svg>
         <span className="font-mono text-sm text-neutral-500">{currentYear}</span>
       </Link>
+
+      <nav className="flex flex-col items-center">
+        <Link 
+          href="/blog/abc"
+          className="group flex flex-col items-center gap-1 transition-opacity hover:opacity-70"
+        >
+          <time className="font-mono text-sm text-neutral-500">Apr 20, 2026</time>
+          <span className="text-white text-lg">abc</span>
+        </Link>
+      </nav>
     </div>
   )
 }
