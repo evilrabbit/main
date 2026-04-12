@@ -26,10 +26,9 @@ export default function Home() {
       <nav className="flex flex-col items-center">
         <Link 
           href="/blog/abc"
-          className="group flex flex-col items-center gap-1 transition-opacity hover:opacity-70"
+          className="font-mono text-sm text-neutral-500 transition-colors hover:text-white"
         >
-          <time className="font-mono text-sm text-neutral-500">Apr 20, 2026</time>
-          <span className="text-white text-lg">abc</span>
+          Apr 20, 2026 — abc
         </Link>
       </nav>
     </div>
