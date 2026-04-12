@@ -35,7 +35,7 @@ export default function AbcBlogPost() {
             abc
           </h1>
           <time className="font-mono text-sm text-neutral-500">
-            Apr 20, 2026
+            April 20, 2026
           </time>
         </header>
 
