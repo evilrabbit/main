@@ -79,7 +79,7 @@ export default function AbcBlogPost() {
             <div className="flex items-center gap-3 mt-6">
               <div 
                 className="flex items-center justify-center rounded-full"
-                style={{ width: "36px", height: "36px", border: "1px solid #333" }}
+                style={{ width: "28px", height: "28px", border: "1px solid #333" }}
               >
                 <svg
                   viewBox="0 0 308 320"
