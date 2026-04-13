@@ -40,12 +40,12 @@ export default function AbcBlogPost() {
             </Link>
 
             <nav className="flex flex-col gap-2">
-              <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
-              <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
-              <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
-              <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
-              <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
-              <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
+              <a href="#url-design" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
+              <a href="#favicon" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
+              <a href="#opengraph-image" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
+              <a href="#body-background-color" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
+              <a href="#product-showcase" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
+              <a href="#agent-era" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
             </nav>
           </div>
         </aside>
