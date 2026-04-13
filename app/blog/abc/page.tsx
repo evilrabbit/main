@@ -84,7 +84,19 @@ export default function AbcBlogPost() {
           <section id="url-design" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">URL Design</h2>
             <p className="leading-relaxed text-neutral-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL in a message, a tweet, or hovering over a link. It deserves the same attention you give to your logo.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              Keep them short. <span className="text-white">acme.com/pricing</span> beats <span className="text-white">acme.com/pages/company/pricing-info</span> every time. Remove the noise. Drop the <span className="text-white">/pages</span>, the <span className="text-white">/app</span>, the unnecessary nesting. Every character should earn its place.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              Subdomains create memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes the first place people check during an outage. These aren&apos;t just technical decisions—they&apos;re brand extensions.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              Think about how URLs sound when spoken aloud. "Go to acme dot com slash start" works. "Go to acme dot com slash app slash onboarding slash step dash one" does not. If someone can&apos;t remember it after hearing it once, reconsider.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              The best URLs disappear. They&apos;re so intuitive that users guess them correctly before clicking. That&apos;s the goal.
             </p>
           </section>
 
