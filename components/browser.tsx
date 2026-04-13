@@ -29,7 +29,7 @@ export function Browser({ url, showContent = false, children, tabs }: BrowserPro
             {tabs.map((tab, index) => (
               <div 
                 key={index}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-sm ${
+                className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm ${
                   tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
                 }`}
               >
@@ -39,6 +39,9 @@ export function Browser({ url, showContent = false, children, tabs }: BrowserPro
                   </div>
                 )}
                 <span className="truncate max-w-[60px]">{tab.title}</span>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 opacity-50">
+                  <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
               </div>
             ))}
           </div>
