@@ -46,7 +46,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {/* Tabs (if provided) or URL bar */}
         {tabs && tabs.length > 0 ? (
           <div className="flex-1 relative overflow-hidden">
-            <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            <div className="flex items-center gap-1 overflow-x-auto px-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
               {tabs.map((tab, index) => (
                 <div 
                   key={index}
@@ -66,8 +66,15 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                 </div>
               ))}
             </div>
-            {/* Progressive blur fade on right - multiple layers with increasing blur */}
-            <div className="absolute right-0 top-0 bottom-0 w-24 pointer-events-none flex">
+            {/* Progressive blur fade on left */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 pointer-events-none flex">
+              <div className="flex-1 backdrop-blur-[4px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
+              <div className="flex-1 backdrop-blur-[2px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
+              <div className="flex-1 backdrop-blur-[1px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
+              <div className="flex-1 backdrop-blur-[0.5px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
+            </div>
+            {/* Progressive blur fade on right */}
+            <div className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none flex">
               <div className="flex-1 backdrop-blur-[0.5px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
               <div className="flex-1 backdrop-blur-[1px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
               <div className="flex-1 backdrop-blur-[2px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
