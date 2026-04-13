@@ -159,7 +159,7 @@ export default function AbcBlogPost() {
                   },
                   { 
                     favicon: (
-                      <span className="text-[8px] font-bold tracking-tight">xAI</span>
+                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GS8EjnPw4drJez0VPJgAtM1hE9KZ9L.png" alt="xAI" className="w-full h-full object-contain" />
                     ), 
                     title: "x.ai" 
                   },
