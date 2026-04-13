@@ -150,10 +150,7 @@ export default function AbcBlogPost() {
                   },
                   { 
                     favicon: (
-                      <svg viewBox="0 0 24 24" fill="black" className="w-2.5 h-2.5">
-                        <circle cx="12" cy="12" r="11" stroke="black" strokeWidth="2" fill="none"/>
-                        <path d="M7 8.5h10M7 12h10M7 15.5h10" stroke="black" strokeWidth="1.5"/>
-                      </svg>
+                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-hgvUtrHnibjia9GCTaN3Ct5WJ9GDAD.png" alt="Grok" className="w-full h-full object-cover" />
                     ), 
                     title: "Grok" 
                   },
