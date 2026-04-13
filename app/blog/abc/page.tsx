@@ -4,42 +4,40 @@ export default function AbcBlogPost() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-6">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
-        {/* Floating sidebar with back button and table of contents */}
-        <aside className="absolute right-full mr-16 top-0 hidden lg:block" style={{ width: "200px" }}>
-          <div className="sticky top-16">
-            <Link 
-              href="/"
-              className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-8"
+        {/* Fixed sidebar with back button and table of contents */}
+        <aside className="fixed top-16 hidden lg:block" style={{ width: "200px", right: "calc(50% + 320px + 64px)" }}>
+          <Link 
+            href="/"
+            className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-8"
+          >
+            <svg 
+              width="16" 
+              height="16" 
+              viewBox="0 0 16 16" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
-              <svg 
-                width="16" 
-                height="16" 
-                viewBox="0 0 16 16" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path 
-                  d="M10 12L6 8L10 4" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Back
-            </Link>
+              <path 
+                d="M10 12L6 8L10 4" 
+                stroke="currentColor" 
+                strokeWidth="1.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+            Back
+          </Link>
 
-            <nav className="flex flex-col gap-2">
-              <span className="font-mono text-xs text-neutral-600 uppercase tracking-wide mb-1">Contents</span>
-              <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
-              <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
-              <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
-              <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
-              <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
-              <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
-            </nav>
-          </div>
+          <nav className="flex flex-col gap-2">
+            <span className="font-mono text-xs text-neutral-600 uppercase tracking-wide mb-1">Contents</span>
+            <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
+            <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
+            <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
+            <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
+            <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
+            <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
+          </nav>
         </aside>
 
         {/* Mobile back button */}
