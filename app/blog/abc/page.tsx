@@ -94,16 +94,19 @@ export default function AbcBlogPost() {
             </div>
 
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Keep them short. <span className="text-white">acme.com/pricing</span> beats <span className="text-white">acme.com/pages/company/pricing-info</span> every time. Remove the noise. Drop the <span className="text-white">/pages</span>, the <span className="text-white">/app</span>, the unnecessary nesting. Every character should earn its place.
+              Keep URLs simple. Clean. Consistent. Every character should earn its place. Avoid long, deeply nested paths that try to explain everything at once. <span className="text-white">acme.com/product/features/enterprise/advanced-analytics-overview</span> is not helping anyone. Collapse the intent instead: <span className="text-white">acme.com/analytics</span> or <span className="text-white">acme.com/enterprise</span>. If a URL needs that much structure, the structure itself is the problem.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Subdomains create memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes the first place people check during an outage. These aren&apos;t just technical decisions—they&apos;re brand extensions.
+              Consistency builds memory. If users learn one pattern, they should be able to predict the rest. <span className="text-white">acme.com/pricing</span>, <span className="text-white">acme.com/docs</span>, <span className="text-white">acme.com/blog</span> — no surprises, no guesswork.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Think about how URLs sound when spoken aloud. "Go to acme dot com slash start" works. "Go to acme dot com slash app slash onboarding slash step dash one" does not. If someone can&apos;t remember it after hearing it once, reconsider.
+              Subdomains create clear, memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes instinct during an outage. These aren&apos;t just technical decisions — they&apos;re brand surfaces.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              The best URLs disappear. They&apos;re so intuitive that users guess them correctly before clicking. That&apos;s the goal.
+              Think about how URLs sound out loud. "Go to acme dot com slash start" works. If it turns into a sentence, it&apos;s already too long.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              The best URLs disappear. They&apos;re so obvious that users guess them before clicking.
             </p>
           </section>
 
