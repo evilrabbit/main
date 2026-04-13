@@ -56,7 +56,7 @@ export default function AbcBlogPost() {
               Apr 20, 2026
             </time>
             <h1 
-              className="font-bold leading-tight text-[40px] min-[640px]:text-[56px]"
+              className="font-normal leading-tight text-[40px] min-[640px]:text-[56px]"
             >
               abc to land a page
             </h1>
