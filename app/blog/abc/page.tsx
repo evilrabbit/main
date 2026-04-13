@@ -122,13 +122,47 @@ export default function AbcBlogPost() {
 
             <div className="my-16">
               <Browser 
-                url="acme.com" 
+                url="vercel.com" 
                 tabs={[
-                  { favicon: <span>山</span>, title: "Mountain", active: true },
-                  { favicon: <span>水</span>, title: "Water" },
-                  { favicon: <span>火</span>, title: "Fire" },
-                  { favicon: <span>風</span>, title: "Wind" },
-                  { favicon: <span>空</span>, title: "Sky" },
+                  { 
+                    favicon: (
+                      <svg viewBox="0 0 76 65" fill="black" className="w-2.5 h-2.5">
+                        <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+                      </svg>
+                    ), 
+                    title: "Vercel", 
+                    active: true 
+                  },
+                  { 
+                    favicon: (
+                      <span className="text-[9px] font-black">v0</span>
+                    ), 
+                    title: "v0" 
+                  },
+                  { 
+                    favicon: (
+                      <svg viewBox="0 0 180 180" className="w-2.5 h-2.5">
+                        <circle cx="90" cy="90" fill="#000" r="90"/>
+                        <path d="M149.508 157.52L69.142 54H54v71.97h12.114V69.384l73.885 95.461a90.304 90.304 0 009.509-7.325zM115 54h12v72h-12z" fill="#fff"/>
+                      </svg>
+                    ), 
+                    title: "Next.js" 
+                  },
+                  { 
+                    favicon: (
+                      <svg viewBox="0 0 24 24" fill="black" className="w-2.5 h-2.5">
+                        <circle cx="12" cy="12" r="11" stroke="black" strokeWidth="2" fill="none"/>
+                        <path d="M7 8.5h10M7 12h10M7 15.5h10" stroke="black" strokeWidth="1.5"/>
+                      </svg>
+                    ), 
+                    title: "Grok" 
+                  },
+                  { 
+                    favicon: (
+                      <span className="text-[8px] font-bold tracking-tight">xAI</span>
+                    ), 
+                    title: "x.ai" 
+                  },
                 ]}
               />
             </div>
