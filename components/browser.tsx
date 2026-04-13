@@ -89,7 +89,12 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                       onUrlChange?.(e.target.value)
                     }}
                     onFocus={() => setIsFocused(true)}
-                    onBlur={() => setIsFocused(false)}
+                    onBlur={() => {
+                      setIsFocused(false)
+                      if (inputValue.trim() === "") {
+                        setInputValue(url)
+                      }
+                    }}
                     className="text-sm text-white bg-transparent outline-none"
                     style={{ width: `${Math.max(inputValue.length, 1)}ch` }}
                     spellCheck={false}
