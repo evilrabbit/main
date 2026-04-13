@@ -135,7 +135,7 @@ export default function AbcBlogPost() {
                   },
                   { 
                     favicon: (
-                      <span className="text-[9px] font-black">v0</span>
+                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/v0-LDE5H0PMNuFc8Q5xN32ayr3tof6HKh.png" alt="v0" className="w-full h-full object-cover" />
                     ), 
                     title: "v0" 
                   },
