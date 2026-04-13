@@ -67,7 +67,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   }
 
   return (
-    <div className="rounded-xl overflow-hidden border border-[#333]" style={{ backgroundColor: "#000", maxWidth: "650px" }}>
+    <div className="rounded-full overflow-hidden border border-[#333]" style={{ backgroundColor: "#000", maxWidth: "650px" }}>
       {/* Browser header */}
       <div className="flex items-center px-4 py-2.5 gap-4 h-11">
         {/* Traffic lights */}
@@ -90,7 +90,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8, width: 0, marginRight: -4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 ${
                       tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
                     }`}
                   >
@@ -141,7 +141,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               onClick={() => inputRef.current?.focus()}
             >
               <div 
-                className={`inline-flex items-center justify-center bg-[#222] rounded-md px-4 py-1.5 min-w-[280px] transition-all cursor-text hover:bg-[#2a2a2a] ${isFocused ? 'bg-[#2a2a2a]' : ''}`}
+                className={`inline-flex items-center justify-center bg-[#222] rounded-full px-4 py-1.5 min-w-[280px] transition-all cursor-text hover:bg-[#2a2a2a] ${isFocused ? 'bg-[#2a2a2a]' : ''}`}
               >
                 <div className="flex items-center justify-center gap-1">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
