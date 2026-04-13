@@ -90,7 +90,7 @@ export default function AbcBlogPost() {
             </p>
 
             <div className="my-8">
-              <Browser url="evilrabb.it" />
+              <Browser url="acme.com" />
             </div>
 
             <p className="leading-relaxed text-[#666] mt-4">
