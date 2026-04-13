@@ -24,15 +24,26 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Reset tabs when all are closed
+  // When down to 1 tab, switch to URL mode with that tab's title as URL
+  useEffect(() => {
+    if (tabs && visibleTabs.length === 1) {
+      const lastTab = visibleTabs[0]
+      // Use a simple URL based on tab title
+      const tabUrl = lastTab.title.toLowerCase().replace(/\s+/g, '') + ".com"
+      setInputValue(tabUrl)
+    }
+  }, [visibleTabs, tabs])
+
+  // Reset tabs when all are closed (or when down to 0 after showing URL)
   useEffect(() => {
     if (tabs && visibleTabs.length === 0) {
       const timer = setTimeout(() => {
         setVisibleTabs(tabs)
+        setInputValue(url)
       }, 5000)
       return () => clearTimeout(timer)
     }
-  }, [visibleTabs.length, tabs])
+  }, [visibleTabs.length, tabs, url])
 
   // Sync with prop changes
   useEffect(() => {
@@ -66,8 +77,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
         </div>
 
-        {/* Tabs (if provided) or URL bar */}
-        {tabs && visibleTabs.length > 0 ? (
+        {/* Tabs (if more than 1) or URL bar */}
+        {tabs && visibleTabs.length > 1 ? (
           <div className="flex-1 relative overflow-hidden">
             <div className="flex items-center gap-1 overflow-x-auto px-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
               <AnimatePresence mode="popLayout">
@@ -167,8 +178,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
           </>
         )}
 
-        {/* Copy button - only show when not in tabs mode */}
-        {!tabs && (
+        {/* Copy button - show when in URL mode (no tabs or 1 or fewer tabs) */}
+        {(!tabs || visibleTabs.length <= 1) && (
           <button 
             onClick={handleCopy}
             className="text-[#4D4D4D] hover:text-white transition-colors cursor-pointer"
