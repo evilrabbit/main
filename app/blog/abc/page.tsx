@@ -4,65 +4,62 @@ export default function AbcBlogPost() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-6">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
-        {/* Fixed sidebar with back button and table of contents */}
-        <aside className="fixed top-16 hidden lg:block" style={{ width: "200px", right: "calc(50% + 320px + 96px)" }}>
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-8"
-          >
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 16 16" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path 
-                d="M10 12L6 8L10 4" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
-            Back
-          </Link>
-
-          <nav className="flex flex-col gap-2">
-            <span className="font-mono text-xs text-neutral-600 uppercase tracking-wide mb-1">Contents</span>
-            <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
-            <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
-            <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
-            <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
-            <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
-            <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
-          </nav>
-        </aside>
-
-        {/* Mobile back button */}
-        <Link 
-          href="/"
-          className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 lg:hidden"
+        {/* Fixed sidebar with back button and table of contents - visible on lg, hover-reveal on smaller */}
+        <aside 
+          className="fixed top-0 left-0 h-full z-50 lg:top-16 lg:left-auto lg:h-auto lg:z-auto group"
+          style={{ width: "200px" }}
         >
-          <svg 
-            width="16" 
-            height="16" 
-            viewBox="0 0 16 16" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+          {/* Hover trigger area for smaller screens */}
+          <div className="absolute inset-y-0 left-0 w-8 lg:hidden" />
+          
+          {/* Sidebar content */}
+          <div 
+            className="absolute top-16 left-4 opacity-0 -translate-x-4 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 lg:opacity-100 lg:translate-x-0 lg:static"
           >
-            <path 
-              d="M10 12L6 8L10 4" 
-              stroke="currentColor" 
-              strokeWidth="1.5" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-          </svg>
-          Back
-        </Link>
+            <Link 
+              href="/"
+              className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-8"
+            >
+              <svg 
+                width="16" 
+                height="16" 
+                viewBox="0 0 16 16" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path 
+                  d="M10 12L6 8L10 4" 
+                  stroke="currentColor" 
+                  strokeWidth="1.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Back
+            </Link>
+
+            <nav className="flex flex-col gap-2">
+              <span className="font-mono text-xs text-neutral-600 uppercase tracking-wide mb-1">Contents</span>
+              <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
+              <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
+              <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
+              <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
+              <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
+              <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
+            </nav>
+          </div>
+        </aside>
+        
+        {/* Desktop sidebar positioning */}
+        <style>{`
+          @media (min-width: 1024px) {
+            aside {
+              right: calc(50% + 320px + 96px) !important;
+              left: auto !important;
+            }
+          }
+        `}</style>
 
         <article>
           <header className="mb-12">
