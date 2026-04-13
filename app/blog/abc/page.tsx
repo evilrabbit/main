@@ -73,7 +73,7 @@ export default function AbcBlogPost() {
               className="font-bold leading-tight"
               style={{ fontSize: "56px" }}
             >
-              The abc of a good landing page
+              abc to land a page
             </h1>
 
             <div className="flex items-center gap-3 mt-6">
