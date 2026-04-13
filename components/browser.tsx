@@ -102,9 +102,9 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     <span className="truncate max-w-[60px]">{tab.title}</span>
                     <button 
                       onClick={() => handleCloseTab(index)}
-                      className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity"
+                      className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity p-1.5 -m-1.5 rounded-sm hover:bg-white/10"
                     >
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
                     </button>
