@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 interface Tab {
   favicon?: React.ReactNode
@@ -19,6 +19,22 @@ interface BrowserProps {
 export function Browser({ url, showContent = false, children, tabs, onUrlChange }: BrowserProps) {
   const [inputValue, setInputValue] = useState(url)
   const [isFocused, setIsFocused] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(inputValue)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch (err) {
+      console.error("Failed to copy:", err)
+    }
+  }
+
+  const handleDoubleClick = () => {
+    inputRef.current?.select()
+  }
 
   return (
     <div className="rounded-xl overflow-hidden border border-[#333]" style={{ backgroundColor: "#000", maxWidth: "650px" }}>
@@ -82,6 +98,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     <path d="M8 3C9.65685 3 11 4.34315 11 6V7H12V11.5C12 12.3284 11.3284 13 10.5 13H5.5C4.67157 13 4 12.3284 4 11.5V7H5V6C5 4.34315 6.34315 3 8 3ZM8 4.5C7.17157 4.5 6.5 5.17157 6.5 6V7H9.5V6C9.5 5.17157 8.82843 4.5 8 4.5Z" fill="#4D4D4D"/>
                   </svg>
                   <input
+                    ref={inputRef}
                     type="text"
                     value={inputValue}
                     onChange={(e) => {
@@ -95,6 +112,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                         setInputValue(url)
                       }
                     }}
+                    onDoubleClick={handleDoubleClick}
                     className="text-sm text-white bg-transparent outline-none"
                     style={{ width: `${Math.max(inputValue.length, 1)}ch` }}
                     spellCheck={false}
@@ -106,11 +124,21 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         )}
 
         {/* Copy button */}
-        <div>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.25 4.5C14.2165 4.5 15 5.2835 15 6.25V13.75C15 14.7165 14.2165 15.5 13.25 15.5H7.75C6.7835 15.5 6 14.7165 6 13.75V6.25C6 5.2835 6.7835 4.5 7.75 4.5H13.25ZM7.75 6C7.61193 6 7.5 6.11193 7.5 6.25V13.75C7.5 13.8881 7.61193 14 7.75 14H13.25C13.3881 14 13.5 13.8881 13.5 13.75V6.25C13.5 6.11193 13.3881 6 13.25 6H7.75ZM8.25 0.5C9.2165 0.5 10 1.2835 10 2.25V3H8.5V2.25C8.5 2.11193 8.38807 2 8.25 2H2.75C2.61193 2 2.5 2.11193 2.5 2.25V9.75C2.5 9.88807 2.61193 10 2.75 10H4.5V11.5H2.75C1.7835 11.5 1 10.7165 1 9.75V2.25C1 1.2835 1.7835 0.5 2.75 0.5H8.25Z" fill="#4D4D4D"/>
-          </svg>
-        </div>
+        <button 
+          onClick={handleCopy}
+          className="hover:opacity-70 transition-opacity cursor-pointer"
+          title={copied ? "Copied!" : "Copy URL"}
+        >
+          {copied ? (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8L6.5 11.5L13 5" stroke="#28c840" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.25 4.5C14.2165 4.5 15 5.2835 15 6.25V13.75C15 14.7165 14.2165 15.5 13.25 15.5H7.75C6.7835 15.5 6 14.7165 6 13.75V6.25C6 5.2835 6.7835 4.5 7.75 4.5H13.25ZM7.75 6C7.61193 6 7.5 6.11193 7.5 6.25V13.75C7.5 13.8881 7.61193 14 7.75 14H13.25C13.3881 14 13.5 13.8881 13.5 13.75V6.25C13.5 6.11193 13.3881 6 13.25 6H7.75ZM8.25 0.5C9.2165 0.5 10 1.2835 10 2.25V3H8.5V2.25C8.5 2.11193 8.38807 2 8.25 2H2.75C2.61193 2 2.5 2.11193 2.5 2.25V9.75C2.5 9.88807 2.61193 10 2.75 10H4.5V11.5H2.75C1.7835 11.5 1 10.7165 1 9.75V2.25C1 1.2835 1.7835 0.5 2.75 0.5H8.25Z" fill="#4D4D4D"/>
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Content area */}
