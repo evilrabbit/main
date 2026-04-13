@@ -10,7 +10,7 @@ export function Browser({ url, showContent = false, children }: BrowserProps) {
       {/* Browser header */}
       <div className="flex items-center px-4 py-1.5 gap-4">
         {/* Traffic lights */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 -translate-y-px">
           <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
           <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
