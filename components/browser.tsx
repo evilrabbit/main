@@ -25,7 +25,7 @@ export function Browser({ url, showContent = false, children, tabs }: BrowserPro
 
         {/* Tabs (if provided) or URL bar */}
         {tabs && tabs.length > 0 ? (
-          <div className="flex-1 flex items-center gap-1">
+          <div className="flex-1 flex items-center gap-1 relative overflow-hidden">
             {tabs.map((tab, index) => (
               <div 
                 key={index}
@@ -44,6 +44,15 @@ export function Browser({ url, showContent = false, children, tabs }: BrowserPro
                 </svg>
               </div>
             ))}
+            {/* Progressive blur fade on right */}
+            <div 
+              className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none"
+              style={{ 
+                background: "linear-gradient(to right, transparent, black)",
+                maskImage: "linear-gradient(to right, transparent, black)",
+                WebkitMaskImage: "linear-gradient(to right, transparent, black)"
+              }}
+            />
           </div>
         ) : (
           <>
