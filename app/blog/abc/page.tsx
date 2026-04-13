@@ -70,10 +70,10 @@ export default function AbcBlogPost() {
               Apr 20, 2026
             </time>
             <h1 
-              className="leading-tight"
-              style={{ fontSize: "56px", fontWeight: "400" }}
+              className="font-bold leading-tight"
+              style={{ fontSize: "56px" }}
             >
-              Landing page abc
+              The abc of a good landing page
             </h1>
 
             <div className="flex items-center gap-3 mt-6">

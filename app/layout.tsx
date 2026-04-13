@@ -1,13 +1,12 @@
 import type React from "react"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
 
-const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Evil Rabbit",
@@ -43,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-black`}>
-      <body className="font-sans bg-black">
+    <html lang="en" className="bg-black">
+      <body className={`${inter.className} bg-black`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
         <SpeedInsights />
