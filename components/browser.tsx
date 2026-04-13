@@ -66,20 +66,16 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                 </div>
               ))}
             </div>
-            {/* Progressive blur fade on left */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 pointer-events-none flex">
-              <div className="flex-1 backdrop-blur-[4px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
-              <div className="flex-1 backdrop-blur-[2px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
-              <div className="flex-1 backdrop-blur-[1px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
-              <div className="flex-1 backdrop-blur-[0.5px]" style={{ maskImage: "linear-gradient(to left, transparent, black)", WebkitMaskImage: "linear-gradient(to left, transparent, black)" }} />
-            </div>
-            {/* Progressive blur fade on right */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none flex">
-              <div className="flex-1 backdrop-blur-[0.5px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
-              <div className="flex-1 backdrop-blur-[1px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
-              <div className="flex-1 backdrop-blur-[2px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
-              <div className="flex-1 backdrop-blur-[4px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
-            </div>
+            {/* Gradient fade on left */}
+            <div 
+              className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none"
+              style={{ background: "linear-gradient(to right, black, transparent)" }}
+            />
+            {/* Gradient fade on right */}
+            <div 
+              className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none"
+              style={{ background: "linear-gradient(to left, black, transparent)" }}
+            />
           </div>
         ) : (
           <>
