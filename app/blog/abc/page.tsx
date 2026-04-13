@@ -134,33 +134,19 @@ export default function AbcBlogPost() {
                     active: true 
                   },
                   { 
-                    favicon: (
-                      <svg viewBox="0 0 777 370" fill="black" className="w-3 h-1.5">
-                        <path d="M296 265.359V74H370V317.969C370 346.705 346.705 370 317.969 370C304.248 370 290.705 364.71 280.969 354.974L0 74H104.641L296 265.359Z" />
-                        <path d="M777 296H703V126.609L533.609 296H703V370H511.062C453.59 370 407 323.41 407 265.938V74H481V243.969L650.969 74H481V0H672.938C730.41 0 777 46.5904 777 104.062V296Z" />
-                      </svg>
-                    ), 
+                    favicon: <div className="w-full h-full bg-[#3B82F6]" />,
                     title: "v0" 
                   },
                   { 
-                    favicon: (
-                      <svg viewBox="0 0 180 180" className="w-2.5 h-2.5">
-                        <circle cx="90" cy="90" fill="#000" r="90"/>
-                        <path d="M149.508 157.52L69.142 54H54v71.97h12.114V69.384l73.885 95.461a90.304 90.304 0 009.509-7.325zM115 54h12v72h-12z" fill="#fff"/>
-                      </svg>
-                    ), 
+                    favicon: <div className="w-full h-full bg-[#10B981]" />,
                     title: "Next.js" 
                   },
                   { 
-                    favicon: (
-                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-JX2Ib1M0LqhgkYChFXYimx9WY2ncSD.png" alt="Grok" className="w-3 h-3 object-contain" />
-                    ), 
+                    favicon: <div className="w-full h-full bg-[#F59E0B]" />,
                     title: "Grok" 
                   },
                   { 
-                    favicon: (
-                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GS8EjnPw4drJez0VPJgAtM1hE9KZ9L.png" alt="xAI" className="w-full h-full object-contain" />
-                    ), 
+                    favicon: <div className="w-full h-full bg-[#EF4444]" />,
                     title: "x.ai" 
                   },
                 ]}
