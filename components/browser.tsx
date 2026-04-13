@@ -71,8 +71,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
             <div className="flex items-center gap-1 overflow-x-auto px-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
               {visibleTabs.map((tab, index) => (
                 <div 
-                  key={index}
-                  className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 ${
+                  key={tab.title}
+                  className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 transition-all duration-200 ease-out ${
                     tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
                   }`}
                 >
