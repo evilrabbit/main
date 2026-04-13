@@ -32,7 +32,7 @@ export default function Home() {
           onMouseEnter={() => router.prefetch("/blog/abc")}
           className="font-mono text-sm text-neutral-500 transition-colors hover:text-white"
         >
-          April 20, 2026 — abc
+          Apr 20, 2026 — abc
         </Link>
       </nav>
     </div>

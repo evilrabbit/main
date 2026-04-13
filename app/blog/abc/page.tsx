@@ -35,7 +35,7 @@ export default function AbcBlogPost() {
             abc
           </h1>
           <time className="font-mono text-sm text-neutral-500">
-            April 20, 2026
+            Apr 20, 2026
           </time>
         </header>
 
@@ -44,38 +44,11 @@ export default function AbcBlogPost() {
           style={{ fontSize: "16px" }}
         >
           <p className="leading-relaxed text-neutral-300">
-            We spent years perfecting the perfect landing page.
-          </p>
-
-          <p className="leading-relaxed text-neutral-300 mt-6 font-mono text-sm">
-            acme.co/<br />
-            acme.co/dashboard<br />
-            acme.co/evilrabbit
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
 
           <p className="leading-relaxed text-neutral-300 mt-6">
-            Favicon + Title + Description<br />
-            Open Graph Image<br />
-            Body Background Color
-          </p>
-
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            Product Showcase:
-          </p>
-          <ul className="leading-relaxed text-neutral-300 mt-2 list-disc list-inside">
-            <li>Browser setup</li>
-            <li>Clean wallpaper / on brand</li>
-            <li>Focus on your product</li>
-            <li>1 feature at a time</li>
-          </ul>
-
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            Every pixel was optimized for humans.<br />
-            Every detail so the first 3 seconds would convert.
-          </p>
-
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            That was the game.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
 
@@ -91,33 +64,27 @@ export default function AbcBlogPost() {
           style={{ fontSize: "16px" }}
         >
           <p className="leading-relaxed text-neutral-300">
-            {"But now… AI agents are the first ones consuming our websites."}
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
           </p>
 
           <p className="leading-relaxed text-neutral-300 mt-6">
-            {"They don't see favicons."}<br />
-            {"They don't care about beautiful URLs."}<br />
-            {"They don't need wallpapers or browser mockups."}
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
           </p>
+        </div>
 
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            They just scrape, parse and decide.
-          </p>
+        {/* Second image placeholder */}
+        <figure className="my-12 -mx-[50px]" style={{ maxWidth: "800px" }}>
+          <div className="w-full aspect-video bg-neutral-800 rounded-lg flex items-center justify-center">
+            <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
+          </div>
+        </figure>
 
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            So the question is:
-          </p>
-
-          <p className="leading-relaxed text-white mt-6 text-lg">
-            What does a landing page even look like when no human ever sees the homepage?
-          </p>
-
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            The era we knew is over.
-          </p>
-
-          <p className="leading-relaxed text-neutral-300 mt-6">
-            What comes next?
+        <div 
+          className="prose prose-invert max-w-none"
+          style={{ fontSize: "16px" }}
+        >
+          <p className="leading-relaxed text-neutral-300">
+            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
           </p>
         </div>
       </article>
