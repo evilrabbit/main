@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Browser } from "@/components/browser"
 
 export default function AbcBlogPost() {
   return (
@@ -87,6 +88,11 @@ export default function AbcBlogPost() {
             <p className="leading-relaxed text-[#666]">
               A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL in a message, a tweet, or hovering over a link. It deserves the same attention you give to your logo.
             </p>
+
+            <div className="my-8">
+              <Browser url="evilrabb.it" />
+            </div>
+
             <p className="leading-relaxed text-[#666] mt-4">
               Keep them short. <span className="text-white">acme.com/pricing</span> beats <span className="text-white">acme.com/pages/company/pricing-info</span> every time. Remove the noise. Drop the <span className="text-white">/pages</span>, the <span className="text-white">/app</span>, the unnecessary nesting. Every character should earn its place.
             </p>
