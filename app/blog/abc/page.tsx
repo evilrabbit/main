@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function AbcBlogPost() {
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-6">
+    <div className="min-h-screen bg-black text-white py-16 px-6 overflow-x-hidden">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
         {/* Fixed sidebar with back button and table of contents - hidden on mobile, hover-reveal on tablet/small desktop, always visible on 1440px+ */}
         <aside 
@@ -52,7 +52,7 @@ export default function AbcBlogPost() {
 
         <article>
           <header className="mb-12">
-            <time className="font-mono text-sm text-neutral-500 block mb-4">
+            <time className="font-mono text-sm text-neutral-500 block mb-2">
               Apr 20, 2026
             </time>
             <h1 
@@ -61,7 +61,7 @@ export default function AbcBlogPost() {
               abc to land a page
             </h1>
 
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-3 mt-4">
               <div 
                 className="flex items-center justify-center rounded-full"
                 style={{ width: "28px", height: "28px", border: "1px solid #333" }}
