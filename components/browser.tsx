@@ -34,7 +34,7 @@ export function Browser({ url, showContent = false, children, tabs }: BrowserPro
                 }`}
               >
                 {tab.favicon && (
-                  <div className="w-4 h-4 rounded-sm overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0">
+                  <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
                     {tab.favicon}
                   </div>
                 )}
