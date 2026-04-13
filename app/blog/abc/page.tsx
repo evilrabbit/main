@@ -135,7 +135,10 @@ export default function AbcBlogPost() {
                   },
                   { 
                     favicon: (
-                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/v0-LDE5H0PMNuFc8Q5xN32ayr3tof6HKh.png" alt="v0" className="w-full h-full object-cover" />
+                      <svg viewBox="0 0 777 370" fill="black" className="w-3 h-1.5">
+                        <path d="M296 265.359V74H370V317.969C370 346.705 346.705 370 317.969 370C304.248 370 290.705 364.71 280.969 354.974L0 74H104.641L296 265.359Z" />
+                        <path d="M777 296H703V126.609L533.609 296H703V370H511.062C453.59 370 407 323.41 407 265.938V74H481V243.969L650.969 74H481V0H672.938C730.41 0 777 46.5904 777 104.062V296Z" />
+                      </svg>
                     ), 
                     title: "v0" 
                   },
