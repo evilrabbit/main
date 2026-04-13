@@ -1,12 +1,40 @@
+interface Tab {
+  favicon?: React.ReactNode
+  title: string
+  active?: boolean
+}
+
 interface BrowserProps {
   url: string
   showContent?: boolean
   children?: React.ReactNode
+  tabs?: Tab[]
 }
 
-export function Browser({ url, showContent = false, children }: BrowserProps) {
+export function Browser({ url, showContent = false, children, tabs }: BrowserProps) {
   return (
     <div className="rounded-xl overflow-hidden border border-[#333]" style={{ backgroundColor: "#000", maxWidth: "650px" }}>
+      {/* Tab bar (if tabs provided) */}
+      {tabs && tabs.length > 0 && (
+        <div className="flex items-center gap-0.5 px-2 pt-2">
+          {tabs.map((tab, index) => (
+            <div 
+              key={index}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-t-lg text-sm ${
+                tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
+              }`}
+            >
+              {tab.favicon && (
+                <div className="w-4 h-4 rounded overflow-hidden flex items-center justify-center bg-white text-black text-xs font-bold">
+                  {tab.favicon}
+                </div>
+              )}
+              <span className="truncate max-w-[80px]">{tab.title}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Browser header */}
       <div className="flex items-center px-4 py-1.5 gap-4">
         {/* Traffic lights */}

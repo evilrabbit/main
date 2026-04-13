@@ -119,6 +119,20 @@ export default function AbcBlogPost() {
             <p className="leading-relaxed text-[#666] selection-muted">
               The favicon is the smallest piece of real estate your brand will ever occupy—16 by 16 pixels in most contexts. And yet, it&apos;s everywhere. In browser tabs, bookmarks, history, mobile home screens, and search results.
             </p>
+
+            <div className="my-8">
+              <Browser 
+                url="acme.com" 
+                tabs={[
+                  { favicon: <span>山</span>, title: "Mountain", active: true },
+                  { favicon: <span>水</span>, title: "Water" },
+                  { favicon: <span>火</span>, title: "Fire" },
+                  { favicon: <span>風</span>, title: "Wind" },
+                  { favicon: <span>空</span>, title: "Sky" },
+                ]}
+              />
+            </div>
+
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               When someone has forty tabs open, your favicon is how they find you. It needs to work at a glance. No text. No fine details. Just a shape and a color that&apos;s unmistakably yours.
             </p>
