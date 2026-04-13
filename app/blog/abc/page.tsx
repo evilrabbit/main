@@ -132,7 +132,8 @@ export default function AbcBlogPost() {
                         </svg>
                       </div>
                     ), 
-                    title: "Evil Rabbit", 
+                    title: "Evil Rabbit",
+                    url: "evilrabb.it",
                     active: true 
                   },
                   { 
@@ -141,23 +142,28 @@ export default function AbcBlogPost() {
                         <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
                       </svg>
                     ), 
-                    title: "Vercel"
+                    title: "Vercel",
+                    url: "vercel.com"
                   },
                   { 
                     favicon: <div className="w-full h-full bg-[#3B82F6]" />,
-                    title: "v0" 
+                    title: "v0",
+                    url: "v0.dev"
                   },
                   { 
                     favicon: <div className="w-full h-full bg-[#10B981]" />,
-                    title: "Next.js" 
+                    title: "Next.js",
+                    url: "nextjs.org"
                   },
                   { 
                     favicon: <div className="w-full h-full bg-[#F59E0B]" />,
-                    title: "Grok" 
+                    title: "Grok",
+                    url: "grok.com"
                   },
                   { 
                     favicon: <div className="w-full h-full bg-[#EF4444]" />,
-                    title: "x.ai" 
+                    title: "x.ai",
+                    url: "x.ai"
                   },
                 ]}
               />

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 interface Tab {
   favicon?: React.ReactNode
   title: string
+  url?: string
   active?: boolean
 }
 
@@ -24,19 +25,18 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // When down to 1 tab, switch to URL mode with that tab's title as URL
+  // When down to 1 tab, switch to URL mode with that tab's URL or generate from title
   useEffect(() => {
     if (tabs && visibleTabs.length === 1) {
       const lastTab = visibleTabs[0]
-      // Use a simple URL based on tab title
-      const tabUrl = lastTab.title.toLowerCase().replace(/\s+/g, '') + ".com"
+      const tabUrl = lastTab.url || lastTab.title.toLowerCase().replace(/\s+/g, '') + ".com"
       setInputValue(tabUrl)
     }
   }, [visibleTabs, tabs])
 
-  // Reset tabs when all are closed (or when down to 0 after showing URL)
+  // Reset tabs when down to 1 or 0 after 5 seconds
   useEffect(() => {
-    if (tabs && visibleTabs.length === 0) {
+    if (tabs && visibleTabs.length <= 1) {
       const timer = setTimeout(() => {
         setVisibleTabs(tabs)
         setInputValue(url)
