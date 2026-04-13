@@ -3,7 +3,7 @@ import Link from "next/link"
 export default function AbcBlogPost() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-6">
-      <article className="mx-auto" style={{ maxWidth: "650px" }}>
+      <article className="mx-auto" style={{ maxWidth: "640px" }}>
         <Link 
           href="/"
           className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12"
