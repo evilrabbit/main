@@ -31,12 +31,12 @@ export default function AbcBlogPost() {
 
           <nav className="flex flex-col gap-2">
             <span className="font-mono text-xs text-neutral-600 uppercase tracking-wide mb-1">Contents</span>
-            <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors" style={{ lineHeight: "1" }}>URL Design</a>
-            <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors" style={{ lineHeight: "1" }}>Favicon</a>
-            <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors" style={{ lineHeight: "1" }}>Opengraph Image</a>
-            <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors" style={{ lineHeight: "1" }}>Body Background color</a>
-            <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors" style={{ lineHeight: "1" }}>Product Showcase</a>
-            <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors" style={{ lineHeight: "1" }}>Agent Era</a>
+            <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
+            <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
+            <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
+            <a href="#body-background-color" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
+            <a href="#product-showcase" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
+            <a href="#agent-era" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
           </nav>
         </aside>
 
