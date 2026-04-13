@@ -148,7 +148,7 @@ export default function AbcBlogPost() {
                   { 
                     favicon: <div className="w-full h-full bg-[#3B82F6]" />,
                     title: "v0",
-                    url: "v0.dev"
+                    url: "v0.app"
                   },
                   { 
                     favicon: <div className="w-full h-full bg-[#10B981]" />,
