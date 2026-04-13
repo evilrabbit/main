@@ -85,7 +85,7 @@ export default function AbcBlogPost() {
           {/* URL Design Section */}
           <section id="url-design" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">URL Design</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL in a message, a tweet, or hovering over a link. It deserves the same attention you give to your logo.
             </p>
 
@@ -93,16 +93,16 @@ export default function AbcBlogPost() {
               <Browser url="acme.com" />
             </div>
 
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Keep them short. <span className="text-white">acme.com/pricing</span> beats <span className="text-white">acme.com/pages/company/pricing-info</span> every time. Remove the noise. Drop the <span className="text-white">/pages</span>, the <span className="text-white">/app</span>, the unnecessary nesting. Every character should earn its place.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Subdomains create memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes the first place people check during an outage. These aren&apos;t just technical decisions—they&apos;re brand extensions.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Think about how URLs sound when spoken aloud. "Go to acme dot com slash start" works. "Go to acme dot com slash app slash onboarding slash step dash one" does not. If someone can&apos;t remember it after hearing it once, reconsider.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               The best URLs disappear. They&apos;re so intuitive that users guess them correctly before clicking. That&apos;s the goal.
             </p>
           </section>
@@ -110,19 +110,19 @@ export default function AbcBlogPost() {
           {/* Favicon Section */}
           <section id="favicon" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Favicon</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               The favicon is the smallest piece of real estate your brand will ever occupy—16 by 16 pixels in most contexts. And yet, it&apos;s everywhere. In browser tabs, bookmarks, history, mobile home screens, and search results.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               When someone has forty tabs open, your favicon is how they find you. It needs to work at a glance. No text. No fine details. Just a shape and a color that&apos;s unmistakably yours.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               The best favicons are reductive. They take the essence of a logo and strip away everything that doesn&apos;t survive at small sizes. A wordmark becomes an initial. A detailed illustration becomes a silhouette. Complexity is the enemy.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Test it in context. Put it next to Gmail, Slack, Notion, and GitHub in a tab bar. Does it hold its own? Does it disappear? Does it clash? Your favicon lives in a crowd—design it that way.
             </p>
-            <p className="leading-relaxed text-[#666] mt-4">
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               And please, don&apos;t forget dark mode. A black favicon on a dark browser theme is invisible. Provide variants, or choose a color that works on both.
             </p>
           </section>
@@ -137,7 +137,7 @@ export default function AbcBlogPost() {
           {/* Opengraph Image Section */}
           <section id="opengraph-image" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">Opengraph Image</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
             </p>
           </section>
@@ -145,7 +145,7 @@ export default function AbcBlogPost() {
           {/* Body Background color Section */}
           <section id="body-background-color" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Body Background color</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p>
           </section>
@@ -153,7 +153,7 @@ export default function AbcBlogPost() {
           {/* Font Choice Section */}
           <section id="font-choice" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Font Choice</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               Placeholder text for the Font Choice section.
             </p>
           </section>
@@ -168,7 +168,7 @@ export default function AbcBlogPost() {
           {/* Product Showcase Section */}
           <section id="product-showcase" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">Product Showcase</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
             </p>
           </section>
@@ -176,7 +176,7 @@ export default function AbcBlogPost() {
           {/* Agent Era Section */}
           <section id="agent-era" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Agent Era</h2>
-            <p className="leading-relaxed text-[#666]">
+            <p className="leading-relaxed text-[#666] selection-muted">
               Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
             </p>
           </section>

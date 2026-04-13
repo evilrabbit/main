@@ -105,4 +105,8 @@ body {
     background-color: white;
     color: black;
   }
+  .selection-muted::selection {
+    background-color: #666;
+    color: #ccc;
+  }
 }
