@@ -40,7 +40,6 @@ export default function AbcBlogPost() {
             </Link>
 
             <nav className="flex flex-col gap-2">
-              <span className="font-mono text-xs text-neutral-600 uppercase tracking-wide mb-1">Contents</span>
               <a href="#url-design" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
               <a href="#favicon" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
               <a href="#opengraph-image" className="font-mono text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
