@@ -6,15 +6,15 @@ export default function AbcBlogPost() {
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
         {/* Fixed sidebar with back button and table of contents - visible on 1440px+, hover-reveal on smaller */}
         <aside 
-          className="fixed top-0 left-0 h-full z-50 min-[1440px]:top-16 min-[1440px]:left-auto min-[1440px]:h-auto min-[1440px]:z-auto group"
-          style={{ width: "200px" }}
+          className="fixed top-0 left-0 h-full z-50 min-[1440px]:top-16 min-[1440px]:h-auto min-[1440px]:z-auto group"
+          style={{ width: "200px", left: "24px" }}
         >
           {/* Hover trigger area for smaller screens */}
           <div className="absolute inset-y-0 left-0 w-8 min-[1440px]:hidden" />
           
           {/* Sidebar content */}
           <div 
-            className="absolute top-16 left-4 opacity-0 -translate-x-4 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 min-[1440px]:opacity-100 min-[1440px]:translate-x-0 min-[1440px]:static"
+            className="absolute top-16 left-0 opacity-0 -translate-x-4 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 min-[1440px]:opacity-100 min-[1440px]:translate-x-0 min-[1440px]:static"
           >
             <Link 
               href="/"
@@ -50,16 +50,6 @@ export default function AbcBlogPost() {
             </nav>
           </div>
         </aside>
-        
-        {/* Desktop sidebar positioning */}
-        <style>{`
-          @media (min-width: 1440px) {
-            aside {
-              right: calc(50% + 320px + 96px) !important;
-              left: auto !important;
-            }
-          }
-        `}</style>
 
         <article>
           <header className="mb-12">
