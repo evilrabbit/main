@@ -94,16 +94,10 @@ export default function AbcBlogPost() {
             </div>
 
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Keep URLs simple. Clean. Consistent. Every character should earn its place. Avoid long, deeply nested paths that try to explain everything at once. <span className="text-white">acme.com/product/features/enterprise/advanced-analytics-overview</span> is not helping anyone. Collapse the intent instead: <span className="text-white">acme.com/analytics</span> or <span className="text-white">acme.com/enterprise</span>. If a URL needs that much structure, the structure itself is the problem.
+              Keep URLs simple. Clean. Consistent. Every character should earn its place. Avoid long, deeply nested paths that try to explain everything at once. <span className="text-white">acme.com/product/features/enterprise/advanced-analytics-overview</span> is not helping anyone. Collapse the intent instead: <span className="text-white">acme.com/analytics</span> or <span className="text-white">acme.com/enterprise</span>. If a URL needs that much structure, the structure itself is the problem. Consistency builds memory. If users learn one pattern, they should be able to predict the rest. <span className="text-white">acme.com/pricing</span>, <span className="text-white">acme.com/docs</span>, <span className="text-white">acme.com/blog</span>, no surprises, no guesswork.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Consistency builds memory. If users learn one pattern, they should be able to predict the rest. <span className="text-white">acme.com/pricing</span>, <span className="text-white">acme.com/docs</span>, <span className="text-white">acme.com/blog</span> — no surprises, no guesswork.
-            </p>
-            <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Subdomains create clear, memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes instinct during an outage. These aren&apos;t just technical decisions — they&apos;re brand surfaces.
-            </p>
-            <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Think about how URLs sound out loud. "Go to acme dot com slash start" works. If it turns into a sentence, it&apos;s already too long.
+              Subdomains create clear, memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes instinct during an outage. These aren&apos;t just technical decisions, they&apos;re brand surfaces. Think about how URLs sound out loud. "Go to acme dot com slash start" works. If it turns into a sentence, it&apos;s already too long.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               The best URLs disappear. They&apos;re so obvious that users guess them before clicking.
