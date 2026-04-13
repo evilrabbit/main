@@ -5,7 +5,7 @@ export default function AbcBlogPost() {
     <div className="min-h-screen bg-black text-white py-16 px-6">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
         {/* Floating sidebar with back button and table of contents */}
-        <aside className="absolute right-full mr-16 top-0 hidden lg:block" style={{ width: "160px" }}>
+        <aside className="absolute right-full mr-16 top-0 hidden lg:block" style={{ width: "200px" }}>
           <div className="sticky top-16">
             <Link 
               href="/"
