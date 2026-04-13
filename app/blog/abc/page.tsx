@@ -1,8 +1,11 @@
 import Link from "next/link"
+import { Geist } from "next/font/google"
+
+const geist = Geist({ subsets: ["latin"] })
 
 export default function AbcBlogPost() {
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-6">
+    <div className={`${geist.className} min-h-screen bg-black text-white py-16 px-6`}>
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
         {/* Fixed sidebar with back button and table of contents */}
         <aside className="fixed top-16 hidden lg:block" style={{ width: "200px", right: "calc(50% + 320px + 96px)" }}>
@@ -70,10 +73,10 @@ export default function AbcBlogPost() {
               Apr 20, 2026
             </time>
             <h1 
-              className="font-bold leading-tight"
-              style={{ fontSize: "56px" }}
+              className="leading-tight"
+              style={{ fontSize: "56px", fontWeight: "400" }}
             >
-              The abc of a good landing page
+              Landing page abc
             </h1>
 
             <div className="flex items-center gap-3 mt-6">
