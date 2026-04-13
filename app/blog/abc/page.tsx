@@ -4,9 +4,9 @@ export default function AbcBlogPost() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-6">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
-        {/* Fixed sidebar with back button and table of contents - visible on 1440px+, hover-reveal on smaller */}
+        {/* Fixed sidebar with back button and table of contents - hidden on mobile, hover-reveal on tablet/small desktop, always visible on 1440px+ */}
         <aside 
-          className="fixed top-0 left-0 h-full z-50 min-[1440px]:top-16 min-[1440px]:h-auto min-[1440px]:z-auto group"
+          className="hidden md:block fixed top-0 left-0 h-full z-50 min-[1440px]:top-16 min-[1440px]:h-auto min-[1440px]:z-auto group"
           style={{ width: "200px", left: "24px" }}
         >
           {/* Hover trigger area for smaller screens */}
