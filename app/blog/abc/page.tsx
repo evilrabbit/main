@@ -104,7 +104,19 @@ export default function AbcBlogPost() {
           <section id="favicon" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Favicon</h2>
             <p className="leading-relaxed text-neutral-300">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              The favicon is the smallest piece of real estate your brand will ever occupy—16 by 16 pixels in most contexts. And yet, it&apos;s everywhere. In browser tabs, bookmarks, history, mobile home screens, and search results.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              When someone has forty tabs open, your favicon is how they find you. It needs to work at a glance. No text. No fine details. Just a shape and a color that&apos;s unmistakably yours.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              The best favicons are reductive. They take the essence of a logo and strip away everything that doesn&apos;t survive at small sizes. A wordmark becomes an initial. A detailed illustration becomes a silhouette. Complexity is the enemy.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              Test it in context. Put it next to Gmail, Slack, Notion, and GitHub in a tab bar. Does it hold its own? Does it disappear? Does it clash? Your favicon lives in a crowd—design it that way.
+            </p>
+            <p className="leading-relaxed text-neutral-300 mt-4">
+              And please, don&apos;t forget dark mode. A black favicon on a dark browser theme is invisible. Provide variants, or choose a color that works on both.
             </p>
           </section>
 
