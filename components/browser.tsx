@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface Tab {
   favicon?: React.ReactNode
@@ -69,29 +70,36 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {tabs && visibleTabs.length > 0 ? (
           <div className="flex-1 relative overflow-hidden">
             <div className="flex items-center gap-1 overflow-x-auto px-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-              {visibleTabs.map((tab, index) => (
-                <div 
-                  key={tab.title}
-                  className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 transition-all duration-200 ease-out ${
-                    tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
-                  }`}
-                >
-                  {tab.favicon && (
-                    <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
-                      {tab.favicon}
-                    </div>
-                  )}
-                  <span className="truncate max-w-[60px]">{tab.title}</span>
-                  <button 
-                    onClick={() => handleCloseTab(index)}
-                    className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity"
+              <AnimatePresence mode="popLayout">
+                {visibleTabs.map((tab, index) => (
+                  <motion.div 
+                    key={tab.title}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8, width: 0, marginRight: -4 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 ${
+                      tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
+                    }`}
                   >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  </button>
-                </div>
-              ))}
+                    {tab.favicon && (
+                      <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
+                        {tab.favicon}
+                      </div>
+                    )}
+                    <span className="truncate max-w-[60px]">{tab.title}</span>
+                    <button 
+                      onClick={() => handleCloseTab(index)}
+                      className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity"
+                    >
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    </button>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
             {/* Gradient fade on left */}
             <div 
