@@ -29,8 +29,8 @@ export function Browser({ url, showContent = false, children }: BrowserProps) {
         {/* URL bar */}
         <div className="flex-1 flex items-center justify-center">
           <div className="flex items-center justify-center gap-1.5 bg-[#222] rounded-md px-4 py-1.5 min-w-[280px]">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#666] flex-shrink-0">
-              <path d="M9 4.5V4C9 2.34315 7.65685 1 6 1C4.34315 1 3 2.34315 3 4V4.5M6 7.5V8.5M4.2 11H7.8C8.9201 11 9.4802 11 9.908 10.782C10.2843 10.5903 10.5903 10.2843 10.782 9.908C11 9.4802 11 8.9201 11 7.8V7.7C11 6.5799 11 6.01984 10.782 5.59202C10.5903 5.21569 10.2843 4.90973 9.908 4.71799C9.4802 4.5 8.9201 4.5 7.8 4.5H4.2C3.0799 4.5 2.51984 4.5 2.09202 4.71799C1.71569 4.90973 1.40973 5.21569 1.21799 5.59202C1 6.01984 1 6.5799 1 7.7V7.8C1 8.9201 1 9.4802 1.21799 9.908C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+              <path d="M8 3C9.65685 3 11 4.34315 11 6V7H12V11.5C12 12.3284 11.3284 13 10.5 13H5.5C4.67157 13 4 12.3284 4 11.5V7H5V6C5 4.34315 6.34315 3 8 3ZM8 4.5C7.17157 4.5 6.5 5.17157 6.5 6V7H9.5V6C9.5 5.17157 8.82843 4.5 8 4.5Z" fill="#4D4D4D"/>
             </svg>
             <span className="text-sm text-white">{url}</span>
           </div>
