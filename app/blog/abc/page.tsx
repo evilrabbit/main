@@ -150,7 +150,7 @@ export default function AbcBlogPost() {
                   },
                   { 
                     favicon: (
-                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-hgvUtrHnibjia9GCTaN3Ct5WJ9GDAD.png" alt="Grok" className="w-full h-full object-cover" />
+                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-JX2Ib1M0LqhgkYChFXYimx9WY2ncSD.png" alt="Grok" className="w-3 h-3 object-contain" />
                     ), 
                     title: "Grok" 
                   },
