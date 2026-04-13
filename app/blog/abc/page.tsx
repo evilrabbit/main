@@ -82,7 +82,7 @@ export default function AbcBlogPost() {
 
           {/* URL Design Section */}
           <section id="url-design" className="scroll-mt-16">
-            <h2 className="text-2xl font-bold mb-4">URL Design</h2>
+            <h2 className="text-2xl font-normal mb-4">URL Design</h2>
             <p className="leading-relaxed text-neutral-300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
@@ -90,7 +90,7 @@ export default function AbcBlogPost() {
 
           {/* Favicon Section */}
           <section id="favicon" className="scroll-mt-16 mt-12">
-            <h2 className="text-2xl font-bold mb-4">Favicon</h2>
+            <h2 className="text-2xl font-normal mb-4">Favicon</h2>
             <p className="leading-relaxed text-neutral-300">
               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
@@ -105,7 +105,7 @@ export default function AbcBlogPost() {
 
           {/* Opengraph Image Section */}
           <section id="opengraph-image" className="scroll-mt-16">
-            <h2 className="text-2xl font-bold mb-4">Opengraph Image</h2>
+            <h2 className="text-2xl font-normal mb-4">Opengraph Image</h2>
             <p className="leading-relaxed text-neutral-300">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
             </p>
@@ -113,7 +113,7 @@ export default function AbcBlogPost() {
 
           {/* Body Background color Section */}
           <section id="body-background-color" className="scroll-mt-16 mt-12">
-            <h2 className="text-2xl font-bold mb-4">Body Background color</h2>
+            <h2 className="text-2xl font-normal mb-4">Body Background color</h2>
             <p className="leading-relaxed text-neutral-300">
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p>
@@ -128,7 +128,7 @@ export default function AbcBlogPost() {
 
           {/* Product Showcase Section */}
           <section id="product-showcase" className="scroll-mt-16">
-            <h2 className="text-2xl font-bold mb-4">Product Showcase</h2>
+            <h2 className="text-2xl font-normal mb-4">Product Showcase</h2>
             <p className="leading-relaxed text-neutral-300">
               Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
             </p>
@@ -136,7 +136,7 @@ export default function AbcBlogPost() {
 
           {/* Agent Era Section */}
           <section id="agent-era" className="scroll-mt-16 mt-12">
-            <h2 className="text-2xl font-bold mb-4">Agent Era</h2>
+            <h2 className="text-2xl font-normal mb-4">Agent Era</h2>
             <p className="leading-relaxed text-neutral-300">
               Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
             </p>
