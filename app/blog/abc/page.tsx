@@ -1,9 +1,8 @@
 import Link from "next/link"
-import { GeistSans } from "geist/font/sans"
 
 export default function AbcBlogPost() {
   return (
-    <div className={`${GeistSans.className} min-h-screen bg-black text-white py-16 px-6`}>
+    <div className="min-h-screen bg-black text-white py-16 px-6">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
         {/* Fixed sidebar with back button and table of contents */}
         <aside className="fixed top-16 hidden lg:block" style={{ width: "200px", right: "calc(50% + 320px + 96px)" }}>
