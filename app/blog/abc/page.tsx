@@ -56,8 +56,7 @@ export default function AbcBlogPost() {
               Apr 20, 2026
             </time>
             <h1 
-              className="font-bold leading-tight"
-              style={{ fontSize: "56px" }}
+              className="font-bold leading-tight text-[40px] min-[640px]:text-[56px]"
             >
               abc to land a page
             </h1>
@@ -97,8 +96,8 @@ export default function AbcBlogPost() {
             </p>
           </section>
 
-          {/* Image placeholder - exceeds container to 800px */}
-          <figure className="my-12 -mx-[80px]" style={{ maxWidth: "800px" }}>
+          {/* Image placeholder - full width on mobile, exceeds container to 800px on desktop */}
+          <figure className="my-12 -mx-6 min-[800px]:-mx-[80px] min-[800px]:max-w-[800px]">
             <div className="w-full aspect-video bg-neutral-800 rounded-lg flex items-center justify-center">
               <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
             </div>
@@ -121,7 +120,7 @@ export default function AbcBlogPost() {
           </section>
 
           {/* Second image placeholder */}
-          <figure className="my-12 -mx-[80px]" style={{ maxWidth: "800px" }}>
+          <figure className="my-12 -mx-6 min-[800px]:-mx-[80px] min-[800px]:max-w-[800px]">
             <div className="w-full aspect-video bg-neutral-800 rounded-lg flex items-center justify-center">
               <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
             </div>
