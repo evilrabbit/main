@@ -141,9 +141,9 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               onClick={() => inputRef.current?.focus()}
             >
               <div 
-                className={`inline-flex items-center justify-center bg-[#222] rounded-full px-4 py-1.5 min-w-[280px] transition-all cursor-text hover:bg-[#2a2a2a] ${isFocused ? 'bg-[#2a2a2a]' : ''}`}
+                className={`flex items-center bg-[#222] rounded-full px-4 py-1.5 min-w-[280px] transition-all cursor-text hover:bg-[#2a2a2a] ${isFocused ? 'bg-[#2a2a2a]' : ''}`}
               >
-                <div className="flex items-center justify-center gap-1">
+                <div className="flex-1 flex items-center justify-center gap-1">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <path d="M8 3C9.65685 3 11 4.34315 11 6V7H12V11.5C12 12.3284 11.3284 13 10.5 13H5.5C4.67157 13 4 12.3284 4 11.5V7H5V6C5 4.34315 6.34315 3 8 3ZM8 4.5C7.17157 4.5 6.5 5.17157 6.5 6V7H9.5V6C9.5 5.17157 8.82843 4.5 8 4.5Z" fill="#4D4D4D"/>
                   </svg>
@@ -172,10 +172,12 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     autoCorrect="off"
                     autoCapitalize="off"
                   />
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-                    <path d="M6.96875 0.875C10.3651 0.875 13.125 3.61376 13.125 7C13.125 10.3862 10.3651 13.125 6.96875 13.125C4.92066 13.1249 3.10477 12.1293 1.98633 10.5986L1.59961 10.0684L2.65918 9.29395L3.04688 9.82422C3.92772 11.0295 5.35557 11.8124 6.96875 11.8125C9.64727 11.8125 11.8125 9.65437 11.8125 7C11.8125 4.34563 9.64727 2.1875 6.96875 2.1875C4.74997 2.18759 2.88317 3.67001 2.30859 5.6875H5.25V7H0.65625C0.293813 7 0 6.70619 0 6.34375V1.75H1.3125V4.58301C2.25538 2.40103 4.43352 0.875081 6.96875 0.875Z" fill="#4D4D4D"/>
-                  </svg>
                 </div>
+                <button className="flex-shrink-0 text-[#4D4D4D] hover:text-white transition-colors">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.96875 0.875C10.3651 0.875 13.125 3.61376 13.125 7C13.125 10.3862 10.3651 13.125 6.96875 13.125C4.92066 13.1249 3.10477 12.1293 1.98633 10.5986L1.59961 10.0684L2.65918 9.29395L3.04688 9.82422C3.92772 11.0295 5.35557 11.8124 6.96875 11.8125C9.64727 11.8125 11.8125 9.65437 11.8125 7C11.8125 4.34563 9.64727 2.1875 6.96875 2.1875C4.74997 2.18759 2.88317 3.67001 2.30859 5.6875H5.25V7H0.65625C0.293813 7 0 6.70619 0 6.34375V1.75H1.3125V4.58301C2.25538 2.40103 4.43352 0.875081 6.96875 0.875Z" fill="currentColor"/>
+                  </svg>
+                </button>
               </div>
             </div>
           </>
