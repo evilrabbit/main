@@ -32,10 +32,6 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     }
   }
 
-  const handleDoubleClick = () => {
-    inputRef.current?.select()
-  }
-
   return (
     <div className="rounded-xl overflow-hidden border border-[#333]" style={{ backgroundColor: "#000", maxWidth: "650px" }}>
       {/* Browser header */}
@@ -89,11 +85,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
             </div>
 
             {/* URL bar */}
-            <div className="flex-1 flex items-center justify-center">
+            <div 
+              className="flex-1 flex items-center justify-center"
+              onClick={() => inputRef.current?.focus()}
+            >
               <div 
-                className={`inline-flex items-center justify-center gap-1.5 bg-[#222] rounded-md px-4 py-1.5 min-w-[280px] transition-all cursor-text hover:bg-[#2a2a2a] ${isFocused ? 'ring-1 ring-[#444]' : ''}`}
+                className={`inline-flex items-center justify-center bg-[#222] rounded-md px-4 py-1.5 min-w-[280px] transition-all cursor-text hover:bg-[#2a2a2a] ${isFocused ? 'bg-[#2a2a2a]' : ''}`}
               >
-                <div className="flex items-center justify-center gap-0.5">
+                <div className="flex items-center justify-center gap-1">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                     <path d="M8 3C9.65685 3 11 4.34315 11 6V7H12V11.5C12 12.3284 11.3284 13 10.5 13H5.5C4.67157 13 4 12.3284 4 11.5V7H5V6C5 4.34315 6.34315 3 8 3ZM8 4.5C7.17157 4.5 6.5 5.17157 6.5 6V7H9.5V6C9.5 5.17157 8.82843 4.5 8 4.5Z" fill="#4D4D4D"/>
                   </svg>
@@ -105,17 +104,22 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                       setInputValue(e.target.value)
                       onUrlChange?.(e.target.value)
                     }}
-                    onFocus={() => setIsFocused(true)}
+                    onFocus={(e) => {
+                      setIsFocused(true)
+                      e.target.select()
+                    }}
                     onBlur={() => {
                       setIsFocused(false)
                       if (inputValue.trim() === "") {
                         setInputValue(url)
                       }
                     }}
-                    onDoubleClick={handleDoubleClick}
-                    className="text-sm text-white bg-transparent outline-none"
-                    style={{ width: `${Math.max(inputValue.length, 1)}ch` }}
+                    className="text-sm text-white bg-transparent outline-none selection:bg-white selection:text-black caret-white"
+                    style={{ width: `${Math.max(inputValue.length + 1, 1)}ch` }}
                     spellCheck={false}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
                   />
                 </div>
               </div>
