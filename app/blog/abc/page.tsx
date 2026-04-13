@@ -18,7 +18,7 @@ export default function AbcBlogPost() {
           >
             <Link 
               href="/"
-              className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8"
+              className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-white transition-colors mb-8"
             >
               <svg 
                 width="16" 
