@@ -80,7 +80,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {/* Tabs (if more than 1) or URL bar */}
         {tabs && visibleTabs.length > 1 ? (
           <div className="flex-1 relative overflow-hidden">
-            <div className="flex items-center gap-1 overflow-x-auto px-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            <div className="flex items-center gap-1 overflow-x-auto pl-0 pr-6 -ml-5" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
               <AnimatePresence mode="popLayout">
                 {visibleTabs.map((tab, index) => (
                   <motion.div 
@@ -99,7 +99,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                         {tab.favicon}
                       </div>
                     )}
-                    <span className="truncate max-w-[60px]">{tab.title}</span>
+                    <span className="whitespace-nowrap">{tab.title}</span>
                     <button 
                       onClick={() => handleCloseTab(index)}
                       className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity p-1.5 -m-1.5"
@@ -112,11 +112,6 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                 ))}
               </AnimatePresence>
             </div>
-            {/* Gradient fade on left */}
-            <div 
-              className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none"
-              style={{ background: "linear-gradient(to right, black, transparent)" }}
-            />
             {/* Gradient fade on right */}
             <div 
               className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none"
