@@ -45,25 +45,27 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
         {/* Tabs (if provided) or URL bar */}
         {tabs && tabs.length > 0 ? (
-          <div className="flex-1 flex items-center gap-1 relative overflow-hidden">
-            {tabs.map((tab, index) => (
-              <div 
-                key={index}
-                className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm ${
-                  tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
-                }`}
-              >
-                {tab.favicon && (
-                  <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
-                    {tab.favicon}
-                  </div>
-                )}
-                <span className="truncate max-w-[60px]">{tab.title}</span>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 opacity-50">
-                  <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
-            ))}
+          <div className="flex-1 relative overflow-hidden">
+            <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+              {tabs.map((tab, index) => (
+                <div 
+                  key={index}
+                  className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 ${
+                    tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
+                  }`}
+                >
+                  {tab.favicon && (
+                    <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
+                      {tab.favicon}
+                    </div>
+                  )}
+                  <span className="truncate max-w-[60px]">{tab.title}</span>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 opacity-50">
+                    <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
+              ))}
+            </div>
             {/* Progressive blur fade on right - multiple layers with increasing blur */}
             <div className="absolute right-0 top-0 bottom-0 w-24 pointer-events-none flex">
               <div className="flex-1 backdrop-blur-[0.5px]" style={{ maskImage: "linear-gradient(to right, transparent, black)", WebkitMaskImage: "linear-gradient(to right, transparent, black)" }} />
@@ -127,22 +129,24 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
           </>
         )}
 
-        {/* Copy button */}
-        <button 
-          onClick={handleCopy}
-          className="text-[#4D4D4D] hover:text-white transition-colors cursor-pointer"
-          title={copied ? "Copied!" : "Copy URL"}
-        >
-          {copied ? (
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 8L6.5 11.5L13 5" stroke="#28c840" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.25 4.5C14.2165 4.5 15 5.2835 15 6.25V13.75C15 14.7165 14.2165 15.5 13.25 15.5H7.75C6.7835 15.5 6 14.7165 6 13.75V6.25C6 5.2835 6.7835 4.5 7.75 4.5H13.25ZM7.75 6C7.61193 6 7.5 6.11193 7.5 6.25V13.75C7.5 13.8881 7.61193 14 7.75 14H13.25C13.3881 14 13.5 13.8881 13.5 13.75V6.25C13.5 6.11193 13.3881 6 13.25 6H7.75ZM8.25 0.5C9.2165 0.5 10 1.2835 10 2.25V3H8.5V2.25C8.5 2.11193 8.38807 2 8.25 2H2.75C2.61193 2 2.5 2.11193 2.5 2.25V9.75C2.5 9.88807 2.61193 10 2.75 10H4.5V11.5H2.75C1.7835 11.5 1 10.7165 1 9.75V2.25C1 1.2835 1.7835 0.5 2.75 0.5H8.25Z" fill="currentColor"/>
-            </svg>
-          )}
-        </button>
+        {/* Copy button - only show when not in tabs mode */}
+        {!tabs && (
+          <button 
+            onClick={handleCopy}
+            className="text-[#4D4D4D] hover:text-white transition-colors cursor-pointer"
+            title={copied ? "Copied!" : "Copy URL"}
+          >
+            {copied ? (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8L6.5 11.5L13 5" stroke="#28c840" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.25 4.5C14.2165 4.5 15 5.2835 15 6.25V13.75C15 14.7165 14.2165 15.5 13.25 15.5H7.75C6.7835 15.5 6 14.7165 6 13.75V6.25C6 5.2835 6.7835 4.5 7.75 4.5H13.25ZM7.75 6C7.61193 6 7.5 6.11193 7.5 6.25V13.75C7.5 13.8881 7.61193 14 7.75 14H13.25C13.3881 14 13.5 13.8881 13.5 13.75V6.25C13.5 6.11193 13.3881 6 13.25 6H7.75ZM8.25 0.5C9.2165 0.5 10 1.2835 10 2.25V3H8.5V2.25C8.5 2.11193 8.38807 2 8.25 2H2.75C2.61193 2 2.5 2.11193 2.5 2.25V9.75C2.5 9.88807 2.61193 10 2.75 10H4.5V11.5H2.75C1.7835 11.5 1 10.7165 1 9.75V2.25C1 1.2835 1.7835 0.5 2.75 0.5H8.25Z" fill="currentColor"/>
+              </svg>
+            )}
+          </button>
+        )}
       </div>
 
       {/* Content area */}
