@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 interface Tab {
   favicon?: React.ReactNode
@@ -20,7 +20,29 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   const [inputValue, setInputValue] = useState(url)
   const [isFocused, setIsFocused] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
   const inputRef = useRef<HTMLInputElement>(null)
+
+  // Reset tabs when all are closed
+  useEffect(() => {
+    if (tabs && visibleTabs.length === 0) {
+      const timer = setTimeout(() => {
+        setVisibleTabs(tabs)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [visibleTabs.length, tabs])
+
+  // Sync with prop changes
+  useEffect(() => {
+    if (tabs) {
+      setVisibleTabs(tabs)
+    }
+  }, [tabs])
+
+  const handleCloseTab = (indexToClose: number) => {
+    setVisibleTabs(prev => prev.filter((_, index) => index !== indexToClose))
+  }
 
   const handleCopy = async () => {
     try {
@@ -44,10 +66,10 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         </div>
 
         {/* Tabs (if provided) or URL bar */}
-        {tabs && tabs.length > 0 ? (
+        {tabs && visibleTabs.length > 0 ? (
           <div className="flex-1 relative overflow-hidden">
             <div className="flex items-center gap-1 overflow-x-auto px-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-              {tabs.map((tab, index) => (
+              {visibleTabs.map((tab, index) => (
                 <div 
                   key={index}
                   className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-sm flex-shrink-0 ${
@@ -60,9 +82,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     </div>
                   )}
                   <span className="truncate max-w-[60px]">{tab.title}</span>
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 opacity-50">
-                    <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
+                  <button 
+                    onClick={() => handleCloseTab(index)}
+                    className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity"
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                  </button>
                 </div>
               ))}
             </div>
