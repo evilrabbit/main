@@ -97,8 +97,8 @@ export default function AbcBlogPost() {
           </section>
 
           {/* Image placeholder - full width on mobile, exceeds container to 800px on desktop */}
-          <figure className="my-12 -mx-6 md:-mx-[80px] md:max-w-[800px]">
-            <div className="w-full aspect-video bg-neutral-800 rounded-none md:rounded-lg flex items-center justify-center">
+          <figure className="my-12 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
+            <div className="w-full aspect-video bg-neutral-800 rounded-none min-[860px]:rounded-lg flex items-center justify-center">
               <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
             </div>
           </figure>
@@ -120,8 +120,8 @@ export default function AbcBlogPost() {
           </section>
 
           {/* Second image placeholder */}
-          <figure className="my-12 -mx-6 md:-mx-[80px] md:max-w-[800px]">
-            <div className="w-full aspect-video bg-neutral-800 rounded-none md:rounded-lg flex items-center justify-center">
+          <figure className="my-12 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
+            <div className="w-full aspect-video bg-neutral-800 rounded-none min-[860px]:rounded-lg flex items-center justify-center">
               <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
             </div>
           </figure>
