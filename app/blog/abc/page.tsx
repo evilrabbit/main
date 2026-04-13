@@ -44,6 +44,7 @@ export default function AbcBlogPost() {
               <a href="#favicon" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
               <a href="#opengraph-image" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
               <a href="#body-background-color" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
+              <a href="#font-choice" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Font Choice</a>
               <a href="#product-showcase" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
               <a href="#agent-era" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
             </nav>
@@ -140,6 +141,14 @@ export default function AbcBlogPost() {
             <h2 className="text-2xl font-normal mb-4">Body Background color</h2>
             <p className="leading-relaxed text-neutral-300">
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </p>
+          </section>
+
+          {/* Font Choice Section */}
+          <section id="font-choice" className="scroll-mt-16 mt-12">
+            <h2 className="text-2xl font-normal mb-4">Font Choice</h2>
+            <p className="leading-relaxed text-neutral-300">
+              Placeholder text for the Font Choice section.
             </p>
           </section>
 
