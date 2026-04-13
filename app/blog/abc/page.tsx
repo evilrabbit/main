@@ -89,7 +89,7 @@ export default function AbcBlogPost() {
               A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL in a message, a tweet, or hovering over a link. It deserves the same attention you give to your logo.
             </p>
 
-            <div className="my-8">
+            <div className="my-16">
               <Browser url="acme.com" />
             </div>
 
@@ -120,7 +120,7 @@ export default function AbcBlogPost() {
               The favicon is the smallest piece of real estate your brand will ever occupy—16 by 16 pixels in most contexts. And yet, it&apos;s everywhere. In browser tabs, bookmarks, history, mobile home screens, and search results.
             </p>
 
-            <div className="my-8">
+            <div className="my-16">
               <Browser 
                 url="acme.com" 
                 tabs={[
