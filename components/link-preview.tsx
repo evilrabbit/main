@@ -12,8 +12,8 @@ export function XLinkPreviewWithImage({ title, image, url }: { title: string; im
   const domain = url.replace(/^https?:\/\//, '').split('/')[0]
   
   return (
-    <div className="flex flex-col">
-      <div className="rounded-2xl overflow-hidden border border-[#2f3336] bg-black">
+    <a href={url} target="_blank" rel="noopener noreferrer" className="flex flex-col group">
+      <div className="rounded-2xl overflow-hidden border border-[#2f3336] bg-black transition-all duration-150 ease-out group-hover:border-[#444]">
         <div className="aspect-[1.91/1] bg-white relative overflow-hidden">
           <img src={image} alt="" className="w-full h-full object-cover" />
           {/* Title overlay at bottom left */}
@@ -23,7 +23,7 @@ export function XLinkPreviewWithImage({ title, image, url }: { title: string; im
         </div>
       </div>
       <div className="text-[#71767b] text-[13px] mt-1.5">From {domain}</div>
-    </div>
+    </a>
   )
 }
 
@@ -32,7 +32,7 @@ export function XLinkPreviewNoImage({ title, description, url }: { title: string
   const domain = url.replace(/^https?:\/\//, '').split('/')[0]
   
   return (
-    <div className="rounded-2xl overflow-hidden border border-[#2f3336] bg-[#16181c] flex">
+    <a href={url} target="_blank" rel="noopener noreferrer" className="rounded-2xl overflow-hidden border border-[#2f3336] bg-[#16181c] flex transition-all duration-150 ease-out hover:border-[#444]">
       {/* Placeholder icon area */}
       <div className="w-[88px] flex-shrink-0 flex items-center justify-center border-r border-[#2f3336]">
         <svg viewBox="0 0 24 24" className="w-6 h-6 fill-[#71767b]" aria-hidden="true">
@@ -45,7 +45,7 @@ export function XLinkPreviewNoImage({ title, description, url }: { title: string
         <div className="text-[#e7e9ea] text-[15px] leading-5 mt-0.5 font-medium">{title}</div>
         <div className="text-[#71767b] text-[15px] leading-5 mt-0.5 line-clamp-2">{description}</div>
       </div>
-    </div>
+    </a>
   )
 }
 
