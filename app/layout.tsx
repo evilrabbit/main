@@ -42,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={`${inter.className} bg-background`}>
+    <html lang="en" className="bg-black">
+      <body className={`${inter.className} bg-black`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
         <SpeedInsights />
