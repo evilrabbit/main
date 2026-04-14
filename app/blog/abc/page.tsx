@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Browser } from "@/components/browser"
 import { LinkPreviewShowcase } from "@/components/link-preview"
 import { ViewCounter } from "@/components/view-counter"
+import { FontWeightDemo } from "@/components/font-weight-demo"
 
 export default function AbcBlogPost() {
   return (
@@ -239,8 +240,19 @@ export default function AbcBlogPost() {
           {/* Font Choice Section */}
           <section id="font-choice" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Font Choice</h2>
+            
+            <div className="my-8">
+              <FontWeightDemo />
+            </div>
+
             <p className="leading-relaxed text-[#666] selection-muted">
-              Placeholder text for the Font Choice section.
+              Variable fonts give you the entire weight spectrum in a single file. Instead of loading separate files for regular, medium, semibold, and bold, you get smooth interpolation between any weight from 100 to 900.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              This matters for animation, for fine-tuning hierarchy, and for performance. One font file instead of four or five. Smaller payload, fewer requests.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              But the real power is precision. You&apos;re no longer locked into the weights the foundry decided to ship. Need something between regular and medium? Set it to 450. Want a subtle hover state? Bump the weight by 50 instead of jumping a full step.
             </p>
           </section>
 
