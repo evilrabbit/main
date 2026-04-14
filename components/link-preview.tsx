@@ -28,22 +28,21 @@ export function XLinkPreviewWithImage({ title, image, url }: { title: string; im
 }
 
 // X.com link preview WITHOUT OG image - horizontal card with placeholder icon
-export function XLinkPreviewNoImage({ title, description, url }: { title: string; description: string; url: string }) {
+export function XLinkPreviewNoImage({ title, url }: { title: string; description?: string; url: string }) {
   const domain = url.replace(/^https?:\/\//, '').split('/')[0]
   
   return (
-    <div className="rounded-2xl overflow-hidden border border-[#2f3336] bg-black flex">
+    <div className="rounded-2xl overflow-hidden border border-[#2f3336] bg-[#16181c] flex">
       {/* Placeholder icon area */}
-      <div className="w-[130px] flex-shrink-0 bg-[#16181c] flex items-center justify-center border-r border-[#2f3336]">
-        <svg viewBox="0 0 24 24" className="w-10 h-10 fill-[#71767b]" aria-hidden="true">
+      <div className="w-[88px] flex-shrink-0 flex items-center justify-center border-r border-[#2f3336]">
+        <svg viewBox="0 0 24 24" className="w-6 h-6 fill-[#71767b]" aria-hidden="true">
           <path d="M1.998 5.5c0-1.38 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.12 2.5 2.5v13c0 1.38-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.12-2.5-2.5v-13zm2.5-.5c-.276 0-.5.22-.5.5v13c0 .28.224.5.5.5h15c.276 0 .5-.22.5-.5v-13c0-.28-.224-.5-.5-.5h-15zM6 7h6v6H6V7zm2 2v2h2V9H8zm10 0h-4V7h4v2zm0 4h-4v-2h4v2zm-.002 4h-12v-2h12v2z" />
         </svg>
       </div>
       {/* Content area */}
-      <div className="p-3 flex flex-col justify-center min-w-0">
-        <div className="text-[#71767b] text-[13px]">{domain}</div>
-        <div className="text-[#e7e9ea] text-[15px] leading-5 mt-0.5 line-clamp-1 font-normal">{title}</div>
-        <div className="text-[#71767b] text-[15px] leading-5 mt-0.5 line-clamp-2">{description}</div>
+      <div className="px-3 py-2.5 flex flex-col justify-center min-w-0">
+        <div className="text-[#71767b] text-[13px] leading-4">{domain}</div>
+        <div className="text-[#e7e9ea] text-[15px] leading-5 mt-0.5">{title}</div>
       </div>
     </div>
   )
