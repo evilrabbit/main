@@ -55,7 +55,7 @@ export function FontWeightDemo() {
         return (
           <span
             key={`${trailWeight}-${index}`}
-            className="text-[120px] md:text-[180px] leading-none select-none absolute"
+            className="text-[120px] md:text-[180px] leading-none select-none absolute font-[var(--font-geist-sans)]"
             style={{
               fontWeight: trailWeight,
               fontVariationSettings: `"wght" ${trailWeight}`,
@@ -71,7 +71,7 @@ export function FontWeightDemo() {
       
       {/* Current weight - outlined */}
       <span 
-        className="text-[120px] md:text-[180px] leading-none select-none relative z-10"
+        className="text-[120px] md:text-[180px] leading-none select-none relative z-10 font-[var(--font-geist-sans)]"
         style={{ 
           fontWeight: weight,
           fontVariationSettings: `"wght" ${weight}`,

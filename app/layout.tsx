@@ -1,5 +1,6 @@
 import type React from "react"
 import { Inter } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
@@ -42,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-black">
+    <html lang="en" className={`bg-black ${GeistSans.variable}`}>
       <body className={`${inter.className} bg-black`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
