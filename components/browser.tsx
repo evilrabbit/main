@@ -136,12 +136,12 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         ) : (
           <>
             {/* Navigation arrows */}
-            <div className="flex items-center gap-1 text-[#666]">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <div className="flex items-center gap-1">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: "scaleX(-1)" }}>
+                <path d="M10.8534 7.29286C11.2439 7.68338 11.2439 8.3164 10.8534 8.70692L5.49989 14.0604L4.43935 12.9999L9.43935 7.99989L4.43935 2.99989L5.49989 1.93934L10.8534 7.29286Z" fill="#666666"/>
               </svg>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10.8534 7.29286C11.2439 7.68338 11.2439 8.3164 10.8534 8.70692L5.49989 14.0604L4.43935 12.9999L9.43935 7.99989L4.43935 2.99989L5.49989 1.93934L10.8534 7.29286Z" fill="#666666"/>
               </svg>
             </div>
 
