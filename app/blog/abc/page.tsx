@@ -190,7 +190,7 @@ export default function AbcBlogPost() {
               The Open Graph image is often the first visual impression of your content. When someone shares your link on X, LinkedIn, or Messages, this image determines whether people click or scroll past.
             </p>
 
-            <div className="my-16">
+            <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
               <LinkPreviewShowcase 
                 withImage={{
                   title: "Evil Rabbit",
