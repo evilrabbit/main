@@ -101,7 +101,7 @@ export default function AbcBlogPost() {
               Keep URLs simple. Clean. Consistent. Every character should earn its place. Avoid long, deeply nested paths that try to explain everything at once.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              <span className="text-white">acme.com/product/features/enterprise/advanced-analytics-overview</span> is not helping anyone. Collapse the intent instead: <span className="text-white">acme.com/analytics</span> or <span className="text-white">acme.com/enterprise</span>. If a URL needs that much structure, the structure itself is the problem.
+              <span className="text-white">.../.../.../product/enterprise/advanced-analytics-overview</span> is not helping anyone. Collapse the intent instead: <span className="text-white">acme.com/analytics</span> or <span className="text-white">acme.com/enterprise</span>. If a URL needs that much structure, the structure itself is the problem.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Consistency builds memory. If users learn one pattern, they should be able to predict the rest. <span className="text-white">acme.com/pricing</span>, <span className="text-white">acme.com/docs</span>, <span className="text-white">acme.com/blog</span>. No surprises, no guesswork.
