@@ -26,7 +26,7 @@ export default function Home() {
           href="/blog/abc"
           className="font-mono text-sm text-neutral-500 transition-colors hover:text-white"
         >
-          Apr 20, 2026 — A landing page story.
+          Apr 20, 2026 — Anatomy of a landing page.
         </Link>
       </nav>
     </div>
