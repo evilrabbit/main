@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Browser } from "@/components/browser"
+import { LinkPreviewShowcase } from "@/components/link-preview"
 
 export default function AbcBlogPost() {
   return (
@@ -194,7 +195,23 @@ export default function AbcBlogPost() {
           <section id="opengraph-image" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">Opengraph Image</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              The Open Graph image is often the first visual impression of your content. When someone shares your link on X, LinkedIn, or Messages, this image determines whether people click or scroll past.
+            </p>
+
+            <div className="my-16">
+              <LinkPreviewShowcase 
+                title="abc to land a page"
+                description="A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL."
+                image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&h=630&fit=crop"
+                url="https://evilrabb.it/blog/abc"
+              />
+            </div>
+
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Each platform renders previews differently. X shows a large image with title and description below. LinkedIn emphasizes the headline. Messages keeps it compact. Your OG image needs to work across all of them.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Keep text minimal on the image itself. The title and description are already shown by the platform. Use the image for visual impact, not redundant information.
             </p>
           </section>
 
