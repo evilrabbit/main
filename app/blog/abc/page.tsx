@@ -100,10 +100,10 @@ export default function AbcBlogPost() {
               <span className="text-white">acme.com/product/features/enterprise/advanced-analytics-overview</span> is not helping anyone. Collapse the intent instead: <span className="text-white">acme.com/analytics</span> or <span className="text-white">acme.com/enterprise</span>. If a URL needs that much structure, the structure itself is the problem.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Consistency builds memory. If users learn one pattern, they should be able to predict the rest. <span className="text-white">acme.com/pricing</span>, <span className="text-white">acme.com/docs</span>, <span className="text-white">acme.com/blog</span> — no surprises, no guesswork.
+              Consistency builds memory. If users learn one pattern, they should be able to predict the rest. <span className="text-white">acme.com/pricing</span>, <span className="text-white">acme.com/docs</span>, <span className="text-white">acme.com/blog</span>. No surprises, no guesswork.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Subdomains create clear, memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes instinct during an outage. These aren&apos;t just technical decisions — they&apos;re brand surfaces.
+              Subdomains create clear, memorable spaces. <span className="text-white">docs.acme.com</span> feels like a destination. <span className="text-white">api.acme.com</span> tells developers exactly where to go. <span className="text-white">status.acme.com</span> becomes instinct during an outage. These aren&apos;t just technical decisions. They&apos;re brand surfaces.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Think about how URLs sound out loud. "Go to acme dot com slash start" works. If it turns into a sentence, it&apos;s already too long.
@@ -117,7 +117,7 @@ export default function AbcBlogPost() {
           <section id="favicon" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Favicon</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
-              The favicon is the smallest piece of real estate your brand will ever occupy—16 by 16 pixels in most contexts. And yet, it&apos;s everywhere. In browser tabs, bookmarks, history, mobile home screens, and search results.
+              The favicon is the smallest piece of real estate your brand will ever occupy. 16 by 16 pixels in most contexts. And yet, it&apos;s everywhere: browser tabs, bookmarks, history, mobile home screens, and search results.
             </p>
 
             <div className="my-16">
@@ -176,7 +176,7 @@ export default function AbcBlogPost() {
               The best favicons are reductive. They take the essence of a logo and strip away everything that doesn&apos;t survive at small sizes. A wordmark becomes an initial. A detailed illustration becomes a silhouette. Complexity is the enemy.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              Test it in context. Put it next to Gmail, Slack, Notion, and GitHub in a tab bar. Does it hold its own? Does it disappear? Does it clash? Your favicon lives in a crowd—design it that way.
+              Test it in context. Put it next to Gmail, Slack, Notion, and GitHub in a tab bar. Does it hold its own? Does it disappear? Does it clash? Your favicon lives in a crowd. Design it that way.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               And please, don&apos;t forget dark mode. A black favicon on a dark browser theme is invisible. Provide variants, or choose a color that works on both.
