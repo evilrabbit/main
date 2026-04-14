@@ -194,7 +194,7 @@ export default function AbcBlogPost() {
               <LinkPreviewShowcase 
                 withImage={{
                   title: "Evil Rabbit",
-                  image: "https://evilrabbit.com/og.png",
+                  image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PO5wsgCAzlaOtKcmlZRMiyScEDDXY2.png",
                   url: "https://evilrabbit.com"
                 }}
                 withoutImage={{
