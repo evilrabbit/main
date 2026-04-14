@@ -63,6 +63,13 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     setVisibleTabs(prev => prev.filter((_, index) => index !== indexToClose))
   }
 
+  const handleActivateTab = (indexToActivate: number) => {
+    setVisibleTabs(prev => prev.map((tab, index) => ({
+      ...tab,
+      active: index === indexToActivate
+    })))
+  }
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(inputValue)
@@ -100,8 +107,11 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8, width: 0, marginRight: -4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 ${
-                      tab.active ? 'bg-[#222] text-white' : 'bg-transparent text-[#666]'
+                    onClick={() => !tab.active && handleActivateTab(index)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 transition-all duration-150 ease-out ${
+                      tab.active 
+                        ? 'bg-[#222] text-white' 
+                        : 'bg-transparent text-[#666] hover:bg-[#161616] hover:text-[#999] cursor-pointer'
                     }`}
                   >
                     {tab.favicon && (
