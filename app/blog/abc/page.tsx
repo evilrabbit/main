@@ -200,10 +200,16 @@ export default function AbcBlogPost() {
 
             <div className="my-16">
               <LinkPreviewShowcase 
-                title="abc to land a page"
-                description="A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL."
-                image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&h=630&fit=crop"
-                url="https://evilrabb.it/blog/abc"
+                withImage={{
+                  title: "Evil Rabbit",
+                  image: "https://evilrabbit.com/og.png",
+                  url: "https://evilrabbit.com"
+                }}
+                withoutImage={{
+                  title: "Jose Rago - Co-founder at Basement Studio",
+                  description: "Jose Francisco Rago is the co-founder of basement.studio, a digital studio making cool shit ...",
+                  url: "https://ragojose.com"
+                }}
               />
             </div>
 
