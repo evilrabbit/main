@@ -65,7 +65,7 @@ export function FontWeightDemo() {
               color: "transparent",
             }}
           >
-            Typeface
+            Typography
           </span>
         )
       })}
