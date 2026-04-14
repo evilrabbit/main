@@ -184,7 +184,7 @@ export default function AbcBlogPost() {
           </section>
 
           {/* Opengraph Image Section */}
-          <section id="opengraph-image" className="scroll-mt-16">
+          <section id="opengraph-image" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Opengraph Image</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
               The Open Graph image is often the first visual impression of your content. When someone shares your link on X, LinkedIn, or Messages, this image determines whether people click or scroll past.
