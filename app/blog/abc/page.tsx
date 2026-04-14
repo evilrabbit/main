@@ -223,7 +223,7 @@ export default function AbcBlogPost() {
               On iOS and macOS, when users scroll past the edge of a page, the browser reveals whatever is behind your content. This is the rubber band effect. If you set a black background on your main container but leave the html or body element unstyled, that overscroll area will flash white. It looks broken.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
-              The fix is simple: set your background color on the html element, not just a wrapper div. In CSS, that means <span className="text-white font-mono text-sm">html {"{"} background-color: black; {"}"}</span>. In Tailwind, add the class directly to your html tag in the root layout.
+              The fix is simple: set your background color on the html element, not just a wrapper div. In CSS, that means <code className="text-white font-mono text-sm bg-[#1a1a1a] px-1.5 py-0.5 rounded border border-[#333]">html {"{"} background-color: black; {"}"}</code>. In Tailwind, add the class directly to your html tag in the root layout.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               This matters more than you might think. The overscroll area is visible every time someone pulls down to refresh on mobile, or scrolls aggressively on a trackpad. A mismatched color breaks the illusion that your page is a complete, intentional surface.
