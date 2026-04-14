@@ -1,10 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export function FontWeightDemo() {
   const [weight, setWeight] = useState(100)
   const [direction, setDirection] = useState<"up" | "down">("up")
+  const [trails, setTrails] = useState<number[]>([])
+  const lastTrailWeight = useRef(100)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,13 +30,54 @@ export function FontWeightDemo() {
     return () => clearInterval(interval)
   }, [direction])
 
+  // Add trail at certain weight intervals
+  useEffect(() => {
+    const weightDiff = Math.abs(weight - lastTrailWeight.current)
+    if (weightDiff >= 100) {
+      lastTrailWeight.current = weight
+      setTrails(prev => {
+        const newTrails = [...prev, weight]
+        // Keep only last 8 trails
+        if (newTrails.length > 8) {
+          return newTrails.slice(-8)
+        }
+        return newTrails
+      })
+    }
+  }, [weight])
+
   return (
-    <div className="flex items-center justify-center py-12">
+    <div className="flex items-center justify-center py-16 relative">
+      {/* Trail layers */}
+      {trails.map((trailWeight, index) => {
+        const age = trails.length - index
+        const opacity = Math.max(0.08, 0.5 - (age * 0.06))
+        return (
+          <span
+            key={`${trailWeight}-${index}`}
+            className="text-[120px] md:text-[180px] leading-none select-none absolute"
+            style={{
+              fontWeight: trailWeight,
+              fontVariationSettings: `"wght" ${trailWeight}`,
+              WebkitTextStroke: "1px rgba(255,255,255," + opacity + ")",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            Typeface
+          </span>
+        )
+      })}
+      
+      {/* Current weight - outlined */}
       <span 
-        className="text-[180px] leading-none text-white select-none"
+        className="text-[120px] md:text-[180px] leading-none select-none relative z-10"
         style={{ 
           fontWeight: weight,
           fontVariationSettings: `"wght" ${weight}`,
+          WebkitTextStroke: "1.5px white",
+          WebkitTextFillColor: "transparent",
+          color: "transparent",
           transition: "font-weight 30ms linear"
         }}
       >
