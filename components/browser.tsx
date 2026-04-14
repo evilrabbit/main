@@ -24,32 +24,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   const [copied, setCopied] = useState(false)
   const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
   const [hasMounted, setHasMounted] = useState(false)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-  const tabsContainerRef = useRef<HTMLDivElement>(null)
-
-  // Check scroll position
-  const checkScroll = () => {
-    const container = tabsContainerRef.current
-    if (container) {
-      setCanScrollLeft(container.scrollLeft > 0)
-      setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 1)
-    }
-  }
-
-  useEffect(() => {
-    const container = tabsContainerRef.current
-    if (container) {
-      checkScroll()
-      container.addEventListener('scroll', checkScroll)
-      window.addEventListener('resize', checkScroll)
-      return () => {
-        container.removeEventListener('scroll', checkScroll)
-        window.removeEventListener('resize', checkScroll)
-      }
-    }
-  }, [visibleTabs])
 
   // Trigger fade-in after mount
   useEffect(() => {
@@ -111,9 +86,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
         {/* Tabs (if more than 1) or URL bar */}
         {tabs && visibleTabs.length > 1 ? (
-          <div className="flex-1 relative overflow-hidden -ml-10">
+          <div className="flex-1 relative overflow-hidden -ml-2">
             <div 
-              ref={tabsContainerRef}
               className={`flex items-center gap-1 overflow-x-auto px-6 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
@@ -148,14 +122,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                 ))}
               </AnimatePresence>
             </div>
-            {/* Gradient fade on left - only show when can scroll left */}
+            {/* Gradient fade on left */}
             <div 
-              className={`absolute left-0 top-0 bottom-0 w-6 pointer-events-none transition-opacity duration-150 ease-out ${canScrollLeft ? 'opacity-100' : 'opacity-0'}`}
+              className="absolute left-0 top-0 bottom-0 w-6 pointer-events-none"
               style={{ background: "linear-gradient(to right, black, transparent)" }}
             />
-            {/* Gradient fade on right - only show when can scroll right */}
+            {/* Gradient fade on right */}
             <div 
-              className={`absolute right-0 top-0 bottom-0 w-6 pointer-events-none transition-opacity duration-150 ease-out ${canScrollRight ? 'opacity-100' : 'opacity-0'}`}
+              className="absolute right-0 top-0 bottom-0 w-6 pointer-events-none"
               style={{ background: "linear-gradient(to left, black, transparent)" }}
             />
           </div>
