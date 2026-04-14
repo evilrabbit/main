@@ -70,6 +70,45 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     })))
   }
 
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    setDraggedIndex(index)
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/plain', index.toString())
+  }
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    if (draggedIndex !== null && draggedIndex !== index) {
+      setDragOverIndex(index)
+    }
+  }
+
+  const handleDragLeave = () => {
+    setDragOverIndex(null)
+  }
+
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault()
+    if (draggedIndex !== null && draggedIndex !== dropIndex) {
+      setVisibleTabs(prev => {
+        const newTabs = [...prev]
+        const [draggedTab] = newTabs.splice(draggedIndex, 1)
+        newTabs.splice(dropIndex, 0, draggedTab)
+        return newTabs
+      })
+    }
+    setDraggedIndex(null)
+    setDragOverIndex(null)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
+    setDragOverIndex(null)
+  }
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(inputValue)
@@ -107,11 +146,21 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8, width: 0, marginRight: -4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e as unknown as React.DragEvent, index)}
+                    onDragOver={(e) => handleDragOver(e as unknown as React.DragEvent, index)}
+                    onDragLeave={handleDragLeave}
+                    onDrop={(e) => handleDrop(e as unknown as React.DragEvent, index)}
+                    onDragEnd={handleDragEnd}
                     onClick={() => !tab.active && handleActivateTab(index)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 transition-all duration-150 ease-out ${
-                      tab.active 
-                        ? 'bg-[#222] text-white' 
-                        : 'bg-transparent text-[#666] hover:bg-[#161616] hover:text-[#999] cursor-pointer'
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 transition-all duration-150 ease-out cursor-grab active:cursor-grabbing ${
+                      draggedIndex === index 
+                        ? 'opacity-50' 
+                        : dragOverIndex === index 
+                          ? 'bg-[#333] text-white' 
+                          : tab.active 
+                            ? 'bg-[#222] text-white' 
+                            : 'bg-transparent text-[#666] hover:bg-[#161616] hover:text-[#999]'
                     }`}
                   >
                     {tab.favicon && (
