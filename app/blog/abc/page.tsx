@@ -46,7 +46,7 @@ export default function AbcBlogPost() {
               <a href="#url-design" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
               <a href="#favicon" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
               <a href="#opengraph-image" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
-              <a href="#body-background-color" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Body Background color</a>
+              <a href="#body-styles" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Body Styles</a>
               <a href="#font-choice" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Font Choice</a>
               <a href="#product-showcase" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
               <a href="#agent-era" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
@@ -216,11 +216,23 @@ export default function AbcBlogPost() {
             </p>
           </section>
 
-          {/* Body Background color Section */}
-          <section id="body-background-color" className="scroll-mt-16 mt-12">
-            <h2 className="text-2xl font-normal mb-4">Body Background color</h2>
+          {/* Body Styles Section */}
+          <section id="body-styles" className="scroll-mt-16 mt-12">
+            <h2 className="text-2xl font-normal mb-4">Body Styles</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+              On iOS and macOS, when users scroll past the edge of a page, the browser reveals whatever is behind your content. This is the rubber band effect. If you set a black background on your main container but leave the html or body element unstyled, that overscroll area will flash white. It looks broken.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              The fix is simple: set your background color on the html element, not just a wrapper div. In CSS, that means <span className="text-white font-mono text-sm">html {"{"} background-color: black; {"}"}</span>. In Tailwind, add the class directly to your html tag in the root layout.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              This matters more than you might think. The overscroll area is visible every time someone pulls down to refresh on mobile, or scrolls aggressively on a trackpad. A mismatched color breaks the illusion that your page is a complete, intentional surface.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              While you&apos;re at it, consider the meta theme-color tag. This controls the color of the browser chrome on mobile Safari and Android. Match it to your header or your background. The browser itself becomes part of your design.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              These details are invisible when done right. But when they&apos;re wrong, they&apos;re the first thing people notice.
             </p>
           </section>
 
