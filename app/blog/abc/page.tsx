@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Browser } from "@/components/browser"
 import { LinkPreviewShowcase } from "@/components/link-preview"
+import { ViewCounter } from "@/components/view-counter"
 
 export default function AbcBlogPost() {
   return (
@@ -55,9 +56,11 @@ export default function AbcBlogPost() {
 
         <article>
           <header className="mb-12">
-            <time className="font-mono text-sm text-neutral-500 block mb-2">
-              Apr 20, 2026
-            </time>
+            <div className="flex items-center gap-3 font-mono text-sm mb-2">
+              <time className="text-neutral-500">Apr 20, 2026</time>
+              <span className="text-neutral-700">·</span>
+              <ViewCounter slug="abc" />
+            </div>
             <h1 
               className="font-normal leading-tight text-[40px] min-[640px]:text-[56px]"
             >
@@ -229,15 +232,8 @@ export default function AbcBlogPost() {
             </p>
           </section>
 
-          {/* Second image placeholder */}
-          <figure className="my-12 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
-            <div className="w-full aspect-video bg-neutral-800 rounded-none min-[860px]:rounded-lg flex items-center justify-center">
-              <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
-            </div>
-          </figure>
-
           {/* Product Showcase Section */}
-          <section id="product-showcase" className="scroll-mt-16">
+          <section id="product-showcase" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Product Showcase</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
               If you&apos;re recording a video of your product, the browser is part of the shot. Bookmarks bar full of embarrassing links. Twelve extensions cluttering the toolbar. A chaotic tab situation. All of it communicates something, and none of it is your product.
