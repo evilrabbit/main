@@ -88,8 +88,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {tabs && visibleTabs.length > 1 ? (
           <div className="flex-1 relative overflow-hidden">
             <div 
-              className={`flex items-center gap-1 overflow-x-auto px-8 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              className={`flex items-center gap-1 overflow-x-auto pr-8 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "40px" }}
             >
               <AnimatePresence mode="popLayout">
                 {visibleTabs.map((tab, index) => (
@@ -124,8 +124,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
             </div>
             {/* Gradient fade on left */}
             <div 
-              className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none"
-              style={{ background: "linear-gradient(to right, black, transparent)" }}
+              className="absolute top-0 bottom-0 w-8 pointer-events-none"
+              style={{ background: "linear-gradient(to right, black, transparent)", left: "32px" }}
             />
             {/* Gradient fade on right */}
             <div 
