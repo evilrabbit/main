@@ -31,7 +31,7 @@ export function FontWeightDemo() {
   return (
     <div className="flex items-center justify-center py-12">
       <span 
-        className="text-[120px] leading-none text-white select-none"
+        className="text-[180px] leading-none text-white select-none"
         style={{ 
           fontWeight: weight,
           fontVariationSettings: `"wght" ${weight}`,
