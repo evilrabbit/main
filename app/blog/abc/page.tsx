@@ -241,17 +241,18 @@ export default function AbcBlogPost() {
           <section id="font-choice" className="scroll-mt-16 mt-12">
             <h2 className="text-2xl font-normal mb-4">Font Choice</h2>
             
-            <div className="my-8">
-              <FontWeightDemo />
-            </div>
-
             <p className="leading-relaxed text-[#666] selection-muted">
               Typography is the voice of your brand before anyone reads a word. The font you choose tells visitors whether you&apos;re serious or playful, technical or approachable, established or experimental. Get it wrong, and everything else fights uphill.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Start with legibility. A landing page has seconds to communicate. If your headline font is hard to parse, you&apos;ve already lost. Save the decorative typefaces for accent text, if at all. Your primary font should disappear into the reading experience.
             </p>
-            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+
+            <div className="my-12">
+              <FontWeightDemo />
+            </div>
+
+            <p className="leading-relaxed text-[#666] selection-muted">
               Consider your audience. A developer tools company using Comic Sans would be a joke. A children&apos;s brand using monospaced system fonts would feel cold. The font has to match the people you&apos;re trying to reach.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
