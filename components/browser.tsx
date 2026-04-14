@@ -155,18 +155,17 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               className={`flex items-center gap-1 overflow-x-auto px-6 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence>
                 {visibleTabs.map((tab, index) => (
                   <motion.div 
                     key={tab.title}
-                    layout
-                    initial={hasMounted ? { opacity: 0, scale: 0.95 } : false}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    layout="position"
+                    initial={hasMounted ? { opacity: 0 } : false}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ 
-                      duration: 0.15, 
-                      ease: [0.4, 0, 0.2, 1],
-                      layout: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
+                      opacity: { duration: 0.15, ease: "easeOut" },
+                      layout: { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }
                     }}
                     draggable
                     onDragStart={(e) => handleDragStart(e as unknown as React.DragEvent, index)}
