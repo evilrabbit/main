@@ -246,6 +246,15 @@ export default function AbcBlogPost() {
             </div>
 
             <p className="leading-relaxed text-[#666] selection-muted">
+              Typography is the voice of your brand before anyone reads a word. The font you choose tells visitors whether you&apos;re serious or playful, technical or approachable, established or experimental. Get it wrong, and everything else fights uphill.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Start with legibility. A landing page has seconds to communicate. If your headline font is hard to parse, you&apos;ve already lost. Save the decorative typefaces for accent text, if at all. Your primary font should disappear into the reading experience.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Consider your audience. A developer tools company using Comic Sans would be a joke. A children&apos;s brand using monospaced system fonts would feel cold. The font has to match the people you&apos;re trying to reach.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Variable fonts give you the entire weight spectrum in a single file. Instead of loading separate files for regular, medium, semibold, and bold, you get smooth interpolation between any weight from 100 to 900.
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
@@ -253,6 +262,9 @@ export default function AbcBlogPost() {
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               But the real power is precision. You&apos;re no longer locked into the weights the foundry decided to ship. Need something between regular and medium? Set it to 450. Want a subtle hover state? Bump the weight by 50 instead of jumping a full step.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Limit yourself to two typefaces maximum. One for headings, one for body. Maybe a monospace for code. More than that creates visual noise. The constraint forces clarity.
             </p>
           </section>
 
