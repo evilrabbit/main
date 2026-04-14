@@ -28,7 +28,7 @@ export function XLinkPreviewWithImage({ title, image, url }: { title: string; im
 }
 
 // X.com link preview WITHOUT OG image - horizontal card with placeholder icon
-export function XLinkPreviewNoImage({ title, url }: { title: string; description?: string; url: string }) {
+export function XLinkPreviewNoImage({ title, description, url }: { title: string; description: string; url: string }) {
   const domain = url.replace(/^https?:\/\//, '').split('/')[0]
   
   return (
@@ -40,9 +40,10 @@ export function XLinkPreviewNoImage({ title, url }: { title: string; description
         </svg>
       </div>
       {/* Content area */}
-      <div className="px-3 py-2.5 flex flex-col justify-center min-w-0">
+      <div className="px-3 py-3 flex flex-col justify-center min-w-0">
         <div className="text-[#71767b] text-[13px] leading-4">{domain}</div>
-        <div className="text-[#e7e9ea] text-[15px] leading-5 mt-0.5">{title}</div>
+        <div className="text-[#e7e9ea] text-[15px] leading-5 mt-0.5 font-medium">{title}</div>
+        <div className="text-[#71767b] text-[15px] leading-5 mt-0.5 line-clamp-2">{description}</div>
       </div>
     </div>
   )

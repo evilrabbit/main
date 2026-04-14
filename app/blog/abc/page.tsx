@@ -199,6 +199,7 @@ export default function AbcBlogPost() {
                 }}
                 withoutImage={{
                   title: "Jose Rago - Co-founder at Basement Studio",
+                  description: "Jose Francisco Rago is the co-founder of basement.studio, a digital studio making cool shit ...",
                   url: "https://ragojose.com"
                 }}
               />
