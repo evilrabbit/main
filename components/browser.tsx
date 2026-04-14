@@ -86,10 +86,10 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
         {/* Tabs (if more than 1) or URL bar */}
         {tabs && visibleTabs.length > 1 ? (
-          <div className="flex-1 relative overflow-hidden">
+          <div className="flex-1 relative overflow-hidden -ml-2">
             <div 
-              className={`flex items-center gap-1 overflow-x-auto pr-8 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "40px" }}
+              className={`flex items-center gap-1 overflow-x-auto px-6 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               <AnimatePresence mode="popLayout">
                 {visibleTabs.map((tab, index) => (
@@ -124,12 +124,12 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
             </div>
             {/* Gradient fade on left */}
             <div 
-              className="absolute top-0 bottom-0 w-8 pointer-events-none"
-              style={{ background: "linear-gradient(to right, black, transparent)", left: "32px" }}
+              className="absolute left-0 top-0 bottom-0 w-6 pointer-events-none"
+              style={{ background: "linear-gradient(to right, black, transparent)" }}
             />
             {/* Gradient fade on right */}
             <div 
-              className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none"
+              className="absolute right-0 top-0 bottom-0 w-6 pointer-events-none"
               style={{ background: "linear-gradient(to left, black, transparent)" }}
             />
           </div>
