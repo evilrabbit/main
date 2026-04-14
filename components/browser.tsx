@@ -77,6 +77,24 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     setDraggedIndex(index)
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/plain', index.toString())
+    
+    // Create a custom drag image with rounded corners
+    const target = e.currentTarget as HTMLElement
+    const clone = target.cloneNode(true) as HTMLElement
+    clone.style.position = 'absolute'
+    clone.style.top = '-1000px'
+    clone.style.left = '-1000px'
+    clone.style.borderRadius = '9999px'
+    clone.style.overflow = 'hidden'
+    clone.style.backgroundColor = '#222'
+    clone.style.padding = '6px 12px'
+    document.body.appendChild(clone)
+    e.dataTransfer.setDragImage(clone, clone.offsetWidth / 2, clone.offsetHeight / 2)
+    
+    // Remove clone after drag starts
+    requestAnimationFrame(() => {
+      document.body.removeChild(clone)
+    })
   }
 
   const handleDragOver = (e: React.DragEvent, index: number) => {
