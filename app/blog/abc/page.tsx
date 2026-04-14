@@ -184,13 +184,6 @@ export default function AbcBlogPost() {
             </p>
           </section>
 
-          {/* Image placeholder - full width on mobile, exceeds container to 800px on desktop */}
-          <figure className="my-12 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
-            <div className="w-full aspect-video bg-neutral-800 rounded-none min-[860px]:rounded-lg flex items-center justify-center">
-              <span className="text-neutral-500 font-mono text-sm">Image placeholder (800px)</span>
-            </div>
-          </figure>
-
           {/* Opengraph Image Section */}
           <section id="opengraph-image" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">Opengraph Image</h2>
