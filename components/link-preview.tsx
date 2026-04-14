@@ -35,10 +35,8 @@ export function XLinkPreviewNoImage({ title, description, url }: { title: string
     <div className="rounded-2xl overflow-hidden border border-[#2f3336] bg-black flex">
       {/* Placeholder icon area */}
       <div className="w-[130px] flex-shrink-0 bg-[#16181c] flex items-center justify-center border-r border-[#2f3336]">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#71767b]">
-          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
-          <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" strokeWidth="1.5" />
-          <line x1="9" y1="9" x2="9" y2="21" stroke="currentColor" strokeWidth="1.5" />
+        <svg viewBox="0 0 24 24" className="w-10 h-10 fill-[#71767b]" aria-hidden="true">
+          <path d="M1.998 5.5c0-1.38 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.12 2.5 2.5v13c0 1.38-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.12-2.5-2.5v-13zm2.5-.5c-.276 0-.5.22-.5.5v13c0 .28.224.5.5.5h15c.276 0 .5-.22.5-.5v-13c0-.28-.224-.5-.5-.5h-15zM6 7h6v6H6V7zm2 2v2h2V9H8zm10 0h-4V7h4v2zm0 4h-4v-2h4v2zm-.002 4h-12v-2h12v2z" />
         </svg>
       </div>
       {/* Content area */}
