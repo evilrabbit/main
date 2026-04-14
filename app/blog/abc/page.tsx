@@ -240,7 +240,19 @@ export default function AbcBlogPost() {
           <section id="product-showcase" className="scroll-mt-16">
             <h2 className="text-2xl font-normal mb-4">Product Showcase</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+              If you&apos;re recording a video of your product, the browser is part of the shot. Bookmarks bar full of embarrassing links. Twelve extensions cluttering the toolbar. A chaotic tab situation. All of it communicates something, and none of it is your product.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Clean it up. Use a dedicated browser profile for recordings. No bookmarks. No extensions. No distractions. Some teams use tools like Screen Studio or Cleanshot that automatically hide desktop clutter and standardize the recording environment.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Your desktop wallpaper matters too. A busy photo or a personal image pulls attention away from the product. Pick one clean wallpaper. Solid color, subtle gradient, or something intentionally on-brand. Use it for every recording.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              Show one feature at a time. Or one coherent set of features. The temptation is to cram everything into a single video, but that creates noise. A focused thirty-second clip beats a scattered two-minute tour. Let each video have a single job.
+            </p>
+            <p className="leading-relaxed text-[#666] selection-muted mt-4">
+              The goal is to make the product the only thing people see. Everything else in the frame should be invisible.
             </p>
           </section>
 
