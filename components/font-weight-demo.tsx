@@ -38,7 +38,7 @@ export function FontWeightDemo() {
           transition: "font-weight 30ms linear"
         }}
       >
-        aA
+        Typeface
       </span>
     </div>
   )
