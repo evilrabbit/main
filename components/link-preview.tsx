@@ -58,7 +58,7 @@ export function LinkPreviewShowcase({
   withoutImage: { title: string; description: string; url: string }
 }) {
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-start">
+    <div className="flex flex-col md:flex-row gap-8 items-start px-6 md:px-0">
       {/* With OG Image */}
       <div className="flex flex-col gap-3 flex-1 min-w-0">
         <div className="flex items-center gap-2">
