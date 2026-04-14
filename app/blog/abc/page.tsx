@@ -162,7 +162,7 @@ export default function AbcBlogPost() {
                   },
                   { 
                     favicon: <div className="w-full h-full bg-[#EF4444]" />,
-                    title: "x.ai",
+                    title: "xAI",
                     url: "x.ai"
                   },
                 ]}
