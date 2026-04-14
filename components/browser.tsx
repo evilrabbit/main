@@ -160,10 +160,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                   <motion.div 
                     key={tab.title}
                     layout
-                    initial={hasMounted ? { opacity: 0, scale: 0.8 } : false}
+                    initial={hasMounted ? { opacity: 0, scale: 0.95 } : false}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8, width: 0, marginRight: -4 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ 
+                      duration: 0.15, 
+                      ease: [0.4, 0, 0.2, 1],
+                      layout: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
+                    }}
                     draggable
                     onDragStart={(e) => handleDragStart(e as unknown as React.DragEvent, index)}
                     onDragOver={(e) => handleDragOver(e as unknown as React.DragEvent, index)}
