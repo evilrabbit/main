@@ -61,7 +61,7 @@ export default function AbcBlogPost() {
             <h1 
               className="font-normal leading-tight text-[40px] min-[640px]:text-[56px]"
             >
-              abc to land a page
+              A landing page story.
             </h1>
 
             <div className="flex items-center gap-3 mt-4">
@@ -85,7 +85,6 @@ export default function AbcBlogPost() {
 
           {/* URL Design Section */}
           <section id="url-design" className="scroll-mt-16">
-            <h2 className="text-2xl font-normal mb-4">URL Design</h2>
             <p className="leading-relaxed text-[#666] selection-muted">
               A URL is the first impression of your product. Before anyone sees your design or reads your copy, they see your URL in a message, a tweet, or hovering over a link. It deserves the same attention you give to your logo.
             </p>
