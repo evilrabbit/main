@@ -112,7 +112,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     <span className="whitespace-nowrap">{tab.title}</span>
                     <button 
                       onClick={() => handleCloseTab(index)}
-                      className="flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity p-1.5 -m-1.5"
+                      className="flex-shrink-0 opacity-50 hover:opacity-100 p-1.5 -m-1.5 transition-all duration-150 ease-out"
                     >
                       <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -183,7 +183,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                     autoCapitalize="off"
                   />
                 </div>
-                <button className="flex-shrink-0 text-[#4D4D4D] hover:text-white transition-colors">
+                <button className="flex-shrink-0 text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.96875 0.875C10.3651 0.875 13.125 3.61376 13.125 7C13.125 10.3862 10.3651 13.125 6.96875 13.125C4.92066 13.1249 3.10477 12.1293 1.98633 10.5986L1.59961 10.0684L2.65918 9.29395L3.04688 9.82422C3.92772 11.0295 5.35557 11.8124 6.96875 11.8125C9.64727 11.8125 11.8125 9.65437 11.8125 7C11.8125 4.34563 9.64727 2.1875 6.96875 2.1875C4.74997 2.18759 2.88317 3.67001 2.30859 5.6875H5.25V7H0.65625C0.293813 7 0 6.70619 0 6.34375V1.75H1.3125V4.58301C2.25538 2.40103 4.43352 0.875081 6.96875 0.875Z" fill="currentColor"/>
                   </svg>
@@ -197,7 +197,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {(!tabs || visibleTabs.length <= 1) && (
           <button 
             onClick={handleCopy}
-            className="text-[#4D4D4D] hover:text-white transition-colors cursor-pointer"
+            className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer"
             title={copied ? "Copied!" : "Copy URL"}
           >
             {copied ? (
