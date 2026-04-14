@@ -23,7 +23,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   const [isFocused, setIsFocused] = useState(false)
   const [copied, setCopied] = useState(false)
   const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
+  const [hasMounted, setHasMounted] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  // Trigger fade-in after mount
+  useEffect(() => {
+    const timer = setTimeout(() => setHasMounted(true), 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   // When down to 1 tab, switch to URL mode with that tab's URL or generate from title
   useEffect(() => {
@@ -80,13 +87,16 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {/* Tabs (if more than 1) or URL bar */}
         {tabs && visibleTabs.length > 1 ? (
           <div className="flex-1 relative overflow-hidden">
-            <div className="flex items-center gap-1 overflow-x-auto pl-0 pr-6 -ml-5" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            <div 
+              className={`flex items-center gap-1 overflow-x-auto pr-8 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
               <AnimatePresence mode="popLayout">
                 {visibleTabs.map((tab, index) => (
                   <motion.div 
                     key={tab.title}
                     layout
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={hasMounted ? { opacity: 0, scale: 0.8 } : false}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8, width: 0, marginRight: -4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
