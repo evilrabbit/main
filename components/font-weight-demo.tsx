@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
+import { GeistSans } from "geist/font/sans"
 
 export function FontWeightDemo() {
   const [weight, setWeight] = useState(100)
@@ -55,7 +56,7 @@ export function FontWeightDemo() {
         return (
           <span
             key={`${trailWeight}-${index}`}
-            className="text-[120px] md:text-[180px] leading-none select-none absolute font-[var(--font-geist-sans)]"
+            className={`text-[120px] md:text-[180px] leading-none select-none absolute ${GeistSans.className}`}
             style={{
               fontWeight: trailWeight,
               fontVariationSettings: `"wght" ${trailWeight}`,
@@ -71,7 +72,7 @@ export function FontWeightDemo() {
       
       {/* Current weight - outlined */}
       <span 
-        className="text-[120px] md:text-[180px] leading-none select-none relative z-10 font-[var(--font-geist-sans)]"
+        className={`text-[120px] md:text-[180px] leading-none select-none relative z-10 ${GeistSans.className}`}
         style={{ 
           fontWeight: weight,
           fontVariationSettings: `"wght" ${weight}`,
