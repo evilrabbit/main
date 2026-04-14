@@ -65,7 +65,7 @@ export default function AbcBlogPost() {
             <h1 
               className="font-normal leading-tight text-[40px] min-[640px]:text-[56px]"
             >
-              Anatomy of a landing page.
+              A landing page story
             </h1>
 
             <div className="flex items-center gap-3 mt-4">
