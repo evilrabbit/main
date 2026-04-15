@@ -287,68 +287,144 @@ export default function AbcBlogPost() {
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
               <Browser url="zero.health/dashboard" showContent>
-                <div className="w-full h-full bg-[#0a0a0a] flex overflow-hidden text-sm">
+                <div className="w-full h-full bg-[#050505] flex overflow-hidden text-sm">
                   {/* Sidebar */}
-                  <div className="w-48 bg-black border-r border-[#1a1a1a] p-4 flex flex-col gap-1">
-                    <div className="text-white font-medium mb-4">zero</div>
-                    <div className="text-white bg-[#1a1a1a] rounded-md px-3 py-1.5">Overview</div>
-                    <div className="text-[#666] px-3 py-1.5">Vitals</div>
-                    <div className="text-[#666] px-3 py-1.5">History</div>
-                    <div className="text-[#666] px-3 py-1.5">Settings</div>
+                  <div className="w-14 bg-[#0a0a0a] border-r border-[#1a1a1a] py-4 flex flex-col items-center gap-4">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-black text-xs font-bold">Z</div>
+                    <div className="w-8 h-8 rounded-lg bg-[#1a1a1a] flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-[#666]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-[#666]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
                   </div>
                   {/* Main content */}
-                  <div className="flex-1 p-6">
-                    <div className="flex items-center justify-between mb-6">
-                      <div>
-                        <h1 className="text-white text-lg font-medium">Good morning, Alex</h1>
-                        <p className="text-[#666] text-xs mt-0.5">Last sync 2 minutes ago</p>
+                  <div className="flex-1 p-5 overflow-hidden">
+                    <div className="flex gap-5 h-full">
+                      {/* Left column - Body & Activity Rings */}
+                      <div className="w-44 flex flex-col gap-4">
+                        {/* Body silhouette card */}
+                        <div className="bg-[#0a0a0a] rounded-2xl p-4 border border-[#1a1a1a] flex-1 flex flex-col items-center justify-center">
+                          <svg className="w-20 h-32 text-emerald-500/80" viewBox="0 0 60 100" fill="currentColor">
+                            <ellipse cx="30" cy="12" rx="10" ry="11" />
+                            <path d="M30 25 C15 25 12 40 12 50 L12 65 C12 68 14 70 17 70 L22 70 L22 90 C22 93 24 95 27 95 L33 95 C36 95 38 93 38 90 L38 70 L43 70 C46 70 48 68 48 65 L48 50 C48 40 45 25 30 25Z" />
+                          </svg>
+                          <div className="text-[#666] text-xs mt-2">All systems normal</div>
+                        </div>
+                        {/* Activity rings */}
+                        <div className="bg-[#0a0a0a] rounded-2xl p-4 border border-[#1a1a1a]">
+                          <div className="flex items-center justify-center relative">
+                            <svg className="w-24 h-24" viewBox="0 0 100 100">
+                              <circle cx="50" cy="50" r="42" fill="none" stroke="#1a1a1a" strokeWidth="6" />
+                              <circle cx="50" cy="50" r="42" fill="none" stroke="#ef4444" strokeWidth="6" strokeDasharray="264" strokeDashoffset="66" strokeLinecap="round" transform="rotate(-90 50 50)" />
+                              <circle cx="50" cy="50" r="33" fill="none" stroke="#1a1a1a" strokeWidth="6" />
+                              <circle cx="50" cy="50" r="33" fill="none" stroke="#22c55e" strokeWidth="6" strokeDasharray="207" strokeDashoffset="41" strokeLinecap="round" transform="rotate(-90 50 50)" />
+                              <circle cx="50" cy="50" r="24" fill="none" stroke="#1a1a1a" strokeWidth="6" />
+                              <circle cx="50" cy="50" r="24" fill="none" stroke="#3b82f6" strokeWidth="6" strokeDasharray="151" strokeDashoffset="30" strokeLinecap="round" transform="rotate(-90 50 50)" />
+                            </svg>
+                          </div>
+                          <div className="flex justify-between mt-3 text-xs">
+                            <div><span className="text-red-500">Move</span> <span className="text-[#666]">420/500</span></div>
+                            <div><span className="text-emerald-500">Exercise</span> <span className="text-[#666]">28/30</span></div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                        <span className="text-[#666] text-xs">Connected</span>
+                      {/* Middle column - Vitals */}
+                      <div className="flex-1 flex flex-col gap-3">
+                        <div className="grid grid-cols-3 gap-3">
+                          <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                            <div className="flex items-center gap-1.5 mb-2">
+                              <svg className="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" /></svg>
+                              <span className="text-[#666] text-xs">Heart</span>
+                            </div>
+                            <div className="text-white text-xl font-medium">72</div>
+                            <div className="text-[#444] text-xs">bpm</div>
+                          </div>
+                          <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                            <div className="flex items-center gap-1.5 mb-2">
+                              <svg className="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4 4 0 018.302-2.078A4.5 4.5 0 0115.5 15H5.5z" clipRule="evenodd" /></svg>
+                              <span className="text-[#666] text-xs">Oxygen</span>
+                            </div>
+                            <div className="text-white text-xl font-medium">98%</div>
+                            <div className="text-[#444] text-xs">SpO2</div>
+                          </div>
+                          <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                            <div className="flex items-center gap-1.5 mb-2">
+                              <svg className="w-3 h-3 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" /></svg>
+                              <span className="text-[#666] text-xs">Stamina</span>
+                            </div>
+                            <div className="text-white text-xl font-medium">86%</div>
+                            <div className="text-[#444] text-xs">high</div>
+                          </div>
+                        </div>
+                        {/* Heart rate chart */}
+                        <div className="bg-[#0a0a0a] rounded-xl p-4 border border-[#1a1a1a] flex-1">
+                          <div className="flex items-center justify-between mb-3">
+                            <span className="text-[#666] text-xs">Heart Rate Today</span>
+                            <span className="text-[#444] text-xs">68-84 bpm</span>
+                          </div>
+                          <div className="h-16 flex items-end gap-0.5">
+                            {[65, 72, 68, 74, 70, 78, 72, 68, 75, 80, 76, 72, 69, 74, 78, 82, 76, 72, 70, 68, 72, 75, 71, 73].map((v, i) => (
+                              <div key={i} className="flex-1 bg-gradient-to-t from-red-500/60 to-red-500/20 rounded-sm" style={{ height: `${(v - 60) * 3}%` }} />
+                            ))}
+                          </div>
+                          <div className="flex justify-between mt-2 text-[#444] text-xs">
+                            <span>12am</span>
+                            <span>6am</span>
+                            <span>12pm</span>
+                            <span>6pm</span>
+                            <span>Now</span>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                            <div className="text-[#666] text-xs mb-1">Blood Pressure</div>
+                            <div className="text-white text-lg font-medium">118/76</div>
+                          </div>
+                          <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                            <div className="text-[#666] text-xs mb-1">Temperature</div>
+                            <div className="text-white text-lg font-medium">36.6°C</div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    {/* Stats grid */}
-                    <div className="grid grid-cols-4 gap-3">
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Heart Rate</div>
-                        <div className="text-white text-2xl font-medium">72</div>
-                        <div className="text-[#444] text-xs">bpm</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Blood Pressure</div>
-                        <div className="text-white text-2xl font-medium">118/76</div>
-                        <div className="text-[#444] text-xs">mmHg</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Temperature</div>
-                        <div className="text-white text-2xl font-medium">36.6</div>
-                        <div className="text-[#444] text-xs">°C</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Oxygen</div>
-                        <div className="text-white text-2xl font-medium">98</div>
-                        <div className="text-[#444] text-xs">%</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Weight</div>
-                        <div className="text-white text-2xl font-medium">73.2</div>
-                        <div className="text-[#444] text-xs">kg</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Vision</div>
-                        <div className="text-white text-2xl font-medium">20/20</div>
-                        <div className="text-[#444] text-xs">score</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Sleep</div>
-                        <div className="text-white text-2xl font-medium">7.4</div>
-                        <div className="text-[#444] text-xs">hours</div>
-                      </div>
-                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
-                        <div className="text-[#666] text-xs mb-1">Steps</div>
-                        <div className="text-white text-2xl font-medium">8,432</div>
-                        <div className="text-[#444] text-xs">today</div>
+                      {/* Right column - Sleep & more */}
+                      <div className="w-40 flex flex-col gap-3">
+                        <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                          <div className="flex items-center gap-1.5 mb-2">
+                            <svg className="w-3 h-3 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span className="text-[#666] text-xs">Sleep</span>
+                          </div>
+                          <div className="text-white text-xl font-medium">7h 24m</div>
+                          <div className="flex gap-0.5 mt-2">
+                            <div className="h-1.5 flex-1 bg-indigo-900 rounded-full" />
+                            <div className="h-1.5 flex-1 bg-indigo-500 rounded-full" />
+                            <div className="h-1.5 flex-1 bg-indigo-400 rounded-full" />
+                            <div className="h-1.5 flex-1 bg-indigo-500 rounded-full" />
+                            <div className="h-1.5 flex-1 bg-indigo-900 rounded-full" />
+                          </div>
+                          <div className="text-[#444] text-xs mt-1">Deep · REM · Light</div>
+                        </div>
+                        <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                          <div className="text-[#666] text-xs mb-1">Steps</div>
+                          <div className="text-white text-xl font-medium">8,432</div>
+                          <div className="w-full h-1 bg-[#1a1a1a] rounded-full mt-2">
+                            <div className="h-full w-[84%] bg-emerald-500 rounded-full" />
+                          </div>
+                          <div className="text-[#444] text-xs mt-1">84% of goal</div>
+                        </div>
+                        <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                          <div className="text-[#666] text-xs mb-1">Weight</div>
+                          <div className="text-white text-xl font-medium">73.2 kg</div>
+                          <div className="text-emerald-500 text-xs mt-1">-0.3 this week</div>
+                        </div>
+                        <div className="bg-[#0a0a0a] rounded-xl p-3 border border-[#1a1a1a]">
+                          <div className="text-[#666] text-xs mb-1">Vision</div>
+                          <div className="text-white text-xl font-medium">20/20</div>
+                          <div className="text-[#444] text-xs mt-1">Last checked Apr 10</div>
+                        </div>
                       </div>
                     </div>
                   </div>
