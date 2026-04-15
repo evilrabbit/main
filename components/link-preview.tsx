@@ -32,7 +32,7 @@ export function XLinkPreviewNoImage({ title, description, url }: { title: string
   const domain = url.replace(/^https?:\/\//, '').split('/')[0]
   
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" className="rounded-none md:rounded-2xl overflow-hidden border-y md:border border-[#2f3336] bg-[#16181c] flex transition-all duration-150 ease-out hover:border-[#444]">
+    <a href={url} target="_blank" rel="noopener noreferrer" className="rounded-2xl overflow-hidden border border-[#2f3336] bg-[#16181c] flex transition-all duration-150 ease-out hover:border-[#444]">
       {/* Placeholder icon area */}
       <div className="w-[88px] flex-shrink-0 flex items-center justify-center border-r border-[#2f3336]">
         <svg viewBox="0 0 24 24" className="w-6 h-6 fill-[#71767b]" aria-hidden="true">
@@ -60,20 +60,18 @@ export function LinkPreviewShowcase({
   return (
     <div className="flex flex-col md:flex-row gap-8 items-start md:px-0">
       {/* Without OG Image */}
-      <div className="flex flex-col gap-3 flex-1 min-w-0 w-full md:w-auto">
-        <div className="flex items-center gap-2 px-6 md:px-0">
+      <div className="flex flex-col gap-3 flex-1 min-w-0 w-full md:w-auto px-6 md:px-0">
+        <div className="flex items-center gap-2">
           <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
           </svg>
           <span className="text-[#666] text-sm">Without OG Image</span>
         </div>
-        <div className="md:rounded-2xl overflow-hidden">
-          <XLinkPreviewNoImage 
-            title={withoutImage.title} 
-            description={withoutImage.description} 
-            url={withoutImage.url} 
-          />
-        </div>
+        <XLinkPreviewNoImage 
+          title={withoutImage.title} 
+          description={withoutImage.description} 
+          url={withoutImage.url} 
+        />
       </div>
 
       {/* With OG Image */}
