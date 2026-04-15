@@ -16,12 +16,39 @@ export function FontWeightDemo() {
   const containerRef = useRef<HTMLDivElement>(null)
   const charRefs = useRef<(HTMLSpanElement | null)[]>([])
   const [weights, setWeights] = useState<number[]>(initialWeights)
+  const [targetWeights, setTargetWeights] = useState<number[]>(initialWeights)
   const [isHovering, setIsHovering] = useState(false)
+  const animationRef = useRef<number | null>(null)
+
+  // Smooth interpolation towards target weights
+  useEffect(() => {
+    const animate = () => {
+      setWeights(prev => {
+        const newWeights = prev.map((current, index) => {
+          const target = targetWeights[index]
+          const diff = target - current
+          // Ease factor: smaller = smoother, larger = snappier
+          const ease = isHovering ? 0.15 : 0.08
+          const newWeight = current + diff * ease
+          // Stop animating when close enough
+          if (Math.abs(diff) < 1) return target
+          return newWeight
+        })
+        return newWeights
+      })
+      animationRef.current = requestAnimationFrame(animate)
+    }
+    
+    animationRef.current = requestAnimationFrame(animate)
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
+    }
+  }, [targetWeights, isHovering])
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return
 
-    const newWeights = characters.map((_, index) => {
+    const newTargets = characters.map((_, index) => {
       const charEl = charRefs.current[index]
       if (!charEl) return 100
 
@@ -35,20 +62,21 @@ export function FontWeightDemo() {
       )
 
       // Max distance for effect (in pixels)
-      const maxDistance = 200
-      // Calculate weight based on proximity (closer = heavier)
+      const maxDistance = 180
+      // Use easeOutCubic for smoother falloff
       const normalizedDistance = Math.min(distance / maxDistance, 1)
-      const weight = Math.round(900 - (normalizedDistance * 800))
+      const eased = 1 - Math.pow(1 - (1 - normalizedDistance), 3)
+      const weight = Math.round(900 - (eased * 800))
       
       return Math.max(100, Math.min(900, weight))
     })
 
-    setWeights(newWeights)
+    setTargetWeights(newTargets)
   }
 
   const handleMouseLeave = () => {
     setIsHovering(false)
-    setWeights(initialWeights)
+    setTargetWeights(initialWeights)
   }
 
   const textRef = useRef<HTMLDivElement>(null)
@@ -108,9 +136,6 @@ export function FontWeightDemo() {
               fontWeight: weights[index],
               fontVariationSettings: `"wght" ${weights[index]}`,
               color: "white",
-              transition: isHovering 
-                ? "font-weight 0.15s ease-out, font-variation-settings 0.15s ease-out"
-                : "font-weight 0.4s ease-out, font-variation-settings 0.4s ease-out",
             }}
           >
             {char}
