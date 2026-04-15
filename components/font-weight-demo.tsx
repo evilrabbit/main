@@ -18,7 +18,15 @@ export function FontWeightDemo() {
   const [weights, setWeights] = useState<number[]>(initialWeights)
   const [targetWeights, setTargetWeights] = useState<number[]>(initialWeights)
   const [isHovering, setIsHovering] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const animationRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Smooth interpolation towards target weights
   useEffect(() => {
@@ -46,7 +54,7 @@ export function FontWeightDemo() {
   }, [targetWeights, isHovering])
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return
+    if (!containerRef.current || isMobile) return
 
     const newTargets = characters.map((_, index) => {
       const charEl = charRefs.current[index]
@@ -108,13 +116,13 @@ export function FontWeightDemo() {
   return (
     <div 
       ref={containerRef}
-      className="flex items-center justify-center py-8 relative cursor-pointer select-none -mx-6 md:-mx-20"
+      className={`flex items-center justify-center py-8 relative select-none -mx-6 md:-mx-20 ${isMobile ? '' : 'cursor-pointer'}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Typographic grid lines - positioned based on actual Geist Sans metrics */}
-      {gridMetrics.height > 0 && (
+      {/* Typographic grid lines - positioned based on actual Geist Sans metrics, hidden on mobile */}
+      {gridMetrics.height > 0 && !isMobile && (
         <div className="absolute left-0 right-0 pointer-events-none" style={{ top: gridMetrics.top }}>
           {/* Ascender line - top of "h" */}
           <div className="absolute w-full h-px bg-[#333]" style={{ top: ascenderOffset }} />
