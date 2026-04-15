@@ -287,48 +287,69 @@ export default function AbcBlogPost() {
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
               <Browser url="zero.health/dashboard" showContent>
-                <div className="w-full h-full bg-black p-6 font-mono text-sm overflow-hidden">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-[#222] pb-3">
-                      <span className="text-white">zero</span>
-                      <span className="text-[#444]">patient 0x7F3A</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-x-12 gap-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">heart rate</span>
-                        <span className="text-white">72 <span className="text-[#444]">bpm</span></span>
+                <div className="w-full h-full bg-[#0a0a0a] flex overflow-hidden text-sm">
+                  {/* Sidebar */}
+                  <div className="w-48 bg-black border-r border-[#1a1a1a] p-4 flex flex-col gap-1">
+                    <div className="text-white font-medium mb-4">zero</div>
+                    <div className="text-white bg-[#1a1a1a] rounded-md px-3 py-1.5">Overview</div>
+                    <div className="text-[#666] px-3 py-1.5">Vitals</div>
+                    <div className="text-[#666] px-3 py-1.5">History</div>
+                    <div className="text-[#666] px-3 py-1.5">Settings</div>
+                  </div>
+                  {/* Main content */}
+                  <div className="flex-1 p-6">
+                    <div className="flex items-center justify-between mb-6">
+                      <div>
+                        <h1 className="text-white text-lg font-medium">Good morning, Alex</h1>
+                        <p className="text-[#666] text-xs mt-0.5">Last sync 2 minutes ago</p>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">blood pressure</span>
-                        <span className="text-white">118/76</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">temperature</span>
-                        <span className="text-white">36.6 <span className="text-[#444]">°C</span></span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">oxygen</span>
-                        <span className="text-white">98 <span className="text-[#444]">%</span></span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">weight</span>
-                        <span className="text-white">73.2 <span className="text-[#444]">kg</span></span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">vision</span>
-                        <span className="text-white">20/20</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">sleep</span>
-                        <span className="text-white">7.4 <span className="text-[#444]">hrs</span></span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#666]">sync</span>
-                        <span className="text-emerald-500">live</span>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                        <span className="text-[#666] text-xs">Connected</span>
                       </div>
                     </div>
-                    <div className="border-t border-[#222] pt-3 mt-4">
-                      <span className="text-[#444]">last check: 2 min ago</span>
+                    {/* Stats grid */}
+                    <div className="grid grid-cols-4 gap-3">
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Heart Rate</div>
+                        <div className="text-white text-2xl font-medium">72</div>
+                        <div className="text-[#444] text-xs">bpm</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Blood Pressure</div>
+                        <div className="text-white text-2xl font-medium">118/76</div>
+                        <div className="text-[#444] text-xs">mmHg</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Temperature</div>
+                        <div className="text-white text-2xl font-medium">36.6</div>
+                        <div className="text-[#444] text-xs">°C</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Oxygen</div>
+                        <div className="text-white text-2xl font-medium">98</div>
+                        <div className="text-[#444] text-xs">%</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Weight</div>
+                        <div className="text-white text-2xl font-medium">73.2</div>
+                        <div className="text-[#444] text-xs">kg</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Vision</div>
+                        <div className="text-white text-2xl font-medium">20/20</div>
+                        <div className="text-[#444] text-xs">score</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Sleep</div>
+                        <div className="text-white text-2xl font-medium">7.4</div>
+                        <div className="text-[#444] text-xs">hours</div>
+                      </div>
+                      <div className="bg-[#111] rounded-lg p-4 border border-[#1a1a1a]">
+                        <div className="text-[#666] text-xs mb-1">Steps</div>
+                        <div className="text-white text-2xl font-medium">8,432</div>
+                        <div className="text-[#444] text-xs">today</div>
+                      </div>
                     </div>
                   </div>
                 </div>
