@@ -51,6 +51,30 @@ export function FontWeightDemo() {
     setWeights(initialWeights)
   }
 
+  const textRef = useRef<HTMLDivElement>(null)
+  const [gridMetrics, setGridMetrics] = useState({ top: 0, height: 0 })
+
+  useEffect(() => {
+    if (textRef.current) {
+      const rect = textRef.current.getBoundingClientRect()
+      const containerRect = containerRef.current?.getBoundingClientRect()
+      if (containerRect) {
+        setGridMetrics({
+          top: rect.top - containerRect.top,
+          height: rect.height
+        })
+      }
+    }
+  }, [])
+
+  // Geist Sans metrics (approximate ratios of em)
+  // Ascender: ~0.93, Cap height: ~0.73, x-height: ~0.53, Baseline: 0.20 from bottom, Descender: ~0.07 from bottom
+  const ascenderOffset = gridMetrics.height * 0.05
+  const capHeightOffset = gridMetrics.height * 0.18
+  const xHeightOffset = gridMetrics.height * 0.38
+  const baselineOffset = gridMetrics.height * 0.78
+  const descenderOffset = gridMetrics.height * 0.98
+
   return (
     <div 
       ref={containerRef}
@@ -59,16 +83,23 @@ export function FontWeightDemo() {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Typographic grid lines - full width */}
-      <div className="absolute inset-0 pointer-events-none" style={{ top: '50%', transform: 'translateY(-50%)', height: '180px' }}>
-        <div className="absolute w-full h-px bg-[#333]" style={{ top: '0%' }} />
-        <div className="absolute w-full h-px bg-[#333]" style={{ top: '12%' }} />
-        <div className="absolute w-full h-px bg-[#333]" style={{ top: '42%' }} />
-        <div className="absolute w-full h-px bg-[#444]" style={{ top: '75%' }} />
-        <div className="absolute w-full h-px bg-[#333]" style={{ top: '100%' }} />
-      </div>
+      {/* Typographic grid lines - positioned based on actual text metrics */}
+      {gridMetrics.height > 0 && (
+        <div className="absolute left-0 right-0 pointer-events-none" style={{ top: gridMetrics.top }}>
+          {/* Ascender line - top of h */}
+          <div className="absolute w-full h-px bg-[#333]" style={{ top: ascenderOffset }} />
+          {/* Cap height - top of T */}
+          <div className="absolute w-full h-px bg-[#333]" style={{ top: capHeightOffset }} />
+          {/* x-height - top of o, a, r */}
+          <div className="absolute w-full h-px bg-[#333]" style={{ top: xHeightOffset }} />
+          {/* Baseline - where letters sit */}
+          <div className="absolute w-full h-px bg-[#444]" style={{ top: baselineOffset }} />
+          {/* Descender - bottom of y, p, g */}
+          <div className="absolute w-full h-px bg-[#333]" style={{ top: descenderOffset }} />
+        </div>
+      )}
 
-      <div className="flex relative z-10">
+      <div ref={textRef} className="flex relative z-10">
         {characters.map((char, index) => (
           <span
             key={index}
