@@ -66,7 +66,8 @@ export function FontWeightDemo() {
       // Use easeOutCubic for smoother falloff
       const normalizedDistance = Math.min(distance / maxDistance, 1)
       const eased = 1 - Math.pow(1 - (1 - normalizedDistance), 3)
-      const weight = Math.round(900 - (eased * 800))
+      // Inverted: closer = thinner, further = bolder
+      const weight = Math.round(100 + (eased * 800))
       
       return Math.max(100, Math.min(900, weight))
     })
