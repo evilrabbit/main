@@ -3,6 +3,7 @@ import { Browser } from "@/components/browser"
 import { LinkPreviewShowcase } from "@/components/link-preview"
 import { ViewCounter } from "@/components/view-counter"
 import { FontWeightDemo } from "@/components/font-weight-demo"
+import { HeadingShowcase } from "@/components/heading-showcase"
 
 export default function AbcBlogPost() {
   return (
@@ -265,6 +266,14 @@ export default function AbcBlogPost() {
             </p>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Limit yourself to two typefaces maximum. One for headings, one for body. Maybe a monospace for code. More than that creates visual noise. The constraint forces clarity.
+            </p>
+
+            <div className="my-12">
+              <HeadingShowcase />
+            </div>
+
+            <p className="leading-relaxed text-[#666] selection-muted">
+              Establish a clear hierarchy. Each heading level should feel distinct from the others. Size, weight, and color all contribute. When someone scans your page, the structure should be obvious before they read a single word.
             </p>
           </section>
 
