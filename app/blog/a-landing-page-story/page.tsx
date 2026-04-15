@@ -7,7 +7,7 @@ import { HeadingShowcase } from "@/components/heading-showcase"
 
 export default function AbcBlogPost() {
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-6 overflow-x-hidden">
+    <div id="top" className="min-h-screen bg-black text-white py-16 px-6 overflow-x-hidden">
       <div className="relative mx-auto" style={{ maxWidth: "640px" }}>
         {/* Fixed sidebar with back button and table of contents - hidden on mobile, hover-reveal on tablet/small desktop, always visible on 1440px+ */}
         <aside 
@@ -45,7 +45,7 @@ export default function AbcBlogPost() {
             </Link>
 
             <nav className="flex flex-col gap-2">
-              <a href="#url-design" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
+              <a href="#top" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">URL Design</a>
               <a href="#favicon" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Favicon</a>
               <a href="#opengraph-image" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Opengraph Image</a>
               <a href="#body-styles" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Body Styles</a>
