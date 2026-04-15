@@ -6,10 +6,16 @@ import { GeistSans } from "geist/font/sans"
 const word = "Typography"
 const characters = word.split("")
 
+// Initial gradient weights from thin (100) to black (900)
+const initialWeights = characters.map((_, index) => {
+  const progress = index / (characters.length - 1)
+  return Math.round(100 + progress * 800)
+})
+
 export function FontWeightDemo() {
   const containerRef = useRef<HTMLDivElement>(null)
   const charRefs = useRef<(HTMLSpanElement | null)[]>([])
-  const [weights, setWeights] = useState<number[]>(characters.map(() => 100))
+  const [weights, setWeights] = useState<number[]>(initialWeights)
   const [isHovering, setIsHovering] = useState(false)
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -42,7 +48,7 @@ export function FontWeightDemo() {
 
   const handleMouseLeave = () => {
     setIsHovering(false)
-    setWeights(characters.map(() => 100))
+    setWeights(initialWeights)
   }
 
   return (
