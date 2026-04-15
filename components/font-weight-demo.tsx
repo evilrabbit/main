@@ -98,10 +98,10 @@ export function FontWeightDemo() {
   // Geist Sans font metrics as percentages of the rendered text height
   // Based on actual font: ascender ~0.93em, cap ~0.73em, x-height ~0.53em, descender ~-0.21em from baseline
   // With leading-none (line-height: 1), text is positioned with baseline at ~80% from top
-  const baseline = gridMetrics.height * 0.795
+  const baseline = gridMetrics.height * 0.795 + 6
   const ascenderOffset = baseline - (gridMetrics.height * 0.88)   // top of "h"
-  const capHeightOffset = baseline - (gridMetrics.height * 0.695) // top of "T"  
-  const xHeightOffset = baseline - (gridMetrics.height * 0.505)   // top of "o", "r", "a"
+  const capHeightOffset = baseline - (gridMetrics.height * 0.695) + 2 // top of "T"  
+  const xHeightOffset = baseline - (gridMetrics.height * 0.505) + 2   // top of "o", "r", "a"
   const descenderOffset = baseline + (gridMetrics.height * 0.20)  // bottom of "y", "p"
 
   return (
