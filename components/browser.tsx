@@ -289,7 +289,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
       {/* Content area */}
       {showContent && (
-        <div className="bg-white" style={{ height: "400px" }}>
+        <div className="bg-white" style={{ height: "480px" }}>
           {children}
         </div>
       )}
