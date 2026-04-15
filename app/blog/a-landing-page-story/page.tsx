@@ -286,21 +286,50 @@ export default function AbcBlogPost() {
             </p>
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
-              <Browser url="neuralink.cloud/terminal" showContent>
-                <div className="w-full h-full bg-black p-6 font-mono text-sm text-[#666] overflow-hidden">
-                  <div className="space-y-1">
-                    <p><span className="text-[#444]">$</span> neuralink status</p>
-                    <p className="text-white">Device: NK-7 Pro</p>
-                    <p className="text-white">Firmware: 4.2.1</p>
-                    <p className="text-white">Latency: 0.3ms</p>
-                    <p className="text-emerald-500">Connected</p>
-                    <p className="mt-4"><span className="text-[#444]">$</span> sync --to cloud</p>
-                    <p className="text-white">Syncing memories...</p>
-                    <p className="text-white">├── 2026-04-13  <span className="text-[#666]">1.2 GB</span></p>
-                    <p className="text-white">├── 2026-04-12  <span className="text-[#666]">890 MB</span></p>
-                    <p className="text-white">└── 2026-04-11  <span className="text-[#666]">1.1 GB</span></p>
-                    <p className="text-emerald-500 mt-1">Upload complete</p>
-                    <p className="mt-4"><span className="text-[#444]">$</span> <span className="animate-pulse">_</span></p>
+              <Browser url="zero.health/dashboard" showContent>
+                <div className="w-full h-full bg-black p-6 font-mono text-sm overflow-hidden">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b border-[#222] pb-3">
+                      <span className="text-white">zero</span>
+                      <span className="text-[#444]">patient 0x7F3A</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-12 gap-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">heart rate</span>
+                        <span className="text-white">72 <span className="text-[#444]">bpm</span></span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">blood pressure</span>
+                        <span className="text-white">118/76</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">temperature</span>
+                        <span className="text-white">36.6 <span className="text-[#444]">°C</span></span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">oxygen</span>
+                        <span className="text-white">98 <span className="text-[#444]">%</span></span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">weight</span>
+                        <span className="text-white">73.2 <span className="text-[#444]">kg</span></span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">vision</span>
+                        <span className="text-white">20/20</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">sleep</span>
+                        <span className="text-white">7.4 <span className="text-[#444]">hrs</span></span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#666]">sync</span>
+                        <span className="text-emerald-500">live</span>
+                      </div>
+                    </div>
+                    <div className="border-t border-[#222] pt-3 mt-4">
+                      <span className="text-[#444]">last check: 2 min ago</span>
+                    </div>
                   </div>
                 </div>
               </Browser>
