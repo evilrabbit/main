@@ -289,7 +289,7 @@ export default function AbcBlogPost() {
               <Browser url="zero.health/dashboard" showContent>
                 <div className="w-full h-full bg-black flex overflow-hidden font-mono text-[10px]">
                   {/* Sidebar */}
-                  <div className="w-32 bg-black border-r border-[#333] p-3 flex flex-col">
+                  <div className="w-32 bg-black p-3 flex flex-col">
                     <div className="text-white mb-3">zero</div>
                     <div className="flex gap-1 mb-3">
                       <span className="bg-white text-black px-1.5 py-0.5 rounded text-[9px]">General</span>
