@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 
 interface Tab {
   favicon?: React.ReactNode
@@ -155,24 +154,15 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               className={`flex items-center gap-1 overflow-x-auto px-6 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              <AnimatePresence initial={false}>
+              <>
                 {visibleTabs.map((tab, index) => (
-                  <motion.div 
+                  <div 
                     key={tab.title}
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: "auto" }}
-                    exit={{ opacity: 0, width: 0, marginRight: -4 }}
-                    transition={{ 
-                      opacity: { duration: 0.15, ease: "easeOut" },
-                      width: { duration: 0.2, ease: "easeOut" },
-                      marginRight: { duration: 0.2, ease: "easeOut" }
-                    }}
-                    style={{ overflow: "hidden" }}
                     draggable
-                    onDragStart={(e) => handleDragStart(e as unknown as React.DragEvent, index)}
-                    onDragOver={(e) => handleDragOver(e as unknown as React.DragEvent, index)}
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragOver={(e) => handleDragOver(e, index)}
                     onDragLeave={handleDragLeave}
-                    onDrop={(e) => handleDrop(e as unknown as React.DragEvent, index)}
+                    onDrop={(e) => handleDrop(e, index)}
                     onDragEnd={handleDragEnd}
                     onClick={() => !tab.active && handleActivateTab(index)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 transition-all duration-150 ease-out cursor-grab active:cursor-grabbing ${
@@ -199,9 +189,9 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
                         <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
                     </button>
-                  </motion.div>
+                  </div>
                 ))}
-              </AnimatePresence>
+              </>
             </div>
             {/* Gradient fade on left */}
             <div 
