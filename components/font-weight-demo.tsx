@@ -95,12 +95,14 @@ export function FontWeightDemo() {
     }
   }, [])
 
-  // Geist Sans metrics (approximate ratios of em)
-  const ascenderOffset = gridMetrics.height * 0.05
-  const capHeightOffset = gridMetrics.height * 0.18 - 3
-  const xHeightTopOffset = gridMetrics.height * 0.35 - 4
-  const xHeightBottomOffset = gridMetrics.height * 0.78 + 10
-  const descenderOffset = gridMetrics.height * 0.98
+  // Geist Sans font metrics as percentages of the rendered text height
+  // Based on actual font: ascender ~0.93em, cap ~0.73em, x-height ~0.53em, descender ~-0.21em from baseline
+  // With leading-none (line-height: 1), text is positioned with baseline at ~80% from top
+  const baseline = gridMetrics.height * 0.795
+  const ascenderOffset = baseline - (gridMetrics.height * 0.88)   // top of "h"
+  const capHeightOffset = baseline - (gridMetrics.height * 0.695) // top of "T"  
+  const xHeightOffset = baseline - (gridMetrics.height * 0.505)   // top of "o", "r", "a"
+  const descenderOffset = baseline + (gridMetrics.height * 0.20)  // bottom of "y", "p"
 
   return (
     <div 
@@ -110,18 +112,18 @@ export function FontWeightDemo() {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Typographic grid lines - positioned based on actual text metrics */}
+      {/* Typographic grid lines - positioned based on actual Geist Sans metrics */}
       {gridMetrics.height > 0 && (
         <div className="absolute left-0 right-0 pointer-events-none" style={{ top: gridMetrics.top }}>
-          {/* Ascender line - top of h */}
+          {/* Ascender line - top of "h" */}
           <div className="absolute w-full h-px bg-[#333]" style={{ top: ascenderOffset }} />
-          {/* Cap height - top of T */}
+          {/* Cap height - top of "T" */}
           <div className="absolute w-full h-px bg-[#333]" style={{ top: capHeightOffset }} />
-          {/* x-height top - top of lowercase letters like o, a, r */}
-          <div className="absolute w-full h-px bg-[#333]" style={{ top: xHeightTopOffset }} />
-          {/* x-height bottom / baseline - where lowercase letters sit */}
-          <div className="absolute w-full h-px bg-[#444]" style={{ top: xHeightBottomOffset }} />
-          {/* Descender - bottom of y, p, g */}
+          {/* X-height - top of lowercase "o", "r", "a", "p" body */}
+          <div className="absolute w-full h-px bg-[#333]" style={{ top: xHeightOffset }} />
+          {/* Baseline - where all letters sit */}
+          <div className="absolute w-full h-px bg-[#444]" style={{ top: baseline }} />
+          {/* Descender - bottom of "y", "p" tails */}
           <div className="absolute w-full h-px bg-[#333]" style={{ top: descenderOffset }} />
         </div>
       )}
