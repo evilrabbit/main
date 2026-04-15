@@ -286,8 +286,23 @@ export default function AbcBlogPost() {
             </p>
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
-              <Browser url="acme.com/dashboard" showContent>
-                <div className="w-full h-full bg-black" />
+              <Browser url="neuralink.cloud/terminal" showContent>
+                <div className="w-full h-full bg-black p-6 font-mono text-sm text-[#666] overflow-hidden">
+                  <div className="space-y-1">
+                    <p><span className="text-[#444]">$</span> neuralink status</p>
+                    <p className="text-white">Device: NK-7 Pro</p>
+                    <p className="text-white">Firmware: 4.2.1</p>
+                    <p className="text-white">Latency: 0.3ms</p>
+                    <p className="text-emerald-500">Connected</p>
+                    <p className="mt-4"><span className="text-[#444]">$</span> sync --to cloud</p>
+                    <p className="text-white">Syncing memories...</p>
+                    <p className="text-white">├── 2026-04-13  <span className="text-[#666]">1.2 GB</span></p>
+                    <p className="text-white">├── 2026-04-12  <span className="text-[#666]">890 MB</span></p>
+                    <p className="text-white">└── 2026-04-11  <span className="text-[#666]">1.1 GB</span></p>
+                    <p className="text-emerald-500 mt-1">Upload complete</p>
+                    <p className="mt-4"><span className="text-[#444]">$</span> <span className="animate-pulse">_</span></p>
+                  </div>
+                </div>
               </Browser>
             </div>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
