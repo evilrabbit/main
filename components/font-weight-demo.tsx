@@ -109,7 +109,7 @@ export function FontWeightDemo() {
   // With leading-none (line-height: 1), text is positioned with baseline at ~80% from top
   const baseline = gridMetrics.height * 0.795 + 6
   const ascenderOffset = baseline - (gridMetrics.height * 0.88)   // top of "h"
-  const capHeightOffset = baseline - (gridMetrics.height * 0.695) + 2 // top of "T"  
+  const capHeightOffset = baseline - (gridMetrics.height * 0.695) + 1 // top of "T"  
   const xHeightOffset = baseline - (gridMetrics.height * 0.505) + 2   // top of "o", "r", "a"
   const descenderOffset = baseline + (gridMetrics.height * 0.20)  // bottom of "y", "p"
 
