@@ -40,14 +40,11 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     }
   }, [visibleTabs, tabs])
 
-  // Reset tabs when all tabs are closed after 4 seconds
+  // Reset tabs immediately when all tabs are closed
   useEffect(() => {
     if (tabs && visibleTabs.length === 0) {
-      const timer = setTimeout(() => {
-        setVisibleTabs(tabs)
-        setInputValue(url)
-      }, 4000)
-      return () => clearTimeout(timer)
+      setVisibleTabs(tabs)
+      setInputValue(url)
     }
   }, [visibleTabs.length, tabs, url])
 
