@@ -293,7 +293,7 @@ export default function AbcBlogPost() {
                     <div className="text-white mb-3">zero</div>
                     <div className="flex gap-1 mb-3">
                       <span className="bg-white text-black px-1.5 py-0.5 rounded text-[9px]">General</span>
-                      <span className="bg-black text-[#666] px-1.5 py-0.5 rounded border border-[#333] text-[9px]">Patient</span>
+                      <span className="bg-black text-[#666] px-1.5 py-0.5 rounded text-[9px]">Patient</span>
                     </div>
                     <div className="flex flex-col gap-0.5">
                       <div className="text-white px-1.5 py-1">Dashboard</div>
