@@ -23,7 +23,7 @@ export default function Home() {
 
       <nav className="flex flex-col items-center">
         <Link 
-          href="/blog/abc"
+          href="/blog/a-landing-page-story"
           className="font-mono text-sm text-neutral-500 transition-colors hover:text-white"
         >
           Apr 20, 2026 — A landing page story
