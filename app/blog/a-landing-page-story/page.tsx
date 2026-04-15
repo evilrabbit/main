@@ -51,6 +51,7 @@ export default function AbcBlogPost() {
               <a href="#body-styles" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Body Styles</a>
               <a href="#font-choice" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Font Choice</a>
               <a href="#product-showcase" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Product Showcase</a>
+              <a href="#checklist" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">The 2026 Checklist</a>
               <a href="#agent-era" className="font-sans text-sm text-neutral-500 hover:text-white transition-colors">Agent Era</a>
             </nav>
           </div>
@@ -303,6 +304,35 @@ export default function AbcBlogPost() {
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               The goal is to make the product the only thing people see. Everything else in the frame should be invisible.
             </p>
+          </section>
+
+          {/* Checklist Section */}
+          <section id="checklist" className="scroll-mt-16 mt-12">
+            <h2 className="text-2xl font-normal mb-4">The 2026 Checklist</h2>
+            <p className="leading-relaxed text-[#666] selection-muted mb-6">
+              Everything above, distilled. Run through this before you ship.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "URLs are short, readable, and describe the page",
+                "Background color is set on <html>, not a wrapper",
+                "OG images are set and tested on X, LinkedIn, Slack",
+                "Font choice matches your brand voice",
+                "Maximum two typefaces, with clear hierarchy",
+                "Heading scale is distinct and scannable",
+                "Product videos use a clean browser profile",
+                "Desktop wallpaper is intentional, not personal",
+                "Each video shows one feature, not everything",
+                "Structured data is present for agents",
+                "Pricing is machine-readable",
+                "Semantic HTML throughout",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="w-5 h-5 rounded border border-[#333] flex-shrink-0 mt-0.5" />
+                  <span className="text-[#666] leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
           </section>
 
           {/* Agent Era Section */}
