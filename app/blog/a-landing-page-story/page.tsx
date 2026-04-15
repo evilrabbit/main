@@ -287,9 +287,7 @@ export default function AbcBlogPost() {
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
               <Browser url="acme.com/dashboard" showContent>
-                <div className="w-full h-full bg-gradient-to-br from-[#f5f5f5] to-[#e5e5e5] flex items-center justify-center">
-                  <span className="text-[#999] text-sm font-mono">Product screenshot or video here</span>
-                </div>
+                <div className="w-full h-full bg-black" />
               </Browser>
             </div>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
