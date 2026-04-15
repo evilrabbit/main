@@ -287,58 +287,58 @@ export default function AbcBlogPost() {
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
               <Browser url="zero.health/dashboard" showContent>
-                <div className="w-full h-full bg-black flex overflow-hidden text-xs">
+                <div className="w-full h-full bg-black flex overflow-hidden font-mono text-[10px]">
                   {/* Sidebar */}
-                  <div className="w-36 bg-black border-r border-[#333] p-3 flex flex-col">
-                    <div className="text-white font-semibold text-sm mb-3">zero</div>
+                  <div className="w-32 bg-black border-r border-[#333] p-3 flex flex-col">
+                    <div className="text-white mb-3">zero</div>
                     <div className="flex gap-1 mb-3">
-                      <span className="bg-white text-black px-2 py-1 rounded text-[10px]">General</span>
-                      <span className="bg-black text-[#666] px-2 py-1 rounded border border-[#333] text-[10px]">Patient</span>
+                      <span className="bg-white text-black px-1.5 py-0.5 rounded text-[9px]">General</span>
+                      <span className="bg-black text-[#666] px-1.5 py-0.5 rounded border border-[#333] text-[9px]">Patient</span>
                     </div>
-                    <div className="flex flex-col gap-0.5 text-[11px]">
-                      <div className="text-white font-medium px-2 py-1.5">Dashboard</div>
-                      <div className="text-[#666] px-2 py-1.5">Vitals</div>
-                      <div className="text-[#666] px-2 py-1.5">History</div>
-                      <div className="text-[#666] px-2 py-1.5">Reports</div>
-                      <div className="text-[#666] px-2 py-1.5">Settings</div>
+                    <div className="flex flex-col gap-0.5">
+                      <div className="text-white px-1.5 py-1">Dashboard</div>
+                      <div className="text-[#666] px-1.5 py-1">Vitals</div>
+                      <div className="text-[#666] px-1.5 py-1">History</div>
+                      <div className="text-[#666] px-1.5 py-1">Reports</div>
+                      <div className="text-[#666] px-1.5 py-1">Settings</div>
                     </div>
                   </div>
                   {/* Main content */}
                   <div className="flex-1 p-4 overflow-hidden">
-                    <h1 className="text-white text-base font-semibold mb-3">Dashboard</h1>
+                    <div className="text-white text-xs mb-3">Dashboard</div>
                     {/* Top stats row */}
-                    <div className="flex gap-3 mb-3">
-                      <div className="flex-1 bg-black border border-[#333] rounded-lg p-3">
-                        <div className="text-[#666] text-[10px] uppercase mb-1">Heart Rate</div>
-                        <div className="text-white text-lg font-semibold">72 <span className="text-[#666] text-[10px] font-normal">bpm</span></div>
+                    <div className="flex gap-2 mb-2">
+                      <div className="flex-1 bg-black border border-[#333] rounded p-2">
+                        <div className="text-[#666] text-[9px] uppercase mb-0.5">Heart Rate</div>
+                        <div className="text-white text-sm">72 <span className="text-[#666] text-[9px]">bpm</span></div>
                       </div>
-                      <div className="flex-1 bg-black border border-[#333] rounded-lg p-3">
-                        <div className="text-[#666] text-[10px] uppercase mb-1">Blood Pressure</div>
-                        <div className="text-white text-lg font-semibold">118/76</div>
+                      <div className="flex-1 bg-black border border-[#333] rounded p-2">
+                        <div className="text-[#666] text-[9px] uppercase mb-0.5">Blood Pressure</div>
+                        <div className="text-white text-sm">118/76</div>
                       </div>
-                      <div className="flex-1 bg-black border border-[#333] rounded-lg p-3">
-                        <div className="text-[#666] text-[10px] uppercase mb-1">Temperature</div>
-                        <div className="text-white text-lg font-semibold">36.6 <span className="text-[#666] text-[10px] font-normal">°C</span></div>
+                      <div className="flex-1 bg-black border border-[#333] rounded p-2">
+                        <div className="text-[#666] text-[9px] uppercase mb-0.5">Temperature</div>
+                        <div className="text-white text-sm">36.6 <span className="text-[#666] text-[9px]">°C</span></div>
                       </div>
                       {/* Right summary */}
-                      <div className="w-28 text-[10px]">
+                      <div className="w-24 text-[9px]">
                         <div className="text-[#666] uppercase">Sync Status</div>
-                        <div className="text-white font-semibold text-sm">Live</div>
-                        <div className="text-[#666] uppercase mt-2">Last Check</div>
-                        <div className="text-white font-semibold text-sm">2 min ago</div>
+                        <div className="text-white text-[11px]">Live</div>
+                        <div className="text-[#666] uppercase mt-1.5">Last Check</div>
+                        <div className="text-white text-[11px]">2 min ago</div>
                       </div>
                     </div>
                     {/* Health Status section */}
-                    <div className="bg-black border border-[#333] rounded-lg p-3 mb-3">
-                      <div className="text-white font-medium text-[11px] mb-2">Health Status</div>
-                      <div className="flex gap-6 text-[10px] mb-2">
-                        <div><span className="text-white font-semibold text-sm">98%</span><br/><span className="text-[#666] uppercase">Oxygen</span></div>
-                        <div><span className="text-white font-semibold text-sm">7.4h</span><br/><span className="text-[#666] uppercase">Sleep</span></div>
-                        <div><span className="text-white font-semibold text-sm">8,432</span><br/><span className="text-[#666] uppercase">Steps</span></div>
-                        <div><span className="text-white font-semibold text-sm">73.2kg</span><br/><span className="text-[#666] uppercase">Weight</span></div>
+                    <div className="bg-black border border-[#333] rounded p-2 mb-2">
+                      <div className="text-white text-[9px] mb-1.5">Health Status</div>
+                      <div className="flex gap-4 text-[9px] mb-1.5">
+                        <div><span className="text-white text-[11px]">98%</span><br/><span className="text-[#666] uppercase">Oxygen</span></div>
+                        <div><span className="text-white text-[11px]">7.4h</span><br/><span className="text-[#666] uppercase">Sleep</span></div>
+                        <div><span className="text-white text-[11px]">8,432</span><br/><span className="text-[#666] uppercase">Steps</span></div>
+                        <div><span className="text-white text-[11px]">73.2kg</span><br/><span className="text-[#666] uppercase">Weight</span></div>
                       </div>
                       {/* Status bar */}
-                      <div className="flex h-2 rounded overflow-hidden">
+                      <div className="flex h-1.5 rounded overflow-hidden">
                         <div className="bg-white w-[60%]"></div>
                         <div className="bg-[#666] w-[15%]"></div>
                         <div className="bg-[#444] w-[10%]"></div>
@@ -346,12 +346,12 @@ export default function AbcBlogPost() {
                       </div>
                     </div>
                     {/* Activity chart */}
-                    <div className="bg-black border border-[#333] rounded-lg p-3">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-white font-medium text-[11px]">Weekly Activity</span>
-                        <span className="text-[#666] text-[10px]">This week</span>
+                    <div className="bg-black border border-[#333] rounded p-2">
+                      <div className="flex justify-between items-center mb-1.5">
+                        <span className="text-white text-[9px]">Weekly Activity</span>
+                        <span className="text-[#666] text-[9px]">This week</span>
                       </div>
-                      <div className="flex items-end gap-1 h-16">
+                      <div className="flex items-end gap-0.5 h-12">
                         {[35, 52, 28, 65, 45, 72, 58, 40, 68, 55, 48, 62, 38, 70].map((h, i) => (
                           <div key={i} className="flex-1 bg-white rounded-sm" style={{ height: `${h}%` }}></div>
                         ))}
