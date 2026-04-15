@@ -286,11 +286,11 @@ export default function AbcBlogPost() {
             </p>
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
-              <Browser url="vercel.com/home" showContent>
+              <Browser url="evilrabbit.com/2025" showContent>
                 <iframe 
-                  src="https://vercel.com/home" 
+                  src="https://evilrabbit.com/2025" 
                   className="w-full h-full border-0"
-                  title="Vercel Home"
+                  title="Evil Rabbit 2025"
                 />
               </Browser>
             </div>
