@@ -323,9 +323,6 @@ export default function AbcBlogPost() {
                 "Product videos use a clean browser profile",
                 "Desktop wallpaper is intentional, not personal",
                 "Each video shows one feature, not everything",
-                "Structured data is present for agents",
-                "Pricing is machine-readable",
-                "Semantic HTML throughout",
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="w-5 h-5 rounded border border-[#333] flex-shrink-0 mt-0.5" />
@@ -350,6 +347,22 @@ export default function AbcBlogPost() {
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               The brands that win will be the ones legible to both. Human enough to inspire trust. Structured enough to be understood by the software making decisions on our behalf.
             </p>
+
+            <h3 className="text-lg font-normal mt-8 mb-4 text-white">For the agents</h3>
+            <ul className="space-y-3">
+              {[
+                "Structured data is present and accurate",
+                "Pricing is machine-readable",
+                "Semantic HTML throughout",
+                "Meta tags describe the page, not just keywords",
+                "API documentation is discoverable",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="w-5 h-5 rounded border border-[#333] flex-shrink-0 mt-0.5" />
+                  <span className="text-[#666] leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
           </section>
         </article>
       </div>
