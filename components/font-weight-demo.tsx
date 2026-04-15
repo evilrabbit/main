@@ -68,11 +68,10 @@ export function FontWeightDemo() {
   }, [])
 
   // Geist Sans metrics (approximate ratios of em)
-  // Ascender: ~0.93, Cap height: ~0.73, x-height: ~0.53, Baseline: 0.20 from bottom, Descender: ~0.07 from bottom
   const ascenderOffset = gridMetrics.height * 0.05
   const capHeightOffset = gridMetrics.height * 0.18
-  const xHeightOffset = gridMetrics.height * 0.38
-  const baselineOffset = gridMetrics.height * 0.78
+  const xHeightTopOffset = gridMetrics.height * 0.35
+  const xHeightBottomOffset = gridMetrics.height * 0.78
   const descenderOffset = gridMetrics.height * 0.98
 
   return (
@@ -90,10 +89,10 @@ export function FontWeightDemo() {
           <div className="absolute w-full h-px bg-[#333]" style={{ top: ascenderOffset }} />
           {/* Cap height - top of T */}
           <div className="absolute w-full h-px bg-[#333]" style={{ top: capHeightOffset }} />
-          {/* x-height - top of o, a, r */}
-          <div className="absolute w-full h-px bg-[#333]" style={{ top: xHeightOffset }} />
-          {/* Baseline - where letters sit */}
-          <div className="absolute w-full h-px bg-[#444]" style={{ top: baselineOffset }} />
+          {/* x-height top - top of lowercase letters like o, a, r */}
+          <div className="absolute w-full h-px bg-[#333]" style={{ top: xHeightTopOffset }} />
+          {/* x-height bottom / baseline - where lowercase letters sit */}
+          <div className="absolute w-full h-px bg-[#444]" style={{ top: xHeightBottomOffset }} />
           {/* Descender - bottom of y, p, g */}
           <div className="absolute w-full h-px bg-[#333]" style={{ top: descenderOffset }} />
         </div>
