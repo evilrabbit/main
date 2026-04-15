@@ -283,6 +283,14 @@ export default function AbcBlogPost() {
             <p className="leading-relaxed text-[#666] selection-muted">
               If you&apos;re recording a video of your product, the browser is part of the shot. Bookmarks bar full of embarrassing links. Twelve extensions cluttering the toolbar. A chaotic tab situation. All of it communicates something, and none of it is your product.
             </p>
+
+            <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
+              <Browser url="acme.com/dashboard" showContent>
+                <div className="w-full h-full bg-gradient-to-br from-[#f5f5f5] to-[#e5e5e5] flex items-center justify-center">
+                  <span className="text-[#999] text-sm font-mono">Product screenshot or video here</span>
+                </div>
+              </Browser>
+            </div>
             <p className="leading-relaxed text-[#666] selection-muted mt-4">
               Clean it up. Use a dedicated browser profile for recordings. No bookmarks. No extensions. No distractions. Some teams use tools like Screen Studio or Cleanshot that automatically hide desktop clutter and standardize the recording environment.
             </p>

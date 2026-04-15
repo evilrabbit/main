@@ -137,7 +137,10 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   }
 
   return (
-    <div className="rounded-full overflow-hidden border border-[#333]" style={{ backgroundColor: "#000", maxWidth: "650px" }}>
+    <div 
+      className={`overflow-hidden border border-[#333] ${showContent ? 'rounded-xl' : 'rounded-full'}`} 
+      style={{ backgroundColor: "#000", maxWidth: showContent ? "800px" : "650px", width: "100%" }}
+    >
       {/* Browser header */}
       <div className="flex items-center px-4 py-2.5 gap-4 h-11">
         {/* Traffic lights */}
@@ -286,7 +289,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
       {/* Content area */}
       {showContent && (
-        <div className="bg-black min-h-[300px]">
+        <div className="bg-white" style={{ height: "600px" }}>
           {children}
         </div>
       )}
