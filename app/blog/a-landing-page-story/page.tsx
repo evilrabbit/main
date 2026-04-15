@@ -286,11 +286,11 @@ export default function AbcBlogPost() {
             </p>
 
             <div className="my-16 -mx-6 min-[860px]:-mx-[80px] min-[860px]:max-w-[800px]">
-              <Browser url="evilrabbit.com/2025" showContent>
+              <Browser url="v0.dev" showContent>
                 <iframe 
-                  src="https://evilrabbit.com/2025" 
+                  src="https://v0.dev" 
                   className="w-full h-full border-0"
-                  title="Evil Rabbit 2025"
+                  title="v0"
                 />
               </Browser>
             </div>
