@@ -54,37 +54,37 @@ export function FontWeightDemo() {
   return (
     <div 
       ref={containerRef}
-      className="flex items-center justify-center py-16 relative cursor-pointer select-none"
+      className="flex items-center justify-center py-8 relative cursor-pointer select-none -mx-6 md:-mx-20"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Typographic grid lines */}
-      <div className="absolute inset-0 flex flex-col justify-center pointer-events-none">
+      {/* Typographic grid lines - sized to match the text */}
+      <div className="absolute left-0 right-0 pointer-events-none" style={{ top: '50%', transform: 'translateY(-50%)', height: '180px' }}>
         {/* Ascender line */}
-        <div className="absolute w-full flex items-center" style={{ top: '18%' }}>
+        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '0%' }}>
+          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">ascender</span>
           <div className="h-px bg-[#333] flex-1" />
-          <span className="text-[10px] text-[#444] font-mono px-2">ascender</span>
         </div>
         {/* Cap height line */}
-        <div className="absolute w-full flex items-center" style={{ top: '28%' }}>
+        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '12%' }}>
+          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">cap height</span>
           <div className="h-px bg-[#333] flex-1" />
-          <span className="text-[10px] text-[#444] font-mono px-2">cap height</span>
         </div>
         {/* X-height line */}
-        <div className="absolute w-full flex items-center" style={{ top: '45%' }}>
+        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '42%' }}>
+          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">x-height</span>
           <div className="h-px bg-[#333] flex-1" />
-          <span className="text-[10px] text-[#444] font-mono px-2">x-height</span>
         </div>
         {/* Baseline */}
-        <div className="absolute w-full flex items-center" style={{ top: '72%' }}>
-          <div className="h-px bg-[#555] flex-1" />
-          <span className="text-[10px] text-[#666] font-mono px-2">baseline</span>
+        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '75%' }}>
+          <span className="text-[10px] text-[#555] font-mono pr-3 text-right w-20 flex-shrink-0">baseline</span>
+          <div className="h-px bg-[#444] flex-1" />
         </div>
         {/* Descender line */}
-        <div className="absolute w-full flex items-center" style={{ top: '88%' }}>
+        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '100%' }}>
+          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">descender</span>
           <div className="h-px bg-[#333] flex-1" />
-          <span className="text-[10px] text-[#444] font-mono px-2">descender</span>
         </div>
       </div>
 
