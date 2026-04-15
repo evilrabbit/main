@@ -351,9 +351,9 @@ export default function AbcBlogPost() {
                         <span className="text-white text-[9px]">Weekly Activity</span>
                         <span className="text-[#666] text-[9px]">This week</span>
                       </div>
-                      <div className="flex items-end gap-0.5 h-12">
-                        {[35, 52, 28, 65, 45, 72, 58, 40, 68, 55, 48, 62, 38, 70].map((h, i) => (
-                          <div key={i} className="flex-1 bg-white rounded-sm" style={{ height: `${h}%` }}></div>
+                      <div className="flex items-end justify-between h-12 px-1">
+                        {[35, 52, 28, 65, 45, 72, 58, 40, 68, 55, 48, 62, 38, 70, 42, 55, 30, 48, 60, 75, 50, 38, 62, 45, 58, 70, 40, 52].map((h, i) => (
+                          <div key={i} className="w-px bg-white" style={{ height: `${h}%` }}></div>
                         ))}
                       </div>
                     </div>
