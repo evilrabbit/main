@@ -59,33 +59,13 @@ export function FontWeightDemo() {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Typographic grid lines - sized to match the text */}
-      <div className="absolute left-0 right-0 pointer-events-none" style={{ top: '50%', transform: 'translateY(-50%)', height: '180px' }}>
-        {/* Ascender line */}
-        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '0%' }}>
-          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">ascender</span>
-          <div className="h-px bg-[#333] flex-1" />
-        </div>
-        {/* Cap height line */}
-        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '12%' }}>
-          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">cap height</span>
-          <div className="h-px bg-[#333] flex-1" />
-        </div>
-        {/* X-height line */}
-        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '42%' }}>
-          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">x-height</span>
-          <div className="h-px bg-[#333] flex-1" />
-        </div>
-        {/* Baseline */}
-        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '75%' }}>
-          <span className="text-[10px] text-[#555] font-mono pr-3 text-right w-20 flex-shrink-0">baseline</span>
-          <div className="h-px bg-[#444] flex-1" />
-        </div>
-        {/* Descender line */}
-        <div className="absolute w-full flex items-center left-0 right-0" style={{ top: '100%' }}>
-          <span className="text-[10px] text-[#444] font-mono pr-3 text-right w-20 flex-shrink-0">descender</span>
-          <div className="h-px bg-[#333] flex-1" />
-        </div>
+      {/* Typographic grid lines - full width */}
+      <div className="absolute inset-0 pointer-events-none" style={{ top: '50%', transform: 'translateY(-50%)', height: '180px' }}>
+        <div className="absolute w-full h-px bg-[#333]" style={{ top: '0%' }} />
+        <div className="absolute w-full h-px bg-[#333]" style={{ top: '12%' }} />
+        <div className="absolute w-full h-px bg-[#333]" style={{ top: '42%' }} />
+        <div className="absolute w-full h-px bg-[#444]" style={{ top: '75%' }} />
+        <div className="absolute w-full h-px bg-[#333]" style={{ top: '100%' }} />
       </div>
 
       <div className="flex relative z-10">
