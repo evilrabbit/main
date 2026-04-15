@@ -26,7 +26,7 @@ export default function Home() {
           href="/blog/a-landing-page-story"
           className="font-mono text-sm text-neutral-500 transition-colors hover:text-white"
         >
-          Apr 20 — A landing page story
+          Apr 20, 2026 — A landing page story
         </Link>
       </nav>
     </div>
