@@ -56,7 +56,15 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   }, [tabs])
 
   const handleCloseTab = (indexToClose: number) => {
-    setVisibleTabs(prev => prev.filter((_, index) => index !== indexToClose))
+    setVisibleTabs(prev => {
+      const newTabs = prev.filter((_, index) => index !== indexToClose)
+      // If closing the last tab, reset to all tabs immediately
+      if (newTabs.length === 0 && tabs) {
+        setInputValue(url)
+        return tabs
+      }
+      return newTabs
+    })
   }
 
   const handleActivateTab = (indexToActivate: number) => {
@@ -262,6 +270,19 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               </div>
             </div>
           </>
+        )}
+
+        {/* Close tab button - show when exactly 1 tab remaining */}
+        {tabs && visibleTabs.length === 1 && (
+          <button 
+            onClick={() => handleCloseTab(0)}
+            className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer p-1"
+            title="Close tab"
+          >
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
         )}
 
         {/* Copy button - show when in URL mode (no tabs or 1 or fewer tabs) */}
