@@ -108,9 +108,7 @@ export function FontWeightDemo() {
             style={{
               fontWeight: weights[index],
               fontVariationSettings: `"wght" ${weights[index]}`,
-              WebkitTextStroke: "1px white",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
+              color: "white",
               transition: isHovering 
                 ? "font-weight 0.15s ease-out, font-variation-settings 0.15s ease-out"
                 : "font-weight 0.4s ease-out, font-variation-settings 0.4s ease-out",
