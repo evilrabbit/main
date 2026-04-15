@@ -97,7 +97,7 @@ export function FontWeightDemo() {
 
   // Geist Sans metrics (approximate ratios of em)
   const ascenderOffset = gridMetrics.height * 0.05
-  const capHeightOffset = gridMetrics.height * 0.18
+  const capHeightOffset = gridMetrics.height * 0.18 - 3
   const xHeightTopOffset = gridMetrics.height * 0.35 - 4
   const xHeightBottomOffset = gridMetrics.height * 0.78 + 10
   const descenderOffset = gridMetrics.height * 0.98
