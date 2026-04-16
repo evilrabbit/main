@@ -40,15 +40,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     }
   }, [visibleTabs, tabs])
 
-  // Reset tabs immediately when all tabs are closed
-  useEffect(() => {
-    if (tabs && visibleTabs.length === 0) {
-      setVisibleTabs(tabs)
-      setInputValue(url)
-    }
-  }, [visibleTabs.length, tabs, url])
-
-  // Sync with prop changes
+  // Sync with prop changes (only on initial mount or when tabs prop identity changes)
   useEffect(() => {
     if (tabs) {
       setVisibleTabs(tabs)
@@ -56,15 +48,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   }, [tabs])
 
   const handleCloseTab = (indexToClose: number) => {
-    setVisibleTabs(prev => {
-      const newTabs = prev.filter((_, index) => index !== indexToClose)
-      // If closing the last tab, reset to all tabs immediately
-      if (newTabs.length === 0 && tabs) {
-        setInputValue(url)
-        return tabs
-      }
-      return newTabs
-    })
+    const newTabs = visibleTabs.filter((_, index) => index !== indexToClose)
+    // If closing the last tab, reset to all tabs immediately
+    if (newTabs.length === 0 && tabs) {
+      setInputValue(url)
+      setVisibleTabs([...tabs]) // Create a new array to force re-render
+    } else {
+      setVisibleTabs(newTabs)
+    }
   }
 
   const handleActivateTab = (indexToActivate: number) => {
