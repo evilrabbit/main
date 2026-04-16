@@ -23,7 +23,9 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   const [copied, setCopied] = useState(false)
   const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
   const [hasMounted, setHasMounted] = useState(false)
+  const [resetKey, setResetKey] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
+  const originalTabsRef = useRef<Tab[]>(tabs || [])
 
   // Trigger fade-in after mount
   useEffect(() => {
@@ -40,19 +42,16 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     }
   }, [visibleTabs, tabs])
 
-  // Sync with prop changes (only on initial mount or when tabs prop identity changes)
-  useEffect(() => {
-    if (tabs) {
-      setVisibleTabs(tabs)
-    }
-  }, [tabs])
+
 
   const handleCloseTab = (indexToClose: number) => {
     const newTabs = visibleTabs.filter((_, index) => index !== indexToClose)
-    // If closing the last tab, reset to all tabs immediately
-    if (newTabs.length === 0 && tabs) {
+    // If closing the last tab, reset to all tabs immediately using the stored ref
+    if (newTabs.length === 0 && originalTabsRef.current && originalTabsRef.current.length > 0) {
+      const resetTabs = originalTabsRef.current.map(t => ({ ...t }))
       setInputValue(url)
-      setVisibleTabs([...tabs]) // Create a new array to force re-render
+      setResetKey(prev => prev + 1)
+      setVisibleTabs(resetTabs)
     } else {
       setVisibleTabs(newTabs)
     }
@@ -156,7 +155,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               <>
                 {visibleTabs.map((tab, index) => (
                   <div 
-                    key={tab.title}
+                    key={`${resetKey}-${tab.title}`}
                     draggable
                     onDragStart={(e) => handleDragStart(e, index)}
                     onDragOver={(e) => handleDragOver(e, index)}
@@ -266,7 +265,10 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         {/* Close tab button - show when exactly 1 tab remaining */}
         {tabs && visibleTabs.length === 1 && (
           <button 
-            onClick={() => handleCloseTab(0)}
+            onClick={(e) => {
+              e.stopPropagation()
+              handleCloseTab(0)
+            }}
             className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer p-1"
             title="Close tab"
           >
