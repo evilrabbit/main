@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect, useCallback } from "react"
+import { useState, useRef, useEffect } from "react"
 
 interface Tab {
   favicon?: React.ReactNode
@@ -34,33 +34,26 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     return () => clearTimeout(timer)
   }, [])
 
-  // When down to 1 tab, switch to URL mode with that tab's URL
+  // When down to 1 tab, switch to URL mode with that tab's URL, then reset after 4 seconds
   useEffect(() => {
     if (tabs && tabs.length > 0 && visibleTabs.length === 1) {
       const lastTab = visibleTabs[0]
       const tabUrl = lastTab.url || lastTab.title.toLowerCase().replace(/\s+/g, '') + ".com"
       setInputValue(tabUrl)
-    }
-  }, [visibleTabs, tabs])
-
-  // Reset all tabs function
-  const resetAllTabs = useCallback(() => {
-    if (tabs && tabs.length > 0) {
-      setVisibleTabs([...tabs])
-      setInputValue(url)
-    }
-  }, [tabs, url])
-
-  const handleCloseTab = useCallback((indexToClose: number) => {
-    const remaining = visibleTabs.filter((_, i) => i !== indexToClose)
-    if (remaining.length === 0 && tabs && tabs.length > 0) {
-      // Reset to all tabs immediately
-      setVisibleTabs([...tabs])
-      setInputValue(url)
-    } else {
-      setVisibleTabs(remaining)
+      
+      // Auto-reset all tabs after 4 seconds
+      const timer = setTimeout(() => {
+        setVisibleTabs([...tabs])
+        setInputValue(url)
+      }, 4000)
+      
+      return () => clearTimeout(timer)
     }
   }, [visibleTabs, tabs, url])
+
+  const handleCloseTab = (indexToClose: number) => {
+    setVisibleTabs(prev => prev.filter((_, i) => i !== indexToClose))
+  }
 
   const handleActivateTab = (indexToActivate: number) => {
     setVisibleTabs(prev => prev.map((tab, index) => ({
@@ -267,23 +260,6 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
               </div>
             </div>
           </>
-        )}
-
-        {/* Close tab button - show when exactly 1 tab remaining */}
-        {tabs && tabs.length > 0 && visibleTabs.length === 1 && (
-          <button 
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              resetAllTabs()
-            }}
-            className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer p-1"
-            title="Close tab"
-          >
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-          </button>
         )}
 
         {/* Copy button - show when in URL mode */}
