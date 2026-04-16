@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 
 interface Tab {
   favicon?: React.ReactNode
@@ -18,14 +18,18 @@ interface BrowserProps {
 }
 
 export function Browser({ url, showContent = false, children, tabs, onUrlChange }: BrowserProps) {
+  // Store original tabs in a ref that never changes after mount
+  const originalTabs = useRef<Tab[] | null>(null)
+  if (originalTabs.current === null && tabs) {
+    originalTabs.current = JSON.parse(JSON.stringify(tabs))
+  }
+
   const [inputValue, setInputValue] = useState(url)
   const [isFocused, setIsFocused] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs || [])
+  const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs ? JSON.parse(JSON.stringify(tabs)) : [])
   const [hasMounted, setHasMounted] = useState(false)
-  const [resetKey, setResetKey] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
-  const originalTabsRef = useRef<Tab[]>(tabs || [])
 
   // Trigger fade-in after mount
   useEffect(() => {
@@ -33,29 +37,36 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     return () => clearTimeout(timer)
   }, [])
 
-  // When down to 1 tab, switch to URL mode with that tab's URL or generate from title
+  // When down to 1 tab, switch to URL mode with that tab's URL
   useEffect(() => {
-    if (tabs && visibleTabs.length === 1) {
+    if (originalTabs.current && visibleTabs.length === 1) {
       const lastTab = visibleTabs[0]
       const tabUrl = lastTab.url || lastTab.title.toLowerCase().replace(/\s+/g, '') + ".com"
       setInputValue(tabUrl)
     }
-  }, [visibleTabs, tabs])
+  }, [visibleTabs])
 
-
-
-  const handleCloseTab = (indexToClose: number) => {
-    const newTabs = visibleTabs.filter((_, index) => index !== indexToClose)
-    // If closing the last tab, reset to all tabs immediately using the stored ref
-    if (newTabs.length === 0 && originalTabsRef.current && originalTabsRef.current.length > 0) {
-      const resetTabs = originalTabsRef.current.map(t => ({ ...t }))
+  // Reset all tabs function
+  const resetAllTabs = useCallback(() => {
+    if (originalTabs.current && originalTabs.current.length > 0) {
+      // Deep clone to create entirely new objects
+      const freshTabs = JSON.parse(JSON.stringify(originalTabs.current))
+      setVisibleTabs(freshTabs)
       setInputValue(url)
-      setResetKey(prev => prev + 1)
-      setVisibleTabs(resetTabs)
-    } else {
-      setVisibleTabs(newTabs)
     }
-  }
+  }, [url])
+
+  const handleCloseTab = useCallback((indexToClose: number) => {
+    setVisibleTabs(currentTabs => {
+      const remaining = currentTabs.filter((_, i) => i !== indexToClose)
+      if (remaining.length === 0) {
+        // Schedule reset for next tick to avoid state conflicts
+        setTimeout(() => resetAllTabs(), 0)
+        return currentTabs // Return current to prevent flash
+      }
+      return remaining
+    })
+  }, [resetAllTabs])
 
   const handleActivateTab = (indexToActivate: number) => {
     setVisibleTabs(prev => prev.map((tab, index) => ({
@@ -72,7 +83,6 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/plain', index.toString())
     
-    // Create a custom drag image with rounded corners
     const target = e.currentTarget as HTMLElement
     const clone = target.cloneNode(true) as HTMLElement
     clone.style.position = 'absolute'
@@ -85,7 +95,6 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     document.body.appendChild(clone)
     e.dataTransfer.setDragImage(clone, clone.offsetWidth / 2, clone.offsetHeight / 2)
     
-    // Remove clone after drag starts
     requestAnimationFrame(() => {
       document.body.removeChild(clone)
     })
@@ -131,6 +140,9 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
     }
   }
 
+  // Determine if we show tabs or URL bar
+  const showTabsMode = originalTabs.current && visibleTabs.length > 1
+
   return (
     <div 
       className={`overflow-hidden border border-[#333] ${showContent ? 'rounded-xl' : 'rounded-full'}`} 
@@ -145,51 +157,52 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
         </div>
 
-        {/* Tabs (if more than 1) or URL bar */}
-        {tabs && visibleTabs.length > 1 ? (
+        {/* Tabs mode */}
+        {showTabsMode ? (
           <div className="flex-1 relative overflow-hidden -ml-2">
             <div 
               className={`flex items-center gap-1 overflow-x-auto px-6 transition-opacity duration-500 ${hasMounted ? 'opacity-100' : 'opacity-0'}`} 
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              <>
-                {visibleTabs.map((tab, index) => (
-                  <div 
-                    key={`${resetKey}-${tab.title}`}
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, index)}
-                    onDragOver={(e) => handleDragOver(e, index)}
-                    onDragLeave={handleDragLeave}
-                    onDrop={(e) => handleDrop(e, index)}
-                    onDragEnd={handleDragEnd}
-                    onClick={() => !tab.active && handleActivateTab(index)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 transition-all duration-150 ease-out cursor-grab active:cursor-grabbing ${
-                      draggedIndex === index 
-                        ? 'opacity-50' 
-                        : dragOverIndex === index 
-                          ? 'bg-[#333] text-white' 
-                          : tab.active 
-                            ? 'bg-[#222] text-white' 
-                            : 'bg-transparent text-[#666] hover:bg-[#161616] hover:text-[#999]'
-                    }`}
+              {visibleTabs.map((tab, index) => (
+                <div 
+                  key={`tab-${index}-${tab.title}`}
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragOver={(e) => handleDragOver(e, index)}
+                  onDragLeave={handleDragLeave}
+                  onDrop={(e) => handleDrop(e, index)}
+                  onDragEnd={handleDragEnd}
+                  onClick={() => !tab.active && handleActivateTab(index)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm flex-shrink-0 transition-all duration-150 ease-out cursor-grab active:cursor-grabbing ${
+                    draggedIndex === index 
+                      ? 'opacity-50' 
+                      : dragOverIndex === index 
+                        ? 'bg-[#333] text-white' 
+                        : tab.active 
+                          ? 'bg-[#222] text-white' 
+                          : 'bg-transparent text-[#666] hover:bg-[#161616] hover:text-[#999]'
+                  }`}
+                >
+                  {tab.favicon && (
+                    <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
+                      {tab.favicon}
+                    </div>
+                  )}
+                  <span className="whitespace-nowrap">{tab.title}</span>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleCloseTab(index)
+                    }}
+                    className="flex-shrink-0 opacity-50 hover:opacity-100 p-1.5 -m-1.5 transition-all duration-150 ease-out"
                   >
-                    {tab.favicon && (
-                      <div className="w-4 h-4 overflow-hidden flex items-center justify-center bg-white text-black text-[10px] font-bold flex-shrink-0" style={{ borderRadius: "22%" }}>
-                        {tab.favicon}
-                      </div>
-                    )}
-                    <span className="whitespace-nowrap">{tab.title}</span>
-                    <button 
-                      onClick={() => handleCloseTab(index)}
-                      className="flex-shrink-0 opacity-50 hover:opacity-100 p-1.5 -m-1.5 transition-all duration-150 ease-out"
-                    >
-                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                      </svg>
-                    </button>
-                  </div>
-                ))}
-              </>
+                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 2L8 8M8 2L2 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              ))}
             </div>
             {/* Gradient fade on left */}
             <div 
@@ -263,11 +276,12 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         )}
 
         {/* Close tab button - show when exactly 1 tab remaining */}
-        {tabs && visibleTabs.length === 1 && (
+        {originalTabs.current && visibleTabs.length === 1 && (
           <button 
             onClick={(e) => {
+              e.preventDefault()
               e.stopPropagation()
-              handleCloseTab(0)
+              resetAllTabs()
             }}
             className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer p-1"
             title="Close tab"
@@ -278,8 +292,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
           </button>
         )}
 
-        {/* Copy button - show when in URL mode (no tabs or 1 or fewer tabs) */}
-        {(!tabs || visibleTabs.length <= 1) && (
+        {/* Copy button - show when in URL mode */}
+        {(!originalTabs.current || visibleTabs.length <= 1) && (
           <button 
             onClick={handleCopy}
             className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer"
