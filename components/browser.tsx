@@ -36,12 +36,12 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
   // When down to 1 tab, switch to URL mode with that tab's URL
   useEffect(() => {
-    if (originalTabs.current && visibleTabs.length === 1) {
+    if (tabs && tabs.length > 0 && visibleTabs.length === 1) {
       const lastTab = visibleTabs[0]
       const tabUrl = lastTab.url || lastTab.title.toLowerCase().replace(/\s+/g, '') + ".com"
       setInputValue(tabUrl)
     }
-  }, [visibleTabs])
+  }, [visibleTabs, tabs])
 
   // Reset all tabs function
   const resetAllTabs = useCallback(() => {
