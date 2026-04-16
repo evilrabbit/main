@@ -21,13 +21,14 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   // Store original tabs in a ref that never changes after mount
   const originalTabs = useRef<Tab[] | null>(null)
   if (originalTabs.current === null && tabs) {
-    originalTabs.current = JSON.parse(JSON.stringify(tabs))
+    // Clone tabs but preserve React elements (favicon)
+    originalTabs.current = tabs.map(t => ({ ...t }))
   }
 
   const [inputValue, setInputValue] = useState(url)
   const [isFocused, setIsFocused] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs ? JSON.parse(JSON.stringify(tabs)) : [])
+  const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs ? tabs.map(t => ({ ...t })) : [])
   const [hasMounted, setHasMounted] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -49,8 +50,8 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   // Reset all tabs function
   const resetAllTabs = useCallback(() => {
     if (originalTabs.current && originalTabs.current.length > 0) {
-      // Deep clone to create entirely new objects
-      const freshTabs = JSON.parse(JSON.stringify(originalTabs.current))
+      // Clone tabs preserving React elements
+      const freshTabs = originalTabs.current.map(t => ({ ...t }))
       setVisibleTabs(freshTabs)
       setInputValue(url)
     }
