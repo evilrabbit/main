@@ -18,22 +18,18 @@ interface BrowserProps {
 }
 
 export function Browser({ url, showContent = false, children, tabs, onUrlChange }: BrowserProps) {
-  // Store original tabs in a ref that never changes after mount
-  const originalTabs = useRef<Tab[] | null>(null)
-  if (originalTabs.current === null && tabs) {
-    // Clone tabs but preserve React elements (favicon)
-    originalTabs.current = tabs.map(t => ({ ...t }))
-  }
-
   const [inputValue, setInputValue] = useState(url)
   const [isFocused, setIsFocused] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [visibleTabs, setVisibleTabs] = useState<Tab[]>(tabs ? tabs.map(t => ({ ...t })) : [])
+  const [visibleTabs, setVisibleTabs] = useState<Tab[]>([])
   const [hasMounted, setHasMounted] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Trigger fade-in after mount
+  // Initialize tabs only on client after mount
   useEffect(() => {
+    if (tabs && tabs.length > 0) {
+      setVisibleTabs([...tabs])
+    }
     const timer = setTimeout(() => setHasMounted(true), 100)
     return () => clearTimeout(timer)
   }, [])
@@ -49,25 +45,22 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
 
   // Reset all tabs function
   const resetAllTabs = useCallback(() => {
-    if (originalTabs.current && originalTabs.current.length > 0) {
-      // Clone tabs preserving React elements
-      const freshTabs = originalTabs.current.map(t => ({ ...t }))
-      setVisibleTabs(freshTabs)
+    if (tabs && tabs.length > 0) {
+      setVisibleTabs([...tabs])
       setInputValue(url)
     }
-  }, [url])
+  }, [tabs, url])
 
   const handleCloseTab = useCallback((indexToClose: number) => {
-    setVisibleTabs(currentTabs => {
-      const remaining = currentTabs.filter((_, i) => i !== indexToClose)
-      if (remaining.length === 0) {
-        // Schedule reset for next tick to avoid state conflicts
-        setTimeout(() => resetAllTabs(), 0)
-        return currentTabs // Return current to prevent flash
-      }
-      return remaining
-    })
-  }, [resetAllTabs])
+    const remaining = visibleTabs.filter((_, i) => i !== indexToClose)
+    if (remaining.length === 0 && tabs && tabs.length > 0) {
+      // Reset to all tabs immediately
+      setVisibleTabs([...tabs])
+      setInputValue(url)
+    } else {
+      setVisibleTabs(remaining)
+    }
+  }, [visibleTabs, tabs, url])
 
   const handleActivateTab = (indexToActivate: number) => {
     setVisibleTabs(prev => prev.map((tab, index) => ({
@@ -142,7 +135,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
   }
 
   // Determine if we show tabs or URL bar
-  const showTabsMode = originalTabs.current && visibleTabs.length > 1
+  const showTabsMode = tabs && tabs.length > 0 && visibleTabs.length > 1
 
   return (
     <div 
@@ -277,7 +270,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         )}
 
         {/* Close tab button - show when exactly 1 tab remaining */}
-        {originalTabs.current && visibleTabs.length === 1 && (
+        {tabs && tabs.length > 0 && visibleTabs.length === 1 && (
           <button 
             onClick={(e) => {
               e.preventDefault()
@@ -294,7 +287,7 @@ export function Browser({ url, showContent = false, children, tabs, onUrlChange 
         )}
 
         {/* Copy button - show when in URL mode */}
-        {(!originalTabs.current || visibleTabs.length <= 1) && (
+        {(!tabs || tabs.length === 0 || visibleTabs.length <= 1) && (
           <button 
             onClick={handleCopy}
             className="text-[#4D4D4D] hover:text-white transition-all duration-150 ease-out cursor-pointer"
