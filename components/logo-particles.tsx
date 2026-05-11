@@ -123,10 +123,12 @@ export default function LogoParticles() {
     
     const logoHeight = 320
     const logoWidth = 308
+    // 30% larger on mobile
+    const scaleFactor = isMobile ? 1.3 : 1
     const scale = Math.min(
       (height * 0.169) / logoHeight,
       (width * 0.197) / logoWidth
-    )
+    ) * scaleFactor
 
     const offsetX = width / 2 - (logoWidth * scale) / 2
     const offsetY = height / 2 - (logoHeight * scale) / 2
