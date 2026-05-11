@@ -309,17 +309,17 @@ export default function LogoParticles() {
         const normalizedDist = Math.min(distToTarget / maxReturnDist, 1)
         // Ease-in: starts slow, accelerates as it gets closer
         const easeInFactor = normalizedDist * normalizedDist * normalizedDist
-        // Stronger spring on mobile for snappier response
+        // Much stronger spring on mobile for instant snap-back
         const returnStrength = isMobileRef.current 
-          ? 0.015 + easeInFactor * 0.18 
+          ? 0.15 + easeInFactor * 0.35
           : 0.008 + easeInFactor * 0.12
         
         p.vx += (baseX - p.x) * returnStrength
         p.vy += (baseY - p.y) * returnStrength
 
-        // Less damping when far away, more when close (for snappy finish)
+        // Heavy damping on mobile to kill oscillation, particles snap into place
         const dampingFactor = isMobileRef.current
-          ? 0.88 - easeInFactor * 0.1
+          ? 0.65
           : 0.92 - easeInFactor * 0.08
         p.vx *= dampingFactor
         p.vy *= dampingFactor
