@@ -94,6 +94,7 @@ export default function LogoParticles() {
   const startTimeRef = useRef<number | null>(null)
   const rafRef = useRef<number>(0)
   const mouseRef = useRef<{ x: number; y: number; active: boolean }>({ x: 0, y: 0, active: false })
+  const isMobileRef = useRef<boolean>(false)
 
   const init = useCallback(() => {
     const canvas = canvasRef.current
@@ -102,6 +103,10 @@ export default function LogoParticles() {
     const dpr = window.devicePixelRatio || 1
     const width = window.innerWidth
     const height = window.innerHeight
+    
+    // Detect mobile based on screen size and touch capability
+    const isMobile = width < 768 || ('ontouchstart' in window)
+    isMobileRef.current = isMobile
 
     canvas.width = width * dpr
     canvas.height = height * dpr
@@ -112,7 +117,9 @@ export default function LogoParticles() {
     if (!ctx) return
     ctx.scale(dpr, dpr)
 
-    const points = fillSVGPath(SVG_PATH, 1.5)
+    // Use larger grid size on mobile for fewer particles and better performance
+    const gridSize = isMobile ? 2.5 : 1.5
+    const points = fillSVGPath(SVG_PATH, gridSize)
     
     const logoHeight = 320
     const logoWidth = 308
@@ -175,8 +182,9 @@ export default function LogoParticles() {
 
       // Stagger: particles going to the center arrive first
       // Add randomness for organic feel
-      const baseDelay = normalizedDist * 0.6
-      const randomDelay = Math.random() * 0.25
+      // On mobile, reduce delays for faster animation
+      const baseDelay = normalizedDist * (isMobile ? 0.3 : 0.6)
+      const randomDelay = Math.random() * (isMobile ? 0.15 : 0.25)
       const delay = baseDelay + randomDelay
 
       const isFlickering = Math.random() < 0.15
@@ -247,7 +255,8 @@ export default function LogoParticles() {
       }
 
       const elapsed = timestamp - startTimeRef.current
-      const duration = 3000
+      // Faster animation on mobile (1.5s vs 3s on desktop)
+      const duration = isMobileRef.current ? 1500 : 3000
       const globalProgress = Math.min(elapsed / duration, 1)
 
       const dpr = window.devicePixelRatio || 1
@@ -298,13 +307,18 @@ export default function LogoParticles() {
         const normalizedDist = Math.min(distToTarget / maxReturnDist, 1)
         // Ease-in: starts slow, accelerates as it gets closer
         const easeInFactor = normalizedDist * normalizedDist * normalizedDist
-        const returnStrength = 0.008 + easeInFactor * 0.12
+        // Stronger spring on mobile for snappier response
+        const returnStrength = isMobileRef.current 
+          ? 0.015 + easeInFactor * 0.18 
+          : 0.008 + easeInFactor * 0.12
         
         p.vx += (baseX - p.x) * returnStrength
         p.vy += (baseY - p.y) * returnStrength
 
         // Less damping when far away, more when close (for snappy finish)
-        const dampingFactor = 0.92 - easeInFactor * 0.08
+        const dampingFactor = isMobileRef.current
+          ? 0.88 - easeInFactor * 0.1
+          : 0.92 - easeInFactor * 0.08
         p.vx *= dampingFactor
         p.vy *= dampingFactor
 
