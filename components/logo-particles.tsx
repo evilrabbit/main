@@ -229,13 +229,32 @@ export default function LogoParticles() {
     const handleMouseLeave = () => {
       mouseRef.current.active = false
     }
+    
+    // Touch events for mobile
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      mouseRef.current = { x: touch.clientX, y: touch.clientY, active: true }
+    }
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      mouseRef.current = { x: touch.clientX, y: touch.clientY, active: true }
+    }
+    const handleTouchEnd = () => {
+      mouseRef.current.active = false
+    }
 
     window.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("mouseleave", handleMouseLeave)
+    window.addEventListener("touchstart", handleTouchStart)
+    window.addEventListener("touchmove", handleTouchMove)
+    window.addEventListener("touchend", handleTouchEnd)
     
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("mouseleave", handleMouseLeave)
+      window.removeEventListener("touchstart", handleTouchStart)
+      window.removeEventListener("touchmove", handleTouchMove)
+      window.removeEventListener("touchend", handleTouchEnd)
     }
   }, [])
 
@@ -246,10 +265,12 @@ export default function LogoParticles() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const attractRadius = 180
-    const repelRadius = 100
-    const attractStrength = 0.06
-    const repelStrength = 1.2
+    // Much bigger touch area and stronger explosion on mobile
+    const isMobile = isMobileRef.current
+    const attractRadius = isMobile ? 350 : 180
+    const repelRadius = isMobile ? 220 : 100
+    const attractStrength = isMobile ? 0.12 : 0.06
+    const repelStrength = isMobile ? 3.5 : 1.2
 
     const animate = (timestamp: number) => {
       if (startTimeRef.current === null) {
@@ -291,15 +312,18 @@ export default function LogoParticles() {
             const force = (1 - dist / repelRadius) * repelStrength
             const pushX = (dx / dist) * force * repelRadius
             const pushY = (dy / dist) * force * repelRadius
-            p.vx += pushX * 0.15
-            p.vy += pushY * 0.15
+            // Stronger velocity on mobile for explosive feel
+            const pushMult = isMobile ? 0.35 : 0.15
+            p.vx += pushX * pushMult
+            p.vy += pushY * pushMult
           } else if (dist < attractRadius && dist > 0) {
             const normalizedDist = (dist - repelRadius) / (attractRadius - repelRadius)
             const force = (1 - normalizedDist) * attractStrength
             const pullX = -(dx / dist) * force * (attractRadius - repelRadius)
             const pullY = -(dy / dist) * force * (attractRadius - repelRadius)
-            p.vx += pullX * 0.08
-            p.vy += pullY * 0.08
+            const pullMult = isMobile ? 0.15 : 0.08
+            p.vx += pullX * pullMult
+            p.vy += pullY * pullMult
           }
         }
 
@@ -309,17 +333,17 @@ export default function LogoParticles() {
         const normalizedDist = Math.min(distToTarget / maxReturnDist, 1)
         // Ease-in: starts slow, accelerates as it gets closer
         const easeInFactor = normalizedDist * normalizedDist * normalizedDist
-        // Stronger spring on mobile for snappier response
+        // Much stronger spring on mobile for instant snap-back
         const returnStrength = isMobileRef.current 
-          ? 0.015 + easeInFactor * 0.18 
+          ? 0.15 + easeInFactor * 0.35
           : 0.008 + easeInFactor * 0.12
         
         p.vx += (baseX - p.x) * returnStrength
         p.vy += (baseY - p.y) * returnStrength
 
-        // Less damping when far away, more when close (for snappy finish)
+        // Heavy damping on mobile to kill oscillation, particles snap into place
         const dampingFactor = isMobileRef.current
-          ? 0.88 - easeInFactor * 0.1
+          ? 0.65
           : 0.92 - easeInFactor * 0.08
         p.vx *= dampingFactor
         p.vy *= dampingFactor
