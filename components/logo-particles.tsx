@@ -272,10 +272,10 @@ export default function LogoParticles() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Much bigger touch area and stronger explosion on mobile
+    // Touch area and explosion settings (mobile values reduced by 30%)
     const isMobile = isMobileRef.current
-    const attractRadius = isMobile ? 350 : 180
-    const repelRadius = isMobile ? 220 : 100
+    const attractRadius = isMobile ? 245 : 180
+    const repelRadius = isMobile ? 154 : 100
     const attractStrength = isMobile ? 0.12 : 0.06
     const repelStrength = isMobile ? 3.5 : 1.2
 
