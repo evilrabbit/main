@@ -230,24 +230,30 @@ export default function LogoParticles() {
       mouseRef.current.active = false
     }
     
-    // Touch events for mobile
+    // Touch events for mobile - prevent default to avoid scrolling
     const handleTouchStart = (e: TouchEvent) => {
+      e.preventDefault()
       const touch = e.touches[0]
       mouseRef.current = { x: touch.clientX, y: touch.clientY, active: true }
     }
     const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
       const touch = e.touches[0]
       mouseRef.current = { x: touch.clientX, y: touch.clientY, active: true }
     }
     const handleTouchEnd = () => {
       mouseRef.current.active = false
     }
+    const handleTouchCancel = () => {
+      mouseRef.current.active = false
+    }
 
     window.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("mouseleave", handleMouseLeave)
-    window.addEventListener("touchstart", handleTouchStart)
-    window.addEventListener("touchmove", handleTouchMove)
+    window.addEventListener("touchstart", handleTouchStart, { passive: false })
+    window.addEventListener("touchmove", handleTouchMove, { passive: false })
     window.addEventListener("touchend", handleTouchEnd)
+    window.addEventListener("touchcancel", handleTouchCancel)
     
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
@@ -255,6 +261,7 @@ export default function LogoParticles() {
       window.removeEventListener("touchstart", handleTouchStart)
       window.removeEventListener("touchmove", handleTouchMove)
       window.removeEventListener("touchend", handleTouchEnd)
+      window.removeEventListener("touchcancel", handleTouchCancel)
     }
   }, [])
 
@@ -265,10 +272,10 @@ export default function LogoParticles() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Much bigger touch area and stronger explosion on mobile
+    // Touch area and explosion settings (mobile values reduced by 30%)
     const isMobile = isMobileRef.current
-    const attractRadius = isMobile ? 350 : 180
-    const repelRadius = isMobile ? 220 : 100
+    const attractRadius = isMobile ? 245 : 180
+    const repelRadius = isMobile ? 154 : 100
     const attractStrength = isMobile ? 0.12 : 0.06
     const repelStrength = isMobile ? 3.5 : 1.2
 
