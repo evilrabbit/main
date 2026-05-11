@@ -230,24 +230,30 @@ export default function LogoParticles() {
       mouseRef.current.active = false
     }
     
-    // Touch events for mobile
+    // Touch events for mobile - prevent default to avoid scrolling
     const handleTouchStart = (e: TouchEvent) => {
+      e.preventDefault()
       const touch = e.touches[0]
       mouseRef.current = { x: touch.clientX, y: touch.clientY, active: true }
     }
     const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
       const touch = e.touches[0]
       mouseRef.current = { x: touch.clientX, y: touch.clientY, active: true }
     }
     const handleTouchEnd = () => {
       mouseRef.current.active = false
     }
+    const handleTouchCancel = () => {
+      mouseRef.current.active = false
+    }
 
     window.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("mouseleave", handleMouseLeave)
-    window.addEventListener("touchstart", handleTouchStart)
-    window.addEventListener("touchmove", handleTouchMove)
+    window.addEventListener("touchstart", handleTouchStart, { passive: false })
+    window.addEventListener("touchmove", handleTouchMove, { passive: false })
     window.addEventListener("touchend", handleTouchEnd)
+    window.addEventListener("touchcancel", handleTouchCancel)
     
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
@@ -255,6 +261,7 @@ export default function LogoParticles() {
       window.removeEventListener("touchstart", handleTouchStart)
       window.removeEventListener("touchmove", handleTouchMove)
       window.removeEventListener("touchend", handleTouchEnd)
+      window.removeEventListener("touchcancel", handleTouchCancel)
     }
   }, [])
 
