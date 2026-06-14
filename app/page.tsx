@@ -73,11 +73,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="fade-up fade-up-delay-2 mt-12 flex items-center gap-6 text-sm text-zinc-500">
-            <span>Buenos Aires → San Francisco</span>
-            <span className="h-1 w-1 rounded-full bg-zinc-700" aria-hidden="true" />
-            <span>Est. 1998</span>
-          </div>
+          <p className="fade-up fade-up-delay-2 mt-12 text-sm text-zinc-500">
+            Buenos Aires → San Francisco
+          </p>
         </section>
 
         <section id="about" className="border-t border-white/10 py-24">
