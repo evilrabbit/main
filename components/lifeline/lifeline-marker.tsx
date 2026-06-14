@@ -71,7 +71,7 @@ export const LifelineMarkerColumn = forwardRef<
           ))}
 
           {marker.mentors && marker.mentors.length > 0 && (
-            <div className="mt-6 w-full space-y-3">
+            <div className="mt-20 w-full space-y-3">
               {marker.mentors.map((mentor) => (
                 <div key={mentor.name} className="flex items-center gap-2.5">
                   <span
