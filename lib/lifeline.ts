@@ -77,9 +77,8 @@ export const lifelineMarkers: LifelineMarker[] = [
     id: "today",
     year: 2026,
     events: [
-      "Founding designer at Vercel.",
-      "Based in San Francisco.",
-      "Still shipping.",
+      "Designed Eve's logotype.",
+      "Eve — our agents framework for building agents.",
     ],
     active: true,
   },
