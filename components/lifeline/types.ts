@@ -22,7 +22,6 @@ export interface LifelineMarker {
   id: string
   year: number
   age?: number
-  ageNotes?: string[]
   events: LifelineEvent[]
   companies?: LifelineCompany[]
   mentors?: LifelineMentor[]

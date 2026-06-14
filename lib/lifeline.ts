@@ -20,8 +20,7 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "graphic-design",
     year: 1995,
-    ageNotes: ["Started learning Graphic Design."],
-    events: [],
+    events: ["Started learning Graphic Design."],
   },
   {
     id: "basketball",
