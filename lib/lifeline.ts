@@ -4,12 +4,12 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "born",
     year: 1986,
-    events: ["I was born in Buenos Aires, Argentina."],
+    events: ["I was born in Buenos Aires."],
   },
   {
     id: "school",
     year: 1993,
-    events: ["Started school.", "Joined a basketball team."],
+    events: ["Started school and joined a basketball team."],
     mentors: [
       { name: "Horacio Mansilla", role: "Basketball Coach", color: "#E5484D" },
       { name: "Fernando Prats", role: "Computer Teacher", color: "#3E63DD" },
@@ -33,7 +33,7 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "tsya-identidad",
     year: 2006,
-    events: ["Joined TSYA as a designer.", "Joined Identidad as a designer."],
+    events: ["Joined TSYA and Identidad as a designer."],
   },
   {
     id: "viacom",
@@ -45,8 +45,7 @@ export const lifelineMarkers: LifelineMarker[] = [
     year: 2014,
     companies: [{ id: "aerolab", name: "Aerolab" }],
     events: [
-      "Joined Aerolab as a product designer.",
-      "Met Guillermo Rauch.",
+      "Joined Aerolab as a product designer. Met Guillermo Rauch.",
     ],
     mentors: [{ name: "Guillermo Rauch", role: "Entrepreneur", color: "#8B5CF6" }],
   },
@@ -71,14 +70,13 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "geist",
     year: 2023,
-    events: ["Directed Geist, Vercel's type family."],
+    events: ["Directed Geist — Vercel's type family."],
   },
   {
     id: "today",
     year: 2026,
     events: [
-      "Designed Eve's logotype.",
-      "Eve — our agents framework for building agents.",
+      "Designed Eve's logotype — our agents framework for building agents.",
     ],
     active: true,
   },

@@ -62,16 +62,9 @@ export const LifelineMarkerColumn = forwardRef<
             </div>
           )}
 
-          <div className="space-y-1.5">
-            {marker.events.map((event) => (
-              <p
-                key={event}
-                className="max-w-[14rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
-              >
-                {event}
-              </p>
-            ))}
-          </div>
+          <p className="max-w-[14rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]">
+            {marker.events.join(" ")}
+          </p>
 
           {marker.mentors && marker.mentors.length > 0 && (
             <div className="w-full space-y-3" style={{ marginTop: 80 }}>
