@@ -1,5 +1,7 @@
 import type { LifelineMarker } from "@/components/lifeline"
 
+export const LIFELINE_BIRTH_YEAR = 1986
+
 export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "born",
@@ -14,6 +16,12 @@ export const lifelineMarkers: LifelineMarker[] = [
       { name: "Horacio Mansilla", role: "Basketball Coach", color: "#E5484D" },
       { name: "Fernando Prats", role: "Computer Teacher", color: "#3E63DD" },
     ],
+  },
+  {
+    id: "graphic-design",
+    year: 1995,
+    ageNotes: ["Started learning Graphic Design."],
+    events: [],
   },
   {
     id: "basketball",

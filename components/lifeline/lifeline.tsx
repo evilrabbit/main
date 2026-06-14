@@ -3,6 +3,7 @@
 import { useMemo } from "react"
 import { cn } from "@/lib/utils"
 import { LifelineMarkerColumn } from "./lifeline-marker"
+import { LIFELINE_BIRTH_YEAR } from "@/lib/lifeline"
 import type { LifelineProps } from "./types"
 import { useLifelineScroll } from "./use-lifeline-scroll"
 
@@ -43,7 +44,7 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
       <div className="flex h-full items-center overflow-hidden">
         <div
           ref={trackRef}
-          className="relative w-max will-change-transform pl-12 pr-24 [--lifeline-rail:2rem]"
+          className="relative w-max will-change-transform pl-12 pr-24 [--lifeline-rail:4.25rem]"
           style={{ width: trackWidth }}
         >
           <div
@@ -57,6 +58,7 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
                 key={marker.id}
                 ref={(node) => setMarkerRef(index, node)}
                 marker={marker}
+                birthYear={LIFELINE_BIRTH_YEAR}
                 isActive={index === activeIndex}
                 minWidth={widths[index]}
               />

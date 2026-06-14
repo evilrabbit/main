@@ -6,6 +6,7 @@ import type { LifelineMarker } from "./types"
 
 interface LifelineMarkerColumnProps {
   marker: LifelineMarker
+  birthYear: number
   isActive: boolean
   minWidth: number
 }
@@ -13,7 +14,12 @@ interface LifelineMarkerColumnProps {
 export const LifelineMarkerColumn = forwardRef<
   HTMLDivElement,
   LifelineMarkerColumnProps
->(function LifelineMarkerColumn({ marker, isActive, minWidth }, ref) {
+>(function LifelineMarkerColumn(
+  { marker, birthYear, isActive, minWidth },
+  ref,
+) {
+  const age = marker.age ?? marker.year - birthYear
+
   return (
     <div
       ref={ref}
@@ -22,6 +28,28 @@ export const LifelineMarkerColumn = forwardRef<
       aria-label={`${marker.year}`}
     >
       <div className="flex w-fit max-w-full flex-col items-start text-left">
+        <div className="mb-1 flex h-8 w-full flex-col justify-end">
+          <p
+            className={cn(
+              "text-[11px] font-medium leading-4 tabular-nums transition-colors duration-300",
+              marker.active || isActive ? "text-zinc-400" : "text-zinc-600",
+            )}
+          >
+            {age}
+          </p>
+          {marker.ageNotes?.map((note) => (
+            <p
+              key={note}
+              className={cn(
+                "mt-0.5 max-w-[14rem] text-[10px] leading-snug transition-colors duration-300",
+                marker.active || isActive ? "text-zinc-500" : "text-zinc-700",
+              )}
+            >
+              {note}
+            </p>
+          ))}
+        </div>
+
         <p
           className={cn(
             "mb-3 h-5 text-[15px] font-medium leading-5 tabular-nums transition-colors duration-300",
