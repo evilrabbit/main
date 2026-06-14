@@ -44,7 +44,11 @@ export const lifelineMarkers: LifelineMarker[] = [
     id: "aerolab",
     year: 2014,
     companies: [{ id: "aerolab", name: "Aerolab" }],
-    events: ["Joined Aerolab as a product designer."],
+    events: [
+      "Joined Aerolab as a product designer.",
+      "Met Guillermo Rauch.",
+    ],
+    mentors: [{ name: "Guillermo Rauch", role: "Mentor", color: "#8B5CF6" }],
   },
   {
     id: "auth0",
