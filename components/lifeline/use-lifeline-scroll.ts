@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 const NAV_HEIGHT = 64
 const FOOTER_HEIGHT = 96
@@ -43,14 +43,13 @@ export function useLifelineScroll(markerCount: number) {
   const initialized = useRef(false)
   const dragging = useRef(false)
   const dragOrigin = useRef({ x: 0, translate: 0 })
-  const frame = useRef(0)
-  const pendingTranslate = useRef<number | null>(null)
+  const [progress, setProgress] = useState(1)
 
   const setMarkerRef = useCallback((index: number, node: HTMLDivElement | null) => {
     markerRefs.current[index] = node
   }, [])
 
-  const updateFades = () => {
+  const updateFades = useCallback(() => {
     const width = window.innerWidth
 
     markerRefs.current.forEach((marker) => {
@@ -69,32 +68,23 @@ export function useLifelineScroll(markerCount: number) {
 
       marker.style.opacity = String(clamp(opacity, 0, 1))
     })
-  }
+  }, [])
 
-  const paint = (value: number) => {
-    const max = maxTranslate.current
-    const next = clamp(value, 0, max)
-    translatePx.current = next
-    pendingTranslate.current = null
+  const applyTranslate = useCallback(
+    (value: number) => {
+      const max = maxTranslate.current
+      const next = clamp(value, 0, max)
+      translatePx.current = next
 
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translate3d(-${next}px, 0, 0)`
-    }
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(-${next}px, 0, 0)`
+      }
 
-    updateFades()
-  }
-
-  const schedulePaint = (value: number) => {
-    pendingTranslate.current = value
-
-    if (frame.current) return
-
-    frame.current = requestAnimationFrame(() => {
-      frame.current = 0
-      if (pendingTranslate.current === null) return
-      paint(pendingTranslate.current)
-    })
-  }
+      setProgress(max > 0 ? next / max : 1)
+      updateFades()
+    },
+    [updateFades],
+  )
 
   useEffect(() => {
     markerRefs.current = new Array(markerCount).fill(null)
@@ -123,7 +113,7 @@ export function useLifelineScroll(markerCount: number) {
     const section = sectionRef.current
     if (!section) return
 
-    let measureFrame = 0
+    let frameId = 0
     let resizeObserver: ResizeObserver | null = null
 
     const measure = () => {
@@ -140,16 +130,16 @@ export function useLifelineScroll(markerCount: number) {
         translatePx.current = clamp(translatePx.current, 0, max)
       }
 
-      paint(translatePx.current)
+      applyTranslate(translatePx.current)
     }
 
     const scheduleMeasure = () => {
-      cancelAnimationFrame(measureFrame)
-      measureFrame = requestAnimationFrame(measure)
+      cancelAnimationFrame(frameId)
+      frameId = requestAnimationFrame(measure)
     }
 
     scheduleMeasure()
-    measureFrame = requestAnimationFrame(() => {
+    frameId = requestAnimationFrame(() => {
       measure()
       requestAnimationFrame(measure)
     })
@@ -170,8 +160,7 @@ export function useLifelineScroll(markerCount: number) {
       event.preventDefault()
 
       const delta = normalizeWheelDelta(event)
-      const base = pendingTranslate.current ?? translatePx.current
-      schedulePaint(base - delta * WHEEL_SPEED)
+      applyTranslate(translatePx.current - delta * WHEEL_SPEED)
     }
 
     const onPointerDown = (event: PointerEvent) => {
@@ -181,7 +170,6 @@ export function useLifelineScroll(markerCount: number) {
 
       dragging.current = true
       dragOrigin.current = { x: event.clientX, translate: translatePx.current }
-      pendingTranslate.current = null
       section.setPointerCapture(event.pointerId)
       section.style.cursor = "grabbing"
     }
@@ -190,7 +178,7 @@ export function useLifelineScroll(markerCount: number) {
       if (!dragging.current) return
 
       const deltaX = event.clientX - dragOrigin.current.x
-      schedulePaint(dragOrigin.current.translate - deltaX * DRAG_SPEED)
+      applyTranslate(dragOrigin.current.translate - deltaX * DRAG_SPEED)
     }
 
     const endDrag = (event: PointerEvent) => {
@@ -210,12 +198,12 @@ export function useLifelineScroll(markerCount: number) {
 
       if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
         event.preventDefault()
-        schedulePaint(translatePx.current - maxTranslate.current * 0.05)
+        applyTranslate(translatePx.current - maxTranslate.current * 0.05)
       }
 
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
         event.preventDefault()
-        schedulePaint(translatePx.current + maxTranslate.current * 0.05)
+        applyTranslate(translatePx.current + maxTranslate.current * 0.05)
       }
     }
 
@@ -227,8 +215,7 @@ export function useLifelineScroll(markerCount: number) {
     window.addEventListener("keydown", onKeyDown)
 
     return () => {
-      cancelAnimationFrame(measureFrame)
-      cancelAnimationFrame(frame.current)
+      cancelAnimationFrame(frameId)
       resizeObserver?.disconnect()
       window.removeEventListener("resize", scheduleMeasure)
       window.removeEventListener("wheel", onWheel)
@@ -240,7 +227,7 @@ export function useLifelineScroll(markerCount: number) {
       dragging.current = false
       section.style.cursor = ""
     }
-  }, [markerCount])
+  }, [applyTranslate, markerCount])
 
-  return { sectionRef, trackRef, setMarkerRef }
+  return { sectionRef, trackRef, progress, setMarkerRef }
 }

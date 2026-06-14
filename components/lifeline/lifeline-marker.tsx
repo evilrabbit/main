@@ -7,6 +7,7 @@ import type { LifelineMarker } from "./types"
 interface LifelineMarkerColumnProps {
   marker: LifelineMarker
   birthYear: number
+  isActive: boolean
   minWidth: number
 }
 
@@ -14,16 +15,15 @@ export const LifelineMarkerColumn = forwardRef<
   HTMLDivElement,
   LifelineMarkerColumnProps
 >(function LifelineMarkerColumn(
-  { marker, birthYear, minWidth },
+  { marker, birthYear, isActive, minWidth },
   ref,
 ) {
   const age = marker.age ?? marker.year - birthYear
-  const isHighlighted = marker.active ?? false
 
   return (
     <div
       ref={ref}
-      className="relative shrink-0 pr-8"
+      className="relative shrink-0 pr-8 transition-opacity duration-300 ease-out will-change-[opacity]"
       style={{ width: minWidth }}
       aria-label={`${marker.year}`}
     >
@@ -31,7 +31,7 @@ export const LifelineMarkerColumn = forwardRef<
         <p
           className={cn(
             "mb-5 h-4 text-[11px] font-medium leading-4 tabular-nums transition-colors duration-300",
-            isHighlighted ? "text-zinc-400" : "text-zinc-600",
+            marker.active || isActive ? "text-zinc-400" : "text-zinc-600",
           )}
         >
           {age}
@@ -40,7 +40,7 @@ export const LifelineMarkerColumn = forwardRef<
         <p
           className={cn(
             "mb-3 h-5 text-[15px] font-medium leading-5 tabular-nums transition-colors duration-300",
-            isHighlighted ? "text-white" : "text-zinc-500",
+            marker.active || isActive ? "text-white" : "text-zinc-500",
           )}
         >
           {marker.year}
@@ -50,7 +50,7 @@ export const LifelineMarkerColumn = forwardRef<
           <span
             className={cn(
               "absolute left-0 top-0 z-10 h-[10px] w-px -translate-y-1/2 transition-colors duration-300",
-              isHighlighted ? "bg-zinc-400" : "bg-zinc-700",
+              marker.active || isActive ? "bg-zinc-400" : "bg-zinc-700",
             )}
           />
         </div>
@@ -58,7 +58,7 @@ export const LifelineMarkerColumn = forwardRef<
         <div
           className={cn(
             "flex w-full flex-col items-start pt-6 transition-colors duration-300",
-            isHighlighted ? "text-zinc-300" : "text-zinc-500",
+            marker.active || isActive ? "text-zinc-300" : "text-zinc-500",
           )}
         >
           {marker.companies && marker.companies.length > 0 && (
@@ -70,7 +70,7 @@ export const LifelineMarkerColumn = forwardRef<
                   label={company.name}
                   className={cn(
                     "transition-opacity duration-300",
-                    isHighlighted ? "opacity-100" : "opacity-70",
+                    marker.active || isActive ? "opacity-100" : "opacity-70",
                   )}
                 />
               ))}
