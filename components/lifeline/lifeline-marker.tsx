@@ -1,5 +1,6 @@
 import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
+import { CompanyIcon } from "./company-icon"
 import type { LifelineMarker } from "./types"
 
 interface LifelineMarkerColumnProps {
@@ -29,16 +30,32 @@ export const LifelineMarkerColumn = forwardRef<
       </p>
 
       <div className="relative h-0 w-0">
-        <span
-          className={cn(
-            "absolute left-0 top-0 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300",
-            marker.active
-              ? "bg-white shadow-[0_0_16px_rgba(255,255,255,0.5)]"
-              : isActive
-                ? "bg-white"
-                : "bg-zinc-700 ring-2 ring-black",
-          )}
-        />
+        {marker.companies && marker.companies.length > 0 ? (
+          <div className="absolute left-0 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5">
+            {marker.companies.map((company) => (
+              <CompanyIcon
+                key={company.id}
+                id={company.id}
+                label={company.name}
+                className={cn(
+                  "h-4 w-4 transition-opacity duration-300",
+                  marker.active || isActive ? "opacity-100" : "opacity-70",
+                )}
+              />
+            ))}
+          </div>
+        ) : (
+          <span
+            className={cn(
+              "absolute left-0 top-0 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300",
+              marker.active
+                ? "bg-white shadow-[0_0_16px_rgba(255,255,255,0.5)]"
+                : isActive
+                  ? "bg-white"
+                  : "bg-zinc-700 ring-2 ring-black",
+            )}
+          />
+        )}
       </div>
 
       <div
