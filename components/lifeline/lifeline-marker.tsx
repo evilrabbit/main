@@ -33,7 +33,7 @@ export const LifelineMarkerColumn = forwardRef<
         <div className="relative h-0 w-full">
           <span
             className={cn(
-              "absolute left-0 top-0 z-10 h-24 w-px -translate-y-1/2 transition-colors duration-300",
+              "absolute left-0 top-0 z-10 h-[10px] w-px -translate-y-1/2 transition-colors duration-300",
               marker.active || isActive ? "bg-zinc-400" : "bg-zinc-700",
             )}
           />
