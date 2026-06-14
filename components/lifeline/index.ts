@@ -6,6 +6,8 @@ export type { CompanyIconId } from "./company-icon"
 
 export type {
   LifelineCompany,
+  LifelineEvent,
+  LifelineEventSegment,
   LifelineMarker,
   LifelineMentor,
   LifelineProps,

@@ -72,14 +72,26 @@ export const lifelineMarkers: LifelineMarker[] = [
     id: "geist",
     year: 2023,
     events: [
-      "Directed Geist, Vercel's main Typeface, releasing it in October of 2023, with the versions Sans and Mono.",
+      [
+        { type: "text", value: "Directed " },
+        { type: "link", value: "Geist", href: "https://vercel.com/font" },
+        {
+          type: "text",
+          value:
+            ", Vercel's main Typeface, releasing it in October of 2023, with the versions Sans and Mono.",
+        },
+      ],
     ],
   },
   {
     id: "today",
     year: 2026,
     events: [
-      "Directed Geist Pixel, launched in 2026.",
+      [
+        { type: "text", value: "Directed " },
+        { type: "link", value: "Geist", href: "https://vercel.com/font" },
+        { type: "text", value: " Pixel, launched in 2026." },
+      ],
       "Designed Eve's brand, the framework for building agents.",
     ],
     active: true,

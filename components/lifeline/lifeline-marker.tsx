@@ -1,7 +1,7 @@
 import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
-
+import { getLifelineEventKey, LifelineEventText } from "./lifeline-event"
 import type { LifelineMarker } from "./types"
 
 interface LifelineMarkerColumnProps {
@@ -63,12 +63,12 @@ export const LifelineMarkerColumn = forwardRef<
           )}
 
           <div className="space-y-1.5">
-            {marker.events.map((event) => (
+            {marker.events.map((event, index) => (
               <p
-                key={event}
+                key={getLifelineEventKey(event, index)}
                 className="max-w-[14rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
               >
-                {event}
+                <LifelineEventText event={event} />
               </p>
             ))}
           </div>

@@ -12,10 +12,16 @@ export interface LifelineCompany {
   name: string
 }
 
+export type LifelineEventSegment =
+  | { type: "text"; value: string }
+  | { type: "link"; value: string; href: string }
+
+export type LifelineEvent = string | LifelineEventSegment[]
+
 export interface LifelineMarker {
   id: string
   year: number
-  events: string[]
+  events: LifelineEvent[]
   companies?: LifelineCompany[]
   mentors?: LifelineMentor[]
   active?: boolean
