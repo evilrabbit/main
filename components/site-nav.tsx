@@ -4,7 +4,7 @@ import { RabbitLogo } from "./rabbit-logo"
 const links = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
-  { href: "/experience", label: "Experience" },
+  { href: "/lifeline", label: "Lifeline" },
 ]
 
 export function SiteNav() {
