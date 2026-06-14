@@ -5,6 +5,13 @@ import { PageShell } from "@/components/page-shell"
 import { SectionHeading } from "@/components/section-heading"
 import { investments } from "@/lib/data"
 
+const focusAreas = [
+  "Brand architecture & design systems",
+  "Product design for developer tools",
+  "Creative direction & campaigns",
+  "Typography & visual identity",
+]
+
 export const metadata: Metadata = {
   title: "About — Evil Rabbit",
   description: "Evil Rabbit is Nicolás Garro — founding designer at Vercel.",
@@ -13,40 +20,22 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <PageShell>
-      <main className="mx-auto max-w-5xl px-6 pb-24 pt-32">
+      <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
         <SectionHeading>About</SectionHeading>
 
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-          <div className="space-y-6 text-lg leading-relaxed text-zinc-300">
-            <p className="text-balance text-2xl font-medium tracking-[-0.03em] text-white">
-              Evil Rabbit is Nicolás Garro — a designer obsessed with craft, restraint, and making complex tools feel inevitable.
-            </p>
-            <p>
-              Born in Buenos Aires and based in San Francisco, I&apos;ve spent nearly three decades designing products and brands — from broadcast and early freelance work to Auth0, and since 2016, Vercel from its ZEIT days to today.
-            </p>
-            <p>
-              My work spans product design, creative direction, typography, and physical objects. I directed Geist, the type family at the center of Vercel&apos;s identity, and led the visual systems behind Next.js Conf, Ship, and the ▲ brand itself.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            <div>
-              <p className="section-label mb-4">Focus</p>
-              <ul className="space-y-3 text-[15px] text-zinc-300">
-                <li>Brand architecture &amp; design systems</li>
-                <li>Product design for developer tools</li>
-                <li>Creative direction &amp; campaigns</li>
-                <li>Typography &amp; visual identity</li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="section-label mb-4">Also</p>
-              <p className="text-[15px] leading-relaxed text-zinc-400">
-                Angel investor in early-stage startups building tools for designers and developers.
-              </p>
-            </div>
-          </div>
+        <div className="space-y-6 text-lg leading-relaxed text-zinc-300">
+          <p className="text-balance text-2xl font-medium tracking-[-0.03em] text-white">
+            Evil Rabbit is Nicolás Garro — a designer obsessed with craft, restraint, and making complex tools feel inevitable.
+          </p>
+          <p>
+            Born in Buenos Aires and based in San Francisco, I&apos;ve spent nearly three decades designing products and brands — from broadcast and early freelance work to Auth0, and since 2016, Vercel from its ZEIT days to today.
+          </p>
+          <p>
+            My work spans product design, creative direction, typography, and physical objects. I directed Geist, the type family at the center of Vercel&apos;s identity, and led the visual systems behind Next.js Conf, Ship, and the ▲ brand itself.
+          </p>
+          <p className="text-[15px] leading-relaxed text-zinc-400">
+            {focusAreas.join(" · ")}
+          </p>
         </div>
 
         <section className="mt-24 border-t border-white/10 pt-24">
@@ -84,9 +73,9 @@ export default function AboutPage() {
         </section>
 
         <section className="mt-24 border-t border-white/10 pt-24">
-          <h2 className="section-label mb-8">Investments</h2>
-          <p className="mb-8 max-w-xl text-[15px] leading-relaxed text-zinc-400">
-            Early-stage bets on startups building tools for designers and developers.
+          <h2 className="section-label mb-4">Investments</h2>
+          <p className="mb-8 text-[15px] leading-relaxed text-zinc-400">
+            Angel investor in early-stage startups building tools for designers and developers.
           </p>
           <ul className="grid gap-3 sm:grid-cols-2">
             {investments.map((investment) => (
