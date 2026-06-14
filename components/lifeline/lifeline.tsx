@@ -13,7 +13,7 @@ function getMarkerWidth(year: number, nextYear?: number) {
 }
 
 export function Lifeline({ markers, className, title = "Lifeline" }: LifelineProps) {
-  const { sectionRef, trackRef, progress, scrollHeight } = useLifelineScroll()
+  const { sectionRef, trackRef, progress } = useLifelineScroll()
 
   const widths = useMemo(
     () =>
@@ -29,40 +29,32 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
     Math.floor(progress * markers.length),
   )
 
-  const stageHeight = "calc(100vh - 4rem - 6rem)"
-
   return (
     <section
       ref={sectionRef}
-      className={cn("relative", className)}
-      style={{ height: scrollHeight || stageHeight }}
+      className={cn("h-[calc(100vh-4rem-6rem)] overflow-hidden", className)}
       aria-label={title}
     >
-      <div
-        className="sticky top-16 overflow-hidden"
-        style={{ height: stageHeight }}
-      >
-        <div className="flex h-full items-center">
+      <div className="flex h-full items-center overflow-hidden">
+        <div
+          ref={trackRef}
+          className="relative w-max will-change-transform pl-12"
+          style={{ width: trackWidth }}
+        >
           <div
-            ref={trackRef}
-            className="relative w-max will-change-transform pl-12"
-            style={{ width: trackWidth }}
-          >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-[2.35rem] border-t border-dashed border-zinc-800"
-            />
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-[2.35rem] border-t border-dashed border-zinc-800"
+          />
 
-            <div className="relative flex items-start">
-              {markers.map((marker, index) => (
-                <LifelineMarkerColumn
-                  key={marker.id}
-                  marker={marker}
-                  isActive={index === activeIndex}
-                  minWidth={widths[index]}
-                />
-              ))}
-            </div>
+          <div className="relative flex items-start">
+            {markers.map((marker, index) => (
+              <LifelineMarkerColumn
+                key={marker.id}
+                marker={marker}
+                isActive={index === activeIndex}
+                minWidth={widths[index]}
+              />
+            ))}
           </div>
         </div>
       </div>

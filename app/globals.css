@@ -101,7 +101,10 @@
   }
 }
 
-html.lifeline-scroll {
+html.lifeline-scroll,
+html.lifeline-scroll body {
+  overflow: hidden;
+  height: 100%;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

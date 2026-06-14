@@ -1,20 +1,57 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
-const NAV_HEIGHT = 64
-const FOOTER_HEIGHT = 96
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value))
+}
+
+function normalizeWheelDelta(event: WheelEvent) {
+  let delta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
+    ? event.deltaX
+    : event.deltaY
+
+  if (event.deltaMode === 1) delta *= 16
+  if (event.deltaMode === 2) delta *= window.innerHeight
+
+  return delta
+}
 
 export function useLifelineScroll() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const maxTranslate = useRef(0)
-  const [progress, setProgress] = useState(0)
-  const [scrollHeight, setScrollHeight] = useState(0)
+  const progress = useRef(0)
+  const [progressState, setProgressState] = useState(0)
+
+  const applyProgress = useCallback((value: number) => {
+    const next = clamp(value, 0, 1)
+    progress.current = next
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(-${next * maxTranslate.current}px, 0, 0)`
+    }
+
+    setProgressState(next)
+  }, [])
 
   useEffect(() => {
-    document.documentElement.classList.add("lifeline-scroll")
-    return () => document.documentElement.classList.remove("lifeline-scroll")
+    const html = document.documentElement
+    const body = document.body
+
+    html.classList.add("lifeline-scroll")
+    const previousHtmlOverflow = html.style.overflow
+    const previousBodyOverflow = body.style.overflow
+    html.style.overflow = "hidden"
+    body.style.overflow = "hidden"
+
+    window.scrollTo(0, 0)
+
+    return () => {
+      html.classList.remove("lifeline-scroll")
+      html.style.overflow = previousHtmlOverflow
+      body.style.overflow = previousBodyOverflow
+    }
   }, [])
 
   useEffect(() => {
@@ -22,11 +59,8 @@ export function useLifelineScroll() {
       const track = trackRef.current
       if (!track) return
 
-      const travel = Math.max(0, track.scrollWidth - window.innerWidth + 96)
-      const stage = window.innerHeight - NAV_HEIGHT - FOOTER_HEIGHT
-
-      maxTranslate.current = travel
-      setScrollHeight(stage + travel)
+      maxTranslate.current = Math.max(0, track.scrollWidth - window.innerWidth + 96)
+      applyProgress(progress.current)
     }
 
     measure()
@@ -39,32 +73,41 @@ export function useLifelineScroll() {
       window.removeEventListener("resize", measure)
       resizeObserver.disconnect()
     }
-  }, [])
+  }, [applyProgress])
 
   useEffect(() => {
-    const update = () => {
-      const section = sectionRef.current
-      const track = trackRef.current
-      if (!section || !track || scrollHeight <= 0) return
+    const onWheel = (event: WheelEvent) => {
+      if (maxTranslate.current <= 0) return
 
-      const stage = window.innerHeight - NAV_HEIGHT - FOOTER_HEIGHT
-      const travel = Math.max(1, scrollHeight - stage)
-      const scrolled = Math.min(travel, Math.max(0, -section.getBoundingClientRect().top))
-      const value = scrolled / travel
+      event.preventDefault()
 
-      track.style.transform = `translate3d(-${value * maxTranslate.current}px, 0, 0)`
-      setProgress(value)
+      const delta = normalizeWheelDelta(event)
+      const next = progress.current + delta / maxTranslate.current
+      applyProgress(next)
     }
 
-    update()
-    window.addEventListener("scroll", update, { passive: true })
-    window.addEventListener("resize", update)
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (maxTranslate.current <= 0) return
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        event.preventDefault()
+        applyProgress(progress.current + 0.04)
+      }
+
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        event.preventDefault()
+        applyProgress(progress.current - 0.04)
+      }
+    }
+
+    window.addEventListener("wheel", onWheel, { passive: false })
+    window.addEventListener("keydown", onKeyDown)
 
     return () => {
-      window.removeEventListener("scroll", update)
-      window.removeEventListener("resize", update)
+      window.removeEventListener("wheel", onWheel)
+      window.removeEventListener("keydown", onKeyDown)
     }
-  }, [scrollHeight])
+  }, [applyProgress])
 
-  return { sectionRef, trackRef, progress, scrollHeight }
+  return { sectionRef, trackRef, progress: progressState }
 }
