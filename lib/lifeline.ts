@@ -89,8 +89,12 @@ export const lifelineMarkers: LifelineMarker[] = [
     events: [
       [
         { type: "text", value: "Directed " },
-        { type: "link", value: "Geist", href: "https://vercel.com/font" },
-        { type: "text", value: " Pixel, launched in 2026." },
+        {
+          type: "link",
+          value: "Geist Pixel",
+          href: "https://vercel.com/font?type=pixel",
+        },
+        { type: "text", value: ", launched in 2026." },
       ],
       "Designed Eve's brand, the framework for building agents.",
     ],
