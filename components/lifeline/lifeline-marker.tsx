@@ -71,10 +71,17 @@ export const LifelineMarkerColumn = forwardRef<
           ))}
 
           {marker.mentors && marker.mentors.length > 0 && (
-            <div className="mt-5 w-full space-y-2.5">
+            <div className="mt-6 w-full space-y-3">
               {marker.mentors.map((mentor) => (
                 <div key={mentor.name} className="flex items-center gap-2.5">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-[10px] text-zinc-500 ring-1 ring-zinc-800">
+                  <span
+                    className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500"
+                    aria-hidden="true"
+                  />
+                  <span
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-medium text-white"
+                    style={{ backgroundColor: mentor.color }}
+                  >
                     {mentor.name
                       .split(" ")
                       .map((part) => part[0])

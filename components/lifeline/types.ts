@@ -3,6 +3,7 @@ import type { CompanyIconId } from "./company-icon"
 export interface LifelineMentor {
   name: string
   role: string
+  color: string
 }
 
 export interface LifelineCompany {
