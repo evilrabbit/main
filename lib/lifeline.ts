@@ -43,6 +43,7 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "aerolab",
     year: 2014,
+    companies: [{ id: "aerolab", name: "Aerolab" }],
     events: ["Joined Aerolab as a product designer."],
   },
   {

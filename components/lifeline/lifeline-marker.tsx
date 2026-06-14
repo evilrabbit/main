@@ -54,7 +54,7 @@ export const LifelineMarkerColumn = forwardRef<
                   id={company.id}
                   label={company.name}
                   className={cn(
-                    "h-4 w-4 transition-opacity duration-300",
+                    "transition-opacity duration-300",
                     marker.active || isActive ? "opacity-100" : "opacity-70",
                   )}
                 />
