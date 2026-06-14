@@ -21,14 +21,20 @@ function normalizeWheelDelta(event: WheelEvent) {
   return delta
 }
 
+function isInteractiveTarget(target: EventTarget | null) {
+  return target instanceof Element && Boolean(target.closest("a, button"))
+}
+
 export function useLifelineScroll(markerCount: number) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const markerRefs = useRef<(HTMLDivElement | null)[]>([])
   const maxTranslate = useRef(0)
   const translatePx = useRef(0)
+  const initialized = useRef(false)
   const dragging = useRef(false)
   const dragOrigin = useRef({ x: 0, translate: 0 })
+  const applyTranslateRef = useRef<(value: number) => void>(() => {})
   const [progress, setProgress] = useState(1)
 
   const setMarkerRef = useCallback((index: number, node: HTMLDivElement | null) => {
@@ -72,6 +78,8 @@ export function useLifelineScroll(markerCount: number) {
     [updateFades],
   )
 
+  applyTranslateRef.current = applyTranslate
+
   useEffect(() => {
     markerRefs.current = new Array(markerCount).fill(null)
   }, [markerCount])
@@ -101,7 +109,15 @@ export function useLifelineScroll(markerCount: number) {
 
       const max = Math.max(0, track.scrollWidth - window.innerWidth + 96)
       maxTranslate.current = max
-      applyTranslate(Math.min(translatePx.current || max, max))
+
+      if (!initialized.current) {
+        translatePx.current = max
+        initialized.current = true
+      } else {
+        translatePx.current = clamp(translatePx.current, 0, max)
+      }
+
+      applyTranslateRef.current(translatePx.current)
     }
 
     measure()
@@ -114,45 +130,59 @@ export function useLifelineScroll(markerCount: number) {
       window.removeEventListener("resize", measure)
       resizeObserver.disconnect()
     }
-  }, [applyTranslate])
+  }, [])
 
   useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
+    const isOverSection = (clientY: number) => {
+      const section = sectionRef.current
+      if (!section) return false
+
+      const rect = section.getBoundingClientRect()
+      return clientY >= rect.top && clientY <= rect.bottom
+    }
 
     const onWheel = (event: WheelEvent) => {
       if (maxTranslate.current <= 0) return
+      if (!isOverSection(event.clientY)) return
 
       event.preventDefault()
-      event.stopPropagation()
 
       const delta = normalizeWheelDelta(event)
-      applyTranslate(translatePx.current - delta * WHEEL_SPEED)
+      applyTranslateRef.current(translatePx.current - delta * WHEEL_SPEED)
     }
 
     const onPointerDown = (event: PointerEvent) => {
       if (maxTranslate.current <= 0) return
-      if ((event.target as HTMLElement).closest("a")) return
+      if (!isOverSection(event.clientY)) return
+      if (isInteractiveTarget(event.target)) return
 
       dragging.current = true
       dragOrigin.current = { x: event.clientX, translate: translatePx.current }
-      section.setPointerCapture(event.pointerId)
-      section.style.cursor = "grabbing"
+
+      if (sectionRef.current) {
+        sectionRef.current.setPointerCapture(event.pointerId)
+        sectionRef.current.style.cursor = "grabbing"
+      }
     }
 
     const onPointerMove = (event: PointerEvent) => {
       if (!dragging.current) return
 
       const deltaX = event.clientX - dragOrigin.current.x
-      applyTranslate(dragOrigin.current.translate - deltaX * DRAG_SPEED)
+      applyTranslateRef.current(
+        dragOrigin.current.translate - deltaX * DRAG_SPEED,
+      )
     }
 
     const endDrag = (event: PointerEvent) => {
       if (!dragging.current) return
 
       dragging.current = false
-      section.releasePointerCapture(event.pointerId)
-      section.style.cursor = ""
+
+      if (sectionRef.current?.hasPointerCapture(event.pointerId)) {
+        sectionRef.current.releasePointerCapture(event.pointerId)
+        sectionRef.current.style.cursor = ""
+      }
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -160,31 +190,35 @@ export function useLifelineScroll(markerCount: number) {
 
       if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
         event.preventDefault()
-        applyTranslate(translatePx.current - maxTranslate.current * 0.05)
+        applyTranslateRef.current(
+          translatePx.current - maxTranslate.current * 0.05,
+        )
       }
 
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
         event.preventDefault()
-        applyTranslate(translatePx.current + maxTranslate.current * 0.05)
+        applyTranslateRef.current(
+          translatePx.current + maxTranslate.current * 0.05,
+        )
       }
     }
 
-    section.addEventListener("wheel", onWheel, { passive: false })
-    section.addEventListener("pointerdown", onPointerDown)
-    section.addEventListener("pointermove", onPointerMove)
-    section.addEventListener("pointerup", endDrag)
-    section.addEventListener("pointercancel", endDrag)
+    window.addEventListener("wheel", onWheel, { passive: false })
+    window.addEventListener("pointerdown", onPointerDown)
+    window.addEventListener("pointermove", onPointerMove)
+    window.addEventListener("pointerup", endDrag)
+    window.addEventListener("pointercancel", endDrag)
     window.addEventListener("keydown", onKeyDown)
 
     return () => {
-      section.removeEventListener("wheel", onWheel)
-      section.removeEventListener("pointerdown", onPointerDown)
-      section.removeEventListener("pointermove", onPointerMove)
-      section.removeEventListener("pointerup", endDrag)
-      section.removeEventListener("pointercancel", endDrag)
+      window.removeEventListener("wheel", onWheel)
+      window.removeEventListener("pointerdown", onPointerDown)
+      window.removeEventListener("pointermove", onPointerMove)
+      window.removeEventListener("pointerup", endDrag)
+      window.removeEventListener("pointercancel", endDrag)
       window.removeEventListener("keydown", onKeyDown)
     }
-  }, [applyTranslate])
+  }, [])
 
   return { sectionRef, trackRef, progress, setMarkerRef }
 }
