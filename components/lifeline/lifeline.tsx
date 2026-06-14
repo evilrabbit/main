@@ -14,7 +14,7 @@ function getMarkerWidth(year: number, nextYear?: number) {
 }
 
 export function Lifeline({ markers, className, title = "Lifeline" }: LifelineProps) {
-  const { sectionRef, trackRef, progress, setMarkerRef } = useLifelineScroll(
+  const { sectionRef, trackRef, setMarkerRef } = useLifelineScroll(
     markers.length,
   )
 
@@ -27,10 +27,6 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
   )
 
   const trackWidth = widths.reduce((sum, width) => sum + width, 0) + 160
-  const activeIndex = Math.min(
-    markers.length - 1,
-    Math.floor(progress * markers.length),
-  )
 
   return (
     <section
@@ -59,7 +55,6 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
                 ref={(node) => setMarkerRef(index, node)}
                 marker={marker}
                 birthYear={LIFELINE_BIRTH_YEAR}
-                isActive={index === activeIndex}
                 minWidth={widths[index]}
               />
             ))}
