@@ -2,16 +2,16 @@ import Link from "next/link"
 import { RabbitLogo } from "./rabbit-logo"
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
+  { href: "/about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/experience", label: "Experience" },
 ]
 
 export function SiteNav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="#" className="flex items-center gap-3 text-white transition-opacity hover:opacity-70">
+        <Link href="/" className="flex items-center gap-3 text-white transition-opacity hover:opacity-70">
           <RabbitLogo className="h-6 w-6" />
           <span className="text-sm font-medium tracking-tight">Evil Rabbit</span>
         </Link>
