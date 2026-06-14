@@ -9,6 +9,7 @@ export type {
   LifelineEvent,
   LifelineEventSegment,
   LifelineMarker,
+  LifelineMetPerson,
   LifelineMentor,
   LifelineProps,
 } from "./types"

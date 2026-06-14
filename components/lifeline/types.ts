@@ -7,6 +7,10 @@ export interface LifelineMentor {
   color: string
 }
 
+export interface LifelineMetPerson {
+  name: string
+}
+
 export interface LifelineCompany {
   id: CompanyIconId
   name: string
@@ -25,7 +29,7 @@ export interface LifelineMarker {
   events: LifelineEvent[]
   companies?: LifelineCompany[]
   mentors?: LifelineMentor[]
-  active?: boolean
+  met?: LifelineMetPerson[]
 }
 
 export interface LifelineProps {

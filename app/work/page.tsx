@@ -37,7 +37,7 @@ export default function WorkPage() {
                             {collaborator.url ? (
                               <Link
                                 href={collaborator.url}
-                                className="transition-colors hover:text-white"
+                                className="transition-colors hover:text-black dark:hover:text-white"
                               >
                                 {collaborator.name}
                               </Link>

@@ -9,9 +9,11 @@ export function PageShell({
   className?: string
 }) {
   return (
-    <div className={`min-h-screen bg-black text-white ${className}`}>
+    <div
+      className={`flex min-h-screen flex-col bg-white text-black dark:bg-black dark:text-white ${className}`}
+    >
       <SiteNav />
-      {children}
+      <div className="flex flex-1 flex-col">{children}</div>
       <SiteFooter />
     </div>
   )

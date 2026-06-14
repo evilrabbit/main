@@ -1,12 +1,20 @@
 import Image from "next/image"
 import type { ProjectItem } from "@/lib/data"
+import { cn } from "@/lib/utils"
+
+function mediaClassName(borderless?: boolean) {
+  return cn(
+    "w-full rounded-lg",
+    !borderless && "outline outline-1 outline-black/10 dark:outline-white/10",
+  )
+}
 
 export function ProjectMedia({ item }: { item: ProjectItem }) {
   if (item.type === "video" && item.src) {
     return (
       <video
         src={item.src}
-        className="w-full rounded-lg outline outline-1 outline-white/10"
+        className={mediaClassName(item.borderless)}
         autoPlay
         loop
         muted
@@ -22,7 +30,7 @@ export function ProjectMedia({ item }: { item: ProjectItem }) {
         alt={item.name}
         width={900}
         height={520}
-        className="w-full rounded-lg outline outline-1 outline-white/10"
+        className={mediaClassName(item.borderless)}
       />
     )
   }
@@ -35,7 +43,7 @@ export function ProjectMedia({ item }: { item: ProjectItem }) {
             {groupItem.type === "video" ? (
               <video
                 src={groupItem.src}
-                className="w-full rounded-lg outline outline-1 outline-white/10"
+                className={mediaClassName(item.borderless)}
                 autoPlay
                 loop
                 muted
@@ -47,7 +55,7 @@ export function ProjectMedia({ item }: { item: ProjectItem }) {
                 alt={item.name}
                 width={900}
                 height={520}
-                className="w-full rounded-lg outline outline-1 outline-white/10"
+                className={mediaClassName(item.borderless)}
               />
             )}
           </div>

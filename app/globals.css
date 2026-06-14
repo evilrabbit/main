@@ -4,6 +4,13 @@
 
 @layer base {
   :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --muted-foreground: 0 0% 45%;
+    --border: 0 0% 90%;
+  }
+
+  .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 98%;
     --muted-foreground: 0 0% 45%;
@@ -15,18 +22,28 @@
   }
 
   html {
-    background-color: #000;
+    @apply bg-white text-black;
+    color-scheme: light;
+  }
+
+  html.dark {
+    @apply bg-black text-white;
     color-scheme: dark;
   }
 
   body {
-    @apply bg-black text-white;
+    @apply bg-background text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
+    background: #000;
+    color: #fff;
+  }
+
+  .dark ::selection {
     background: #fff;
     color: #000;
   }
@@ -38,7 +55,7 @@
   }
 
   .section-title {
-    @apply text-base font-medium text-zinc-300;
+    @apply text-base font-medium text-zinc-600 dark:text-zinc-300;
   }
 
   .fade-up {
@@ -111,4 +128,57 @@ html.lifeline-scroll body {
 
 html.lifeline-scroll::-webkit-scrollbar {
   display: none;
+}
+
+.lifeline-labels.is-pinned {
+  z-index: 20;
+}
+
+@keyframes lifeline-rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes lifeline-marker-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.lifeline-rail-intro {
+  transform: scaleX(var(--lifeline-intro-progress, 0));
+  transform-origin: left center;
+}
+
+.lifeline-marker-intro {
+  opacity: 0;
+  animation: lifeline-marker-in var(--lifeline-marker-fade-ms, 420ms)
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes lifeline-labels-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lifeline-labels-intro {
+  opacity: 0;
+  animation: lifeline-labels-in var(--lifeline-labels-ms, 600ms)
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

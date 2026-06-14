@@ -14,6 +14,7 @@ export interface ProjectItem {
   src?: string
   items?: Array<{ type: string; src: string }>
   collaboration?: Collaboration
+  borderless?: boolean
 }
 
 export const expertise = [
@@ -70,6 +71,7 @@ export const projects: Record<string, ProjectItem[]> = {
       name: '"v0 Mobile App" Design',
       type: "image",
       src: "/images/v0-mobile-teaser.png",
+      borderless: true,
     },
     {
       year: "2024",
@@ -97,6 +99,7 @@ export const projects: Record<string, ProjectItem[]> = {
       name: '"Now" macOS Desktop App',
       type: "image",
       src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Now-desktop-2D9g3xr25Y5Fh944pZ7BOkTBvoVLZO.png",
+      borderless: true,
     },
     {
       year: "2015",
