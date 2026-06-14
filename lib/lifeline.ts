@@ -54,6 +54,7 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "zeit",
     year: 2016,
+    companies: [{ id: "vercel", name: "ZEIT" }],
     events: ["Joined ZEIT as founding designer."],
   },
   {
@@ -65,13 +66,11 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "geist",
     year: 2023,
-    companies: [{ id: "vercel", name: "Vercel" }],
     events: ["Directed Geist, Vercel's type family."],
   },
   {
     id: "today",
     year: 2026,
-    companies: [{ id: "vercel", name: "Vercel" }],
     events: [
       "Founding designer at Vercel.",
       "Based in San Francisco.",
