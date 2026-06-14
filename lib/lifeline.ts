@@ -4,7 +4,6 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "born",
     year: 1986,
-    icon: "baby",
     events: ["I was born in Buenos Aires, Argentina."],
   },
   {

@@ -1,5 +1,5 @@
 import type { CompanyIconId } from "./company-icon"
-import type { MarkerIconId } from "./marker-icon"
+
 
 export interface LifelineMentor {
   name: string
@@ -16,7 +16,6 @@ export interface LifelineMarker {
   id: string
   year: number
   events: string[]
-  icon?: MarkerIconId
   companies?: LifelineCompany[]
   mentors?: LifelineMentor[]
   active?: boolean

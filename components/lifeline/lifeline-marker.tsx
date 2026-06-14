@@ -1,7 +1,7 @@
 import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
-import { MarkerIcon } from "./marker-icon"
+
 import type { LifelineMarker } from "./types"
 
 interface LifelineMarkerColumnProps {
@@ -46,19 +46,6 @@ export const LifelineMarkerColumn = forwardRef<
             marker.active || isActive ? "text-zinc-300" : "text-zinc-500",
           )}
         >
-          {marker.icon && (
-            <div className="mb-2 flex items-center justify-start">
-              <MarkerIcon
-                id={marker.icon}
-                label="Born"
-                className={cn(
-                  "h-4 w-4 transition-opacity duration-300",
-                  marker.active || isActive ? "opacity-100" : "opacity-70",
-                )}
-              />
-            </div>
-          )}
-
           {marker.companies && marker.companies.length > 0 && (
             <div className="mb-2 flex items-center justify-start gap-1.5">
               {marker.companies.map((company) => (
