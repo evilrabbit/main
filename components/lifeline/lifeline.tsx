@@ -35,7 +35,7 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
     <section
       ref={sectionRef}
       className={cn(
-        "h-[calc(100vh-4rem-6rem)] touch-none select-none overflow-hidden [&_a]:pointer-events-auto [&_a]:cursor-pointer",
+        "h-full min-h-0 select-none overflow-hidden [&_a]:cursor-pointer",
         className,
       )}
       aria-label={title}
