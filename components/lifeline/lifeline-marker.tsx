@@ -21,17 +21,17 @@ export const LifelineMarkerColumn = forwardRef<
     >
       <p
         className={cn(
-          "mb-5 text-[15px] font-medium tabular-nums transition-colors duration-300",
+          "mb-3 h-5 text-[15px] font-medium leading-5 tabular-nums transition-colors duration-300",
           marker.active || isActive ? "text-white" : "text-zinc-500",
         )}
       >
         {marker.year}
       </p>
 
-      <div className="relative h-px">
+      <div className="relative h-0 w-0">
         <span
           className={cn(
-            "absolute left-0 top-1/2 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300",
+            "absolute left-0 top-0 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300",
             marker.active
               ? "bg-white shadow-[0_0_16px_rgba(255,255,255,0.5)]"
               : isActive
@@ -43,7 +43,7 @@ export const LifelineMarkerColumn = forwardRef<
 
       <div
         className={cn(
-          "space-y-1.5 pt-7 transition-colors duration-300",
+          "space-y-1.5 pt-6 transition-colors duration-300",
           marker.active || isActive ? "text-zinc-300" : "text-zinc-500",
         )}
       >
