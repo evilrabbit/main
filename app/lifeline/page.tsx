@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Lifeline } from "@/components/lifeline"
-import { PageShell } from "@/components/page-shell"
+import { SiteFooter } from "@/components/site-footer"
+import { SiteNav } from "@/components/site-nav"
 import { lifelineMarkers } from "@/lib/lifeline"
 
 export const metadata: Metadata = {
@@ -10,8 +11,10 @@ export const metadata: Metadata = {
 
 export default function LifelinePage() {
   return (
-    <PageShell>
+    <div className="min-h-screen bg-black text-white">
+      <SiteNav />
       <Lifeline markers={lifelineMarkers} title="Lifeline" />
-    </PageShell>
+      <SiteFooter className="fixed inset-x-0 bottom-0 z-40 border-white/10 bg-black/95 backdrop-blur-sm" />
+    </div>
   )
 }
