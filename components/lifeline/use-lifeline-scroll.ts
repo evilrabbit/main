@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 
+const FADE_ZONE = 200
+const WHEEL_SPEED = 1.4
+const DRAG_SPEED = 1
+
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value))
 }
@@ -17,23 +21,60 @@ function normalizeWheelDelta(event: WheelEvent) {
   return delta
 }
 
-export function useLifelineScroll() {
+export function useLifelineScroll(markerCount: number) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const markerRefs = useRef<(HTMLDivElement | null)[]>([])
   const maxTranslate = useRef(0)
-  const progress = useRef(0)
-  const [progressState, setProgressState] = useState(0)
+  const translatePx = useRef(0)
+  const dragging = useRef(false)
+  const dragOrigin = useRef({ x: 0, translate: 0 })
+  const [progress, setProgress] = useState(1)
 
-  const applyProgress = useCallback((value: number) => {
-    const next = clamp(value, 0, 1)
-    progress.current = next
-
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translate3d(-${next * maxTranslate.current}px, 0, 0)`
-    }
-
-    setProgressState(next)
+  const setMarkerRef = useCallback((index: number, node: HTMLDivElement | null) => {
+    markerRefs.current[index] = node
   }, [])
+
+  const updateFades = useCallback(() => {
+    const width = window.innerWidth
+
+    markerRefs.current.forEach((marker) => {
+      if (!marker) return
+
+      const rect = marker.getBoundingClientRect()
+      const center = rect.left + rect.width / 2
+
+      let opacity = 1
+
+      if (center < FADE_ZONE) {
+        opacity = center / FADE_ZONE
+      } else if (center > width - FADE_ZONE) {
+        opacity = (width - center) / FADE_ZONE
+      }
+
+      marker.style.opacity = String(clamp(opacity, 0, 1))
+    })
+  }, [])
+
+  const applyTranslate = useCallback(
+    (value: number) => {
+      const max = maxTranslate.current
+      const next = clamp(value, 0, max)
+      translatePx.current = next
+
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(-${next}px, 0, 0)`
+      }
+
+      setProgress(max > 0 ? next / max : 1)
+      updateFades()
+    },
+    [updateFades],
+  )
+
+  useEffect(() => {
+    markerRefs.current = new Array(markerCount).fill(null)
+  }, [markerCount])
 
   useEffect(() => {
     const html = document.documentElement
@@ -44,7 +85,6 @@ export function useLifelineScroll() {
     const previousBodyOverflow = body.style.overflow
     html.style.overflow = "hidden"
     body.style.overflow = "hidden"
-
     window.scrollTo(0, 0)
 
     return () => {
@@ -59,8 +99,9 @@ export function useLifelineScroll() {
       const track = trackRef.current
       if (!track) return
 
-      maxTranslate.current = Math.max(0, track.scrollWidth - window.innerWidth + 96)
-      applyProgress(progress.current)
+      const max = Math.max(0, track.scrollWidth - window.innerWidth + 96)
+      maxTranslate.current = max
+      applyTranslate(Math.min(translatePx.current || max, max))
     }
 
     measure()
@@ -73,41 +114,76 @@ export function useLifelineScroll() {
       window.removeEventListener("resize", measure)
       resizeObserver.disconnect()
     }
-  }, [applyProgress])
+  }, [applyTranslate])
 
   useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
     const onWheel = (event: WheelEvent) => {
       if (maxTranslate.current <= 0) return
 
       event.preventDefault()
+      event.stopPropagation()
 
       const delta = normalizeWheelDelta(event)
-      const next = progress.current + delta / maxTranslate.current
-      applyProgress(next)
+      applyTranslate(translatePx.current - delta * WHEEL_SPEED)
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (maxTranslate.current <= 0) return
+
+      dragging.current = true
+      dragOrigin.current = { x: event.clientX, translate: translatePx.current }
+      section.setPointerCapture(event.pointerId)
+      section.style.cursor = "grabbing"
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!dragging.current) return
+
+      const deltaX = event.clientX - dragOrigin.current.x
+      applyTranslate(dragOrigin.current.translate - deltaX * DRAG_SPEED)
+    }
+
+    const endDrag = (event: PointerEvent) => {
+      if (!dragging.current) return
+
+      dragging.current = false
+      section.releasePointerCapture(event.pointerId)
+      section.style.cursor = ""
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (maxTranslate.current <= 0) return
 
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-        event.preventDefault()
-        applyProgress(progress.current + 0.04)
-      }
-
       if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
         event.preventDefault()
-        applyProgress(progress.current - 0.04)
+        applyTranslate(translatePx.current - maxTranslate.current * 0.05)
+      }
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        event.preventDefault()
+        applyTranslate(translatePx.current + maxTranslate.current * 0.05)
       }
     }
 
-    window.addEventListener("wheel", onWheel, { passive: false })
+    section.addEventListener("wheel", onWheel, { passive: false })
+    section.addEventListener("pointerdown", onPointerDown)
+    section.addEventListener("pointermove", onPointerMove)
+    section.addEventListener("pointerup", endDrag)
+    section.addEventListener("pointercancel", endDrag)
     window.addEventListener("keydown", onKeyDown)
 
     return () => {
-      window.removeEventListener("wheel", onWheel)
+      section.removeEventListener("wheel", onWheel)
+      section.removeEventListener("pointerdown", onPointerDown)
+      section.removeEventListener("pointermove", onPointerMove)
+      section.removeEventListener("pointerup", endDrag)
+      section.removeEventListener("pointercancel", endDrag)
       window.removeEventListener("keydown", onKeyDown)
     }
-  }, [applyProgress])
+  }, [applyTranslate])
 
-  return { sectionRef, trackRef, progress: progressState }
+  return { sectionRef, trackRef, progress, setMarkerRef }
 }

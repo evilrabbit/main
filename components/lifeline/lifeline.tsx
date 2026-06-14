@@ -13,7 +13,9 @@ function getMarkerWidth(year: number, nextYear?: number) {
 }
 
 export function Lifeline({ markers, className, title = "Lifeline" }: LifelineProps) {
-  const { sectionRef, trackRef, progress } = useLifelineScroll()
+  const { sectionRef, trackRef, progress, setMarkerRef } = useLifelineScroll(
+    markers.length,
+  )
 
   const widths = useMemo(
     () =>
@@ -32,13 +34,16 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
   return (
     <section
       ref={sectionRef}
-      className={cn("h-[calc(100vh-4rem-6rem)] overflow-hidden", className)}
+      className={cn(
+        "h-[calc(100vh-4rem-6rem)] touch-none select-none overflow-hidden",
+        className,
+      )}
       aria-label={title}
     >
       <div className="flex h-full items-center overflow-hidden">
         <div
           ref={trackRef}
-          className="relative w-max will-change-transform pl-12"
+          className="relative w-max will-change-transform pl-12 pr-24"
           style={{ width: trackWidth }}
         >
           <div
@@ -50,6 +55,7 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
             {markers.map((marker, index) => (
               <LifelineMarkerColumn
                 key={marker.id}
+                ref={(node) => setMarkerRef(index, node)}
                 marker={marker}
                 isActive={index === activeIndex}
                 minWidth={widths[index]}

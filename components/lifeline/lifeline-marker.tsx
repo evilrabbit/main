@@ -1,3 +1,4 @@
+import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
 import type { LifelineMarker } from "./types"
 
@@ -7,14 +8,14 @@ interface LifelineMarkerColumnProps {
   minWidth: number
 }
 
-export function LifelineMarkerColumn({
-  marker,
-  isActive,
-  minWidth,
-}: LifelineMarkerColumnProps) {
+export const LifelineMarkerColumn = forwardRef<
+  HTMLDivElement,
+  LifelineMarkerColumnProps
+>(function LifelineMarkerColumn({ marker, isActive, minWidth }, ref) {
   return (
     <div
-      className="relative shrink-0 pr-8"
+      ref={ref}
+      className="relative shrink-0 pr-8 transition-opacity duration-300 ease-out will-change-[opacity]"
       style={{ width: minWidth }}
       aria-label={`${marker.year}`}
     >
@@ -78,4 +79,4 @@ export function LifelineMarkerColumn({
       </div>
     </div>
   )
-}
+})
