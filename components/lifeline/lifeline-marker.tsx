@@ -41,7 +41,7 @@ export const LifelineMarkerColumn = forwardRef<
 
         <div
           className={cn(
-            "flex w-full flex-col items-start space-y-1.5 pt-6 transition-colors duration-300",
+            "flex w-full flex-col items-start pt-6 transition-colors duration-300",
             marker.active || isActive ? "text-zinc-300" : "text-zinc-500",
           )}
         >
@@ -61,17 +61,19 @@ export const LifelineMarkerColumn = forwardRef<
             </div>
           )}
 
-          {marker.events.map((event) => (
-            <p
-              key={event}
-              className="max-w-[14rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
-            >
-              {event}
-            </p>
-          ))}
+          <div className="space-y-1.5">
+            {marker.events.map((event) => (
+              <p
+                key={event}
+                className="max-w-[14rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
+              >
+                {event}
+              </p>
+            ))}
+          </div>
 
           {marker.mentors && marker.mentors.length > 0 && (
-            <div className="mt-20 w-full space-y-3">
+            <div className="w-full space-y-3" style={{ marginTop: 80 }}>
               {marker.mentors.map((mentor) => (
                 <div key={mentor.name} className="flex items-center gap-2.5">
                   <span
