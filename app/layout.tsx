@@ -1,21 +1,20 @@
 import type React from "react"
-import { Inter } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Suspense } from "react"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Evil Rabbit",
-  description: "Evil Rabbit's personal website",
-  generator: "v0.dev",
+  metadataBase: new URL("https://evilrabbit.com"),
+  title: "Evil Rabbit — Founding Designer at Vercel",
+  description:
+    "Evil Rabbit is a designer from Buenos Aires, based in San Francisco. Founding designer at Vercel — brand, product, and the visual language behind Geist and Next.js.",
   openGraph: {
     title: "Evil Rabbit",
-    description: "Evil Rabbit's personal website",
-    url: "https://evilrabbit.dev",
+    description:
+      "Founding designer at Vercel. Brand, product, and type for the people who ship.",
+    url: "https://evilrabbit.com",
     siteName: "Evil Rabbit",
     images: [
       {
@@ -31,7 +30,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Evil Rabbit",
-    description: "Evil Rabbit's personal website",
+    description:
+      "Founding designer at Vercel. Brand, product, and type for the people who ship.",
     images: ["/opengraph-image.png"],
   },
 }
@@ -42,9 +42,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${GeistSans.className} antialiased`}>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>
