@@ -30,8 +30,26 @@ export const LifelineMarkerColumn = forwardRef<
       </p>
 
       <div className="relative h-0 w-0">
-        {marker.companies && marker.companies.length > 0 ? (
-          <div className="absolute left-0 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5">
+        <span
+          className={cn(
+            "absolute left-0 top-0 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300",
+            marker.active
+              ? "bg-white shadow-[0_0_16px_rgba(255,255,255,0.5)]"
+              : isActive
+                ? "bg-white"
+                : "bg-zinc-700 ring-2 ring-black",
+          )}
+        />
+      </div>
+
+      <div
+        className={cn(
+          "space-y-1.5 pt-6 transition-colors duration-300",
+          marker.active || isActive ? "text-zinc-300" : "text-zinc-500",
+        )}
+      >
+        {marker.companies && marker.companies.length > 0 && (
+          <div className="mb-2 flex items-center gap-1.5">
             {marker.companies.map((company) => (
               <CompanyIcon
                 key={company.id}
@@ -44,26 +62,8 @@ export const LifelineMarkerColumn = forwardRef<
               />
             ))}
           </div>
-        ) : (
-          <span
-            className={cn(
-              "absolute left-0 top-0 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300",
-              marker.active
-                ? "bg-white shadow-[0_0_16px_rgba(255,255,255,0.5)]"
-                : isActive
-                  ? "bg-white"
-                  : "bg-zinc-700 ring-2 ring-black",
-            )}
-          />
         )}
-      </div>
 
-      <div
-        className={cn(
-          "space-y-1.5 pt-6 transition-colors duration-300",
-          marker.active || isActive ? "text-zinc-300" : "text-zinc-500",
-        )}
-      >
         {marker.events.map((event) => (
           <p
             key={event}
