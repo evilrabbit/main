@@ -21,7 +21,9 @@ export function LifelineEventText({
             href={segment.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-zinc-700 underline-offset-2 transition-colors hover:text-white hover:decoration-zinc-400"
+            onClick={(event) => event.stopPropagation()}
+            onPointerDown={(event) => event.stopPropagation()}
+            className="relative z-20 underline decoration-zinc-700 underline-offset-2 transition-colors hover:text-white hover:decoration-zinc-400"
           >
             {segment.value}
           </a>

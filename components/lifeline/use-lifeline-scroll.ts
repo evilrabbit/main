@@ -132,6 +132,7 @@ export function useLifelineScroll(markerCount: number) {
 
     const onPointerDown = (event: PointerEvent) => {
       if (maxTranslate.current <= 0) return
+      if ((event.target as HTMLElement).closest("a")) return
 
       dragging.current = true
       dragOrigin.current = { x: event.clientX, translate: translatePx.current }
