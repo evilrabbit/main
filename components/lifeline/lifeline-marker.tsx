@@ -91,10 +91,8 @@ export const LifelineMarkerColumn = forwardRef<
                       .join("")
                       .slice(0, 2)}
                   </span>
-                  <p className="text-left text-[13px] text-zinc-500">
-                    <span className="text-zinc-400">{mentor.name}</span>
-                    <span className="text-zinc-700"> · </span>
-                    {mentor.role}
+                  <p className="text-left text-[13px] text-zinc-400">
+                    {mentor.name}
                   </p>
                 </div>
               ))}
