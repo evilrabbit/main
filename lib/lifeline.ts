@@ -11,8 +11,8 @@ export const lifelineMarkers: LifelineMarker[] = [
     year: 1993,
     events: ["Started school.", "Joined a basketball team."],
     mentors: [
-      { name: "Horacio Mansilla", role: "Mentor", color: "#E5484D" },
-      { name: "Fernando Prats", role: "Mentor", color: "#3E63DD" },
+      { name: "Horacio Mansilla", role: "Basketball Coach", color: "#E5484D" },
+      { name: "Fernando Prats", role: "Computer Teacher", color: "#3E63DD" },
     ],
   },
   {
@@ -48,7 +48,7 @@ export const lifelineMarkers: LifelineMarker[] = [
       "Joined Aerolab as a product designer.",
       "Met Guillermo Rauch.",
     ],
-    mentors: [{ name: "Guillermo Rauch", role: "Mentor", color: "#8B5CF6" }],
+    mentors: [{ name: "Guillermo Rauch", role: "Entrepreneur", color: "#8B5CF6" }],
   },
   {
     id: "auth0",
