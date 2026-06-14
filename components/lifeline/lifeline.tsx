@@ -44,7 +44,7 @@ export function Lifeline({ markers, className, title = "Lifeline" }: LifelinePro
       <div className="flex h-full items-center overflow-hidden">
         <div
           ref={trackRef}
-          className="relative w-max will-change-transform pl-12 pr-24 [--lifeline-rail:4.25rem]"
+          className="relative w-max will-change-transform pl-12 pr-24 [--lifeline-rail:5.25rem]"
           style={{ width: trackWidth }}
         >
           <div

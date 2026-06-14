@@ -28,7 +28,7 @@ export const LifelineMarkerColumn = forwardRef<
       aria-label={`${marker.year}`}
     >
       <div className="flex w-fit max-w-full flex-col items-start text-left">
-        <div className="mb-1 flex h-8 w-full flex-col justify-end">
+        <div className="mb-5 flex h-8 w-full flex-col justify-end">
           <p
             className={cn(
               "text-[11px] font-medium leading-4 tabular-nums transition-colors duration-300",
