@@ -48,6 +48,7 @@ export const lifelineMarkers: LifelineMarker[] = [
   {
     id: "auth0",
     year: 2015,
+    companies: [{ id: "auth0", name: "Auth0" }],
     events: ["Joined Auth0 as a product designer."],
   },
   {
