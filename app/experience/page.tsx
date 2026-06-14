@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   return (
     <PageShell>
-      <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
+      <main className="mx-auto w-full max-w-5xl px-6 pb-24 pt-32 text-left">
         <SectionHeading>Experience</SectionHeading>
 
         <div className="divide-y divide-white/10">

@@ -37,8 +37,8 @@
     text-wrap: balance;
   }
 
-  .section-label {
-    @apply text-sm font-medium text-zinc-500;
+  .section-title {
+    @apply text-base font-medium text-zinc-300;
   }
 
   .fade-up {

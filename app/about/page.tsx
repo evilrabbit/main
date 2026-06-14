@@ -20,31 +20,39 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <PageShell>
-      <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
+      <main className="mx-auto w-full max-w-5xl px-6 pb-24 pt-32 text-left">
         <SectionHeading>About</SectionHeading>
 
-        <div className="space-y-6 text-lg leading-relaxed text-zinc-300">
-          <p className="text-balance text-2xl font-medium tracking-[-0.03em] text-white">
-            Evil Rabbit is Nicolás Garro — a designer obsessed with craft, restraint, and making complex tools feel inevitable.
-          </p>
-          <p>
-            Born in Buenos Aires and based in San Francisco, I&apos;ve spent nearly three decades designing products and brands — from broadcast and early freelance work to Auth0, and since 2016, Vercel from its ZEIT days to today.
-          </p>
-          <p>
-            My work spans product design, creative direction, typography, and physical objects. I directed Geist, the type family at the center of Vercel&apos;s identity, and led the visual systems behind Next.js Conf, Ship, and the ▲ brand itself.
-          </p>
-          <p className="text-[15px] leading-relaxed text-zinc-400">
-            {focusAreas.join(" · ")}
-          </p>
+        <div className="grid items-start gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+          <div className="space-y-6 text-lg leading-relaxed text-zinc-300">
+            <p className="text-balance text-2xl font-medium tracking-[-0.03em] text-white">
+              Evil Rabbit is Nicolás Garro — a designer obsessed with craft, restraint, and making complex tools feel inevitable.
+            </p>
+            <p>
+              Born in Buenos Aires and based in San Francisco, I&apos;ve spent nearly three decades designing products and brands — from broadcast and early freelance work to Auth0, and since 2016, Vercel from its ZEIT days to today.
+            </p>
+            <p>
+              My work spans product design, creative direction, typography, and physical objects. I directed Geist, the type family at the center of Vercel&apos;s identity, and led the visual systems behind Next.js Conf, Ship, and the ▲ brand itself.
+            </p>
+          </div>
+
+          <aside className="lg:pt-1">
+            <h2 className="section-title mb-5">Focus</h2>
+            <ul className="space-y-3 text-[15px] leading-relaxed text-zinc-400">
+              {focusAreas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
+            </ul>
+          </aside>
         </div>
 
         <section className="mt-24 border-t border-white/10 pt-24">
-          <h2 className="section-label mb-8">Recognition</h2>
+          <h2 className="section-title mb-8">Recognition</h2>
 
           <div className="space-y-10">
             <div className="flex flex-col justify-between gap-2 border-b border-white/10 pb-6 sm:flex-row sm:items-baseline">
               <div>
-                <h3 className="font-medium">Next.js Conf</h3>
+                <h3 className="font-medium text-white">Next.js Conf</h3>
                 <p className="mt-1 text-sm text-zinc-500">Site of the Day · Developer Award</p>
               </div>
               <Link
@@ -73,8 +81,8 @@ export default function AboutPage() {
         </section>
 
         <section className="mt-24 border-t border-white/10 pt-24">
-          <h2 className="section-label mb-4">Investments</h2>
-          <p className="mb-8 text-[15px] leading-relaxed text-zinc-400">
+          <h2 className="section-title mb-4">Investments</h2>
+          <p className="mb-8 max-w-2xl text-[15px] leading-relaxed text-zinc-400">
             Angel investor in early-stage startups building tools for designers and developers.
           </p>
           <ul className="grid gap-3 sm:grid-cols-2">

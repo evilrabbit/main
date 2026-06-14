@@ -1,5 +1,7 @@
 export function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h1 className="mb-10 text-sm font-medium text-zinc-500">{children}</h1>
+    <h1 className="mb-12 text-2xl font-medium tracking-[-0.03em] text-white">
+      {children}
+    </h1>
   )
 }
