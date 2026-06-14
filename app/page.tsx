@@ -90,7 +90,7 @@ export default function Home() {
                 Born in Buenos Aires and based in San Francisco, I&apos;ve spent nearly three decades designing products and brands — from broadcast and early freelance work to Auth0, and since 2016, Vercel from its ZEIT days to today.
               </p>
               <p>
-                My work spans product design, creative direction, typography, and physical objects. I co-directed Geist, the type family at the center of Vercel&apos;s identity, and led the visual systems behind Next.js Conf, Ship, and the ▲ brand itself.
+                My work spans product design, creative direction, typography, and physical objects. I directed Geist, the type family at the center of Vercel&apos;s identity, and led the visual systems behind Next.js Conf, Ship, and the ▲ brand itself.
               </p>
             </div>
 
