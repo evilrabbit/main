@@ -17,8 +17,18 @@ const milestones: Record<number, LifelineMilestone> = {
       "Joined my first basketball team: Argentinos del Oeste.",
     ],
     mentors: [
-      { name: "Horacio Mansilla", role: "Basketball Coach", color: "#E5484D" },
-      { name: "Fernando Prats", role: "Computer Teacher", color: "#3E63DD" },
+      {
+        name: "Horacio Mansilla",
+        role: "Basketball Coach",
+        color: "#E5484D",
+        photo: "/images/people/horacio-mansilla.png",
+      },
+      {
+        name: "Fernando Prats",
+        role: "Computer Teacher",
+        color: "#3E63DD",
+        photo: "/images/people/fernando-prats.jpg",
+      },
     ],
   },
   1995: {
@@ -45,6 +55,20 @@ const milestones: Record<number, LifelineMilestone> = {
         { type: "text", value: " to open their Web Design department." },
       ],
       "Joined Identidad as Freelance Designer.",
+    ],
+  },
+  2008: {
+    id: "john-legend",
+    events: [
+      [
+        { type: "text", value: "Designed an album for John Legend, called " },
+        {
+          type: "link",
+          value: "Legend Network",
+          href: "https://www.discogs.com/release/11682137-John-Legend-Legend-Network-John-Legend-2008?srsltid=AfmBOoqgP1-9X_TmRKHXsKGU2b794gkIqDQalO5SMIovyO-zpLt6r0vN",
+        },
+        { type: "text", value: "." },
+      ],
     ],
   },
   2009: {
@@ -126,7 +150,7 @@ const milestones: Record<number, LifelineMilestone> = {
       "My O-1B visa for individuals with extraordinary ability in the arts was approved.",
       "Moved to San Francisco, California.",
     ],
-    met: [{ name: "Jony Ive" }],
+    met: [{ name: "Jony Ive" }, { name: "Rasmus Andersson" }],
   },
   2023: {
     id: "geist",

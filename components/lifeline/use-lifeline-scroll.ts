@@ -9,11 +9,15 @@ import {
 const NAV_HEIGHT = 64
 const FOOTER_HEIGHT = 96
 const FADE_ZONE = 200
+const FADE_ZONE_COARSE = 72
 const LEFT_EXIT_FADE_ZONE = 400
+const LEFT_EXIT_FADE_ZONE_COARSE = 160
 const WHEEL_SPEED = 1.4
 const WHEEL_VELOCITY_FRAME_MS = 16.67
 const WHEEL_MOMENTUM_BLEND = 0.65
 const DRAG_SPEED = 1
+const TOUCH_DRAG_SPEED = 1.15
+const TOUCH_GESTURE_LOCK_PX = 8
 const NAV_HORIZONTAL_PADDING = 24
 const MOMENTUM_FRICTION = 0.94
 const MOMENTUM_MIN_VELOCITY = 0.025
@@ -21,13 +25,6 @@ const MOMENTUM_MIN_START = 0.08
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value))
-}
-
-function getLeftExitFadeOpacity(markerLeft: number) {
-  if (markerLeft >= LEFT_EXIT_FADE_ZONE) return 1
-  if (markerLeft <= 0) return 0
-
-  return markerLeft / LEFT_EXIT_FADE_ZONE
 }
 
 function normalizeWheelDelta(event: WheelEvent) {
@@ -45,7 +42,9 @@ function isInteractiveTarget(target: EventTarget | null) {
   return target instanceof Element && Boolean(target.closest("a, button"))
 }
 
-function isInStage(clientY: number) {
+function isInStage(clientY: number, isCoarsePointer: boolean) {
+  if (isCoarsePointer) return clientY >= NAV_HEIGHT
+
   return (
     clientY >= NAV_HEIGHT &&
     clientY <= window.innerHeight - FOOTER_HEIGHT
@@ -53,6 +52,7 @@ function isInStage(clientY: number) {
 }
 
 interface LifelineScrollOptions {
+  isCoarsePointer?: boolean
   introLocked?: boolean
   introAnimating?: boolean
   introSkipped?: boolean
@@ -76,9 +76,13 @@ export function useLifelineScroll(
   const translatePx = useRef(0)
   const initialized = useRef(false)
   const dragging = useRef(false)
+  const gestureAxis = useRef<"x" | "y" | null>(null)
+  const gestureStart = useRef({ x: 0, y: 0 })
   const dragOrigin = useRef({ x: 0, translate: 0 })
   const dragVelocity = useRef(0)
   const lastPointerSample = useRef({ x: 0, t: 0 })
+  const activePointerId = useRef<number | null>(null)
+  const isCoarsePointerRef = useRef(options.isCoarsePointer ?? false)
   const momentumId = useRef(0)
   const settleId = useRef(0)
   const introLockedRef = useRef(options.introLocked ?? false)
@@ -96,6 +100,7 @@ export function useLifelineScroll(
   const scheduleMeasureRef = useRef<() => void>(() => {})
   const [isLayoutReady, setIsLayoutReady] = useState(false)
 
+  isCoarsePointerRef.current = options.isCoarsePointer ?? false
   introLockedRef.current = options.introLocked ?? false
   introAnimatingRef.current = options.introAnimating ?? false
   introSkippedRef.current = options.introSkipped ?? false
@@ -163,6 +168,11 @@ export function useLifelineScroll(
     if (settlingRef.current) return
 
     const width = window.innerWidth
+    const isCoarse = isCoarsePointerRef.current
+    const fadeZone = isCoarse ? FADE_ZONE_COARSE : FADE_ZONE
+    const leftFadeZone = isCoarse
+      ? LEFT_EXIT_FADE_ZONE_COARSE
+      : LEFT_EXIT_FADE_ZONE
 
     markerRefs.current.forEach((marker) => {
       if (!marker) return
@@ -170,10 +180,27 @@ export function useLifelineScroll(
       const rect = marker.getBoundingClientRect()
       const center = rect.left + rect.width / 2
 
-      let opacity = getLeftExitFadeOpacity(rect.left)
+      let opacity = 1
 
-      if (center > width - FADE_ZONE) {
-        opacity = Math.min(opacity, (width - center) / FADE_ZONE)
+      if (rect.left < leftFadeZone) {
+        opacity =
+          rect.left <= 0 ? 0 : rect.left / leftFadeZone
+      }
+
+      if (center > width - fadeZone) {
+        opacity = Math.min(opacity, (width - center) / fadeZone)
+      }
+
+      if (isCoarse) {
+        const readableLeft = LIFELINE_STICKY_SHIELD_WIDTH
+        const readableRight = width - 12
+        const visibleWidth =
+          Math.min(rect.right, readableRight) - Math.max(rect.left, readableLeft)
+        const visibility = rect.width > 0 ? visibleWidth / rect.width : 0
+
+        if (visibility >= 0.5) {
+          opacity = 1
+        }
       }
 
       marker.style.opacity = String(clamp(opacity, 0, 1))
@@ -438,7 +465,7 @@ export function useLifelineScroll(
     window.addEventListener("resize", scheduleMeasure)
 
     const onWheel = (event: WheelEvent) => {
-      if (!isInStage(event.clientY)) return
+      if (!isInStage(event.clientY, isCoarsePointerRef.current)) return
       if (isScrollLocked()) return
 
       if (maxTranslate.current <= 0) {
@@ -463,34 +490,86 @@ export function useLifelineScroll(
       }
     }
 
-    const onPointerDown = (event: PointerEvent) => {
-      if (!isInStage(event.clientY)) return
-      if (isScrollLocked()) return
-      if (isInteractiveTarget(event.target)) return
-      if (maxTranslate.current <= 0) return
-
+    const beginDrag = (event: PointerEvent) => {
       stopMomentum()
       dragVelocity.current = 0
       dragging.current = true
+      activePointerId.current = event.pointerId
       dragOrigin.current = { x: event.clientX, translate: translatePx.current }
       lastPointerSample.current = {
         x: event.clientX,
         t: performance.now(),
       }
-      section.setPointerCapture(event.pointerId)
+
+      if (section.setPointerCapture) {
+        section.setPointerCapture(event.pointerId)
+      }
+
       section.style.cursor = "grabbing"
+      section.style.touchAction = "none"
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (!isInStage(event.clientY, isCoarsePointerRef.current)) return
+      if (isScrollLocked()) return
+      if (isInteractiveTarget(event.target)) return
+      if (maxTranslate.current <= 0) return
+      if (activePointerId.current !== null) return
+
+      gestureAxis.current = null
+      gestureStart.current = { x: event.clientX, y: event.clientY }
+
+      if (event.pointerType === "touch") {
+        activePointerId.current = event.pointerId
+        return
+      }
+
+      beginDrag(event)
     }
 
     const onPointerMove = (event: PointerEvent) => {
+      if (activePointerId.current !== null && event.pointerId !== activePointerId.current) {
+        return
+      }
+
+      if (!dragging.current && event.pointerType === "touch") {
+        const deltaX = event.clientX - gestureStart.current.x
+        const deltaY = event.clientY - gestureStart.current.y
+
+        if (gestureAxis.current === null) {
+          if (
+            Math.abs(deltaX) < TOUCH_GESTURE_LOCK_PX &&
+            Math.abs(deltaY) < TOUCH_GESTURE_LOCK_PX
+          ) {
+            return
+          }
+
+          gestureAxis.current =
+            Math.abs(deltaX) >= Math.abs(deltaY) ? "x" : "y"
+
+          if (gestureAxis.current === "y") {
+            activePointerId.current = null
+            return
+          }
+
+          beginDrag(event)
+        }
+      }
+
       if (!dragging.current) return
+
+      if (event.pointerType === "touch") {
+        event.preventDefault()
+      }
 
       const now = performance.now()
       const sample = lastPointerSample.current
       const elapsed = now - sample.t
+      const dragSpeed = event.pointerType === "touch" ? TOUCH_DRAG_SPEED : DRAG_SPEED
 
       if (elapsed > 0 && elapsed < 80) {
         const instantVelocity =
-          (-(event.clientX - sample.x) / elapsed) * DRAG_SPEED
+          (-(event.clientX - sample.x) / elapsed) * dragSpeed
         dragVelocity.current =
           instantVelocity * 0.65 + dragVelocity.current * 0.35
       }
@@ -498,20 +577,30 @@ export function useLifelineScroll(
       lastPointerSample.current = { x: event.clientX, t: now }
 
       const deltaX = event.clientX - dragOrigin.current.x
-      applyTranslate(dragOrigin.current.translate - deltaX * DRAG_SPEED)
+      applyTranslate(dragOrigin.current.translate - deltaX * dragSpeed)
     }
 
     const endDrag = (event: PointerEvent) => {
-      if (!dragging.current) return
+      if (activePointerId.current !== null && event.pointerId !== activePointerId.current) {
+        return
+      }
+
+      const wasDragging = dragging.current
 
       dragging.current = false
+      gestureAxis.current = null
+      activePointerId.current = null
 
       if (section.hasPointerCapture(event.pointerId)) {
         section.releasePointerCapture(event.pointerId)
       }
 
       section.style.cursor = ""
-      startMomentum()
+      section.style.touchAction = ""
+
+      if (wasDragging) {
+        startMomentum()
+      }
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -534,9 +623,9 @@ export function useLifelineScroll(
 
     window.addEventListener("wheel", onWheel, { passive: false })
     section.addEventListener("pointerdown", onPointerDown)
-    window.addEventListener("pointermove", onPointerMove)
-    window.addEventListener("pointerup", endDrag)
-    window.addEventListener("pointercancel", endDrag)
+    section.addEventListener("pointermove", onPointerMove, { passive: false })
+    section.addEventListener("pointerup", endDrag)
+    section.addEventListener("pointercancel", endDrag)
     window.addEventListener("keydown", onKeyDown)
 
     return () => {
@@ -548,12 +637,15 @@ export function useLifelineScroll(
       window.removeEventListener("resize", scheduleMeasure)
       window.removeEventListener("wheel", onWheel)
       section.removeEventListener("pointerdown", onPointerDown)
-      window.removeEventListener("pointermove", onPointerMove)
-      window.removeEventListener("pointerup", endDrag)
-      window.removeEventListener("pointercancel", endDrag)
+      section.removeEventListener("pointermove", onPointerMove)
+      section.removeEventListener("pointerup", endDrag)
+      section.removeEventListener("pointercancel", endDrag)
       window.removeEventListener("keydown", onKeyDown)
       dragging.current = false
+      gestureAxis.current = null
+      activePointerId.current = null
       section.style.cursor = ""
+      section.style.touchAction = ""
     }
   }, [applyTranslate, isScrollLocked, markerCount, measureLayout])
 

@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils"
 import type { LifelineEvent } from "./types"
 
 export function LifelineEventText({

@@ -1,31 +1,47 @@
+import Image from "next/image"
 import type { LifelineMarker } from "./types"
 
 export interface AggregatedLifelinePerson {
   name: string
   mentor: boolean
   met: boolean
+  photo?: string
 }
 
 export function aggregateLifelinePeople(
   marker: LifelineMarker,
 ): AggregatedLifelinePerson[] {
   const order: string[] = []
-  const map = new Map<string, { mentor: boolean; met: boolean }>()
+  const map = new Map<
+    string,
+    { mentor: boolean; met: boolean; photo?: string }
+  >()
 
-  const add = (name: string, type: "mentor" | "met") => {
+  const add = (
+    name: string,
+    type: "mentor" | "met",
+    photo?: string,
+  ) => {
     if (!map.has(name)) order.push(name)
 
     const current = map.get(name) ?? { mentor: false, met: false }
-    map.set(name, { ...current, [type]: true })
+    map.set(name, {
+      ...current,
+      [type]: true,
+      photo: current.photo ?? photo,
+    })
   }
 
-  marker.mentors?.forEach((person) => add(person.name, "mentor"))
+  marker.mentors?.forEach((person) =>
+    add(person.name, "mentor", person.photo),
+  )
   marker.met?.forEach((person) => add(person.name, "met"))
 
   return order.map((name) => ({
     name,
     mentor: map.get(name)!.mentor,
     met: map.get(name)!.met,
+    photo: map.get(name)!.photo,
   }))
 }
 
@@ -39,9 +55,13 @@ function getInitials(name: string) {
 
 interface LifelinePeopleProps {
   people: AggregatedLifelinePerson[]
+  allowWrap?: boolean
 }
 
-export function LifelinePeople({ people }: LifelinePeopleProps) {
+export function LifelinePeople({
+  people,
+  allowWrap = false,
+}: LifelinePeopleProps) {
   if (people.length === 0) return null
 
   return (
@@ -62,10 +82,26 @@ export function LifelinePeople({ people }: LifelinePeopleProps) {
               />
             )}
           </div>
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black text-[10px] font-medium text-white dark:bg-white dark:text-black">
-            {getInitials(person.name)}
-          </span>
-          <p className="whitespace-nowrap text-left text-[13px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-700 dark:group-hover:text-zinc-400">
+          {person.photo ? (
+            <Image
+              src={person.photo}
+              alt={person.name}
+              width={28}
+              height={28}
+              className="h-7 w-7 shrink-0 rounded-full object-cover"
+            />
+          ) : (
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black text-[10px] font-medium text-white dark:bg-white dark:text-black">
+              {getInitials(person.name)}
+            </span>
+          )}
+          <p
+            className={
+              allowWrap
+                ? "text-left text-[13px] leading-snug text-zinc-500"
+                : "whitespace-nowrap text-left text-[13px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-700 dark:group-hover:text-zinc-400"
+            }
+          >
             {person.name}
           </p>
         </div>

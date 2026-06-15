@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function LifelinePage() {
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-white text-black dark:bg-black dark:text-white">
+    <div className="flex h-dvh flex-col overflow-hidden bg-white text-black dark:bg-black dark:text-white">
       <SiteNav />
-      <main className="min-h-0 flex-1 pt-16">
+      <main className="flex-1 min-h-0 overflow-y-auto pt-16 md:overflow-hidden">
         <Lifeline markers={lifelineMarkers} className="h-full" />
       </main>
       <SiteFooter className="shrink-0 backdrop-blur-sm" />

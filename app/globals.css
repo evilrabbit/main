@@ -161,6 +161,11 @@ html.lifeline-scroll::-webkit-scrollbar {
   transform-origin: left center;
 }
 
+.lifeline-rail-intro-vertical {
+  transform: scaleY(var(--lifeline-intro-progress, 0));
+  transform-origin: top center;
+}
+
 .lifeline-marker-intro {
   opacity: 0;
   animation: lifeline-marker-in var(--lifeline-marker-fade-ms, 420ms)

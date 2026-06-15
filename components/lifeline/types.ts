@@ -5,6 +5,7 @@ export interface LifelineMentor {
   name: string
   role: string
   color: string
+  photo?: string
 }
 
 export interface LifelineMetPerson {
