@@ -18,7 +18,10 @@ const milestones: LifelineMilestones = {
   },
   1989: {
     id: "roberts-weaver",
-    events: ["Graduated. Joined Roberts Weaver Group, the agency that sponsored his studies."],
+    events: [
+      "Graduated. Joined Roberts Weaver Group, the agency that sponsored his studies.",
+      "Won the RSA Student Design Award, which first took him to San Francisco.",
+    ],
   },
   1990: {
     id: "tangerine",
@@ -35,7 +38,12 @@ const milestones: LifelineMilestones = {
   1997: {
     id: "steve",
     events: ["Steve Jobs returned to Apple. Everything changed."],
-    met: [{ name: "Steve Jobs" }],
+    met: [
+      {
+        name: "Steve Jobs",
+        photo: "/images/people/steve-jobs.jpg",
+      },
+    ],
   },
   1998: {
     id: "imac",
@@ -44,6 +52,10 @@ const milestones: LifelineMilestones = {
   2001: {
     id: "ipod",
     events: ["Designed the iPod."],
+  },
+  2003: {
+    id: "designer-of-the-year",
+    events: ["Named Designer of the Year by the Design Museum, London."],
   },
   2007: {
     id: "iphone",
@@ -55,6 +67,10 @@ const milestones: LifelineMilestones = {
       "Knighted for services to design and enterprise.",
       "Took over Apple's human interface design as well as hardware.",
     ],
+  },
+  2013: {
+    id: "ios7",
+    events: ["Led the redesign of iOS 7, his first software release."],
   },
   2015: {
     id: "watch-cdo",
@@ -69,6 +85,7 @@ const milestones: LifelineMilestones = {
     met: [
       {
         name: "Marc Newson",
+        photo: "/images/people/marc-newson.jpg",
       },
     ],
   },
@@ -83,6 +100,12 @@ const milestones: LifelineMilestones = {
   2025: {
     id: "openai",
     events: ["OpenAI acquired io. Design partnership with Sam Altman."],
+    met: [
+      {
+        name: "Sam Altman",
+        photo: "/images/people/sam-altman.jpg",
+      },
+    ],
   },
 }
 

@@ -21,7 +21,12 @@ const milestones: LifelineMilestones = {
   1971: {
     id: "woz",
     events: ["A mutual friend introduced him to Steve Wozniak."],
-    met: [{ name: "Steve Wozniak" }],
+    met: [
+      {
+        name: "Steve Wozniak",
+        photo: "/images/people/steve-wozniak.jpg",
+      },
+    ],
   },
   1972: {
     id: "reed",
@@ -37,6 +42,7 @@ const milestones: LifelineMilestones = {
         name: "Kobun Chino Otogawa",
         role: "Zen Teacher",
         color: "#3E63DD",
+        photo: "/images/people/kobun-chino.jpg",
       },
     ],
   },
@@ -47,6 +53,17 @@ const milestones: LifelineMilestones = {
   1977: {
     id: "apple-ii",
     events: ["Launched the Apple II, the computer that built the company."],
+    mentors: [
+      {
+        name: "Mike Markkula",
+        role: "Investor & Mentor",
+        color: "#8B5CF6",
+      },
+    ],
+  },
+  1980: {
+    id: "ipo",
+    events: ["Apple went public."],
   },
   1984: {
     id: "macintosh",
@@ -60,9 +77,19 @@ const milestones: LifelineMilestones = {
     id: "pixar",
     events: ["Bought the Graphics Group from Lucasfilm and named it Pixar."],
   },
+  1988: {
+    id: "next-computer",
+    events: ["Unveiled the NeXT Computer."],
+  },
   1991: {
     id: "married",
     events: ["Married Laurene Powell."],
+    met: [
+      {
+        name: "Laurene Powell Jobs",
+        photo: "/images/people/laurene-powell-jobs.jpg",
+      },
+    ],
   },
   1995: {
     id: "toy-story",

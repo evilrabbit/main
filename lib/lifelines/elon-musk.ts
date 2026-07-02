@@ -20,6 +20,16 @@ const milestones: LifelineMilestones = {
   1995: {
     id: "zip2",
     events: ["Dropped out of Stanford after two days. Founded Zip2 with his brother Kimbal."],
+    met: [
+      {
+        name: "Kimbal Musk",
+        photo: "/images/people/kimbal-musk.jpg",
+      },
+    ],
+  },
+  1997: {
+    id: "penn",
+    events: ["Graduated from Penn with degrees in physics and economics."],
   },
   1999: {
     id: "x-com",
@@ -31,6 +41,12 @@ const milestones: LifelineMilestones = {
   2000: {
     id: "paypal",
     events: ["X.com merged with Confinity and became PayPal."],
+    met: [
+      {
+        name: "Peter Thiel",
+        photo: "/images/people/peter-thiel.jpg",
+      },
+    ],
   },
   2002: {
     id: "spacex",
@@ -42,6 +58,10 @@ const milestones: LifelineMilestones = {
   2004: {
     id: "tesla",
     events: ["Led Tesla's Series A and joined as chairman."],
+  },
+  2006: {
+    id: "roadster",
+    events: ["Tesla unveiled the Roadster."],
   },
   2008: {
     id: "hardest-year",
@@ -61,6 +81,12 @@ const milestones: LifelineMilestones = {
   2015: {
     id: "openai",
     events: ["Co-founded OpenAI."],
+    met: [
+      {
+        name: "Sam Altman",
+        photo: "/images/people/sam-altman.jpg",
+      },
+    ],
   },
   2016: {
     id: "neuralink-boring",

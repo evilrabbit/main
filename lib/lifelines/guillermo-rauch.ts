@@ -1,30 +1,40 @@
 import { defineLifeline, type LifelineMilestones } from "./build"
 
 const milestones: LifelineMilestones = {
-  1988: {
+  1990: {
     id: "born",
     events: ["Born in Lanús, Buenos Aires, Argentina."],
   },
-  1998: {
+  1997: {
     id: "first-computer",
-    events: ["Got his first computer. Taught himself to code on Linux."],
-  },
-  2004: {
-    id: "open-source",
     events: [
-      "Became a core developer of MooTools as a teenager, collaborating with engineers around the world.",
+      "His father, an industrial engineer, brought home the family's first computer. He was seven.",
+    ],
+  },
+  2001: {
+    id: "freelance",
+    events: ["Started freelancing online for clients abroad, at 11."],
+  },
+  2006: {
+    id: "mootools",
+    events: [
+      "Became a core developer of MooTools at 16, collaborating with engineers around the world.",
     ],
   },
   2007: {
-    id: "usa",
-    events: ["Left Argentina for San Francisco at 18."],
+    id: "switzerland",
+    events: ["Moved to Switzerland at 17 for his first consulting role."],
+  },
+  2009: {
+    id: "san-francisco",
+    events: [
+      "Moved to San Francisco at 18.",
+      "Founded LearnBoost as CTO.",
+    ],
   },
   2010: {
     id: "socketio",
-    events: [
-      "Created Socket.IO, real-time for the web.",
-      "Co-founded LearnBoost as CTO.",
-    ],
+    events: ["Created Socket.IO, real-time for the web."],
   },
   2013: {
     id: "cloudup",
@@ -73,6 +83,10 @@ const milestones: LifelineMilestones = {
       ],
     ],
   },
+  2025: {
+    id: "nine-billion",
+    events: ["Vercel valued at $9.3B."],
+  },
   2026: {
     id: "eve",
     events: ["Launched Eve, the framework for building agents."],
@@ -82,7 +96,7 @@ const milestones: LifelineMilestones = {
 export const guillermoRauch = defineLifeline({
   slug: "guillermo-rauch",
   name: "Guillermo Rauch",
-  birthYear: 1988,
+  birthYear: 1990,
   description:
     "CEO of Vercel, creator of Next.js and Socket.IO — from Lanús, Buenos Aires to San Francisco.",
   milestones,
