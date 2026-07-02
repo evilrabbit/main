@@ -38,12 +38,14 @@ const milestones: Record<number, LifelineMilestone> = {
   1998: {
     id: "freelance",
     events: [
-      "For legendary Argentinian Turismo Carretera drivers.",
+      "Got my first job as a Web Designer for legendary Argentinian Turismo Carretera drivers.",
     ],
   },
   2004: {
     id: "university",
-    events: ["Started university."],
+    events: [
+      "Started studying Graphic Design at the University of Buenos Aires.",
+    ],
   },
   2006: {
     id: "tsya-identidad",
@@ -74,7 +76,12 @@ const milestones: Record<number, LifelineMilestone> = {
   2009: {
     id: "bunbury",
     events: [],
-    met: [{ name: "Enrique Bunbury" }],
+    met: [
+      {
+        name: "Enrique Bunbury",
+        photo: "/images/people/enrique-bunbury.png",
+      },
+    ],
   },
   2010: {
     id: "viacom",
@@ -89,23 +96,48 @@ const milestones: Record<number, LifelineMilestone> = {
     events: [
       "Sponsored Trimarchi, Latin America's largest interdisciplinary design conference.",
       [
-        { type: "text", value: "Redesign " },
+        { type: "text", value: "Redesigned " },
         { type: "link", value: "mtvla.com", href: "https://mtvla.com" },
         { type: "text", value: ", " },
         { type: "link", value: "mundonick.com", href: "https://mundonick.com" },
       ],
     ],
-    met: [{ name: "David Carson" }],
+    met: [
+      {
+        name: "David Carson",
+        photo: "/images/people/david-carson.png",
+      },
+    ],
   },
   2014: {
     id: "aerolab",
     companies: [{ id: "aerolab", name: "Aerolab" }],
     events: [
       "Joined Aerolab as Product Designer.",
+      [
+        { type: "text", value: "Redesigned " },
+        {
+          type: "link",
+          value: "PopcornTime!",
+          href: "https://en.wikipedia.org/wiki/Popcorn_Time",
+        },
+      ],
       "My daughter Ninette was born.",
     ],
-    mentors: [{ name: "Guillermo Rauch", role: "Entrepreneur", color: "#8B5CF6" }],
-    met: [{ name: "Guillermo Rauch" }],
+    mentors: [
+      {
+        name: "Guillermo Rauch",
+        role: "Entrepreneur",
+        color: "#8B5CF6",
+        photo: "/images/people/guillermo-rauch.png",
+      },
+    ],
+    met: [
+      {
+        name: "Guillermo Rauch",
+        photo: "/images/people/guillermo-rauch.png",
+      },
+    ],
   },
   2015: {
     id: "auth0",
@@ -129,6 +161,13 @@ const milestones: Record<number, LifelineMilestone> = {
       ],
     ],
   },
+  2017: {
+    id: "zeit-day",
+    events: [
+      "Visited SF for the first time.",
+      "Hosted our very first ZEIT Day conference event.",
+    ],
+  },
   2019: {
     id: "vercel",
     companies: [{ id: "vercel", name: "Vercel" }],
@@ -150,7 +189,16 @@ const milestones: Record<number, LifelineMilestone> = {
       "My O-1B visa for individuals with extraordinary ability in the arts was approved.",
       "Moved to San Francisco, California.",
     ],
-    met: [{ name: "Jony Ive" }, { name: "Rasmus Andersson" }],
+    met: [
+      {
+        name: "Jony Ive",
+        photo: "/images/people/jony-ive.png",
+      },
+      {
+        name: "Rasmus Andersson",
+        photo: "/images/people/rasmus-andersson.png",
+      },
+    ],
   },
   2023: {
     id: "geist",
@@ -169,7 +217,12 @@ const milestones: Record<number, LifelineMilestone> = {
   2024: {
     id: "elon-musk",
     events: [],
-    met: [{ name: "Elon Musk" }],
+    met: [
+      {
+        name: "Elon Musk",
+        photo: "/images/people/elon-musk.png",
+      },
+    ],
   },
   2025: {
     id: "v0-mobile",

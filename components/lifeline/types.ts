@@ -10,6 +10,7 @@ export interface LifelineMentor {
 
 export interface LifelineMetPerson {
   name: string
+  photo?: string
 }
 
 export interface LifelineCompany {

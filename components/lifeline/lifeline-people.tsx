@@ -11,43 +11,31 @@ export interface AggregatedLifelinePerson {
 export function aggregateLifelinePeople(
   marker: LifelineMarker,
 ): AggregatedLifelinePerson[] {
-  const order: string[] = []
-  const map = new Map<
-    string,
-    { mentor: boolean; met: boolean; photo?: string }
-  >()
+  const map = new Map<string, AggregatedLifelinePerson>()
 
   const add = (
     name: string,
     type: "mentor" | "met",
     photo?: string,
   ) => {
-    if (!map.has(name)) order.push(name)
-
-    const current = map.get(name) ?? { mentor: false, met: false }
-    map.set(name, {
-      ...current,
-      [type]: true,
-      photo: current.photo ?? photo,
-    })
+    const person = map.get(name) ?? { name, mentor: false, met: false }
+    person[type] = true
+    person.photo = person.photo ?? photo
+    map.set(name, person)
   }
 
   marker.mentors?.forEach((person) =>
     add(person.name, "mentor", person.photo),
   )
-  marker.met?.forEach((person) => add(person.name, "met"))
+  marker.met?.forEach((person) => add(person.name, "met", person.photo))
 
-  return order.map((name) => ({
-    name,
-    mentor: map.get(name)!.mentor,
-    met: map.get(name)!.met,
-    photo: map.get(name)!.photo,
-  }))
+  return [...map.values()]
 }
 
 function getInitials(name: string) {
   return name
     .split(" ")
+    .filter(Boolean)
     .map((part) => part[0])
     .join("")
     .slice(0, 2)

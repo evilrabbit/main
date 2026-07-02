@@ -1,12 +1,30 @@
 import type { Metadata } from "next"
+import { headers } from "next/headers"
 import { Lifeline } from "@/components/lifeline"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
 import { lifelineMarkers } from "@/lib/lifeline"
+import { siteMetadata } from "@/lib/site-metadata"
 
-export const metadata: Metadata = {
-  title: "Lifeline — Evil Rabbit",
-  description: "The life and career of Evil Rabbit — from Buenos Aires to Vercel.",
+export async function generateMetadata(): Promise<Metadata> {
+  const host = headers().get("host") ?? ""
+  const isLifelineSubdomain = host.startsWith("lifeline.")
+
+  if (isLifelineSubdomain) {
+    return {
+      ...siteMetadata,
+      openGraph: {
+        ...siteMetadata.openGraph,
+        url: `https://${host}`,
+      },
+    }
+  }
+
+  return {
+    title: "Lifeline — Evil Rabbit",
+    description:
+      "The life and career of Evil Rabbit — from Buenos Aires to Vercel.",
+  }
 }
 
 export default function LifelinePage() {
