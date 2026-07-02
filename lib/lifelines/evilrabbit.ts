@@ -1,11 +1,6 @@
-import type { LifelineMarker } from "@/components/lifeline"
+import { defineLifeline, type LifelineMilestones } from "./build"
 
-export const LIFELINE_BIRTH_YEAR = 1986
-export const LIFELINE_CURRENT_YEAR = 2026
-
-type LifelineMilestone = Omit<LifelineMarker, "year">
-
-const milestones: Record<number, LifelineMilestone> = {
+const milestones: LifelineMilestones = {
   1986: {
     id: "born",
     events: ["I was born in Ramos Mejia, Buenos Aires, Argentina."],
@@ -245,20 +240,11 @@ const milestones: Record<number, LifelineMilestone> = {
   },
 }
 
-function buildLifelineMarkers(): LifelineMarker[] {
-  const markers: LifelineMarker[] = []
-
-  for (let year = LIFELINE_BIRTH_YEAR; year <= LIFELINE_CURRENT_YEAR; year++) {
-    const milestone = milestones[year]
-
-    markers.push(
-      milestone
-        ? { year, ...milestone }
-        : { id: `year-${year}`, year, events: [] },
-    )
-  }
-
-  return markers
-}
-
-export const lifelineMarkers = buildLifelineMarkers()
+export const evilrabbit = defineLifeline({
+  slug: "evilrabbit",
+  name: "Evil Rabbit",
+  birthYear: 1986,
+  description:
+    "Founding designer at Vercel — from Ramos Mejía, Buenos Aires to San Francisco.",
+  milestones,
+})

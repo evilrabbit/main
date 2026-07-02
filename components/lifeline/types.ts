@@ -36,6 +36,7 @@ export interface LifelineMarker {
 
 export interface LifelineProps {
   markers: LifelineMarker[]
+  birthYear: number
   className?: string
   title?: string
 }

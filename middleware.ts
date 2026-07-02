@@ -10,11 +10,14 @@ export function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  if (pathname === "/") {
-    return NextResponse.rewrite(new URL("/lifeline", request.url))
+  // Canonicalize /lifeline/* to the short form on the subdomain.
+  if (pathname === "/lifeline" || pathname.startsWith("/lifeline/")) {
+    const stripped = pathname.slice("/lifeline".length) || "/"
+    return NextResponse.redirect(new URL(stripped, request.url))
   }
 
-  return NextResponse.next()
+  const rewritten = pathname === "/" ? "/lifeline" : `/lifeline${pathname}`
+  return NextResponse.rewrite(new URL(rewritten, request.url))
 }
 
 export const config = {
