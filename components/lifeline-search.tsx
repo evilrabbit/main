@@ -58,7 +58,7 @@ export function LifelineSearch({ people }: { people: LifelinePerson[] }) {
         placeholder="Type a name"
         autoComplete="off"
         spellCheck={false}
-        className="w-full rounded-full border border-black/15 bg-transparent px-5 py-3 text-center text-[15px] outline-none transition-colors placeholder:text-zinc-400 focus:border-black/40 dark:border-white/15 dark:placeholder:text-zinc-600 dark:focus:border-white/40"
+        className="w-full border-b border-zinc-300 bg-transparent px-2 py-3 text-center text-[15px] outline-none transition-colors placeholder:text-zinc-400 focus:border-black dark:border-zinc-700 dark:placeholder:text-zinc-600 dark:focus:border-white"
       />
       <p
         aria-live="polite"
