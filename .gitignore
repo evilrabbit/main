@@ -25,3 +25,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# pnpm is the package manager — keep npm/yarn lockfiles out
+package-lock.json
+yarn.lock
