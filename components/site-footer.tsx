@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { ThemeSwitcher } from "@/components/theme-switcher"
 
 export function SiteFooter({ className }: { className?: string }) {
   const currentYear = new Date().getFullYear()
@@ -11,7 +12,7 @@ export function SiteFooter({ className }: { className?: string }) {
       )}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <span className="inline-block h-4 w-4" aria-hidden="true" />
+        <ThemeSwitcher />
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
           © {currentYear}
         </p>

@@ -32,7 +32,7 @@ export default function LifelinePage() {
     <div
       className={cn(
         GeistSans.className,
-        "dark flex h-dvh flex-col overflow-hidden bg-black text-white antialiased",
+        "flex h-dvh flex-col overflow-hidden bg-white text-black antialiased dark:bg-black dark:text-white",
       )}
     >
       <SiteNav />

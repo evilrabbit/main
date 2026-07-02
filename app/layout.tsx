@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -42,9 +43,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
