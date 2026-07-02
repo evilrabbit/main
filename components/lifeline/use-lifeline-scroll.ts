@@ -8,7 +8,7 @@ import {
 import { clamp } from "./lifeline-utils"
 
 const NAV_HEIGHT = 64
-const FOOTER_HEIGHT = 96
+const FOOTER_HEIGHT = 64
 const FADE_ZONE = 200
 const FADE_ZONE_COARSE = 72
 const LEFT_EXIT_FADE_ZONE = 400
