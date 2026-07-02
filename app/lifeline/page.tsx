@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { Lifeline } from "@/components/lifeline"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
+import { ThemeColor } from "@/components/theme-color"
 import { lifelineMarkers } from "@/lib/lifeline"
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function LifelinePage() {
         "flex h-dvh flex-col overflow-hidden bg-white text-black antialiased dark:bg-black dark:text-white",
       )}
     >
+      <ThemeColor />
       <SiteNav />
       <main className="flex-1 min-h-0 overflow-y-auto pt-16 md:overflow-hidden">
         <Lifeline markers={lifelineMarkers} className="h-full" />
