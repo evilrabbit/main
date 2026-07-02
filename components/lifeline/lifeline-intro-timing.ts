@@ -1,3 +1,5 @@
+import { clamp } from "./lifeline-utils"
+
 /** Tweak these */
 export const LIFELINE_SLOW_YEARS = 5
 export const LIFELINE_SLOW_TIME_RATIO = 0.38
@@ -5,10 +7,6 @@ export const LIFELINE_SLOW_MARKER_FADE_MS = 720
 export const LIFELINE_FAST_MARKER_FADE_MS = 280
 /** Set > 0 to override auto-calibrated ease power */
 export const LIFELINE_EASE_POWER = 0
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value))
-}
 
 function smoothstep(value: number) {
   const t = clamp(value, 0, 1)

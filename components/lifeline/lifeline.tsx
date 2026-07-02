@@ -11,13 +11,15 @@ export function Lifeline(props: LifelineProps) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   useLayoutEffect(() => {
-    const update = () => {
-      setIsMobile(window.innerWidth < LIFELINE_MOBILE_BREAKPOINT)
-    }
+    // Matches Tailwind's md: breakpoint so JS and CSS can never disagree.
+    const query = window.matchMedia(
+      `(min-width: ${LIFELINE_MOBILE_BREAKPOINT}px)`,
+    )
+    const update = () => setIsMobile(!query.matches)
 
     update()
-    window.addEventListener("resize", update)
-    return () => window.removeEventListener("resize", update)
+    query.addEventListener("change", update)
+    return () => query.removeEventListener("change", update)
   }, [])
 
   if (isMobile === null) {

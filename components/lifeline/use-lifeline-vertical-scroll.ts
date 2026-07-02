@@ -1,10 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value))
-}
+import { clamp } from "./lifeline-utils"
 
 function getScrollParent(element: HTMLElement | null): HTMLElement | null {
   let node = element?.parentElement ?? null
@@ -100,7 +97,6 @@ export function useLifelineVerticalScroll(
 
   useLayoutEffect(() => {
     const max = measureLayout()
-    if (max < 0) return
 
     const scrollParent = scrollParentRef.current
     if (!scrollParent) return
@@ -110,7 +106,7 @@ export function useLifelineVerticalScroll(
       initialized.current = true
     }
 
-    setIsLayoutReady(max >= 0 && entryRefs.current.every((entry) => entry))
+    setIsLayoutReady(entryRefs.current.every((entry) => Boolean(entry)))
     // Sync initial position once before first paint; resize uses measure().
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -195,21 +191,22 @@ export function useLifelineVerticalScroll(
     let resizeObserver: ResizeObserver | null = null
 
     const measure = () => {
-      const max = measureLayout()
-      if (max < 0) return
+      measureLayout()
 
       const scrollParent = scrollParentRef.current
       if (!scrollParent) return
 
       if (!(introAnimatingRef.current && introStartedRef.current)) {
-        const currentMax = maxScrollRef.current
-        scrollParent.scrollTop = clamp(scrollParent.scrollTop, 0, currentMax)
+        scrollParent.scrollTop = clamp(
+          scrollParent.scrollTop,
+          0,
+          maxScrollRef.current,
+        )
       }
 
       setIsLayoutReady(
-        maxScrollRef.current >= 0 &&
-          entryRefs.current.length === markerCount &&
-          entryRefs.current.every((entry) => entry),
+        entryRefs.current.length === markerCount &&
+          entryRefs.current.every((entry) => Boolean(entry)),
       )
     }
 

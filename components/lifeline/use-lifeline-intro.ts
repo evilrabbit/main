@@ -13,7 +13,12 @@ export const LIFELINE_LABELS_MS = 600
 export const LIFELINE_RAIL_MS = 3200
 
 export function useLifelineIntro(markerWidths: number[]) {
-  const shouldPlay = true
+  // Skip straight to the settled end state for users who prefer reduced motion.
+  const [shouldPlay] = useState(
+    () =>
+      typeof window === "undefined" ||
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  )
   const [isPlaying, setIsPlaying] = useState(true)
   const [isComplete, setIsComplete] = useState(false)
   const introTimeoutRef = useRef(0)

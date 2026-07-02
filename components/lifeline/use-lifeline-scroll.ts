@@ -5,6 +5,7 @@ import {
   LIFELINE_STICKY_LEFT,
   LIFELINE_STICKY_SHIELD_WIDTH,
 } from "./lifeline-labels"
+import { clamp } from "./lifeline-utils"
 
 const NAV_HEIGHT = 64
 const FOOTER_HEIGHT = 96
@@ -22,10 +23,6 @@ const NAV_HORIZONTAL_PADDING = 24
 const MOMENTUM_FRICTION = 0.94
 const MOMENTUM_MIN_VELOCITY = 0.025
 const MOMENTUM_MIN_START = 0.08
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value))
-}
 
 function normalizeWheelDelta(event: WheelEvent) {
   let delta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
@@ -164,7 +161,7 @@ export function useLifelineScroll(
     )
   }, [])
 
-  const updateFades = useCallback((_translate: number) => {
+  const updateFades = useCallback(() => {
     if (settlingRef.current) return
 
     const width = window.innerWidth
@@ -218,7 +215,7 @@ export function useLifelineScroll(
       }
 
       applyLabelSticky(next)
-      updateFades(next)
+      updateFades()
     },
     [applyLabelSticky, updateFades],
   )
@@ -355,7 +352,7 @@ export function useLifelineScroll(
     markerRefs.current.forEach((marker) => {
       if (marker) marker.style.opacity = ""
     })
-    updateFades(translatePx.current)
+    updateFades()
     onIntroSettleCompleteRef.current?.()
   }, [
     options.introAnimating,
