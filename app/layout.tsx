@@ -1,17 +1,13 @@
 import type React from "react"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
-
-export const viewport: Viewport = {
-  themeColor: "#000000",
-}
 
 export const metadata: Metadata = {
   title: "Evil Rabbit",
@@ -51,8 +47,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem
+          storageKey="er-theme"
         >
           <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </ThemeProvider>

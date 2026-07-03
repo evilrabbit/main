@@ -164,9 +164,13 @@ html.lifeline-scroll::-webkit-scrollbar {
     cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* iOS Safari tints its top chrome from the html background — keep it pure. */
+/* iOS Safari tints its top chrome from the html background — keep it pure.
+   The transition matters: Safari 26+ ignores theme-color and samples the
+   page instead, re-sampling animated background changes but not instant
+   ones. */
 html {
   background-color: #ffffff;
+  transition: background-color 0.15s ease;
 }
 
 html.dark {
