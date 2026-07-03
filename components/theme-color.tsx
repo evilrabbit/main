@@ -14,15 +14,16 @@ export function ThemeColor() {
   useEffect(() => {
     const color = resolvedTheme === "light" ? "#ffffff" : "#000000"
 
-    let meta = document.querySelector<HTMLMetaElement>(
-      'meta[name="theme-color"]',
-    )
-    if (!meta) {
-      meta = document.createElement("meta")
-      meta.name = "theme-color"
-      document.head.appendChild(meta)
-    }
+    // iOS Safari ignores content changes on an existing theme-color meta;
+    // it only re-reads the value when a fresh node is inserted.
+    document
+      .querySelectorAll('meta[name="theme-color"]')
+      .forEach((node) => node.remove())
+
+    const meta = document.createElement("meta")
+    meta.name = "theme-color"
     meta.content = color
+    document.head.appendChild(meta)
   }, [resolvedTheme])
 
   return null
