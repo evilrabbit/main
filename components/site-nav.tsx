@@ -4,7 +4,7 @@ import { XLogo } from "./x-logo"
 
 export function SiteNav() {
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-black/80">
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/80 backdrop-blur-xl transition-colors duration-150 dark:border-white/10 dark:bg-black/80">
       <div
         data-site-nav-inner
         className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6"
