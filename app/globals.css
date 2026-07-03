@@ -49,7 +49,7 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -164,15 +164,11 @@ html.lifeline-scroll::-webkit-scrollbar {
     cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* iOS Safari tints its top chrome from the html background — keep it pure.
-   The transition matters: Safari 26+ ignores theme-color and samples the
-   page instead, re-sampling animated background changes but not instant
-   ones. */
+/* The html canvas always matches the app background token and follows
+   the theme class. The transition matters: Safari 26+ ignores
+   theme-color and samples the page instead, re-reading animated
+   background changes but not instant ones. */
 html {
-  background-color: #ffffff;
+  background-color: hsl(var(--background));
   transition: background-color 0.15s ease;
-}
-
-html.dark {
-  background-color: #000000;
 }
