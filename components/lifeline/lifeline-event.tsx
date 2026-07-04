@@ -1,5 +1,6 @@
 import type {
   LifelineEvent,
+  LifelineEventEffect,
   LifelineEventImage,
   LifelineEventSegment,
 } from "./types"
@@ -19,6 +20,16 @@ export function getLifelineEventImage(
 ): LifelineEventImage | undefined {
   if (typeof event === "object" && !Array.isArray(event) && "image" in event) {
     return event.image
+  }
+
+  return undefined
+}
+
+export function getLifelineEventEffect(
+  event: LifelineEvent,
+): LifelineEventEffect | undefined {
+  if (typeof event === "object" && !Array.isArray(event) && "effect" in event) {
+    return event.effect
   }
 
   return undefined

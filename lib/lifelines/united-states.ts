@@ -2436,7 +2436,10 @@ const milestones: LifelineMilestones = {
   2026: {
     id: "semiquincentennial",
     events: [
-      "Turned 250.",
+      {
+        text: "Turned 250.",
+        effect: "fireworks",
+      },
       {
         text: "Hosted the FIFA World Cup with Canada and Mexico.",
         image: {

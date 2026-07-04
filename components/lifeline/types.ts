@@ -27,16 +27,22 @@ export interface LifelineEventImage {
   alt: string
 }
 
-/** Object form lets an event carry a cursor-following hover image. */
-export interface LifelineEventWithImage {
+export type LifelineEventEffect = "fireworks"
+
+/**
+ * Object form lets an event carry a cursor-following hover image
+ * and/or a click-triggered easter egg effect.
+ */
+export interface LifelineEventObject {
   text: string | LifelineEventSegment[]
-  image: LifelineEventImage
+  image?: LifelineEventImage
+  effect?: LifelineEventEffect
 }
 
 export type LifelineEvent =
   | string
   | LifelineEventSegment[]
-  | LifelineEventWithImage
+  | LifelineEventObject
 
 export interface LifelineMarker {
   id: string

@@ -3,10 +3,12 @@ import { Image as ImageIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
 import {
+  getLifelineEventEffect,
   getLifelineEventImage,
   getLifelineEventKey,
   LifelineEventText,
 } from "./lifeline-event"
+import { useLifelineFireworks } from "./lifeline-fireworks"
 import { useLifelineHoverImage } from "./lifeline-hover-image"
 import { aggregateLifelinePeople, LifelinePeople } from "./lifeline-people"
 import type { LifelineMarker } from "./types"
@@ -37,6 +39,7 @@ export const LifelineMarkerColumn = forwardRef<
   const age = marker.age ?? marker.year - birthYear
   const people = aggregateLifelinePeople(marker)
   const hoverImage = useLifelineHoverImage()
+  const fireworks = useLifelineFireworks()
 
   return (
     <div
@@ -88,11 +91,15 @@ export const LifelineMarkerColumn = forwardRef<
               <div className="min-h-[3.25rem] space-y-4">
                 {marker.events.map((event, index) => {
                   const image = getLifelineEventImage(event)
+                  const effect = getLifelineEventEffect(event)
 
                   return (
                     <p
                       key={getLifelineEventKey(event, index)}
-                      className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
+                      className={cn(
+                        "max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]",
+                        effect && "cursor-pointer",
+                      )}
                       onMouseEnter={
                         image && hoverImage
                           ? () => hoverImage.show(image)
@@ -100,6 +107,11 @@ export const LifelineMarkerColumn = forwardRef<
                       }
                       onMouseLeave={
                         image && hoverImage ? hoverImage.hide : undefined
+                      }
+                      onClick={
+                        effect === "fireworks" && fireworks
+                          ? fireworks.launch
+                          : undefined
                       }
                     >
                       <LifelineEventText event={event} />

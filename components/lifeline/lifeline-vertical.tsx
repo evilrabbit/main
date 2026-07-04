@@ -3,7 +3,12 @@
 import { forwardRef, useMemo, type CSSProperties } from "react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
-import { getLifelineEventKey, LifelineEventText } from "./lifeline-event"
+import {
+  getLifelineEventEffect,
+  getLifelineEventKey,
+  LifelineEventText,
+} from "./lifeline-event"
+import { useLifelineFireworks } from "./lifeline-fireworks"
 import { LifelineLegend } from "./lifeline-legend"
 import { aggregateLifelinePeople, LifelinePeople } from "./lifeline-people"
 import type { LifelineMarker, LifelineProps } from "./types"
@@ -45,6 +50,7 @@ const LifelineVerticalEntry = forwardRef<
   const age = marker.age ?? marker.year - birthYear
   const people = aggregateLifelinePeople(marker)
   const hasContent = hasMarkerContent(marker)
+  const fireworks = useLifelineFireworks()
 
   return (
     <li
@@ -97,14 +103,23 @@ const LifelineVerticalEntry = forwardRef<
 
               {marker.events.length > 0 && (
                 <div className="space-y-4">
-                  {marker.events.map((event, index) => (
-                    <p
-                      key={getLifelineEventKey(event, index)}
-                      className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
-                    >
-                      <LifelineEventText event={event} />
-                    </p>
-                  ))}
+                  {marker.events.map((event, index) => {
+                    const effect = getLifelineEventEffect(event)
+
+                    return (
+                      <p
+                        key={getLifelineEventKey(event, index)}
+                        className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
+                        onClick={
+                          effect === "fireworks" && fireworks
+                            ? fireworks.launch
+                            : undefined
+                        }
+                      >
+                        <LifelineEventText event={event} />
+                      </p>
+                    )
+                  })}
                 </div>
               )}
 

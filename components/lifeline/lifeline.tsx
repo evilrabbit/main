@@ -3,6 +3,7 @@
 import { useLayoutEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { LifelineDesktop } from "./lifeline-desktop"
+import { LifelineFireworksProvider } from "./lifeline-fireworks"
 import { LifelineVertical } from "./lifeline-vertical"
 import { LIFELINE_MOBILE_BREAKPOINT } from "./lifeline-layout"
 import type { LifelineProps } from "./types"
@@ -28,16 +29,20 @@ export function Lifeline(props: LifelineProps) {
 
   if (isMobile) {
     return (
-      <div className="pt-5">
-        <LifelineVertical {...props} />
-      </div>
+      <LifelineFireworksProvider>
+        <div className="pt-5">
+          <LifelineVertical {...props} />
+        </div>
+      </LifelineFireworksProvider>
     )
   }
 
   return (
-    <LifelineDesktop
-      {...props}
-      className={cn("pt-5", props.className)}
-    />
+    <LifelineFireworksProvider>
+      <LifelineDesktop
+        {...props}
+        className={cn("pt-5", props.className)}
+      />
+    </LifelineFireworksProvider>
   )
 }
