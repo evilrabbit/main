@@ -18,40 +18,90 @@ const milestones: LifelineMilestones = {
     id: "saratoga",
     events: [
       "Congress adopted the Stars and Stripes.",
-      "Victory at Saratoga turned the war.",
+      {
+        text: "Victory at Saratoga turned the war.",
+        image: {
+          src: "/images/moments/us/saratoga.jpg",
+          alt: "The Surrender of General Burgoyne, by John Trumbull",
+        },
+      },
       "Winter at Valley Forge.",
     ],
   },
   1778: {
     id: "french-alliance",
-    events: ["France joined the war as an ally."],
+    events: [
+      {
+        text: "France joined the war as an ally.",
+        image: {
+          src: "/images/moments/us/french-alliance.jpg",
+          alt: "The alliance with France, 1778",
+        },
+      },
+    ],
   },
   1781: {
     id: "yorktown",
     events: [
-      "Cornwallis surrendered at Yorktown.",
+      {
+        text: "Cornwallis surrendered at Yorktown.",
+        image: {
+          src: "/images/moments/us/yorktown.jpg",
+          alt: "The Surrender of Lord Cornwallis, by John Trumbull",
+        },
+      },
       "The Articles of Confederation took effect.",
     ],
   },
   1783: {
     id: "treaty-of-paris",
-    events: ["The Treaty of Paris ended the war. Britain recognized independence."],
+    events: [
+      {
+        text: "The Treaty of Paris ended the war. Britain recognized independence.",
+        image: {
+          src: "/images/moments/us/treaty-paris.jpg",
+          alt: "American Commissioners of the Treaty of Paris, by Benjamin West",
+        },
+      },
+    ],
   },
   1786: {
     id: "shays",
-    events: ["Shays' Rebellion exposed the weakness of the Confederation."],
+    events: [
+      {
+        text: "Shays' Rebellion exposed the weakness of the Confederation.",
+        image: {
+          src: "/images/moments/us/shays.jpg",
+          alt: "Shays' Rebellion",
+        },
+      },
+    ],
   },
   1787: {
     id: "constitution",
     events: [
-      "The Constitution was written in Philadelphia.",
+      {
+        text: "The Constitution was written in Philadelphia.",
+        image: {
+          src: "/images/moments/us/constitution.jpg",
+          alt: "Scene at the Signing of the Constitution, by Howard Chandler Christy",
+        },
+      },
       "The Northwest Ordinance charted the frontier.",
       "The Federalist Papers began appearing in New York.",
     ],
   },
   1788: {
     id: "ratified",
-    events: ["The Constitution was ratified."],
+    events: [
+      {
+        text: "The Constitution was ratified.",
+        image: {
+          src: "/images/moments/us/federalist.jpg",
+          alt: "The Federalist, 1788",
+        },
+      },
+    ],
   },
   1789: {
     mentors: [
@@ -62,7 +112,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "washington",
     events: [
-      "George Washington became the first President.",
+      {
+        text: "George Washington became the first President.",
+        image: {
+          src: "/images/moments/us/washington-inauguration.jpg",
+          alt: "Washington's inauguration at Federal Hall",
+        },
+      },
       "The Supreme Court was established.",
     ],
   },
@@ -73,24 +129,52 @@ const milestones: LifelineMilestones = {
   1791: {
     id: "bill-of-rights",
     events: [
-      "The Bill of Rights was ratified.",
+      {
+        text: "The Bill of Rights was ratified.",
+        image: {
+          src: "/images/moments/us/bill-of-rights.jpg",
+          alt: "The Bill of Rights",
+        },
+      },
       "Hamilton's Bank of the United States opened.",
     ],
   },
   1792: {
     id: "buttonwood",
     events: [
-      "Traders signed the Buttonwood Agreement — the New York Stock Exchange.",
+      {
+        text: "Traders signed the Buttonwood Agreement — the New York Stock Exchange.",
+        image: {
+          src: "/images/moments/us/tontine.jpg",
+          alt: "The Tontine Coffee House, Wall Street",
+        },
+      },
       "The White House cornerstone was laid.",
     ],
   },
   1793: {
     id: "cotton-gin",
-    events: ["Eli Whitney invented the cotton gin."],
+    events: [
+      {
+        text: "Eli Whitney invented the cotton gin.",
+        image: {
+          src: "/images/moments/us/cotton-gin.jpg",
+          alt: "Whitney's cotton gin patent drawing",
+        },
+      },
+    ],
   },
   1794: {
     id: "whiskey",
-    events: ["The Whiskey Rebellion tested federal power."],
+    events: [
+      {
+        text: "The Whiskey Rebellion tested federal power.",
+        image: {
+          src: "/images/moments/us/whiskey-rebellion.jpg",
+          alt: "The Whiskey Rebellion",
+        },
+      },
+    ],
   },
   1796: {
     id: "farewell",
@@ -108,7 +192,15 @@ const milestones: LifelineMilestones = {
   },
   1800: {
     id: "dc",
-    events: ["The capital moved to Washington, D.C."],
+    events: [
+      {
+        text: "The capital moved to Washington, D.C.",
+        image: {
+          src: "/images/moments/us/washington-dc-1800.jpg",
+          alt: "The unfinished Capitol, around 1800",
+        },
+      },
+    ],
   },
   1801: {
     mentors: [
@@ -123,14 +215,26 @@ const milestones: LifelineMilestones = {
   1803: {
     id: "louisiana",
     events: [
-      "The Louisiana Purchase doubled the country overnight.",
+      {
+        text: "The Louisiana Purchase doubled the country overnight.",
+        image: {
+          src: "/images/moments/us/louisiana-treaty.jpg",
+          alt: "The Louisiana Purchase Treaty",
+        },
+      },
       "Marbury v. Madison established judicial review.",
     ],
   },
   1804: {
     id: "lewis-clark",
     events: [
-      "Lewis and Clark set out for the Pacific.",
+      {
+        text: "Lewis and Clark set out for the Pacific.",
+        image: {
+          src: "/images/moments/us/lewis-clark.jpg",
+          alt: "Lewis and Clark on the Lower Columbia, by C. M. Russell",
+        },
+      },
       "Aaron Burr killed Alexander Hamilton in a duel.",
     ],
   },
@@ -140,11 +244,27 @@ const milestones: LifelineMilestones = {
   },
   1807: {
     id: "steamboat",
-    events: ["Fulton's steamboat ran the Hudson."],
+    events: [
+      {
+        text: "Fulton's steamboat ran the Hudson.",
+        image: {
+          src: "/images/moments/us/clermont.jpg",
+          alt: "Fulton's Clermont",
+        },
+      },
+    ],
   },
   1808: {
     id: "slave-trade",
-    events: ["The importation of enslaved people was banned."],
+    events: [
+      {
+        text: "The importation of enslaved people was banned.",
+        image: {
+          src: "/images/moments/us/brookes.jpg",
+          alt: "The Brookes slave ship diagram",
+        },
+      },
+    ],
   },
   1809: {
     id: "madison",
@@ -158,7 +278,15 @@ const milestones: LifelineMilestones = {
   },
   1812: {
     id: "war-of-1812",
-    events: ["Went to war with Britain again."],
+    events: [
+      {
+        text: "Went to war with Britain again.",
+        image: {
+          src: "/images/moments/us/constitution-guerriere.jpg",
+          alt: "USS Constitution defeats HMS Guerriere",
+        },
+      },
+    ],
   },
   1814: {
     id: "fort-mchenry",
@@ -169,7 +297,15 @@ const milestones: LifelineMilestones = {
   },
   1815: {
     id: "new-orleans",
-    events: ["Jackson won the Battle of New Orleans."],
+    events: [
+      {
+        text: "Jackson won the Battle of New Orleans.",
+        image: {
+          src: "/images/moments/us/new-orleans-1815.jpg",
+          alt: "The Battle of New Orleans",
+        },
+      },
+    ],
   },
   1817: {
     mentors: [
@@ -187,11 +323,27 @@ const milestones: LifelineMilestones = {
   },
   1820: {
     id: "missouri",
-    events: ["The Missouri Compromise drew a line through the country."],
+    events: [
+      {
+        text: "The Missouri Compromise drew a line through the country.",
+        image: {
+          src: "/images/moments/us/missouri-compromise.jpg",
+          alt: "The Missouri Compromise line",
+        },
+      },
+    ],
   },
   1823: {
     id: "monroe",
-    events: ["The Monroe Doctrine warned Europe off the hemisphere."],
+    events: [
+      {
+        text: "The Monroe Doctrine warned Europe off the hemisphere.",
+        image: {
+          src: "/images/moments/us/monroe-doctrine.jpg",
+          alt: "Monroe and his cabinet",
+        },
+      },
+    ],
   },
   1825: {
     mentors: [
@@ -201,7 +353,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "erie-opened",
-    events: ["The Erie Canal opened the West."],
+    events: [
+      {
+        text: "The Erie Canal opened the West.",
+        image: {
+          src: "/images/moments/us/erie-canal.jpg",
+          alt: "The Erie Canal at Lockport",
+        },
+      },
+    ],
   },
   1828: {
     mentors: [
@@ -213,7 +373,13 @@ const milestones: LifelineMilestones = {
     id: "jackson",
     events: [
       "Andrew Jackson was elected.",
-      "Work began on the Baltimore & Ohio, the first American railroad.",
+      {
+        text: "Work began on the Baltimore & Ohio, the first American railroad.",
+        image: {
+          src: "/images/moments/us/tom-thumb.jpg",
+          alt: "The B&O's Tom Thumb",
+        },
+      },
     ],
   },
   1830: {
@@ -224,13 +390,25 @@ const milestones: LifelineMilestones = {
     id: "1831",
     events: [
       "Nat Turner led an uprising of the enslaved.",
-      "Garrison founded The Liberator.",
+      {
+        text: "Garrison founded The Liberator.",
+        image: {
+          src: "/images/moments/us/liberator.jpg",
+          alt: "The Liberator",
+        },
+      },
     ],
   },
   1836: {
     id: "alamo",
     events: [
-      "The Alamo fell.",
+      {
+        text: "The Alamo fell.",
+        image: {
+          src: "/images/moments/us/alamo.jpg",
+          alt: "The Fall of the Alamo, by Robert Onderdonk",
+        },
+      },
       "Texas won independence at San Jacinto.",
     ],
   },
@@ -242,11 +420,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "panic-1837",
-    events: ["The Panic of 1837 brought depression."],
+    events: [
+      {
+        text: "The Panic of 1837 brought depression.",
+        image: {
+          src: "/images/moments/us/panic-1837.jpg",
+          alt: "A Panic of 1837 caricature",
+        },
+      },
+    ],
   },
   1838: {
     id: "trail-of-tears",
-    events: ["The Trail of Tears — the forced removal of the Cherokee Nation."],
+    events: [
+      {
+        text: "The Trail of Tears — the forced removal of the Cherokee Nation.",
+        image: {
+          src: "/images/moments/us/trail-of-tears-map.jpg",
+          alt: "The routes of the Trail of Tears",
+        },
+      },
+    ],
   },
   1841: {
     mentors: [
@@ -260,11 +454,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "oregon-trail",
-    events: ["Wagon trains rolled west on the Oregon Trail."],
+    events: [
+      {
+        text: "Wagon trains rolled west on the Oregon Trail.",
+        image: {
+          src: "/images/moments/us/oregon-trail.jpg",
+          alt: "The Oregon Trail, by Albert Bierstadt",
+        },
+      },
+    ],
   },
   1844: {
     id: "telegraph",
-    events: ["Morse tapped “What hath God wrought” from Washington to Baltimore."],
+    events: [
+      {
+        text: "Morse tapped “What hath God wrought” from Washington to Baltimore.",
+        image: {
+          src: "/images/moments/us/telegraph-1844.jpg",
+          alt: "Morse's first message",
+        },
+      },
+    ],
   },
   1845: {
     mentors: [
@@ -282,7 +492,13 @@ const milestones: LifelineMilestones = {
   1846: {
     id: "mexican-war",
     events: [
-      "War with Mexico began.",
+      {
+        text: "War with Mexico began.",
+        image: {
+          src: "/images/moments/us/mexican-war.jpg",
+          alt: "The Battle of Chapultepec",
+        },
+      },
       "The Oregon Treaty set the border at the 49th parallel.",
       "The Smithsonian was founded.",
     ],
@@ -292,7 +508,13 @@ const milestones: LifelineMilestones = {
     events: [
       "The Treaty of Guadalupe Hidalgo delivered the Southwest.",
       "Gold was discovered at Sutter's Mill.",
-      "Seneca Falls demanded the vote for women.",
+      {
+        text: "Seneca Falls demanded the vote for women.",
+        image: {
+          src: "/images/moments/us/seneca-falls.jpg",
+          alt: "Elizabeth Cady Stanton",
+        },
+      },
     ],
   },
   1849: {
@@ -314,17 +536,39 @@ const milestones: LifelineMilestones = {
     ],
     id: "1850",
     events: [
-      "The Compromise of 1850 delayed the reckoning.",
+      {
+        text: "The Compromise of 1850 delayed the reckoning.",
+        image: {
+          src: "/images/moments/us/clay-1850.jpg",
+          alt: "Henry Clay introduces the Compromise of 1850",
+        },
+      },
       "California became a state.",
     ],
   },
   1851: {
     id: "moby-dick",
-    events: ["Melville published Moby-Dick."],
+    events: [
+      {
+        text: "Melville published Moby-Dick.",
+        image: {
+          src: "/images/moments/us/moby-dick.jpg",
+          alt: "Moby-Dick, first edition",
+        },
+      },
+    ],
   },
   1852: {
     id: "uncle-tom",
-    events: ["Uncle Tom's Cabin set the country arguing."],
+    events: [
+      {
+        text: "Uncle Tom's Cabin set the country arguing.",
+        image: {
+          src: "/images/moments/us/uncle-tom.jpg",
+          alt: "Uncle Tom's Cabin, first edition",
+        },
+      },
+    ],
   },
   1853: {
     id: "pierce",
@@ -339,7 +583,13 @@ const milestones: LifelineMilestones = {
   1854: {
     id: "kansas-nebraska",
     events: [
-      "The Kansas-Nebraska Act reopened the wound.",
+      {
+        text: "The Kansas-Nebraska Act reopened the wound.",
+        image: {
+          src: "/images/moments/us/kansas-nebraska.jpg",
+          alt: "Reynolds's political map, 1856",
+        },
+      },
       "The Republican Party was founded.",
     ],
   },
@@ -351,16 +601,38 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "dred-scott",
-    events: ["Dred Scott — the Supreme Court's worst decision."],
+    events: [
+      {
+        text: "Dred Scott — the Supreme Court's worst decision.",
+        image: {
+          src: "/images/moments/us/dred-scott.jpg",
+          alt: "Dred Scott",
+        },
+      },
+    ],
   },
   1858: {
     id: "lincoln-douglas",
-    events: ["Lincoln debated Douglas across Illinois."],
+    events: [
+      {
+        text: "Lincoln debated Douglas across Illinois.",
+        image: {
+          src: "/images/moments/us/lincoln-douglas.jpg",
+          alt: "The Lincoln–Douglas debates",
+        },
+      },
+    ],
   },
   1859: {
     id: "1859",
     events: [
-      "John Brown raided Harpers Ferry.",
+      {
+        text: "John Brown raided Harpers Ferry.",
+        image: {
+          src: "/images/moments/us/john-brown.jpg",
+          alt: "John Brown",
+        },
+      },
       "The first oil well was drilled in Titusville, Pennsylvania.",
     ],
   },
@@ -373,21 +645,39 @@ const milestones: LifelineMilestones = {
     ],
     id: "lincoln-elected",
     events: [
-      "Abraham Lincoln was elected. South Carolina seceded.",
+      {
+        text: "Abraham Lincoln was elected. South Carolina seceded.",
+        image: {
+          src: "/images/people/abraham-lincoln.jpg",
+          alt: "Abraham Lincoln",
+        },
+      },
       "The Pony Express began its run.",
     ],
   },
   1861: {
     id: "civil-war",
     events: [
-      "Fort Sumter. The Civil War began.",
+      {
+        text: "Fort Sumter. The Civil War began.",
+        image: {
+          src: "/images/moments/us/fort-sumter.jpg",
+          alt: "The bombardment of Fort Sumter",
+        },
+      },
       "The transcontinental telegraph killed the Pony Express.",
     ],
   },
   1862: {
     id: "1862",
     events: [
-      "Antietam — the bloodiest day in American history.",
+      {
+        text: "Antietam — the bloodiest day in American history.",
+        image: {
+          src: "/images/moments/us/antietam.jpg",
+          alt: "Antietam, photographed by Alexander Gardner",
+        },
+      },
       "The Homestead Act gave the frontier away.",
     ],
   },
@@ -406,7 +696,15 @@ const milestones: LifelineMilestones = {
   },
   1864: {
     id: "sherman",
-    events: ["Sherman marched to the sea."],
+    events: [
+      {
+        text: "Sherman marched to the sea.",
+        image: {
+          src: "/images/moments/us/sherman-march.jpg",
+          alt: "Sherman's men destroying a railroad",
+        },
+      },
+    ],
   },
   1865: {
     mentors: [
@@ -417,14 +715,28 @@ const milestones: LifelineMilestones = {
     ],
     id: "civil-war-ends",
     events: [
-      "Lee surrendered at Appomattox.",
+      {
+        text: "Lee surrendered at Appomattox.",
+        image: {
+          src: "/images/moments/us/appomattox.jpg",
+          alt: "The surrender at Appomattox Court House",
+        },
+      },
       "Lincoln was assassinated at Ford's Theatre.",
       "The 13th Amendment abolished slavery.",
     ],
   },
   1866: {
     id: "atlantic-cable",
-    events: ["The transatlantic cable connected America to Europe."],
+    events: [
+      {
+        text: "The transatlantic cable connected America to Europe.",
+        image: {
+          src: "/images/moments/us/atlantic-cable.jpg",
+          alt: "The Great Eastern laying the Atlantic cable",
+        },
+      },
+    ],
   },
   1867: {
     id: "alaska",
@@ -434,7 +746,13 @@ const milestones: LifelineMilestones = {
     id: "fourteenth",
     events: [
       "The 14th Amendment promised equal protection.",
-      "President Johnson was impeached and acquitted.",
+      {
+        text: "President Johnson was impeached and acquitted.",
+        image: {
+          src: "/images/moments/us/impeachment-1868.jpg",
+          alt: "A ticket to the impeachment trial",
+        },
+      },
     ],
   },
   1869: {
@@ -459,27 +777,63 @@ const milestones: LifelineMilestones = {
   1870: {
     id: "fifteenth",
     events: [
-      "The 15th Amendment barred racial tests at the ballot.",
+      {
+        text: "The 15th Amendment barred racial tests at the ballot.",
+        image: {
+          src: "/images/moments/us/first-vote.jpg",
+          alt: "The First Vote, Harper's Weekly",
+        },
+      },
       "Rockefeller founded Standard Oil.",
     ],
   },
   1871: {
     id: "chicago-fire",
-    events: ["The Great Chicago Fire."],
+    events: [
+      {
+        text: "The Great Chicago Fire.",
+        image: {
+          src: "/images/moments/us/chicago-fire.jpg",
+          alt: "Chicago in Flames, by Currier & Ives",
+        },
+      },
+    ],
   },
   1872: {
     id: "yellowstone",
-    events: ["Yellowstone became the world's first national park."],
+    events: [
+      {
+        text: "Yellowstone became the world's first national park.",
+        image: {
+          src: "/images/moments/us/yellowstone-moran.jpg",
+          alt: "The Grand Canyon of the Yellowstone, by Thomas Moran",
+        },
+      },
+    ],
   },
   1873: {
     id: "panic-1873",
-    events: ["The Panic of 1873."],
+    events: [
+      {
+        text: "The Panic of 1873.",
+        image: {
+          src: "/images/moments/us/panic-1873.jpg",
+          alt: "The Panic of 1873",
+        },
+      },
+    ],
   },
   1876: {
     id: "centennial",
     events: [
       "Turned 100.",
-      "Bell patented the telephone.",
+      {
+        text: "Bell patented the telephone.",
+        image: {
+          src: "/images/moments/us/bell-telephone.jpg",
+          alt: "Bell's telephone",
+        },
+      },
       "Custer fell at Little Bighorn.",
       "Baseball's National League was founded.",
     ],
@@ -494,12 +848,26 @@ const milestones: LifelineMilestones = {
     id: "1877",
     events: [
       "Reconstruction ended in a deal.",
-      "Edison invented the phonograph.",
+      {
+        text: "Edison invented the phonograph.",
+        image: {
+          src: "/images/moments/us/phonograph.jpg",
+          alt: "Edison and his phonograph",
+        },
+      },
     ],
   },
   1879: {
     id: "light-bulb",
-    events: ["Edison lit the first practical light bulb."],
+    events: [
+      {
+        text: "Edison lit the first practical light bulb.",
+        image: {
+          src: "/images/moments/us/edison-bulb.jpg",
+          alt: "Edison's carbon-filament lamp",
+        },
+      },
+    ],
   },
   1881: {
     mentors: [
@@ -514,7 +882,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1881",
     events: [
-      "President Garfield was assassinated.",
+      {
+        text: "President Garfield was assassinated.",
+        image: {
+          src: "/images/moments/us/garfield.jpg",
+          alt: "The assassination of President Garfield",
+        },
+      },
       "Clara Barton founded the Red Cross.",
       "Booker T. Washington opened Tuskegee.",
     ],
@@ -522,14 +896,26 @@ const milestones: LifelineMilestones = {
   1882: {
     id: "1882",
     events: [
-      "The Chinese Exclusion Act closed the door.",
+      {
+        text: "The Chinese Exclusion Act closed the door.",
+        image: {
+          src: "/images/moments/us/exclusion-cartoon.jpg",
+          alt: "A Chinese Exclusion Act cartoon",
+        },
+      },
       "Edison's Pearl Street station powered Manhattan.",
     ],
   },
   1883: {
     id: "1883",
     events: [
-      "The Brooklyn Bridge opened.",
+      {
+        text: "The Brooklyn Bridge opened.",
+        image: {
+          src: "/images/moments/us/brooklyn-bridge.jpg",
+          alt: "The opening of the Brooklyn Bridge",
+        },
+      },
       "The railroads invented standard time.",
     ],
   },
@@ -559,7 +945,15 @@ const milestones: LifelineMilestones = {
   },
   1888: {
     id: "kodak",
-    events: ["The Kodak camera: “You press the button, we do the rest.”"],
+    events: [
+      {
+        text: "The Kodak camera: “You press the button, we do the rest.”",
+        image: {
+          src: "/images/moments/us/kodak.jpg",
+          alt: "The original Kodak camera",
+        },
+      },
+    ],
   },
   1889: {
     mentors: [
@@ -570,7 +964,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1889",
     events: [
-      "The Oklahoma Land Rush.",
+      {
+        text: "The Oklahoma Land Rush.",
+        image: {
+          src: "/images/moments/us/land-rush.jpg",
+          alt: "The Oklahoma Land Rush",
+        },
+      },
       "The Johnstown Flood killed more than two thousand.",
     ],
   },
@@ -578,16 +978,38 @@ const milestones: LifelineMilestones = {
     id: "1890",
     events: [
       "Wounded Knee.",
-      "The Sherman Antitrust Act took aim at the trusts.",
+      {
+        text: "The Sherman Antitrust Act took aim at the trusts.",
+        image: {
+          src: "/images/moments/us/standard-oil.jpg",
+          alt: "The Standard Oil octopus, from Puck",
+        },
+      },
     ],
   },
   1891: {
     id: "basketball",
-    events: ["James Naismith nailed up two peach baskets — basketball."],
+    events: [
+      {
+        text: "James Naismith nailed up two peach baskets — basketball.",
+        image: {
+          src: "/images/moments/us/naismith.jpg",
+          alt: "James Naismith",
+        },
+      },
+    ],
   },
   1892: {
     id: "ellis-island",
-    events: ["Ellis Island opened its doors."],
+    events: [
+      {
+        text: "Ellis Island opened its doors.",
+        image: {
+          src: "/images/moments/us/ellis-island.jpg",
+          alt: "Arriving at Ellis Island",
+        },
+      },
+    ],
   },
   1893: {
     mentors: [
@@ -598,7 +1020,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1893",
     events: [
-      "The World's Columbian Exposition dazzled Chicago.",
+      {
+        text: "The World's Columbian Exposition dazzled Chicago.",
+        image: {
+          src: "/images/moments/us/columbian-expo.jpg",
+          alt: "The Court of Honor, World's Columbian Exposition",
+        },
+      },
       "The Panic of 1893.",
     ],
   },
@@ -619,7 +1047,13 @@ const milestones: LifelineMilestones = {
   1898: {
     id: "1898",
     events: [
-      "The Spanish-American War. “Remember the Maine.”",
+      {
+        text: "The Spanish-American War. “Remember the Maine.”",
+        image: {
+          src: "/images/moments/us/uss-maine.jpg",
+          alt: "The wreck of the USS Maine",
+        },
+      },
       "Hawaii was annexed.",
     ],
   },
@@ -632,7 +1066,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1901",
     events: [
-      "McKinley was assassinated. Theodore Roosevelt took over at 42.",
+      {
+        text: "McKinley was assassinated. Theodore Roosevelt took over at 42.",
+        image: {
+          src: "/images/people/theodore-roosevelt.jpg",
+          alt: "Theodore Roosevelt",
+        },
+      },
       "U.S. Steel became the first billion-dollar company.",
     ],
   },
@@ -652,7 +1092,15 @@ const milestones: LifelineMilestones = {
   },
   1904: {
     id: "subway",
-    events: ["The New York City subway opened."],
+    events: [
+      {
+        text: "The New York City subway opened.",
+        image: {
+          src: "/images/moments/us/subway-1904.jpg",
+          alt: "The City Hall subway station",
+        },
+      },
+    ],
   },
   1906: {
     id: "sf-earthquake",
@@ -686,12 +1134,26 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "naacp",
-    events: ["The NAACP was founded."],
+    events: [
+      {
+        text: "The NAACP was founded.",
+        image: {
+          src: "/images/moments/us/du-bois.jpg",
+          alt: "W. E. B. Du Bois",
+        },
+      },
+    ],
   },
   1911: {
     id: "1911",
     events: [
-      "The Triangle Shirtwaist fire killed 146 garment workers.",
+      {
+        text: "The Triangle Shirtwaist fire killed 146 garment workers.",
+        image: {
+          src: "/images/moments/us/triangle-fire.jpg",
+          alt: "The Triangle Shirtwaist fire",
+        },
+      },
       "Standard Oil was broken up.",
     ],
   },
@@ -699,7 +1161,13 @@ const milestones: LifelineMilestones = {
     id: "1912",
     events: [
       "Arizona completed the lower 48.",
-      "The Titanic sank en route to New York.",
+      {
+        text: "The Titanic sank en route to New York.",
+        image: {
+          src: "/images/moments/us/titanic.jpg",
+          alt: "RMS Titanic",
+        },
+      },
     ],
   },
   1913: {
@@ -713,28 +1181,62 @@ const milestones: LifelineMilestones = {
     events: [
       "The Federal Reserve was created.",
       "The income tax arrived with the 16th Amendment.",
-      "Ford's moving assembly line cut a car to 93 minutes.",
+      {
+        text: "Ford's moving assembly line cut a car to 93 minutes.",
+        image: {
+          src: "/images/moments/us/assembly-line.jpg",
+          alt: "The moving assembly line at Highland Park",
+        },
+      },
     ],
   },
   1914: {
     id: "panama",
-    events: ["The Panama Canal opened."],
+    events: [
+      {
+        text: "The Panama Canal opened.",
+        image: {
+          src: "/images/moments/us/panama-canal.jpg",
+          alt: "SS Ancon makes the first transit",
+        },
+      },
+    ],
   },
   1915: {
     id: "1915",
     events: [
-      "A German U-boat sank the Lusitania.",
+      {
+        text: "A German U-boat sank the Lusitania.",
+        image: {
+          src: "/images/moments/us/lusitania.jpg",
+          alt: "RMS Lusitania",
+        },
+      },
       "The first transcontinental phone call: New York to San Francisco.",
     ],
   },
   1917: {
     id: "wwi",
-    events: ["Entered World War I."],
+    events: [
+      {
+        text: "Entered World War I.",
+        image: {
+          src: "/images/moments/us/wwi-troops.jpg",
+          alt: "American troops in France",
+        },
+      },
+    ],
   },
   1918: {
     id: "1918",
     events: [
-      "The influenza pandemic killed hundreds of thousands at home.",
+      {
+        text: "The influenza pandemic killed hundreds of thousands at home.",
+        image: {
+          src: "/images/moments/us/flu-1918.jpg",
+          alt: "The emergency hospital at Camp Funston, Kansas",
+        },
+      },
       "Armistice. The war ended.",
     ],
   },
@@ -745,7 +1247,13 @@ const milestones: LifelineMilestones = {
   1920: {
     id: "1920",
     events: [
-      "Women won the vote with the 19th Amendment.",
+      {
+        text: "Women won the vote with the 19th Amendment.",
+        image: {
+          src: "/images/moments/us/suffrage-1920.jpg",
+          alt: "Celebrating the 19th Amendment",
+        },
+      },
       "KDKA in Pittsburgh made the first commercial radio broadcast.",
     ],
   },
@@ -771,26 +1279,54 @@ const milestones: LifelineMilestones = {
   },
   1924: {
     id: "citizenship",
-    events: ["Native Americans were granted citizenship."],
+    events: [
+      {
+        text: "Native Americans were granted citizenship.",
+        image: {
+          src: "/images/moments/us/coolidge-osage.jpg",
+          alt: "President Coolidge with Osage leaders",
+        },
+      },
+    ],
   },
   1925: {
     id: "1925",
     events: [
       "The Scopes trial put evolution in the dock.",
-      "Fitzgerald published The Great Gatsby.",
+      {
+        text: "Fitzgerald published The Great Gatsby.",
+        image: {
+          src: "/images/moments/us/gatsby.jpg",
+          alt: "The Great Gatsby, first edition",
+        },
+      },
     ],
   },
   1927: {
     id: "1927",
     events: [
-      "Lindbergh flew the Atlantic alone.",
+      {
+        text: "Lindbergh flew the Atlantic alone.",
+        image: {
+          src: "/images/moments/us/lindbergh.jpg",
+          alt: "Lindbergh and the Spirit of St. Louis",
+        },
+      },
       "The Jazz Singer — the movies learned to talk.",
       "Babe Ruth hit sixty home runs.",
     ],
   },
   1928: {
     id: "mickey",
-    events: ["Mickey Mouse debuted in Steamboat Willie."],
+    events: [
+      {
+        text: "Mickey Mouse debuted in Steamboat Willie.",
+        image: {
+          src: "/images/moments/us/steamboat-willie.jpg",
+          alt: "Steamboat Willie",
+        },
+      },
+    ],
   },
   1929: {
     mentors: [
@@ -813,7 +1349,13 @@ const milestones: LifelineMilestones = {
   1931: {
     id: "1931",
     events: [
-      "The Empire State Building rose in 410 days.",
+      {
+        text: "The Empire State Building rose in 410 days.",
+        image: {
+          src: "/images/moments/us/empire-state.jpg",
+          alt: "The Empire State Building",
+        },
+      },
       "The Star-Spangled Banner became the national anthem.",
     ],
   },
@@ -827,7 +1369,13 @@ const milestones: LifelineMilestones = {
     id: "1932",
     events: [
       "Franklin Roosevelt was elected in a landslide.",
-      "Amelia Earhart flew the Atlantic solo.",
+      {
+        text: "Amelia Earhart flew the Atlantic solo.",
+        image: {
+          src: "/images/moments/us/earhart.jpg",
+          alt: "Amelia Earhart",
+        },
+      },
     ],
   },
   1933: {
@@ -847,7 +1395,13 @@ const milestones: LifelineMilestones = {
   1936: {
     id: "1936",
     events: [
-      "Hoover Dam held back the Colorado.",
+      {
+        text: "Hoover Dam held back the Colorado.",
+        image: {
+          src: "/images/moments/us/hoover-dam.jpg",
+          alt: "Hoover Dam",
+        },
+      },
       "Jesse Owens won four golds in Berlin.",
     ],
   },
@@ -863,7 +1417,13 @@ const milestones: LifelineMilestones = {
     events: [
       "The minimum wage became law.",
       "Superman appeared in Action Comics #1.",
-      "Orson Welles panicked the nation with War of the Worlds.",
+      {
+        text: "Orson Welles panicked the nation with War of the Worlds.",
+        image: {
+          src: "/images/moments/us/welles.jpg",
+          alt: "Orson Welles",
+        },
+      },
     ],
   },
   1939: {
@@ -889,7 +1449,13 @@ const milestones: LifelineMilestones = {
   1942: {
     id: "1942",
     events: [
-      "Japanese Americans were interned by executive order.",
+      {
+        text: "Japanese Americans were interned by executive order.",
+        image: {
+          src: "/images/moments/us/internment.jpg",
+          alt: "Awaiting relocation, photographed by Dorothea Lange",
+        },
+      },
       "The Manhattan Project began.",
       "Midway turned the Pacific war.",
     ],
@@ -917,7 +1483,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "wwii-ends",
     events: [
-      "Trinity, Hiroshima, Nagasaki. The atomic age began.",
+      {
+        text: "Trinity, Hiroshima, Nagasaki. The atomic age began.",
+        image: {
+          src: "/images/moments/us/trinity.jpg",
+          alt: "The Trinity test, sixteen milliseconds in",
+        },
+      },
       "World War II ended.",
       "The United Nations was founded in San Francisco.",
     ],
@@ -926,7 +1498,13 @@ const milestones: LifelineMilestones = {
     id: "1947",
     events: [
       "The transistor was invented at Bell Labs.",
-      "Jackie Robinson broke the color line.",
+      {
+        text: "Jackie Robinson broke the color line.",
+        image: {
+          src: "/images/moments/us/jackie-robinson.jpg",
+          alt: "Jackie Robinson",
+        },
+      },
       "The Cold War began.",
     ],
   },
@@ -934,16 +1512,38 @@ const milestones: LifelineMilestones = {
     id: "1948",
     events: [
       "The Marshall Plan rebuilt Europe.",
-      "The Berlin Airlift began.",
+      {
+        text: "The Berlin Airlift began.",
+        image: {
+          src: "/images/moments/us/berlin-airlift.jpg",
+          alt: "A C-54 lands at Tempelhof",
+        },
+      },
     ],
   },
   1949: {
     id: "nato",
-    events: ["NATO was founded."],
+    events: [
+      {
+        text: "NATO was founded.",
+        image: {
+          src: "/images/moments/us/nato-signing.jpg",
+          alt: "Signing the North Atlantic Treaty",
+        },
+      },
+    ],
   },
   1950: {
     id: "korea",
-    events: ["The Korean War began."],
+    events: [
+      {
+        text: "The Korean War began.",
+        image: {
+          src: "/images/moments/us/korea-troops.jpg",
+          alt: "American troops in Korea",
+        },
+      },
+    ],
   },
   1951: {
     id: "tv",
@@ -951,7 +1551,15 @@ const milestones: LifelineMilestones = {
   },
   1952: {
     id: "h-bomb",
-    events: ["The first hydrogen bomb erased an island."],
+    events: [
+      {
+        text: "The first hydrogen bomb erased an island.",
+        image: {
+          src: "/images/moments/us/ivy-mike.jpg",
+          alt: "Ivy Mike",
+        },
+      },
+    ],
   },
   1953: {
     mentors: [
@@ -961,13 +1569,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "korea-armistice",
-    events: ["The Korean armistice was signed."],
+    events: [
+      {
+        text: "The Korean armistice was signed.",
+        image: {
+          src: "/images/moments/us/armistice-korea.jpg",
+          alt: "The armistice at Panmunjom",
+        },
+      },
+    ],
   },
   1954: {
     id: "brown",
     events: [
       "Brown v. Board of Education struck down school segregation.",
-      "The Nautilus, the first nuclear submarine, was launched.",
+      {
+        text: "The Nautilus, the first nuclear submarine, was launched.",
+        image: {
+          src: "/images/moments/us/nautilus.jpg",
+          alt: "The launch of USS Nautilus",
+        },
+      },
     ],
   },
   1955: {
@@ -994,25 +1616,51 @@ const milestones: LifelineMilestones = {
   1957: {
     id: "1957",
     events: [
-      "The Little Rock Nine walked into Central High.",
+      {
+        text: "The Little Rock Nine walked into Central High.",
+        image: {
+          src: "/images/moments/us/little-rock.jpg",
+          alt: "The 101st Airborne escorts the Little Rock Nine",
+        },
+      },
       "Sputnik shocked the country skyward.",
     ],
   },
   1958: {
     id: "1958",
     events: [
-      "Founded NASA.",
+      {
+        text: "Founded NASA.",
+        image: {
+          src: "/images/moments/us/explorer-1.jpg",
+          alt: "Explorer 1, America's first satellite",
+        },
+      },
       "The integrated circuit was invented.",
     ],
   },
   1959: {
     id: "statehood",
-    events: ["Alaska and Hawaii made it fifty stars."],
+    events: [
+      {
+        text: "Alaska and Hawaii made it fifty stars.",
+        image: {
+          src: "/images/moments/us/hawaii-1959.jpg",
+          alt: "Hawaii celebrates statehood",
+        },
+      },
+    ],
   },
   1960: {
     id: "1960",
     events: [
-      "Four students sat down at a Greensboro lunch counter.",
+      {
+        text: "Four students sat down at a Greensboro lunch counter.",
+        image: {
+          src: "/images/moments/us/greensboro.jpg",
+          alt: "The Greensboro lunch counter",
+        },
+      },
       "Kennedy and Nixon debated on live television.",
     ],
   },
@@ -1025,7 +1673,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1961",
     events: [
-      "Alan Shepard became the first American in space.",
+      {
+        text: "Alan Shepard became the first American in space.",
+        image: {
+          src: "/images/moments/us/shepard.jpg",
+          alt: "Alan Shepard before the Freedom 7 flight",
+        },
+      },
       "The Freedom Riders rode south.",
       "The Bay of Pigs failed.",
     ],
@@ -1033,8 +1687,20 @@ const milestones: LifelineMilestones = {
   1962: {
     id: "1962",
     events: [
-      "John Glenn orbited the Earth.",
-      "The Cuban Missile Crisis — thirteen days at the edge.",
+      {
+        text: "John Glenn orbited the Earth.",
+        image: {
+          src: "/images/moments/us/glenn.jpg",
+          alt: "John Glenn",
+        },
+      },
+      {
+        text: "The Cuban Missile Crisis — thirteen days at the edge.",
+        image: {
+          src: "/images/moments/us/u2-cuba.jpg",
+          alt: "U-2 reconnaissance over Cuba",
+        },
+      },
     ],
   },
   1963: {
@@ -1059,7 +1725,13 @@ const milestones: LifelineMilestones = {
   1964: {
     id: "1964",
     events: [
-      "The Civil Rights Act became law.",
+      {
+        text: "The Civil Rights Act became law.",
+        image: {
+          src: "/images/moments/us/cra-signing.jpg",
+          alt: "President Johnson signs the Civil Rights Act",
+        },
+      },
       "The Beatles landed at JFK.",
       "The Gulf of Tonkin resolution opened the door to Vietnam.",
     ],
@@ -1067,7 +1739,13 @@ const milestones: LifelineMilestones = {
   1965: {
     id: "1965",
     events: [
-      "Selma. The Voting Rights Act became law.",
+      {
+        text: "Selma. The Voting Rights Act became law.",
+        image: {
+          src: "/images/moments/us/selma.jpg",
+          alt: "The march from Selma to Montgomery",
+        },
+      },
       "Medicare and Medicaid were created.",
       "Combat troops landed in Vietnam.",
     ],
@@ -1076,7 +1754,13 @@ const milestones: LifelineMilestones = {
     id: "1967",
     events: [
       "The Summer of Love bloomed in San Francisco.",
-      "Thurgood Marshall joined the Supreme Court.",
+      {
+        text: "Thurgood Marshall joined the Supreme Court.",
+        image: {
+          src: "/images/moments/us/marshall.jpg",
+          alt: "Thurgood Marshall",
+        },
+      },
       "The first Super Bowl was played.",
     ],
   },
@@ -1085,7 +1769,13 @@ const milestones: LifelineMilestones = {
     events: [
       "Martin Luther King Jr. was assassinated in Memphis.",
       "Robert Kennedy was assassinated in Los Angeles.",
-      "Apollo 8 read Genesis from lunar orbit.",
+      {
+        text: "Apollo 8 read Genesis from lunar orbit.",
+        image: {
+          src: "/images/moments/us/earthrise.jpg",
+          alt: "Earthrise, Apollo 8",
+        },
+      },
     ],
   },
   1969: {
@@ -1118,7 +1808,13 @@ const milestones: LifelineMilestones = {
   1971: {
     id: "1971",
     events: [
-      "Intel shipped the 4004, the first microprocessor.",
+      {
+        text: "Intel shipped the 4004, the first microprocessor.",
+        image: {
+          src: "/images/moments/us/intel-4004.jpg",
+          alt: "The Intel 4004",
+        },
+      },
       "The voting age dropped to 18.",
     ],
   },
@@ -1182,14 +1878,26 @@ const milestones: LifelineMilestones = {
     events: [
       "Star Wars opened.",
       "The Apple II shipped.",
-      "The Voyagers left for the stars.",
+      {
+        text: "The Voyagers left for the stars.",
+        image: {
+          src: "/images/moments/us/golden-record.jpg",
+          alt: "The Voyager Golden Record",
+        },
+      },
       "Elvis died.",
     ],
   },
   1979: {
     id: "1979",
     events: [
-      "Three Mile Island melted down.",
+      {
+        text: "Three Mile Island melted down.",
+        image: {
+          src: "/images/moments/us/three-mile-island.jpg",
+          alt: "Three Mile Island",
+        },
+      },
       "Fifty-two Americans were taken hostage in Tehran.",
       "ESPN signed on.",
     ],
@@ -1204,7 +1912,13 @@ const milestones: LifelineMilestones = {
     id: "1980",
     events: [
       "The Miracle on Ice.",
-      "Mount St. Helens erupted.",
+      {
+        text: "Mount St. Helens erupted.",
+        image: {
+          src: "/images/moments/us/st-helens.jpg",
+          alt: "Mount St. Helens, May 18, 1980",
+        },
+      },
       "CNN invented 24-hour news.",
       "Ronald Reagan was elected.",
     ],
@@ -1234,24 +1948,50 @@ const milestones: LifelineMilestones = {
     id: "1983",
     events: [
       "The internet switched on TCP/IP.",
-      "Sally Ride became the first American woman in space.",
+      {
+        text: "Sally Ride became the first American woman in space.",
+        image: {
+          src: "/images/moments/us/sally-ride.jpg",
+          alt: "Sally Ride on the flight deck",
+        },
+      },
     ],
   },
   1984: {
     id: "1984",
     events: [
-      "The Macintosh said hello.",
+      {
+        text: "The Macintosh said hello.",
+        image: {
+          src: "/images/moments/us/macintosh.jpg",
+          alt: "The Macintosh 128K",
+        },
+      },
       "Los Angeles hosted the Olympics.",
     ],
   },
   1986: {
     id: "challenger",
-    events: ["Challenger broke apart 73 seconds after launch."],
+    events: [
+      {
+        text: "Challenger broke apart 73 seconds after launch.",
+        image: {
+          src: "/images/moments/us/challenger-crew.jpg",
+          alt: "The crew of STS-51-L",
+        },
+      },
+    ],
   },
   1987: {
     id: "1987",
     events: [
-      "“Mr. Gorbachev, tear down this wall.”",
+      {
+        text: "“Mr. Gorbachev, tear down this wall.”",
+        image: {
+          src: "/images/moments/us/brandenburg.jpg",
+          alt: "Reagan at the Brandenburg Gate",
+        },
+      },
       "Black Monday dropped the Dow 22% in a day.",
     ],
   },
@@ -1264,7 +2004,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1989",
     events: [
-      "The Berlin Wall fell.",
+      {
+        text: "The Berlin Wall fell.",
+        image: {
+          src: "/images/moments/us/berlin-wall.jpg",
+          alt: "The Berlin Wall, November 1989",
+        },
+      },
       "The Exxon Valdez spilled into Prince William Sound.",
       "The Loma Prieta earthquake stopped the World Series.",
     ],
@@ -1285,7 +2031,13 @@ const milestones: LifelineMilestones = {
   1991: {
     id: "cold-war",
     events: [
-      "Desert Storm liberated Kuwait in a hundred hours.",
+      {
+        text: "Desert Storm liberated Kuwait in a hundred hours.",
+        image: {
+          src: "/images/moments/us/kuwait-fires.jpg",
+          alt: "The Kuwait oil fires",
+        },
+      },
       "The Soviet Union dissolved. The Cold War ended.",
     ],
   },
@@ -1299,13 +2051,25 @@ const milestones: LifelineMilestones = {
     id: "1992",
     events: [
       "Los Angeles burned after the Rodney King verdict.",
-      "Bill Clinton was elected.",
+      {
+        text: "Bill Clinton was elected.",
+        image: {
+          src: "/images/people/bill-clinton.jpg",
+          alt: "Bill Clinton",
+        },
+      },
     ],
   },
   1993: {
     id: "1993",
     events: [
-      "Mosaic put a face on the web.",
+      {
+        text: "Mosaic put a face on the web.",
+        image: {
+          src: "/images/moments/us/mosaic.jpg",
+          alt: "NCSA Mosaic",
+        },
+      },
       "NAFTA was signed.",
     ],
   },
@@ -1319,7 +2083,13 @@ const milestones: LifelineMilestones = {
   1995: {
     id: "1995",
     events: [
-      "Oklahoma City.",
+      {
+        text: "Oklahoma City.",
+        image: {
+          src: "/images/moments/us/okc.jpg",
+          alt: "The Murrah Federal Building",
+        },
+      },
       "Windows 95 launched with the Rolling Stones.",
       "Toy Story — the first fully computer-animated film.",
       "eBay opened for bids.",
@@ -1328,15 +2098,33 @@ const milestones: LifelineMilestones = {
   1997: {
     id: "1997",
     events: [
-      "Pathfinder put a rover on Mars.",
-      "Steve Jobs returned to Apple.",
+      {
+        text: "Pathfinder put a rover on Mars.",
+        image: {
+          src: "/images/moments/us/pathfinder.jpg",
+          alt: "Sojourner on Mars",
+        },
+      },
+      {
+        text: "Steve Jobs returned to Apple.",
+        image: {
+          src: "/images/people/steve-jobs.jpg",
+          alt: "Steve Jobs",
+        },
+      },
     ],
   },
   1998: {
     id: "1998",
     events: [
       "Google was founded in a Menlo Park garage.",
-      "President Clinton was impeached and acquitted.",
+      {
+        text: "President Clinton was impeached and acquitted.",
+        image: {
+          src: "/images/moments/us/impeachment-1999.jpg",
+          alt: "The impeachment trial in the Senate",
+        },
+      },
     ],
   },
   1999: {
@@ -1383,7 +2171,15 @@ const milestones: LifelineMilestones = {
   },
   2004: {
     id: "facebook",
-    events: ["Facebook launched from a Harvard dorm."],
+    events: [
+      {
+        text: "Facebook launched from a Harvard dorm.",
+        image: {
+          src: "/images/moments/us/zuckerberg.jpg",
+          alt: "Mark Zuckerberg at Harvard",
+        },
+      },
+    ],
   },
   2005: {
     id: "2005",
@@ -1424,19 +2220,45 @@ const milestones: LifelineMilestones = {
     ],
     id: "obama",
     events: [
-      "The financial crisis brought the economy to its knees.",
-      "Elected Barack Obama, the first Black president.",
+      {
+        text: "The financial crisis brought the economy to its knees.",
+        image: {
+          src: "/images/moments/us/lehman.jpg",
+          alt: "Lehman Brothers",
+        },
+      },
+      {
+        text: "Elected Barack Obama, the first Black president.",
+        image: {
+          src: "/images/people/barack-obama.jpg",
+          alt: "Barack Obama",
+        },
+      },
     ],
   },
   2009: {
     id: "hudson",
-    events: ["Captain Sullenberger landed on the Hudson."],
+    events: [
+      {
+        text: "Captain Sullenberger landed on the Hudson.",
+        image: {
+          src: "/images/moments/us/hudson-1549.jpg",
+          alt: "Flight 1549 in the Hudson",
+        },
+      },
+    ],
   },
   2010: {
     id: "2010",
     events: [
       "The Affordable Care Act became law.",
-      "Deepwater Horizon spilled into the Gulf.",
+      {
+        text: "Deepwater Horizon spilled into the Gulf.",
+        image: {
+          src: "/images/moments/us/deepwater.jpg",
+          alt: "Deepwater Horizon",
+        },
+      },
       "Instagram posted its first photo.",
     ],
   },
@@ -1502,7 +2324,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "2016",
-    events: ["Elected Donald Trump."],
+    events: [
+      {
+        text: "Elected Donald Trump.",
+        image: {
+          src: "/images/people/donald-trump.jpg",
+          alt: "Donald Trump",
+        },
+      },
+    ],
   },
   2017: {
     id: "2017",
@@ -1519,7 +2349,15 @@ const milestones: LifelineMilestones = {
   },
   2018: {
     id: "2018",
-    events: ["Parkland students marched for their lives."],
+    events: [
+      {
+        text: "Parkland students marched for their lives.",
+        image: {
+          src: "/images/moments/us/march-lives.jpg",
+          alt: "March for Our Lives",
+        },
+      },
+    ],
   },
   2020: {
     mentors: [
@@ -1578,7 +2416,20 @@ const milestones: LifelineMilestones = {
     ],
     id: "2024",
     events: [
-      "Another total eclipse crossed the country.",
+      {
+        text: "Another total eclipse crossed the country.",
+        image: {
+          src: "/images/moments/us/eclipse-2024.jpg",
+          alt: "The April 2024 total eclipse",
+        },
+      },
+      {
+        text: "Trump survived an assassination attempt in Butler, Pennsylvania.",
+        image: {
+          src: "/images/moments/us/butler.jpg",
+          alt: "Butler, Pennsylvania, July 13, 2024",
+        },
+      },
       "Elected Donald Trump to a second term.",
     ],
   },
