@@ -1,4 +1,5 @@
 import { forwardRef, type CSSProperties } from "react"
+import { Image as ImageIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
 import {
@@ -102,6 +103,13 @@ export const LifelineMarkerColumn = forwardRef<
                       }
                     >
                       <LifelineEventText event={event} />
+                      {image && (
+                        <ImageIcon
+                          className="ml-1.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                          strokeWidth={1.75}
+                          aria-hidden="true"
+                        />
+                      )}
                     </p>
                   )
                 })}

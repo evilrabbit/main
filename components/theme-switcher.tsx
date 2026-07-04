@@ -25,7 +25,7 @@ export function ThemeSwitcher() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       className={cn(
-        "inline-flex items-center p-0 text-zinc-500 transition-colors hover:text-black dark:hover:text-white",
+        "inline-flex items-center p-0 text-zinc-500 transition-colors duration-300 hover:text-black dark:hover:text-white",
       )}
     >
       {isDark ? (

@@ -19,7 +19,7 @@ export function SiteNav({ logo }: { logo?: ReactNode }) {
             href="/"
             data-site-nav-logo
             aria-label="Evil Rabbit"
-            className="text-black transition-opacity hover:opacity-70 dark:text-white"
+            className="text-black transition-[color,opacity] duration-300 hover:opacity-70 dark:text-white"
           >
             {logo ?? <RabbitLogo className="h-6 w-6" />}
           </Link>
@@ -30,7 +30,7 @@ export function SiteNav({ logo }: { logo?: ReactNode }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="@evilrabbit_ on X"
-              className="text-zinc-500 transition-colors hover:text-black dark:hover:text-white"
+              className="text-zinc-500 transition-colors duration-300 hover:text-black dark:hover:text-white"
             >
               <XLogo className="h-4 w-4" />
             </Link>
