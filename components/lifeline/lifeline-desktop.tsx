@@ -7,7 +7,6 @@ import {
   LIFELINE_STICKY_SHIELD_WIDTH,
 } from "./lifeline-labels"
 import { LifelineMarkerColumn } from "./lifeline-marker"
-import { LIFELINE_BIRTH_YEAR } from "@/lib/lifeline"
 import type { LifelineProps } from "./types"
 import { LifelineLegend } from "./lifeline-legend"
 import { useLifelineIntro } from "./use-lifeline-intro"
@@ -16,6 +15,8 @@ import { getMarkerWidth } from "./lifeline-utils"
 
 export function LifelineDesktop({
   markers,
+  birthYear,
+  legend,
   className,
   title = "Lifeline",
 }: LifelineProps) {
@@ -97,7 +98,7 @@ export function LifelineDesktop({
                   key={marker.id}
                   ref={(node) => setMarkerRef(index, node)}
                   marker={marker}
-                  birthYear={LIFELINE_BIRTH_YEAR}
+                  birthYear={birthYear}
                   minWidth={widths[index]}
                   animateIntro={showIntro}
                   introDelay={intro.getMarkerDelay(index)}
@@ -109,7 +110,7 @@ export function LifelineDesktop({
         </div>
       </div>
 
-      <LifelineLegend />
+      <LifelineLegend items={legend} />
     </section>
   )
 }

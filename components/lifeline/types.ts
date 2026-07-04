@@ -3,8 +3,8 @@ import type { CompanyIconId } from "./company-icon"
 
 export interface LifelineMentor {
   name: string
-  role: string
-  color: string
+  role?: string
+  color?: string
   photo?: string
 }
 
@@ -34,8 +34,19 @@ export interface LifelineMarker {
   met?: LifelineMetPerson[]
 }
 
+/**
+ * A legend entry maps one of the two people slots to a subject-appropriate
+ * label — "Mentors" for a person, "Presidents" for a nation.
+ */
+export interface LifelineLegendItem {
+  type: "mentor" | "met"
+  label: string
+}
+
 export interface LifelineProps {
   markers: LifelineMarker[]
+  birthYear: number
+  legend?: LifelineLegendItem[]
   className?: string
   title?: string
 }

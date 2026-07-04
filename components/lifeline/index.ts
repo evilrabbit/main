@@ -8,6 +8,7 @@ export type {
   LifelineCompany,
   LifelineEvent,
   LifelineEventSegment,
+  LifelineLegendItem,
   LifelineMarker,
   LifelineMetPerson,
   LifelineMentor,

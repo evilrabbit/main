@@ -1,8 +1,9 @@
+import type { ReactNode } from "react"
 import Link from "next/link"
 import { RabbitLogo } from "./rabbit-logo"
 import { XLogo } from "./x-logo"
 
-export function SiteNav() {
+export function SiteNav({ logo }: { logo?: ReactNode }) {
   return (
     // The fixed element itself stays transparent with no backdrop-filter:
     // iOS Safari 26 samples it for the toolbar color and only falls
@@ -20,7 +21,7 @@ export function SiteNav() {
             aria-label="Evil Rabbit"
             className="text-black transition-opacity hover:opacity-70 dark:text-white"
           >
-            <RabbitLogo className="h-6 w-6" />
+            {logo ?? <RabbitLogo className="h-6 w-6" />}
           </Link>
 
           <div className="flex items-center gap-8">

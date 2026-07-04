@@ -6,7 +6,6 @@ import { CompanyIcon } from "./company-icon"
 import { getLifelineEventKey, LifelineEventText } from "./lifeline-event"
 import { LifelineLegend } from "./lifeline-legend"
 import { aggregateLifelinePeople, LifelinePeople } from "./lifeline-people"
-import { LIFELINE_BIRTH_YEAR } from "@/lib/lifeline"
 import type { LifelineMarker, LifelineProps } from "./types"
 import { getMarkerHeight, hasMarkerContent } from "./lifeline-utils"
 import { useLifelineIntro } from "./use-lifeline-intro"
@@ -122,7 +121,12 @@ const LifelineVerticalEntry = forwardRef<
   )
 })
 
-export function LifelineVertical({ markers, title = "Lifeline" }: LifelineProps) {
+export function LifelineVertical({
+  markers,
+  birthYear,
+  legend,
+  title = "Lifeline",
+}: LifelineProps) {
   const heights = useMemo(
     () =>
       markers.map((marker, index) =>
@@ -194,7 +198,7 @@ export function LifelineVertical({ markers, title = "Lifeline" }: LifelineProps)
               key={marker.id}
               ref={(node) => setEntryRef(index, node)}
               marker={marker}
-              birthYear={LIFELINE_BIRTH_YEAR}
+              birthYear={birthYear}
               animateIntro={showIntro}
               introDelay={intro.getMarkerDelay(index)}
               introDuration={intro.getMarkerFadeDuration(index)}
@@ -206,7 +210,7 @@ export function LifelineVertical({ markers, title = "Lifeline" }: LifelineProps)
       <div className={`${GRID_CLASS} mt-2`}>
         <div aria-hidden="true" />
         <div aria-hidden="true" />
-        <LifelineLegend inline />
+        <LifelineLegend inline items={legend} />
       </div>
     </article>
   )
