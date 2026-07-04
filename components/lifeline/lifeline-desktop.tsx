@@ -16,6 +16,7 @@ import { getMarkerWidth } from "./lifeline-utils"
 export function LifelineDesktop({
   markers,
   birthYear,
+  legend,
   className,
   title = "Lifeline",
 }: LifelineProps) {
@@ -109,7 +110,7 @@ export function LifelineDesktop({
         </div>
       </div>
 
-      <LifelineLegend />
+      <LifelineLegend items={legend} />
     </section>
   )
 }

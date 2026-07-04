@@ -1,4 +1,4 @@
-import type { LifelineMarker } from "@/components/lifeline"
+import type { LifelineLegendItem, LifelineMarker } from "@/components/lifeline"
 
 export const LIFELINE_CURRENT_YEAR = 2026
 
@@ -12,6 +12,8 @@ export interface LifelineRecord {
   /** Last year on the timeline. Omit for living people. */
   endYear?: number
   description: string
+  /** People-legend labels; defaults to Mentors / Met in person. */
+  legend?: LifelineLegendItem[]
   markers: LifelineMarker[]
 }
 
@@ -21,6 +23,7 @@ interface DefineLifelineInput {
   birthYear: number
   endYear?: number
   description: string
+  legend?: LifelineLegendItem[]
   milestones: LifelineMilestones
 }
 

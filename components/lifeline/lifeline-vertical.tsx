@@ -124,6 +124,7 @@ const LifelineVerticalEntry = forwardRef<
 export function LifelineVertical({
   markers,
   birthYear,
+  legend,
   title = "Lifeline",
 }: LifelineProps) {
   const heights = useMemo(
@@ -209,7 +210,7 @@ export function LifelineVertical({
       <div className={`${GRID_CLASS} mt-2`}>
         <div aria-hidden="true" />
         <div aria-hidden="true" />
-        <LifelineLegend inline />
+        <LifelineLegend inline items={legend} />
       </div>
     </article>
   )

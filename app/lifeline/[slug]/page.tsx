@@ -64,6 +64,7 @@ export default function LifelinePage({
         <Lifeline
           markers={lifeline.markers}
           birthYear={lifeline.birthYear}
+          legend={lifeline.legend}
           title={`${lifeline.name} — Lifeline`}
           className="h-full"
         />

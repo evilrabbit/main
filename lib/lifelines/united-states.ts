@@ -48,6 +48,12 @@ const milestones: LifelineMilestones = {
     events: ["The Constitution was ratified."],
   },
   1789: {
+    mentors: [
+      {
+        name: "George Washington",
+        photo: "/images/people/george-washington.jpg",
+      },
+    ],
     id: "washington",
     events: [
       "George Washington became the first President.",
@@ -85,6 +91,12 @@ const milestones: LifelineMilestones = {
     events: ["Washington's Farewell Address warned against faction and entanglement."],
   },
   1797: {
+    mentors: [
+      {
+        name: "John Adams",
+        photo: "/images/people/john-adams.jpg",
+      },
+    ],
     id: "adams",
     events: ["John Adams became the second President."],
   },
@@ -93,6 +105,12 @@ const milestones: LifelineMilestones = {
     events: ["The capital moved to Washington, D.C."],
   },
   1801: {
+    mentors: [
+      {
+        name: "Thomas Jefferson",
+        photo: "/images/people/thomas-jefferson.jpg",
+      },
+    ],
     id: "jefferson",
     events: ["Thomas Jefferson became President after a tie thrown to the House."],
   },
@@ -122,6 +140,16 @@ const milestones: LifelineMilestones = {
     id: "slave-trade",
     events: ["The importation of enslaved people was banned."],
   },
+  1809: {
+    id: "madison",
+    events: [],
+    mentors: [
+      {
+        name: "James Madison",
+        photo: "/images/people/james-madison.jpg",
+      },
+    ],
+  },
   1812: {
     id: "war-of-1812",
     events: ["Went to war with Britain again."],
@@ -138,6 +166,12 @@ const milestones: LifelineMilestones = {
     events: ["Jackson won the Battle of New Orleans."],
   },
   1817: {
+    mentors: [
+      {
+        name: "James Monroe",
+        photo: "/images/people/james-monroe.jpg",
+      },
+    ],
     id: "erie-begun",
     events: ["Construction began on the Erie Canal."],
   },
@@ -154,10 +188,22 @@ const milestones: LifelineMilestones = {
     events: ["The Monroe Doctrine warned Europe off the hemisphere."],
   },
   1825: {
+    mentors: [
+      {
+        name: "John Quincy Adams",
+        photo: "/images/people/john-quincy-adams.jpg",
+      },
+    ],
     id: "erie-opened",
     events: ["The Erie Canal opened the West."],
   },
   1828: {
+    mentors: [
+      {
+        name: "Andrew Jackson",
+        photo: "/images/people/andrew-jackson.jpg",
+      },
+    ],
     id: "jackson",
     events: [
       "Andrew Jackson was elected.",
@@ -183,6 +229,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1837: {
+    mentors: [
+      {
+        name: "Martin Van Buren",
+        photo: "/images/people/martin-van-buren.jpg",
+      },
+    ],
     id: "panic-1837",
     events: ["The Panic of 1837 brought depression."],
   },
@@ -191,6 +243,16 @@ const milestones: LifelineMilestones = {
     events: ["The Trail of Tears — the forced removal of the Cherokee Nation."],
   },
   1841: {
+    mentors: [
+      {
+        name: "William Henry Harrison",
+        photo: "/images/people/william-henry-harrison.jpg",
+      },
+      {
+        name: "John Tyler",
+        photo: "/images/people/john-tyler.jpg",
+      },
+    ],
     id: "oregon-trail",
     events: ["Wagon trains rolled west on the Oregon Trail."],
   },
@@ -199,6 +261,12 @@ const milestones: LifelineMilestones = {
     events: ["Morse tapped “What hath God wrought” from Washington to Baltimore."],
   },
   1845: {
+    mentors: [
+      {
+        name: "James K. Polk",
+        photo: "/images/people/james-k-polk.jpg",
+      },
+    ],
     id: "texas",
     events: [
       "Texas joined the Union.",
@@ -222,10 +290,22 @@ const milestones: LifelineMilestones = {
     ],
   },
   1849: {
+    mentors: [
+      {
+        name: "Zachary Taylor",
+        photo: "/images/people/zachary-taylor.jpg",
+      },
+    ],
     id: "gold-rush",
     events: ["The Forty-Niners rushed for California."],
   },
   1850: {
+    mentors: [
+      {
+        name: "Millard Fillmore",
+        photo: "/images/people/millard-fillmore.jpg",
+      },
+    ],
     id: "1850",
     events: [
       "The Compromise of 1850 delayed the reckoning.",
@@ -240,6 +320,16 @@ const milestones: LifelineMilestones = {
     id: "uncle-tom",
     events: ["Uncle Tom's Cabin set the country arguing."],
   },
+  1853: {
+    id: "pierce",
+    events: [],
+    mentors: [
+      {
+        name: "Franklin Pierce",
+        photo: "/images/people/franklin-pierce.jpg",
+      },
+    ],
+  },
   1854: {
     id: "kansas-nebraska",
     events: [
@@ -248,6 +338,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1857: {
+    mentors: [
+      {
+        name: "James Buchanan",
+        photo: "/images/people/james-buchanan.jpg",
+      },
+    ],
     id: "dred-scott",
     events: ["Dred Scott — the Supreme Court's worst decision."],
   },
@@ -263,6 +359,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1860: {
+    mentors: [
+      {
+        name: "Abraham Lincoln",
+        photo: "/images/people/abraham-lincoln.jpg",
+      },
+    ],
     id: "lincoln-elected",
     events: [
       "Abraham Lincoln was elected. South Carolina seceded.",
@@ -295,6 +397,12 @@ const milestones: LifelineMilestones = {
     events: ["Sherman marched to the sea."],
   },
   1865: {
+    mentors: [
+      {
+        name: "Andrew Johnson",
+        photo: "/images/people/andrew-johnson.jpg",
+      },
+    ],
     id: "civil-war-ends",
     events: [
       "Lee surrendered at Appomattox.",
@@ -318,6 +426,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1869: {
+    mentors: [
+      {
+        name: "Ulysses S. Grant",
+        photo: "/images/people/ulysses-s-grant.jpg",
+      },
+    ],
     id: "railroad",
     events: [
       "The transcontinental railroad met at Promontory Summit.",
@@ -353,6 +467,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1877: {
+    mentors: [
+      {
+        name: "Rutherford B. Hayes",
+        photo: "/images/people/rutherford-b-hayes.jpg",
+      },
+    ],
     id: "1877",
     events: [
       "Reconstruction ended in a deal.",
@@ -364,6 +484,16 @@ const milestones: LifelineMilestones = {
     events: ["Edison lit the first practical light bulb."],
   },
   1881: {
+    mentors: [
+      {
+        name: "James A. Garfield",
+        photo: "/images/people/james-a-garfield.jpg",
+      },
+      {
+        name: "Chester A. Arthur",
+        photo: "/images/people/chester-a-arthur.jpg",
+      },
+    ],
     id: "1881",
     events: [
       "President Garfield was assassinated.",
@@ -385,6 +515,16 @@ const milestones: LifelineMilestones = {
       "The railroads invented standard time.",
     ],
   },
+  1885: {
+    id: "cleveland",
+    events: [],
+    mentors: [
+      {
+        name: "Grover Cleveland",
+        photo: "/images/people/grover-cleveland.jpg",
+      },
+    ],
+  },
   1886: {
     id: "liberty",
     events: [
@@ -398,6 +538,12 @@ const milestones: LifelineMilestones = {
     events: ["The Kodak camera: “You press the button, we do the rest.”"],
   },
   1889: {
+    mentors: [
+      {
+        name: "Benjamin Harrison",
+        photo: "/images/people/benjamin-harrison.jpg",
+      },
+    ],
     id: "1889",
     events: [
       "The Oklahoma Land Rush.",
@@ -420,6 +566,12 @@ const milestones: LifelineMilestones = {
     events: ["Ellis Island opened its doors."],
   },
   1893: {
+    mentors: [
+      {
+        name: "Grover Cleveland",
+        photo: "/images/people/grover-cleveland.jpg",
+      },
+    ],
     id: "1893",
     events: [
       "The World's Columbian Exposition dazzled Chicago.",
@@ -430,6 +582,16 @@ const milestones: LifelineMilestones = {
     id: "plessy",
     events: ["Plessy v. Ferguson blessed “separate but equal.”"],
   },
+  1897: {
+    id: "mckinley",
+    events: [],
+    mentors: [
+      {
+        name: "William McKinley",
+        photo: "/images/people/william-mckinley.jpg",
+      },
+    ],
+  },
   1898: {
     id: "1898",
     events: [
@@ -438,6 +600,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1901: {
+    mentors: [
+      {
+        name: "Theodore Roosevelt",
+        photo: "/images/people/theodore-roosevelt.jpg",
+      },
+    ],
     id: "1901",
     events: [
       "McKinley was assassinated. Theodore Roosevelt took over at 42.",
@@ -465,6 +633,12 @@ const milestones: LifelineMilestones = {
     events: ["Ford's Model T put the country on wheels."],
   },
   1909: {
+    mentors: [
+      {
+        name: "William Howard Taft",
+        photo: "/images/people/william-howard-taft.jpg",
+      },
+    ],
     id: "naacp",
     events: ["The NAACP was founded."],
   },
@@ -483,6 +657,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1913: {
+    mentors: [
+      {
+        name: "Woodrow Wilson",
+        photo: "/images/people/woodrow-wilson.jpg",
+      },
+    ],
     id: "1913",
     events: [
       "The Federal Reserve was created.",
@@ -523,6 +703,26 @@ const milestones: LifelineMilestones = {
       "KDKA in Pittsburgh made the first commercial radio broadcast.",
     ],
   },
+  1921: {
+    id: "harding",
+    events: [],
+    mentors: [
+      {
+        name: "Warren G. Harding",
+        photo: "/images/people/warren-g-harding.jpg",
+      },
+    ],
+  },
+  1923: {
+    id: "coolidge",
+    events: [],
+    mentors: [
+      {
+        name: "Calvin Coolidge",
+        photo: "/images/people/calvin-coolidge.jpg",
+      },
+    ],
+  },
   1924: {
     id: "citizenship",
     events: ["Native Americans were granted citizenship."],
@@ -547,6 +747,12 @@ const milestones: LifelineMilestones = {
     events: ["Mickey Mouse debuted in Steamboat Willie."],
   },
   1929: {
+    mentors: [
+      {
+        name: "Herbert Hoover",
+        photo: "/images/people/herbert-hoover.jpg",
+      },
+    ],
     id: "crash",
     events: ["The stock market crashed. The Great Depression began."],
   },
@@ -558,6 +764,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1932: {
+    mentors: [
+      {
+        name: "Franklin D. Roosevelt",
+        photo: "/images/people/franklin-d-roosevelt.jpg",
+      },
+    ],
     id: "1932",
     events: [
       "Franklin Roosevelt was elected in a landslide.",
@@ -631,6 +843,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1945: {
+    mentors: [
+      {
+        name: "Harry S. Truman",
+        photo: "/images/people/harry-s-truman.jpg",
+      },
+    ],
     id: "wwii-ends",
     events: [
       "Trinity, Hiroshima, Nagasaki. The atomic age began.",
@@ -670,6 +888,12 @@ const milestones: LifelineMilestones = {
     events: ["The first hydrogen bomb erased an island."],
   },
   1953: {
+    mentors: [
+      {
+        name: "Dwight D. Eisenhower",
+        photo: "/images/people/dwight-d-eisenhower.jpg",
+      },
+    ],
     id: "korea-armistice",
     events: ["The Korean armistice was signed."],
   },
@@ -721,6 +945,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1961: {
+    mentors: [
+      {
+        name: "John F. Kennedy",
+        photo: "/images/people/john-f-kennedy.jpg",
+      },
+    ],
     id: "1961",
     events: [
       "Alan Shepard became the first American in space.",
@@ -736,6 +966,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1963: {
+    mentors: [
+      {
+        name: "Lyndon B. Johnson",
+        photo: "/images/people/lyndon-b-johnson.jpg",
+      },
+    ],
     id: "1963",
     events: [
       "Martin Luther King Jr. dreamed aloud at the Lincoln Memorial.",
@@ -775,6 +1011,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1969: {
+    mentors: [
+      {
+        name: "Richard Nixon",
+        photo: "/images/people/richard-nixon.jpg",
+      },
+    ],
     id: "moon",
     events: [
       "Apollo 11. Armstrong and Aldrin walked on the Moon.",
@@ -814,6 +1056,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1974: {
+    mentors: [
+      {
+        name: "Gerald Ford",
+        photo: "/images/people/gerald-ford.jpg",
+      },
+    ],
     id: "nixon",
     events: ["Nixon resigned."],
   },
@@ -834,6 +1082,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1977: {
+    mentors: [
+      {
+        name: "Jimmy Carter",
+        photo: "/images/people/jimmy-carter.jpg",
+      },
+    ],
     id: "1977",
     events: [
       "Star Wars opened.",
@@ -851,6 +1105,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1980: {
+    mentors: [
+      {
+        name: "Ronald Reagan",
+        photo: "/images/people/ronald-reagan.jpg",
+      },
+    ],
     id: "1980",
     events: [
       "The Miracle on Ice.",
@@ -900,6 +1160,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1989: {
+    mentors: [
+      {
+        name: "George H. W. Bush",
+        photo: "/images/people/george-h-w-bush.jpg",
+      },
+    ],
     id: "1989",
     events: [
       "The Berlin Wall fell.",
@@ -922,6 +1188,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   1992: {
+    mentors: [
+      {
+        name: "Bill Clinton",
+        photo: "/images/people/bill-clinton.jpg",
+      },
+    ],
     id: "1992",
     events: [
       "Los Angeles burned after the Rodney King verdict.",
@@ -980,6 +1252,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   2001: {
+    mentors: [
+      {
+        name: "George W. Bush",
+        photo: "/images/people/george-w-bush.jpg",
+      },
+    ],
     id: "september-11",
     events: [
       "September 11.",
@@ -1018,6 +1296,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   2008: {
+    mentors: [
+      {
+        name: "Barack Obama",
+        photo: "/images/people/barack-obama.jpg",
+      },
+    ],
     id: "obama",
     events: [
       "The financial crisis brought the economy to its knees.",
@@ -1067,6 +1351,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   2016: {
+    mentors: [
+      {
+        name: "Donald Trump",
+        photo: "/images/people/donald-trump.jpg",
+      },
+    ],
     id: "2016",
     events: ["Elected Donald Trump."],
   },
@@ -1082,6 +1372,12 @@ const milestones: LifelineMilestones = {
     events: ["Parkland students marched for their lives."],
   },
   2020: {
+    mentors: [
+      {
+        name: "Joe Biden",
+        photo: "/images/people/joe-biden.jpg",
+      },
+    ],
     id: "pandemic",
     events: [
       "The COVID-19 pandemic shut the country down.",
@@ -1106,6 +1402,12 @@ const milestones: LifelineMilestones = {
     ],
   },
   2024: {
+    mentors: [
+      {
+        name: "Donald Trump",
+        photo: "/images/people/donald-trump.jpg",
+      },
+    ],
     id: "2024",
     events: [
       "Another total eclipse crossed the country.",
@@ -1127,5 +1429,6 @@ export const unitedStates = defineLifeline({
   birthYear: 1776,
   description:
     "Two hundred and fifty years of the American experiment — from Philadelphia to the Moon.",
+  legend: [{ type: "mentor", label: "Presidents" }],
   milestones,
 })
