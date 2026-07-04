@@ -127,7 +127,7 @@ export function CompanyIcon({
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center justify-center text-black dark:text-white",
+        "inline-flex shrink-0 items-center justify-center text-black transition-colors duration-300 dark:text-white",
         companyIconSizes[id],
         className,
       )}

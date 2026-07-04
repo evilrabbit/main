@@ -33,7 +33,7 @@ export default function LifelinePage() {
     <div
       className={cn(
         GeistSans.className,
-        "flex h-dvh flex-col overflow-hidden bg-white text-black antialiased transition-colors duration-150 dark:bg-black dark:text-white",
+        "flex h-dvh flex-col overflow-hidden bg-white text-black antialiased transition-colors duration-300 dark:bg-black dark:text-white",
       )}
     >
       <ThemeColor />

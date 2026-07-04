@@ -10,7 +10,7 @@ export function SiteNav({ logo }: { logo?: ReactNode }) {
     // through to the theme-following body when it has no background.
     // The visual chrome lives on the inner div instead.
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-black/10 bg-white/80 backdrop-blur-xl transition-colors duration-150 dark:border-white/10 dark:bg-black/80">
+      <div className="border-b border-black/10 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-black/80">
         <div
           data-site-nav-inner
           className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6"
