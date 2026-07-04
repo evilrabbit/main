@@ -7,7 +7,8 @@ import {
   LIFELINE_STICKY_SHIELD_WIDTH,
 } from "./lifeline-labels"
 import { LifelineMarkerColumn } from "./lifeline-marker"
-import type { LifelineProps } from "./types"
+import type { LifelineEventImage, LifelineProps } from "./types"
+import { getLifelineEventImage } from "./lifeline-event"
 import { LifelineHoverImageProvider } from "./lifeline-hover-image"
 import { LifelineLegend } from "./lifeline-legend"
 import { useLifelineIntro } from "./use-lifeline-intro"
@@ -28,6 +29,17 @@ export function LifelineDesktop({
       ),
     [markers],
   )
+
+  const hoverImages = useMemo(() => {
+    const images: LifelineEventImage[] = []
+    for (const marker of markers) {
+      for (const event of marker.events) {
+        const image = getLifelineEventImage(event)
+        if (image) images.push(image)
+      }
+    }
+    return images
+  }, [markers])
 
   const intro = useLifelineIntro(widths)
   const isIntroAnimating = intro.shouldPlay && intro.isPlaying
@@ -64,7 +76,7 @@ export function LifelineDesktop({
       aria-label={title}
       style={showIntro ? introStyle : undefined}
     >
-      <LifelineHoverImageProvider>
+      <LifelineHoverImageProvider preload={hoverImages}>
       <div className="flex h-full items-center overflow-hidden">
         <div
           ref={trackRef}

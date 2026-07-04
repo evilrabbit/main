@@ -25,6 +25,12 @@ interface LifelineHoverImageApi {
   hide: () => void
 }
 
+interface LifelineHoverImageProviderProps {
+  children: ReactNode
+  /** Warmed into the browser cache during idle so swaps are instant. */
+  preload?: LifelineEventImage[]
+}
+
 const LifelineHoverImageContext = createContext<LifelineHoverImageApi | null>(
   null,
 )
@@ -40,9 +46,8 @@ export function useLifelineHoverImage() {
  */
 export function LifelineHoverImageProvider({
   children,
-}: {
-  children: ReactNode
-}) {
+  preload,
+}: LifelineHoverImageProviderProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
   const state = useRef({
@@ -73,6 +78,25 @@ export function LifelineHoverImageProvider({
     }
   }, [])
 
+  useEffect(() => {
+    if (!preload?.length || !state.current.hoverCapable) return
+
+    const warm = () => {
+      preload.forEach(({ src }) => {
+        const image = new window.Image()
+        image.src = src
+      })
+    }
+
+    if (typeof window.requestIdleCallback === "function") {
+      const handle = window.requestIdleCallback(warm)
+      return () => window.cancelIdleCallback(handle)
+    }
+
+    const timeout = window.setTimeout(warm, 2000)
+    return () => window.clearTimeout(timeout)
+  }, [preload])
+
   const step = useCallback(() => {
     const s = state.current
     const container = containerRef.current
@@ -102,8 +126,30 @@ export function LifelineHoverImageProvider({
         const img = imageRef.current
         if (!s.hoverCapable || !container || !img) return
 
-        img.src = image.src
-        img.alt = image.alt
+        const targetSrc = new URL(image.src, window.location.origin).href
+
+        if (img.src !== targetSrc) {
+          // Kill the previous bitmap instantly — the browser would keep
+          // showing it until the new file decodes.
+          img.style.visibility = "hidden"
+          img.src = targetSrc
+          img.alt = image.alt
+
+          const reveal = () => {
+            // Only reveal if this image is still the requested one.
+            if (img.src === targetSrc) {
+              img.style.visibility = "visible"
+            }
+          }
+
+          if (img.complete) {
+            reveal()
+          } else {
+            img.decode().then(reveal, reveal)
+          }
+        } else {
+          img.style.visibility = "visible"
+        }
 
         if (!s.visible) {
           // Materialize at the cursor instead of flying in from the

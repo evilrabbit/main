@@ -7,7 +7,7 @@ export function SiteFooter({ className }: { className?: string }) {
   return (
     <footer
       className={cn(
-        "border-t border-black/10 bg-white/95 dark:border-white/10 dark:bg-black/95",
+        "border-t border-black/10 bg-white/95 transition-colors duration-150 dark:border-white/10 dark:bg-black/95",
         className,
       )}
     >
