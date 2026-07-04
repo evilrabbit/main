@@ -104,11 +104,16 @@ export const LifelineMarkerColumn = forwardRef<
                     >
                       <LifelineEventText event={event} />
                       {image && (
-                        <ImageIcon
-                          className="ml-1.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
-                          strokeWidth={1.75}
-                          aria-hidden="true"
-                        />
+                        // Glued to the last word with a no-break space so
+                        // the icon can never wrap onto a line of its own.
+                        <span className="whitespace-nowrap">
+                          {" "}
+                          <ImageIcon
+                            className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                            strokeWidth={1.75}
+                            aria-hidden="true"
+                          />
+                        </span>
                       )}
                     </p>
                   )
