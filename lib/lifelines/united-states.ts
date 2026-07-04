@@ -4,7 +4,13 @@ const milestones: LifelineMilestones = {
   1776: {
     id: "born",
     events: [
-      "Declared independence in Philadelphia on July 4.",
+      {
+        text: "Declared independence in Philadelphia on July 4.",
+        image: {
+          src: "/images/moments/us/declaration.jpg",
+          alt: "The Declaration of Independence, by John Trumbull",
+        },
+      },
       "Washington crossed the Delaware on Christmas night.",
     ],
   },
@@ -389,7 +395,13 @@ const milestones: LifelineMilestones = {
     id: "gettysburg",
     events: [
       "The Emancipation Proclamation took effect.",
-      "Gettysburg. Four months later, the Gettysburg Address.",
+      {
+        text: "Gettysburg. Four months later, the Gettysburg Address.",
+        image: {
+          src: "/images/moments/us/gettysburg.jpg",
+          alt: "Lincoln at Gettysburg, 1863",
+        },
+      },
     ],
   },
   1864: {
@@ -434,7 +446,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "railroad",
     events: [
-      "The transcontinental railroad met at Promontory Summit.",
+      {
+        text: "The transcontinental railroad met at Promontory Summit.",
+        image: {
+          src: "/images/moments/us/golden-spike.jpg",
+          alt: "The golden spike ceremony at Promontory Summit, 1869",
+        },
+      },
       "Wyoming gave women the vote.",
     ],
   },
@@ -528,7 +546,13 @@ const milestones: LifelineMilestones = {
   1886: {
     id: "liberty",
     events: [
-      "The Statue of Liberty was dedicated in New York Harbor.",
+      {
+        text: "The Statue of Liberty was dedicated in New York Harbor.",
+        image: {
+          src: "/images/moments/us/statue-liberty.jpg",
+          alt: "The Unveiling of the Statue of Liberty, by Edward Moran",
+        },
+      },
       "Haymarket. The AFL was founded.",
       "A pharmacist in Atlanta invented Coca-Cola.",
     ],
@@ -615,7 +639,13 @@ const milestones: LifelineMilestones = {
   1903: {
     id: "kitty-hawk",
     events: [
-      "The Wright brothers flew at Kitty Hawk. Twelve seconds.",
+      {
+        text: "The Wright brothers flew at Kitty Hawk. Twelve seconds.",
+        image: {
+          src: "/images/moments/us/wright-flyer.jpg",
+          alt: "The first flight at Kitty Hawk, December 17, 1903",
+        },
+      },
       "Ford Motor Company was founded.",
       "The first World Series was played.",
     ],
@@ -626,11 +656,27 @@ const milestones: LifelineMilestones = {
   },
   1906: {
     id: "sf-earthquake",
-    events: ["The San Francisco earthquake and fire."],
+    events: [
+      {
+        text: "The San Francisco earthquake and fire.",
+        image: {
+          src: "/images/moments/us/sf-earthquake.jpg",
+          alt: "Sacramento Street during the 1906 San Francisco fire",
+        },
+      },
+    ],
   },
   1908: {
     id: "model-t",
-    events: ["Ford's Model T put the country on wheels."],
+    events: [
+      {
+        text: "Ford's Model T put the country on wheels.",
+        image: {
+          src: "/images/moments/us/model-t.jpg",
+          alt: "A Ford Model T, around 1910",
+        },
+      },
+    ],
   },
   1909: {
     mentors: [
@@ -754,7 +800,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "crash",
-    events: ["The stock market crashed. The Great Depression began."],
+    events: [
+      {
+        text: "The stock market crashed. The Great Depression began.",
+        image: {
+          src: "/images/moments/us/crash-1929.jpg",
+          alt: "Crowds outside the New York Stock Exchange, October 1929",
+        },
+      },
+    ],
   },
   1931: {
     id: "1931",
@@ -822,7 +876,13 @@ const milestones: LifelineMilestones = {
   1941: {
     id: "pearl-harbor",
     events: [
-      "Pearl Harbor. Entered World War II.",
+      {
+        text: "Pearl Harbor. Entered World War II.",
+        image: {
+          src: "/images/moments/us/pearl-harbor.jpg",
+          alt: "The USS Arizona burning at Pearl Harbor",
+        },
+      },
       "Mount Rushmore was completed.",
     ],
   },
@@ -837,7 +897,13 @@ const milestones: LifelineMilestones = {
   1944: {
     id: "1944",
     events: [
-      "D-Day. Omaha Beach.",
+      {
+        text: "D-Day. Omaha Beach.",
+        image: {
+          src: "/images/moments/us/d-day.jpg",
+          alt: "Into the Jaws of Death — Omaha Beach, June 6, 1944",
+        },
+      },
       "The GI Bill was signed.",
       "Bretton Woods made the dollar the world's anchor.",
     ],
@@ -974,7 +1040,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "1963",
     events: [
-      "Martin Luther King Jr. dreamed aloud at the Lincoln Memorial.",
+      {
+        text: "Martin Luther King Jr. dreamed aloud at the Lincoln Memorial.",
+        image: {
+          src: "/images/moments/us/march-washington.jpg",
+          alt: "The March on Washington, August 28, 1963",
+        },
+      },
       "President Kennedy was assassinated in Dallas.",
     ],
   },
@@ -1019,7 +1091,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "moon",
     events: [
-      "Apollo 11. Armstrong and Aldrin walked on the Moon.",
+      {
+        text: "Apollo 11. Armstrong and Aldrin walked on the Moon.",
+        image: {
+          src: "/images/moments/us/apollo-11.jpg",
+          alt: "Buzz Aldrin on the Moon, photographed by Neil Armstrong",
+        },
+      },
       "ARPANET sent its first message — the internet was born.",
       "Woodstock. Stonewall.",
     ],
@@ -1122,7 +1200,13 @@ const milestones: LifelineMilestones = {
   1981: {
     id: "1981",
     events: [
-      "The Space Shuttle Columbia flew.",
+      {
+        text: "The Space Shuttle Columbia flew.",
+        image: {
+          src: "/images/moments/us/shuttle.jpg",
+          alt: "Columbia lifting off on STS-1, 1981",
+        },
+      },
       "The IBM PC arrived. MTV played its first video.",
       "AIDS was first reported.",
     ],
@@ -1176,7 +1260,13 @@ const milestones: LifelineMilestones = {
   1990: {
     id: "1990",
     events: [
-      "The Hubble Space Telescope launched.",
+      {
+        text: "The Hubble Space Telescope launched.",
+        image: {
+          src: "/images/moments/us/hubble.jpg",
+          alt: "Hubble in orbit",
+        },
+      },
       "The Americans with Disabilities Act became law.",
     ],
   },
@@ -1331,7 +1421,13 @@ const milestones: LifelineMilestones = {
   2012: {
     id: "2012",
     events: [
-      "Curiosity landed on Mars via sky crane.",
+      {
+        text: "Curiosity landed on Mars via sky crane.",
+        image: {
+          src: "/images/moments/us/curiosity.jpg",
+          alt: "Curiosity's self-portrait on Mars",
+        },
+      },
       "Hurricane Sandy flooded New York. Sandy Hook.",
     ],
   },
@@ -1382,7 +1478,13 @@ const milestones: LifelineMilestones = {
     events: [
       "The COVID-19 pandemic shut the country down.",
       "George Floyd's murder brought millions to the streets.",
-      "SpaceX returned human spaceflight to American soil.",
+      {
+        text: "SpaceX returned human spaceflight to American soil.",
+        image: {
+          src: "/images/moments/us/crew-dragon.jpg",
+          alt: "Falcon 9 launching Crew Dragon Demo-2, May 2020",
+        },
+      },
       "Elected Joe Biden.",
     ],
   },

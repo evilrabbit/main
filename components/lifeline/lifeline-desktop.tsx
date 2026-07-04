@@ -8,6 +8,7 @@ import {
 } from "./lifeline-labels"
 import { LifelineMarkerColumn } from "./lifeline-marker"
 import type { LifelineProps } from "./types"
+import { LifelineHoverImageProvider } from "./lifeline-hover-image"
 import { LifelineLegend } from "./lifeline-legend"
 import { useLifelineIntro } from "./use-lifeline-intro"
 import { useLifelineScroll } from "./use-lifeline-scroll"
@@ -63,6 +64,7 @@ export function LifelineDesktop({
       aria-label={title}
       style={showIntro ? introStyle : undefined}
     >
+      <LifelineHoverImageProvider>
       <div className="flex h-full items-center overflow-hidden">
         <div
           ref={trackRef}
@@ -109,6 +111,8 @@ export function LifelineDesktop({
           </div>
         </div>
       </div>
+
+      </LifelineHoverImageProvider>
 
       <LifelineLegend items={legend} />
     </section>

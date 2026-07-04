@@ -1,7 +1,12 @@
 import { forwardRef, type CSSProperties } from "react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
-import { getLifelineEventKey, LifelineEventText } from "./lifeline-event"
+import {
+  getLifelineEventImage,
+  getLifelineEventKey,
+  LifelineEventText,
+} from "./lifeline-event"
+import { useLifelineHoverImage } from "./lifeline-hover-image"
 import { aggregateLifelinePeople, LifelinePeople } from "./lifeline-people"
 import type { LifelineMarker } from "./types"
 
@@ -30,6 +35,7 @@ export const LifelineMarkerColumn = forwardRef<
 ) {
   const age = marker.age ?? marker.year - birthYear
   const people = aggregateLifelinePeople(marker)
+  const hoverImage = useLifelineHoverImage()
 
   return (
     <div
@@ -79,14 +85,26 @@ export const LifelineMarkerColumn = forwardRef<
               )}
 
               <div className="min-h-[3.25rem] space-y-4">
-                {marker.events.map((event, index) => (
-                  <p
-                    key={getLifelineEventKey(event, index)}
-                    className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
-                  >
-                    <LifelineEventText event={event} />
-                  </p>
-                ))}
+                {marker.events.map((event, index) => {
+                  const image = getLifelineEventImage(event)
+
+                  return (
+                    <p
+                      key={getLifelineEventKey(event, index)}
+                      className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
+                      onMouseEnter={
+                        image && hoverImage
+                          ? () => hoverImage.show(image)
+                          : undefined
+                      }
+                      onMouseLeave={
+                        image && hoverImage ? hoverImage.hide : undefined
+                      }
+                    >
+                      <LifelineEventText event={event} />
+                    </p>
+                  )
+                })}
               </div>
             </div>
 

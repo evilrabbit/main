@@ -1,4 +1,28 @@
-import type { LifelineEvent } from "./types"
+import type {
+  LifelineEvent,
+  LifelineEventImage,
+  LifelineEventSegment,
+} from "./types"
+
+function getEventContent(
+  event: LifelineEvent,
+): string | LifelineEventSegment[] {
+  if (typeof event === "object" && !Array.isArray(event) && "text" in event) {
+    return event.text
+  }
+
+  return event
+}
+
+export function getLifelineEventImage(
+  event: LifelineEvent,
+): LifelineEventImage | undefined {
+  if (typeof event === "object" && !Array.isArray(event) && "image" in event) {
+    return event.image
+  }
+
+  return undefined
+}
 
 export function LifelineEventText({
   event,
@@ -7,13 +31,15 @@ export function LifelineEventText({
   event: LifelineEvent
   className?: string
 }) {
-  if (typeof event === "string") {
-    return <span className={className}>{event}</span>
+  const content = getEventContent(event)
+
+  if (typeof content === "string") {
+    return <span className={className}>{content}</span>
   }
 
   return (
     <span className={className}>
-      {event.map((segment, index) =>
+      {content.map((segment, index) =>
         segment.type === "link" ? (
           <a
             key={index}
@@ -33,7 +59,9 @@ export function LifelineEventText({
 }
 
 export function getLifelineEventKey(event: LifelineEvent, index: number) {
-  if (typeof event === "string") return `${index}-${event}`
+  const content = getEventContent(event)
 
-  return `${index}-${event.map((segment) => segment.value).join("")}`
+  if (typeof content === "string") return `${index}-${content}`
+
+  return `${index}-${content.map((segment) => segment.value).join("")}`
 }

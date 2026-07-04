@@ -22,7 +22,21 @@ export type LifelineEventSegment =
   | { type: "text"; value: string }
   | { type: "link"; value: string; href: string }
 
-export type LifelineEvent = string | LifelineEventSegment[]
+export interface LifelineEventImage {
+  src: string
+  alt: string
+}
+
+/** Object form lets an event carry a cursor-following hover image. */
+export interface LifelineEventWithImage {
+  text: string | LifelineEventSegment[]
+  image: LifelineEventImage
+}
+
+export type LifelineEvent =
+  | string
+  | LifelineEventSegment[]
+  | LifelineEventWithImage
 
 export interface LifelineMarker {
   id: string
