@@ -168,7 +168,8 @@ html.lifeline-scroll::-webkit-scrollbar {
    the theme class. The transition matters: Safari 26+ ignores
    theme-color and samples the page instead, re-reading animated
    background changes but not instant ones. */
-html {
+html,
+body {
   background-color: hsl(var(--background));
   transition: background-color 0.15s ease;
 }
