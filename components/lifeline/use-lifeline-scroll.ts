@@ -36,7 +36,12 @@ function normalizeWheelDelta(event: WheelEvent) {
 }
 
 function isInteractiveTarget(target: EventTarget | null) {
-  return target instanceof Element && Boolean(target.closest("a, button"))
+  // Pointer capture during drag retargets clicks to the section, so
+  // anything clickable must opt out of drag-start here.
+  return (
+    target instanceof Element &&
+    Boolean(target.closest("a, button, [data-lifeline-interactive]"))
+  )
 }
 
 function isInStage(clientY: number, isCoarsePointer: boolean) {

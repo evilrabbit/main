@@ -9,10 +9,13 @@ import {
   useState,
   type ReactNode,
 } from "react"
+import { useTheme } from "next-themes"
 
 /** Tweak these */
 const DURATION_S = 7.5
 const MAX_DPR = 1.5
+/** Wait for the theme cross-fade before the first burst. */
+const NIGHTFALL_MS = 400
 
 const VERTEX_SHADER = `
 attribute vec2 a_pos;
@@ -128,6 +131,9 @@ function FireworksCanvas({ onDone }: { onDone: () => void }) {
       const shader = gl.createShader(type)!
       gl.shaderSource(shader, source)
       gl.compileShader(shader)
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.warn("fireworks shader:", gl.getShaderInfoLog(shader))
+      }
       return shader
     }
 
@@ -136,6 +142,7 @@ function FireworksCanvas({ onDone }: { onDone: () => void }) {
     gl.attachShader(program, compile(gl.FRAGMENT_SHADER, FRAGMENT_SHADER))
     gl.linkProgram(program)
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.warn("fireworks link:", gl.getProgramInfoLog(program))
       onDoneRef.current()
       return
     }
@@ -208,13 +215,44 @@ export function LifelineFireworksProvider({
   children: ReactNode
 }) {
   const [playing, setPlaying] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const restoreThemeRef = useRef<string | null>(null)
+  const nightfallRef = useRef(0)
+  const playingRef = useRef(false)
+  playingRef.current = playing
 
-  const launch = useCallback(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    setPlaying(true)
+  useEffect(() => {
+    return () => window.clearTimeout(nightfallRef.current)
   }, [])
 
-  const done = useCallback(() => setPlaying(false), [])
+  const launch = useCallback(() => {
+    if (playingRef.current) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    // Fireworks belong in the dark: switch a light page to dark for
+    // the show, and restore afterwards.
+    if (resolvedTheme === "light") {
+      restoreThemeRef.current = "light"
+      setTheme("dark")
+      window.clearTimeout(nightfallRef.current)
+      nightfallRef.current = window.setTimeout(
+        () => setPlaying(true),
+        NIGHTFALL_MS,
+      )
+      return
+    }
+
+    restoreThemeRef.current = null
+    setPlaying(true)
+  }, [resolvedTheme, setTheme])
+
+  const done = useCallback(() => {
+    setPlaying(false)
+    if (restoreThemeRef.current) {
+      setTheme(restoreThemeRef.current)
+      restoreThemeRef.current = null
+    }
+  }, [setTheme])
 
   return (
     <LifelineFireworksContext.Provider value={{ launch }}>

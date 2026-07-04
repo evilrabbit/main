@@ -100,6 +100,7 @@ export const LifelineMarkerColumn = forwardRef<
                         "max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]",
                         effect && "cursor-pointer",
                       )}
+                      data-lifeline-interactive={effect ? "" : undefined}
                       onMouseEnter={
                         image && hoverImage
                           ? () => hoverImage.show(image)
