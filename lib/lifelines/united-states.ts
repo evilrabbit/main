@@ -2440,8 +2440,8 @@ const milestones: LifelineMilestones = {
       {
         text: "Hosted the FIFA World Cup with Canada and Mexico.",
         image: {
-          src: "/images/moments/us/messi.jpg",
-          alt: "Lionel Messi",
+          src: "/images/moments/us/world-cup-2026.jpg",
+          alt: "The 2026 FIFA World Cup",
         },
       },
     ],
