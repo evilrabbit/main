@@ -39,22 +39,14 @@ uniform float u_dur;
 #define N_FIREWORKS 10
 #define N_PARTICLES 42
 
-float hash11(float p) {
-  p = fract(p * 0.1031);
-  p *= p + 33.33;
-  p *= p + p;
-  return fract(p);
+float hash(float n) {
+  return fract(sin(n) * 43758.5453123);
 }
 
-vec2 hash21(float p) {
-  return vec2(hash11(p), hash11(p + 17.17));
-}
-
-vec3 palette(float i) {
-  float m = mod(i, 3.0);
-  if (m < 0.5) return vec3(0.851, 0.198, 0.286); // Old Glory red
-  if (m < 1.5) return vec3(1.0);                 // white
-  return vec3(0.231, 0.457, 0.925);              // Old Glory blue
+vec3 palette(float m) {
+  if (m < 0.5) return vec3(0.90, 0.15, 0.25); // Old Glory red
+  if (m < 1.5) return vec3(1.0);              // white
+  return vec3(0.25, 0.45, 0.95);              // Old Glory blue
 }
 
 void main() {
@@ -66,26 +58,29 @@ void main() {
 
   for (int i = 0; i < N_FIREWORKS; i++) {
     float fi = float(i);
-    float t0 = 0.3 + fi * (u_dur - 2.6) / float(N_FIREWORKS) + hash11(fi * 7.3) * 0.35;
-    float lt = t - t0;
-    if (lt < 0.0 || lt > 1.9) continue;
+    float t0 = 0.35 + fi * (u_dur - 2.8) / float(N_FIREWORKS) + hash(fi * 7.31) * 0.3;
+    // No flow control in the loop — some WebGL1 driver translations
+    // mishandle continue, so inactive bursts multiply to zero instead.
+    float active = step(t0, t) * step(t, t0 + 1.8);
+    float lt = clamp((t - t0) / 1.8, 0.0, 1.0);
 
-    vec2 center = vec2((hash11(fi * 3.1) - 0.5) * 1.4, -0.05 + hash11(fi * 5.7) * 0.5);
-    vec3 base = palette(fi + floor(hash11(fi * 9.9) * 3.0));
-    float T = lt / 1.9;
+    vec2 center = vec2((hash(fi * 3.7) - 0.5) * 1.6, -0.05 + hash(fi * 9.1) * 0.5);
+    vec3 base = palette(mod(fi, 3.0)); // strict red / white / blue rotation
+    // Ramp in fast so overlapping particles at ignition don't stack
+    // into a blown-out ball, then decay.
+    float fade = exp(-lt * 4.0) * min(1.0, lt * 6.0);
 
     for (int j = 0; j < N_PARTICLES; j++) {
       float fj = float(j);
-      vec2 h = hash21(fi * 57.0 + fj * 13.7);
-      float angle = (fj / float(N_PARTICLES) + h.x * 0.02) * TAU;
-      float speed = 0.18 + 0.22 * h.y;
+      float angle = (fj / float(N_PARTICLES)) * TAU + hash(fi * 100.0 + fj) * 0.15;
+      float speed = 0.16 + 0.22 * hash(fj * 7.77 + fi * 31.3);
 
-      vec2 p = center + vec2(cos(angle), sin(angle)) * speed * pow(T, 0.42);
-      p.y -= 0.10 * T * T; // gravity
+      vec2 p = center + vec2(cos(angle), sin(angle)) * speed * sqrt(lt);
+      p.y -= 0.09 * lt * lt; // gravity
 
-      float d = length(uv - p);
-      float bright = exp(-T * 4.5) * (0.75 + 0.25 * sin(40.0 * T + fj));
-      col += base * bright * 0.0011 / (d * d + 0.00003);
+      float d = max(length(uv - p), 0.004);
+      float sparkle = 0.7 + 0.3 * sin(30.0 * lt + fj * 1.7);
+      col += base * active * fade * sparkle * 0.0006 / (d * d);
     }
   }
 
@@ -196,7 +191,8 @@ function FireworksCanvas({ onDone }: { onDone: () => void }) {
     return () => {
       cancelAnimationFrame(frame)
       window.removeEventListener("resize", resize)
-      gl.getExtension("WEBGL_lose_context")?.loseContext()
+      // No manual loseContext: StrictMode re-runs this effect on the
+      // same canvas, and a lost context can never compile again.
     }
   }, [])
 
