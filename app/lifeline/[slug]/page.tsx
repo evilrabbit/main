@@ -6,6 +6,7 @@ import { Lifeline } from "@/components/lifeline"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
 import { ThemeColor } from "@/components/theme-color"
+import { UsFlag } from "@/components/us-flag"
 import { getLifeline, lifelines } from "@/lib/lifelines"
 
 export const dynamicParams = false
@@ -51,6 +52,11 @@ export default function LifelinePage({
   const lifeline = getLifeline(params.slug)
   if (!lifeline) notFound()
 
+  const navLogo =
+    lifeline.slug === "united-states" ? (
+      <UsFlag className="h-5 w-auto" />
+    ) : undefined
+
   return (
     <div
       className={cn(
@@ -59,7 +65,7 @@ export default function LifelinePage({
       )}
     >
       <ThemeColor />
-      <SiteNav />
+      <SiteNav logo={navLogo} />
       <main className="flex-1 min-h-0 overflow-y-auto pt-16 md:overflow-hidden">
         <Lifeline
           markers={lifeline.markers}
