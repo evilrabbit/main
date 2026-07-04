@@ -982,7 +982,13 @@ const milestones: LifelineMilestones = {
     id: "1956",
     events: [
       "The Interstate Highway System was signed into law.",
-      "Elvis appeared on Ed Sullivan.",
+      {
+        text: "Elvis appeared on Ed Sullivan.",
+        image: {
+          src: "/images/moments/us/elvis.jpg",
+          alt: "Elvis Presley, 1956",
+        },
+      },
     ],
   },
   1957: {
@@ -1156,7 +1162,13 @@ const milestones: LifelineMilestones = {
     events: [
       "Turned 200.",
       "Apple Computer was founded in a garage.",
-      "Viking 1 landed on Mars.",
+      {
+        text: "Viking 1 landed on Mars.",
+        image: {
+          src: "/images/moments/us/viking.jpg",
+          alt: "Viking 1's first photograph from the surface of Mars",
+        },
+      },
     ],
   },
   1977: {
@@ -1350,7 +1362,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "september-11",
     events: [
-      "September 11.",
+      {
+        text: "September 11.",
+        image: {
+          src: "/images/moments/us/sept-11.jpg",
+          alt: "The Tribute in Light over Lower Manhattan",
+        },
+      },
       "The war in Afghanistan began.",
       "Apple introduced the iPod.",
     ],
@@ -1370,7 +1388,13 @@ const milestones: LifelineMilestones = {
   2005: {
     id: "2005",
     events: [
-      "Hurricane Katrina drowned New Orleans.",
+      {
+        text: "Hurricane Katrina drowned New Orleans.",
+        image: {
+          src: "/images/moments/us/katrina.jpg",
+          alt: "Hurricane Katrina from orbit, August 2005",
+        },
+      },
       "YouTube uploaded its first video.",
     ],
   },
@@ -1381,7 +1405,13 @@ const milestones: LifelineMilestones = {
   2007: {
     id: "iphone",
     events: [
-      "The iPhone was introduced in San Francisco.",
+      {
+        text: "The iPhone was introduced in San Francisco.",
+        image: {
+          src: "/images/moments/us/iphone.jpg",
+          alt: "The original iPhone",
+        },
+      },
       "Netflix started streaming.",
     ],
   },
@@ -1413,8 +1443,20 @@ const milestones: LifelineMilestones = {
   2011: {
     id: "2011",
     events: [
-      "Osama bin Laden was killed.",
-      "The Space Shuttle flew its last mission.",
+      {
+        text: "Osama bin Laden was killed.",
+        image: {
+          src: "/images/moments/us/situation-room.jpg",
+          alt: "The Situation Room, May 1, 2011",
+        },
+      },
+      {
+        text: "The Space Shuttle flew its last mission.",
+        image: {
+          src: "/images/moments/us/atlantis.jpg",
+          alt: "Atlantis lifting off on the final Shuttle mission",
+        },
+      },
       "Steve Jobs died.",
     ],
   },
@@ -1441,7 +1483,13 @@ const milestones: LifelineMilestones = {
   2015: {
     id: "2015",
     events: [
-      "Same-sex marriage became legal nationwide.",
+      {
+        text: "Same-sex marriage became legal nationwide.",
+        image: {
+          src: "/images/moments/us/rainbow-house.jpg",
+          alt: "The White House in rainbow colors, June 2015",
+        },
+      },
       "A Falcon 9 booster landed itself.",
       "Hamilton opened on Broadway.",
     ],
@@ -1459,7 +1507,13 @@ const milestones: LifelineMilestones = {
   2017: {
     id: "2017",
     events: [
-      "A total solar eclipse crossed the whole country.",
+      {
+        text: "A total solar eclipse crossed the whole country.",
+        image: {
+          src: "/images/moments/us/eclipse-2017.jpg",
+          alt: "The 2017 total solar eclipse",
+        },
+      },
       "#MeToo changed what could be said out loud.",
     ],
   },
@@ -1492,13 +1546,25 @@ const milestones: LifelineMilestones = {
     id: "2021",
     events: [
       "January 6 — the Capitol was stormed.",
-      "Ingenuity flew on Mars, the first powered flight on another world.",
+      {
+        text: "Ingenuity flew on Mars, the first powered flight on another world.",
+        image: {
+          src: "/images/moments/us/ingenuity.jpg",
+          alt: "Ingenuity on Mars, photographed by Perseverance",
+        },
+      },
     ],
   },
   2022: {
     id: "2022",
     events: [
-      "The Webb telescope opened its eye.",
+      {
+        text: "The Webb telescope opened its eye.",
+        image: {
+          src: "/images/moments/us/webb.jpg",
+          alt: "Webb's First Deep Field",
+        },
+      },
       "The Supreme Court overturned Roe v. Wade.",
       "ChatGPT launched. The AI era went mainstream.",
     ],
@@ -1520,7 +1586,13 @@ const milestones: LifelineMilestones = {
     id: "semiquincentennial",
     events: [
       "Turned 250.",
-      "Hosted the FIFA World Cup with Canada and Mexico.",
+      {
+        text: "Hosted the FIFA World Cup with Canada and Mexico.",
+        image: {
+          src: "/images/moments/us/messi.jpg",
+          alt: "Lionel Messi",
+        },
+      },
     ],
   },
 }

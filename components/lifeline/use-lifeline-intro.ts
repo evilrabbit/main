@@ -18,8 +18,13 @@ export const LIFELINE_RAIL_MS = 3200
  * capped so a 250-year nation doesn't become a screensaver.
  */
 export const LIFELINE_REFERENCE_TRACK = 9000
-export const LIFELINE_RAIL_MAX_MS = 9600
-export const LIFELINE_FADE_SCALE_MAX = 2.5
+export const LIFELINE_RAIL_MAX_MS = 7200
+export const LIFELINE_RAIL_SCALE_POWER = 0.45
+/**
+ * Keep fade stretching subtle — long fades lag behind the sweeping
+ * line and read as out of sync.
+ */
+export const LIFELINE_FADE_SCALE_MAX = 1.5
 
 export function useLifelineIntro(markerWidths: number[]) {
   // Skip straight to the settled end state for users who prefer reduced motion.
@@ -40,7 +45,10 @@ export function useLifelineIntro(markerWidths: number[]) {
   const railDuration = useMemo(() => {
     if (totalMarkersWidth <= LIFELINE_REFERENCE_TRACK) return LIFELINE_RAIL_MS
 
-    const scale = Math.pow(totalMarkersWidth / LIFELINE_REFERENCE_TRACK, 0.6)
+    const scale = Math.pow(
+      totalMarkersWidth / LIFELINE_REFERENCE_TRACK,
+      LIFELINE_RAIL_SCALE_POWER,
+    )
     return Math.min(LIFELINE_RAIL_MAX_MS, Math.round(LIFELINE_RAIL_MS * scale))
   }, [totalMarkersWidth])
 
