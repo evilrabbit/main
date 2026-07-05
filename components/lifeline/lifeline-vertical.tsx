@@ -125,8 +125,8 @@ const LifelineVerticalEntry = forwardRef<
                         key={getLifelineEventKey(event, index)}
                         className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
                         onClick={
-                          effect === "fireworks" && fireworks
-                            ? fireworks.launch
+                          effect && fireworks
+                            ? () => fireworks.launch(effect)
                             : undefined
                         }
                       >

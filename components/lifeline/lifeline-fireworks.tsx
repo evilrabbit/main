@@ -10,12 +10,30 @@ import {
   type ReactNode,
 } from "react"
 import { useTheme } from "next-themes"
+import type { LifelineEventEffect } from "./types"
 
 /** Tweak these */
 const DURATION_S = 7.5
 const MAX_DPR = 1.5
 /** Wait for the theme cross-fade before the first burst. */
 const NIGHTFALL_MS = 400
+
+type Palette = [number[], number[], number[]]
+
+const PALETTES: Record<LifelineEventEffect, Palette> = {
+  // Old Glory red / white / blue
+  fireworks: [
+    [0.9, 0.15, 0.25],
+    [1.0, 1.0, 1.0],
+    [0.25, 0.45, 0.95],
+  ],
+  // celeste / white / the gold of the sun
+  "fireworks-argentina": [
+    [0.45, 0.75, 0.98],
+    [1.0, 1.0, 1.0],
+    [1.0, 0.8, 0.25],
+  ],
+}
 
 const VERTEX_SHADER = `
 attribute vec2 a_pos;
@@ -34,6 +52,9 @@ precision highp float;
 uniform vec2 u_res;
 uniform float u_time;
 uniform float u_dur;
+uniform vec3 u_c0;
+uniform vec3 u_c1;
+uniform vec3 u_c2;
 
 #define TAU 6.28318530718
 #define N_FIREWORKS 10
@@ -44,9 +65,9 @@ float hash(float n) {
 }
 
 vec3 palette(float m) {
-  if (m < 0.5) return vec3(0.90, 0.15, 0.25); // Old Glory red
-  if (m < 1.5) return vec3(1.0);              // white
-  return vec3(0.25, 0.45, 0.95);              // Old Glory blue
+  if (m < 0.5) return u_c0;
+  if (m < 1.5) return u_c1;
+  return u_c2;
 }
 
 void main() {
@@ -92,7 +113,7 @@ void main() {
 `
 
 interface LifelineFireworksApi {
-  launch: () => void
+  launch: (effect: LifelineEventEffect) => void
 }
 
 const LifelineFireworksContext = createContext<LifelineFireworksApi | null>(
@@ -103,7 +124,15 @@ export function useLifelineFireworks() {
   return useContext(LifelineFireworksContext)
 }
 
-function FireworksCanvas({ onDone }: { onDone: () => void }) {
+function FireworksCanvas({
+  palette,
+  onDone,
+}: {
+  palette: Palette
+  onDone: () => void
+}) {
+  const paletteRef = useRef(palette)
+  paletteRef.current = palette
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const onDoneRef = useRef(onDone)
   onDoneRef.current = onDone
@@ -158,6 +187,11 @@ function FireworksCanvas({ onDone }: { onDone: () => void }) {
     const uTime = gl.getUniformLocation(program, "u_time")
     const uDur = gl.getUniformLocation(program, "u_dur")
 
+    const [c0, c1, c2] = paletteRef.current
+    gl.uniform3f(gl.getUniformLocation(program, "u_c0"), c0[0], c0[1], c0[2])
+    gl.uniform3f(gl.getUniformLocation(program, "u_c1"), c1[0], c1[1], c1[2])
+    gl.uniform3f(gl.getUniformLocation(program, "u_c2"), c2[0], c2[1], c2[2])
+
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
       canvas.width = Math.round(window.innerWidth * dpr)
@@ -211,6 +245,7 @@ export function LifelineFireworksProvider({
   children: ReactNode
 }) {
   const [playing, setPlaying] = useState(false)
+  const [effect, setEffect] = useState<LifelineEventEffect>("fireworks")
   const { resolvedTheme, setTheme } = useTheme()
   const restoreThemeRef = useRef<string | null>(null)
   const nightfallRef = useRef(0)
@@ -221,9 +256,11 @@ export function LifelineFireworksProvider({
     return () => window.clearTimeout(nightfallRef.current)
   }, [])
 
-  const launch = useCallback(() => {
+  const launch = useCallback((nextEffect: LifelineEventEffect) => {
     if (playingRef.current) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    setEffect(nextEffect)
 
     // Fireworks belong in the dark: switch a light page to dark for
     // the show, and restore afterwards.
@@ -253,7 +290,7 @@ export function LifelineFireworksProvider({
   return (
     <LifelineFireworksContext.Provider value={{ launch }}>
       {children}
-      {playing && <FireworksCanvas onDone={done} />}
+      {playing && <FireworksCanvas palette={PALETTES[effect]} onDone={done} />}
     </LifelineFireworksContext.Provider>
   )
 }

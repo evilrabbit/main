@@ -110,8 +110,8 @@ export const LifelineMarkerColumn = forwardRef<
                         image && hoverImage ? hoverImage.hide : undefined
                       }
                       onClick={
-                        effect === "fireworks" && fireworks
-                          ? fireworks.launch
+                        effect && fireworks
+                          ? () => fireworks.launch(effect)
                           : undefined
                       }
                     >

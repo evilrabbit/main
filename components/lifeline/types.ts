@@ -27,7 +27,7 @@ export interface LifelineEventImage {
   alt: string
 }
 
-export type LifelineEventEffect = "fireworks"
+export type LifelineEventEffect = "fireworks" | "fireworks-argentina"
 
 /**
  * Object form lets an event carry a cursor-following hover image
