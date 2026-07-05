@@ -26,6 +26,13 @@ const milestones: LifelineMilestones = {
         },
       },
       "Winter at Valley Forge.",
+      {
+        text: "Morocco became the first nation to recognize American independence. Sultan Mohammed III opened his ports to American ships.",
+        image: {
+          src: "/images/moments/us/morocco-recognition.jpg",
+          alt: "Coins of Sultan Mohammed III of Morocco",
+        },
+      },
     ],
   },
   1778: {
