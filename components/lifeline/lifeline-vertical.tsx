@@ -1,6 +1,6 @@
 "use client"
 
-import { forwardRef, useMemo, type CSSProperties } from "react"
+import { forwardRef, useEffect, useMemo, type CSSProperties } from "react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
 import {
@@ -20,12 +20,13 @@ const GRID_CLASS = "grid grid-cols-[2.5rem_1rem_1fr] gap-x-3"
 const RAIL_LEFT = "calc(2.5rem + 0.75rem + 0.5rem)"
 
 /**
- * Above this many entries the per-entry intro fades are skipped: every
- * armed CSS animation promotes its element to a compositor layer, and
- * hundreds of layers on a very tall page crash mobile Safari's
- * compositor mid-intro. The rail sweep and auto-scroll still play.
+ * Above this many entries the delay-armed intro fades would promote
+ * every entry to a compositor layer at once and crash mobile Safari's
+ * compositor. Long timelines fade entries in as they enter the
+ * viewport during the auto-scroll instead — same look, but only a
+ * handful of live animations at any moment.
  */
-const MAX_ANIMATED_ENTRIES = 80
+const MAX_ARMED_ENTRIES = 80
 
 function RailTick() {
   return (
@@ -175,7 +176,54 @@ export function LifelineVertical({
   )
 
   const showIntro = isIntroAnimating && isLayoutReady
-  const animateEntries = showIntro && markers.length <= MAX_ANIMATED_ENTRIES
+  const revealOnScroll = markers.length > MAX_ARMED_ENTRIES
+  const animateEntries = showIntro && !revealOnScroll
+
+  // Viewport-driven fades for long timelines: hide entries up front,
+  // animate each as the auto-scroll brings it on screen, and drop the
+  // animation (and its compositor layer) as soon as it finishes.
+  useEffect(() => {
+    if (!showIntro || !revealOnScroll) return
+    const section = sectionRef.current
+    if (!section) return
+
+    const items = Array.from(
+      section.querySelectorAll<HTMLElement>("ol > li > div"),
+    )
+    items.forEach((el) => {
+      el.style.opacity = "0"
+    })
+
+    const onAnimationEnd = (event: AnimationEvent) => {
+      if (event.animationName !== "lifeline-marker-in") return
+      const el = event.target as HTMLElement
+      el.classList.remove("lifeline-marker-intro")
+    }
+    section.addEventListener("animationend", onAnimationEnd)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          const el = entry.target as HTMLElement
+          el.style.opacity = ""
+          el.classList.add("lifeline-marker-intro")
+          observer.unobserve(el)
+        }
+      },
+      { rootMargin: "0px 0px -5% 0px" },
+    )
+    items.forEach((el) => observer.observe(el))
+
+    return () => {
+      observer.disconnect()
+      section.removeEventListener("animationend", onAnimationEnd)
+      items.forEach((el) => {
+        el.style.opacity = ""
+        el.classList.remove("lifeline-marker-intro")
+      })
+    }
+  }, [showIntro, revealOnScroll, sectionRef])
 
   const introStyle = {
     "--lifeline-labels-ms": `${intro.labelsDuration}ms`,
