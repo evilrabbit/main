@@ -19,6 +19,14 @@ import { useLifelineVerticalScroll } from "./use-lifeline-vertical-scroll"
 const GRID_CLASS = "grid grid-cols-[2.5rem_1rem_1fr] gap-x-3"
 const RAIL_LEFT = "calc(2.5rem + 0.75rem + 0.5rem)"
 
+/**
+ * Above this many entries the per-entry intro fades are skipped: every
+ * armed CSS animation promotes its element to a compositor layer, and
+ * hundreds of layers on a very tall page crash mobile Safari's
+ * compositor mid-intro. The rail sweep and auto-scroll still play.
+ */
+const MAX_ANIMATED_ENTRIES = 80
+
 function RailTick() {
   return (
     <span
@@ -167,6 +175,7 @@ export function LifelineVertical({
   )
 
   const showIntro = isIntroAnimating && isLayoutReady
+  const animateEntries = showIntro && markers.length <= MAX_ANIMATED_ENTRIES
 
   const introStyle = {
     "--lifeline-labels-ms": `${intro.labelsDuration}ms`,
@@ -214,7 +223,7 @@ export function LifelineVertical({
               ref={(node) => setEntryRef(index, node)}
               marker={marker}
               birthYear={birthYear}
-              animateIntro={showIntro}
+              animateIntro={animateEntries}
               introDelay={intro.getMarkerDelay(index)}
               introDuration={intro.getMarkerFadeDuration(index)}
             />
