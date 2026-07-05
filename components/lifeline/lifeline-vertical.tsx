@@ -45,6 +45,7 @@ const LifelineVerticalEntry = forwardRef<
     animateIntro?: boolean
     introDelay?: number
     introDuration?: number
+    revealPending?: boolean
   }
 >(function LifelineVerticalEntry(
   {
@@ -53,6 +54,7 @@ const LifelineVerticalEntry = forwardRef<
     animateIntro = false,
     introDelay = 0,
     introDuration = 420,
+    revealPending = false,
   },
   ref,
 ) {
@@ -68,7 +70,10 @@ const LifelineVerticalEntry = forwardRef<
       aria-label={`${marker.year}`}
     >
       <div
-        className={cn(animateIntro && "lifeline-marker-intro")}
+        className={cn(
+          animateIntro && "lifeline-marker-intro",
+          revealPending && "opacity-0",
+        )}
         style={{
           animationDelay: animateIntro ? `${introDelay}ms` : undefined,
           ...(animateIntro
@@ -179,48 +184,56 @@ export function LifelineVertical({
   const revealOnScroll = markers.length > MAX_ARMED_ENTRIES
   const animateEntries = showIntro && !revealOnScroll
 
-  // Viewport-driven fades for long timelines: hide entries up front,
-  // animate each as the auto-scroll brings it on screen, and drop the
-  // animation (and its compositor layer) as soon as it finishes.
+  // Rail-synced fades for long timelines: entries render hidden and
+  // each one fades in the moment the rail tip (--lifeline-intro-progress,
+  // written every frame by the intro scroll) crosses its position —
+  // desktop's choreography, but each entry drops its animation (and
+  // compositor layer) as soon as its fade finishes.
   useEffect(() => {
     if (!showIntro || !revealOnScroll) return
     const section = sectionRef.current
-    if (!section) return
+    const ol = section?.querySelector("ol")
+    if (!section || !ol) return
 
-    const items = Array.from(
-      section.querySelectorAll<HTMLElement>("ol > li > div"),
+    const entries = Array.from(ol.children) as HTMLElement[]
+    const targets = entries.map(
+      (li) => li.firstElementChild as HTMLElement | null,
     )
-    items.forEach((el) => {
-      el.style.opacity = "0"
-    })
 
     const onAnimationEnd = (event: AnimationEvent) => {
       if (event.animationName !== "lifeline-marker-in") return
-      const el = event.target as HTMLElement
-      el.classList.remove("lifeline-marker-intro")
+      ;(event.target as HTMLElement).classList.remove("lifeline-marker-intro")
     }
     section.addEventListener("animationend", onAnimationEnd)
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue
-          const el = entry.target as HTMLElement
-          el.style.opacity = ""
+    let next = 0
+    let frame = 0
+    const tick = () => {
+      const progress = parseFloat(
+        section.style.getPropertyValue("--lifeline-intro-progress") || "0",
+      )
+      const tip = progress * ol.offsetHeight
+
+      while (next < entries.length && entries[next].offsetTop <= tip) {
+        const el = targets[next]
+        if (el) {
+          el.classList.remove("opacity-0")
           el.classList.add("lifeline-marker-intro")
-          observer.unobserve(el)
         }
-      },
-      { rootMargin: "0px 0px -5% 0px" },
-    )
-    items.forEach((el) => observer.observe(el))
+        next++
+      }
+
+      if (next < entries.length) {
+        frame = requestAnimationFrame(tick)
+      }
+    }
+    frame = requestAnimationFrame(tick)
 
     return () => {
-      observer.disconnect()
+      cancelAnimationFrame(frame)
       section.removeEventListener("animationend", onAnimationEnd)
-      items.forEach((el) => {
-        el.style.opacity = ""
-        el.classList.remove("lifeline-marker-intro")
+      targets.forEach((el) => {
+        el?.classList.remove("opacity-0", "lifeline-marker-intro")
       })
     }
   }, [showIntro, revealOnScroll, sectionRef])
@@ -272,6 +285,7 @@ export function LifelineVertical({
               marker={marker}
               birthYear={birthYear}
               animateIntro={animateEntries}
+              revealPending={showIntro && revealOnScroll}
               introDelay={intro.getMarkerDelay(index)}
               introDuration={intro.getMarkerFadeDuration(index)}
             />
