@@ -4,19 +4,39 @@ const milestones: LifelineMilestones = {
   1816: {
     id: "born",
     events: [
-      "Declared independence in San Miguel de Tucumán on July 9.",
+      {
+        text: "Declared independence in San Miguel de Tucumán on July 9.",
+        image: {
+          src: "/images/moments/ar/tucuman.jpg",
+          alt: "The Casa Histórica in Tucumán",
+        },
+      },
     ],
   },
   1817: {
     id: "andes",
     events: [
-      "San Martín crossed the Andes.",
+      {
+        text: "San Martín crossed the Andes.",
+        image: {
+          src: "/images/moments/ar/andes.jpg",
+          alt: "The crossing of the Andes",
+        },
+      },
       "Victory at Chacabuco.",
     ],
   },
   1818: {
     id: "maipu",
-    events: ["Maipú sealed Chile's freedom."],
+    events: [
+      {
+        text: "Maipú sealed Chile's freedom.",
+        image: {
+          src: "/images/moments/ar/maipu.jpg",
+          alt: "The embrace of Maipú",
+        },
+      },
+    ],
   },
   1820: {
     id: "anarchy",
@@ -24,7 +44,15 @@ const milestones: LifelineMilestones = {
   },
   1821: {
     id: "uba",
-    events: ["The University of Buenos Aires was founded."],
+    events: [
+      {
+        text: "The University of Buenos Aires was founded.",
+        image: {
+          src: "/images/moments/ar/uba-1821.jpg",
+          alt: "The Manzana de las Luces",
+        },
+      },
+    ],
   },
   1826: {
     mentors: [
@@ -34,22 +62,52 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "rivadavia",
-    events: ["Bernardino Rivadavia became the first President."],
+    events: [
+      {
+        text: "Bernardino Rivadavia became the first President.",
+        image: {
+          src: "/images/people/bernardino-rivadavia.jpg",
+          alt: "Bernardino Rivadavia",
+        },
+      },
+    ],
   },
   1829: {
     id: "rosas",
-    events: ["Juan Manuel de Rosas took Buenos Aires."],
+    events: [
+      {
+        text: "Juan Manuel de Rosas took Buenos Aires.",
+        image: {
+          src: "/images/moments/ar/rosas.jpg",
+          alt: "Juan Manuel de Rosas",
+        },
+      },
+    ],
   },
   1833: {
     id: "1833",
     events: [
       "Britain occupied the Malvinas.",
-      "Darwin rode the pampas with the Beagle offshore.",
+      {
+        text: "Darwin rode the pampas with the Beagle offshore.",
+        image: {
+          src: "/images/moments/ar/beagle.jpg",
+          alt: "FitzRoy's survey chart of Tierra del Fuego",
+        },
+      },
     ],
   },
   1845: {
     id: "obligado",
-    events: ["The Vuelta de Obligado — chains across the Paraná against an empire."],
+    events: [
+      {
+        text: "The Vuelta de Obligado — chains across the Paraná against an empire.",
+        image: {
+          src: "/images/moments/ar/obligado.jpg",
+          alt: "The Battle of the Vuelta de Obligado",
+        },
+      },
+    ],
   },
   1852: {
     mentors: [
@@ -59,7 +117,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "caseros",
-    events: ["Urquiza defeated Rosas at Caseros."],
+    events: [
+      {
+        text: "Urquiza defeated Rosas at Caseros.",
+        image: {
+          src: "/images/moments/ar/caseros.jpg",
+          alt: "The Battle of Caseros",
+        },
+      },
+    ],
   },
   1853: {
     id: "constitution",
@@ -83,11 +149,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "mitre",
-    events: ["Bartolomé Mitre unified the republic."],
+    events: [
+      {
+        text: "Bartolomé Mitre unified the republic.",
+        image: {
+          src: "/images/people/bartolome-mitre.jpg",
+          alt: "Bartolomé Mitre",
+        },
+      },
+    ],
   },
   1865: {
     id: "triple-alianza",
-    events: ["The War of the Triple Alliance began."],
+    events: [
+      {
+        text: "The War of the Triple Alliance began.",
+        image: {
+          src: "/images/moments/ar/curupayti.jpg",
+          alt: "After the Battle of Curupaytí, by Cándido López",
+        },
+      },
+    ],
   },
   1868: {
     mentors: [
@@ -97,7 +179,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "sarmiento",
-    events: ["Sarmiento became President and built the schools."],
+    events: [
+      {
+        text: "Sarmiento became President and built the schools.",
+        image: {
+          src: "/images/people/domingo-sarmiento.jpg",
+          alt: "Domingo Faustino Sarmiento",
+        },
+      },
+    ],
   },
   1869: {
     id: "census",
@@ -105,7 +195,15 @@ const milestones: LifelineMilestones = {
   },
   1871: {
     id: "yellow-fever",
-    events: ["Yellow fever emptied Buenos Aires."],
+    events: [
+      {
+        text: "Yellow fever emptied Buenos Aires.",
+        image: {
+          src: "/images/moments/ar/fiebre-amarilla.jpg",
+          alt: "An Episode of Yellow Fever, by Juan Manuel Blanes",
+        },
+      },
+    ],
   },
   1874: {
     mentors: [
@@ -115,7 +213,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "avellaneda",
-    events: ["Nicolás Avellaneda became President."],
+    events: [
+      {
+        text: "Nicolás Avellaneda became President.",
+        image: {
+          src: "/images/people/nicolas-avellaneda.jpg",
+          alt: "Nicolás Avellaneda",
+        },
+      },
+    ],
   },
   1877: {
     id: "frigorifico",
@@ -134,7 +240,13 @@ const milestones: LifelineMilestones = {
     ],
     id: "federalization",
     events: [
-      "Buenos Aires became the federal capital.",
+      {
+        text: "Buenos Aires became the federal capital.",
+        image: {
+          src: "/images/moments/ar/buenos-aires-1880.jpg",
+          alt: "Avenida de Mayo",
+        },
+      },
       "The immigration wave began — millions came from Italy and Spain.",
     ],
   },
@@ -164,11 +276,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "revolucion-parque",
-    events: ["The Revolución del Parque shook the regime."],
+    events: [
+      {
+        text: "The Revolución del Parque shook the regime.",
+        image: {
+          src: "/images/moments/ar/parque.jpg",
+          alt: "The Revolución del Parque",
+        },
+      },
+    ],
   },
   1891: {
     id: "ucr",
-    events: ["The Unión Cívica Radical was founded."],
+    events: [
+      {
+        text: "The Unión Cívica Radical was founded.",
+        image: {
+          src: "/images/moments/ar/alem.jpg",
+          alt: "Leandro N. Alem",
+        },
+      },
+    ],
   },
   1892: {
     id: "l-saenz-pena",
@@ -220,7 +348,15 @@ const milestones: LifelineMilestones = {
   },
   1908: {
     id: "colon",
-    events: ["The Teatro Colón opened."],
+    events: [
+      {
+        text: "The Teatro Colón opened.",
+        image: {
+          src: "/images/moments/ar/colon-1908.jpg",
+          alt: "The Teatro Colón",
+        },
+      },
+    ],
   },
   1910: {
     mentors: [
@@ -230,15 +366,39 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "centennial",
-    events: ["Turned 100 — the Centennial, and Buenos Aires felt like the future."],
+    events: [
+      {
+        text: "Turned 100 — the Centennial, and Buenos Aires felt like the future.",
+        image: {
+          src: "/images/moments/ar/centenario.jpg",
+          alt: "The Centennial at the Cabildo, 1910",
+        },
+      },
+    ],
   },
   1912: {
     id: "saenz-pena",
-    events: ["The Sáenz Peña Law made the vote secret and universal."],
+    events: [
+      {
+        text: "The Sáenz Peña Law made the vote secret and universal.",
+        image: {
+          src: "/images/people/roque-saenz-pena.jpg",
+          alt: "Roque Sáenz Peña",
+        },
+      },
+    ],
   },
   1913: {
     id: "subte",
-    events: ["The Subte's Line A opened — the first subway in Latin America."],
+    events: [
+      {
+        text: "The Subte's Line A opened — the first subway in Latin America.",
+        image: {
+          src: "/images/moments/ar/subte-1913.jpg",
+          alt: "Line A",
+        },
+      },
+    ],
   },
   1914: {
     id: "de-la-plaza",
@@ -258,11 +418,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "yrigoyen",
-    events: ["Hipólito Yrigoyen became the first President elected by secret ballot."],
+    events: [
+      {
+        text: "Hipólito Yrigoyen became the first President elected by secret ballot.",
+        image: {
+          src: "/images/people/hipolito-yrigoyen.jpg",
+          alt: "Hipólito Yrigoyen",
+        },
+      },
+    ],
   },
   1918: {
     id: "reforma",
-    events: ["The University Reform began in Córdoba and spread across a continent."],
+    events: [
+      {
+        text: "The University Reform began in Córdoba and spread across a continent.",
+        image: {
+          src: "/images/moments/ar/reforma-1918.jpg",
+          alt: "The University Reform, Córdoba, 1918",
+        },
+      },
+    ],
   },
   1922: {
     mentors: [
@@ -272,7 +448,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "ypf",
-    events: ["YPF was founded — the world's first state oil company."],
+    events: [
+      {
+        text: "YPF was founded — the world's first state oil company.",
+        image: {
+          src: "/images/moments/ar/ypf-1922.jpg",
+          alt: "The first well at Comodoro Rivadavia",
+        },
+      },
+    ],
   },
   1930: {
     mentors: [
@@ -282,7 +466,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "first-coup",
-    events: ["The first military coup broke the constitutional order."],
+    events: [
+      {
+        text: "The first military coup broke the constitutional order.",
+        image: {
+          src: "/images/moments/ar/golpe-1930.jpg",
+          alt: "The 1930 coup",
+        },
+      },
+    ],
   },
   1932: {
     id: "justo",
@@ -296,12 +488,26 @@ const milestones: LifelineMilestones = {
   },
   1935: {
     id: "gardel",
-    events: ["Carlos Gardel died in Medellín. Tango lost its voice."],
+    events: [
+      {
+        text: "Carlos Gardel died in Medellín. Tango lost its voice.",
+        image: {
+          src: "/images/moments/ar/gardel.jpg",
+          alt: "Carlos Gardel",
+        },
+      },
+    ],
   },
   1936: {
     id: "obelisco",
     events: [
-      "The Obelisco rose on Avenida 9 de Julio.",
+      {
+        text: "The Obelisco rose on Avenida 9 de Julio.",
+        image: {
+          src: "/images/moments/ar/obelisco-1936.jpg",
+          alt: "The Obelisco, 1936",
+        },
+      },
       "Saavedra Lamas won Latin America's first Nobel Prize.",
     ],
   },
@@ -331,7 +537,15 @@ const milestones: LifelineMilestones = {
   },
   1944: {
     id: "san-juan",
-    events: ["The San Juan earthquake. At the relief gala, Perón met Evita."],
+    events: [
+      {
+        text: "The San Juan earthquake. At the relief gala, Perón met Evita.",
+        image: {
+          src: "/images/moments/ar/san-juan-1944.jpg",
+          alt: "San Juan after the earthquake",
+        },
+      },
+    ],
   },
   1945: {
     id: "loyalty-day",
@@ -345,12 +559,26 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "peron",
-    events: ["Juan Domingo Perón became President."],
+    events: [
+      {
+        text: "Juan Domingo Perón became President.",
+        image: {
+          src: "/images/moments/ar/peron-evita-ayrinhac.jpg",
+          alt: "Perón and Evita, by Numa Ayrinhac",
+        },
+      },
+    ],
   },
   1947: {
     id: "1947",
     events: [
-      "Women won the vote — Evita's law.",
+      {
+        text: "Women won the vote — Evita's law.",
+        image: {
+          src: "/images/moments/ar/evita-1947.jpg",
+          alt: "Evita receives Law 13,010 on the balcony of the Casa Rosada",
+        },
+      },
       "Bernardo Houssay won Latin America's first Nobel in science.",
     ],
   },
@@ -361,25 +589,53 @@ const milestones: LifelineMilestones = {
   1951: {
     id: "1951",
     events: [
-      "Fangio won his first Formula One title.",
+      {
+        text: "Fangio won his first Formula One title.",
+        image: {
+          src: "/images/moments/ar/fangio-1951.jpg",
+          alt: "Fangio and Nuvolari, 1951",
+        },
+      },
       "Television arrived on October 17.",
       "Evita renounced the vice presidency before a million people.",
     ],
   },
   1952: {
     id: "evita",
-    events: ["Eva Perón died at 33. The country stopped."],
+    events: [
+      {
+        text: "Eva Perón died at 33. The country stopped.",
+        image: {
+          src: "/images/moments/ar/evita-1952.jpg",
+          alt: "Eva Perón's official portrait",
+        },
+      },
+    ],
   },
   1955: {
     id: "libertadora",
     events: [
-      "Navy planes bombed Plaza de Mayo.",
+      {
+        text: "Navy planes bombed Plaza de Mayo.",
+        image: {
+          src: "/images/moments/ar/bombardeo-1955.jpg",
+          alt: "The bombing of Plaza de Mayo",
+        },
+      },
       "The Revolución Libertadora sent Perón into exile.",
     ],
   },
   1957: {
     id: "fangio-five",
-    events: ["Fangio won his fifth title — a record that stood for half a century."],
+    events: [
+      {
+        text: "Fangio won his fifth title — a record that stood for half a century.",
+        image: {
+          src: "/images/moments/ar/fangio-1957.jpg",
+          alt: "Fangio's Maserati 250F at the Nürburgring",
+        },
+      },
+    ],
   },
   1958: {
     mentors: [
@@ -389,7 +645,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "frondizi",
-    events: ["Arturo Frondizi became President."],
+    events: [
+      {
+        text: "Arturo Frondizi became President.",
+        image: {
+          src: "/images/people/arturo-frondizi.jpg",
+          alt: "Arturo Frondizi",
+        },
+      },
+    ],
   },
   1962: {
     id: "guido",
@@ -410,13 +674,33 @@ const milestones: LifelineMilestones = {
     ],
     id: "1963",
     events: [
-      "Arturo Illia became President.",
-      "Cortázar published Rayuela.",
+      {
+        text: "Arturo Illia became President.",
+        image: {
+          src: "/images/people/arturo-illia.jpg",
+          alt: "Arturo Illia",
+        },
+      },
+      {
+        text: "Cortázar published Rayuela.",
+        image: {
+          src: "/images/moments/ar/cortazar.jpg",
+          alt: "Julio Cortázar",
+        },
+      },
     ],
   },
   1964: {
     id: "mafalda",
-    events: ["Quino drew Mafalda for the first time."],
+    events: [
+      {
+        text: "Quino drew Mafalda for the first time.",
+        image: {
+          src: "/images/moments/ar/mafalda.jpg",
+          alt: "Mafalda in San Telmo",
+        },
+      },
+    ],
   },
   1966: {
     mentors: [
@@ -427,20 +711,50 @@ const milestones: LifelineMilestones = {
     ],
     id: "ongania",
     events: [
-      "Onganía's coup. The Night of the Long Batons emptied the universities.",
+      {
+        text: "Onganía's coup. The Night of the Long Batons emptied the universities.",
+        image: {
+          src: "/images/moments/ar/bastones-largos.jpg",
+          alt: "The Night of the Long Batons",
+        },
+      },
     ],
   },
   1967: {
     id: "che",
-    events: ["Che Guevara, born in Rosario, was killed in Bolivia."],
+    events: [
+      {
+        text: "Che Guevara, born in Rosario, was killed in Bolivia.",
+        image: {
+          src: "/images/moments/ar/che.jpg",
+          alt: "Guerrillero Heroico, by Alberto Korda",
+        },
+      },
+    ],
   },
   1969: {
     id: "cordobazo",
-    events: ["The Cordobazo — workers and students took Córdoba."],
+    events: [
+      {
+        text: "The Cordobazo — workers and students took Córdoba.",
+        image: {
+          src: "/images/moments/ar/cordobazo.jpg",
+          alt: "The Cordobazo",
+        },
+      },
+    ],
   },
   1970: {
     id: "leloir",
-    events: ["Luis Federico Leloir won the Nobel Prize in Chemistry."],
+    events: [
+      {
+        text: "Luis Federico Leloir won the Nobel Prize in Chemistry.",
+        image: {
+          src: "/images/moments/ar/leloir.jpg",
+          alt: "Luis Federico Leloir",
+        },
+      },
+    ],
   },
   1973: {
     mentors: [
@@ -454,7 +768,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "peron-returns",
-    events: ["Perón came home after eighteen years and won the presidency again."],
+    events: [
+      {
+        text: "Perón came home after eighteen years and won the presidency again.",
+        image: {
+          src: "/images/people/juan-domingo-peron.jpg",
+          alt: "Juan Domingo Perón",
+        },
+      },
+    ],
   },
   1974: {
     mentors: [
@@ -466,7 +788,13 @@ const milestones: LifelineMilestones = {
     id: "isabel",
     events: [
       "Perón died on July 1.",
-      "Isabel Perón became the first woman president in the world.",
+      {
+        text: "Isabel Perón became the first woman president in the world.",
+        image: {
+          src: "/images/people/isabel-peron.jpg",
+          alt: "Isabel Perón",
+        },
+      },
     ],
   },
   1976: {
@@ -478,23 +806,51 @@ const milestones: LifelineMilestones = {
     ],
     id: "dictadura",
     events: [
-      "The March 24 coup began the dictatorship. Thirty thousand disappeared.",
+      {
+        text: "The March 24 coup began the dictatorship. Thirty thousand disappeared.",
+        image: {
+          src: "/images/moments/ar/junta-1976.jpg",
+          alt: "The junta",
+        },
+      },
     ],
   },
   1977: {
     id: "madres",
     events: [
       "The Madres de Plaza de Mayo began their rounds.",
-      "Guillermo Vilas won Roland Garros and the US Open.",
+      {
+        text: "Guillermo Vilas won Roland Garros and the US Open.",
+        image: {
+          src: "/images/moments/ar/vilas.jpg",
+          alt: "Guillermo Vilas",
+        },
+      },
     ],
   },
   1978: {
     id: "wc78",
-    events: ["Won the World Cup at home, in a country holding its breath."],
+    events: [
+      {
+        text: "Won the World Cup at home, in a country holding its breath.",
+        image: {
+          src: "/images/moments/ar/mundial-78.jpg",
+          alt: "Passarella lifts the Cup — El Gráfico, 1978",
+        },
+      },
+    ],
   },
   1980: {
     id: "perez-esquivel",
-    events: ["Adolfo Pérez Esquivel won the Nobel Peace Prize."],
+    events: [
+      {
+        text: "Adolfo Pérez Esquivel won the Nobel Peace Prize.",
+        image: {
+          src: "/images/moments/ar/esquivel.jpg",
+          alt: "Adolfo Pérez Esquivel",
+        },
+      },
+    ],
   },
   1982: {
     mentors: [
@@ -504,7 +860,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "malvinas",
-    events: ["The Malvinas war. Six hundred and forty-nine never came back."],
+    events: [
+      {
+        text: "The Malvinas war. Six hundred and forty-nine never came back.",
+        image: {
+          src: "/images/moments/ar/malvinas-82.jpg",
+          alt: "Malvinas, 1982",
+        },
+      },
+    ],
   },
   1983: {
     mentors: [
@@ -515,13 +879,25 @@ const milestones: LifelineMilestones = {
     ],
     id: "democracy",
     events: [
-      "Democracy returned. Raúl Alfonsín became President on December 10.",
+      {
+        text: "Democracy returned. Raúl Alfonsín became President on December 10.",
+        image: {
+          src: "/images/moments/ar/alfonsin-1983.jpg",
+          alt: "Raúl Alfonsín",
+        },
+      },
     ],
   },
   1984: {
     id: "1984",
     events: [
-      "The CONADEP delivered Nunca Más.",
+      {
+        text: "The CONADEP delivered Nunca Más.",
+        image: {
+          src: "/images/moments/ar/nunca-mas.jpg",
+          alt: "Ernesto Sabato",
+        },
+      },
       "César Milstein won the Nobel Prize in Medicine.",
     ],
   },
@@ -532,7 +908,13 @@ const milestones: LifelineMilestones = {
   1986: {
     id: "mexico86",
     events: [
-      "Maradona scored the Hand of God and the Goal of the Century in the same afternoon. Champions of the world.",
+      {
+        text: "Maradona scored the Hand of God and the Goal of the Century in the same afternoon. Champions of the world.",
+        image: {
+          src: "/images/moments/ar/maradona-86.jpg",
+          alt: "Maradona and the Cup — El Gráfico, 1986",
+        },
+      },
       "The Official Story won Argentina's first Oscar.",
     ],
   },
@@ -544,7 +926,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "hyperinflation",
-    events: ["Hyperinflation. Carlos Menem took office early."],
+    events: [
+      {
+        text: "Hyperinflation. Carlos Menem took office early.",
+        image: {
+          src: "/images/people/carlos-menem.jpg",
+          alt: "Carlos Menem",
+        },
+      },
+    ],
   },
   1991: {
     id: "convertibilidad",
@@ -557,13 +947,27 @@ const milestones: LifelineMilestones = {
   1994: {
     id: "1994",
     events: [
-      "The AMIA bombing killed 85 people.",
+      {
+        text: "The AMIA bombing killed 85 people.",
+        image: {
+          src: "/images/moments/ar/amia-1994.jpg",
+          alt: "The AMIA building",
+        },
+      },
       "The Constitution was reformed.",
     ],
   },
   1997: {
     id: "cerati",
-    events: ["Soda Stereo said gracias totales at River."],
+    events: [
+      {
+        text: "Soda Stereo said gracias totales at River.",
+        image: {
+          src: "/images/moments/ar/soda-stereo.jpg",
+          alt: "Cerati and Zeta, early days",
+        },
+      },
+    ],
   },
   1999: {
     mentors: [
@@ -573,13 +977,44 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "de-la-rua",
-    events: ["Fernando de la Rúa became President."],
+    events: [
+      {
+        text: "Fernando de la Rúa became President.",
+        image: {
+          src: "/images/people/fernando-de-la-rua.jpg",
+          alt: "Fernando de la Rúa",
+        },
+      },
+    ],
   },
   2001: {
     id: "crisis",
     events: [
       "December 2001 — the corralito, the cacerolazos, a helicopter over Plaza de Mayo.",
       "Five presidents in eleven days.",
+    ],
+    // The five, in order of succession.
+    mentors: [
+      {
+        name: "Fernando de la Rúa",
+        photo: "/images/people/fernando-de-la-rua.jpg",
+      },
+      {
+        name: "Ramón Puerta",
+        photo: "/images/people/ramon-puerta.jpg",
+      },
+      {
+        name: "Adolfo Rodríguez Saá",
+        photo: "/images/people/adolfo-rodriguez-saa.jpg",
+      },
+      {
+        name: "Eduardo Camaño",
+        photo: "/images/people/eduardo-camano.jpg",
+      },
+      {
+        name: "Eduardo Duhalde",
+        photo: "/images/people/eduardo-duhalde.jpg",
+      },
     ],
   },
   2002: {
@@ -600,12 +1035,26 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "kirchner",
-    events: ["Néstor Kirchner became President."],
+    events: [
+      {
+        text: "Néstor Kirchner became President.",
+        image: {
+          src: "/images/people/nestor-kirchner.jpg",
+          alt: "Néstor Kirchner",
+        },
+      },
+    ],
   },
   2004: {
     id: "athens",
     events: [
-      "Olympic gold in football and in basketball — the Golden Generation's Athens.",
+      {
+        text: "Olympic gold in football and in basketball — the Golden Generation's Athens.",
+        image: {
+          src: "/images/moments/ar/atenas-2004.jpg",
+          alt: "Manu Ginóbili",
+        },
+      },
     ],
   },
   2007: {
@@ -616,23 +1065,53 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "cristina",
-    events: ["Cristina Fernández de Kirchner became the first elected woman president."],
+    events: [
+      {
+        text: "Cristina Fernández de Kirchner became the first elected woman president.",
+        image: {
+          src: "/images/people/cristina-fernandez.jpg",
+          alt: "Cristina Fernández de Kirchner",
+        },
+      },
+    ],
   },
   2010: {
     id: "bicentennial",
     events: [
-      "Turned 200 — millions on Avenida 9 de Julio.",
+      {
+        text: "Turned 200 — millions on Avenida 9 de Julio.",
+        image: {
+          src: "/images/moments/ar/bicentenario-2010.jpg",
+          alt: "The Bicentennial flyover",
+        },
+      },
       "Legalized same-sex marriage, first in Latin America.",
       "Néstor Kirchner died.",
     ],
   },
   2013: {
     id: "francis",
-    events: ["Jorge Bergoglio became Pope Francis — the first pope from the Americas."],
+    events: [
+      {
+        text: "Jorge Bergoglio became Pope Francis — the first pope from the Americas.",
+        image: {
+          src: "/images/moments/ar/francisco.jpg",
+          alt: "Pope Francis, newly elected",
+        },
+      },
+    ],
   },
   2014: {
     id: "brasil2014",
-    events: ["Reached the World Cup final at the Maracanã."],
+    events: [
+      {
+        text: "Reached the World Cup final at the Maracanã.",
+        image: {
+          src: "/images/moments/ar/maracana-2014.jpg",
+          alt: "The final at the Maracanã, 2014",
+        },
+      },
+    ],
   },
   2015: {
     mentors: [
@@ -642,7 +1121,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "macri",
-    events: ["Mauricio Macri became President."],
+    events: [
+      {
+        text: "Mauricio Macri became President.",
+        image: {
+          src: "/images/people/mauricio-macri.jpg",
+          alt: "Mauricio Macri",
+        },
+      },
+    ],
   },
   2019: {
     mentors: [
@@ -652,13 +1139,27 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "alberto",
-    events: ["Alberto Fernández became President."],
+    events: [
+      {
+        text: "Alberto Fernández became President.",
+        image: {
+          src: "/images/people/alberto-fernandez.jpg",
+          alt: "Alberto Fernández",
+        },
+      },
+    ],
   },
   2020: {
     id: "2020",
     events: [
       "The pandemic shut the country down.",
-      "Diego Maradona died. Three days of mourning.",
+      {
+        text: "Diego Maradona died. Three days of mourning.",
+        image: {
+          src: "/images/moments/ar/maradona-2020.jpg",
+          alt: "Diego Maradona",
+        },
+      },
     ],
   },
   2021: {
@@ -668,7 +1169,13 @@ const milestones: LifelineMilestones = {
   2022: {
     id: "qatar",
     events: [
-      "December 18 — champions of the world in Qatar. Messi lifted the Cup. The third star.",
+      {
+        text: "December 18 — champions of the world in Qatar. Messi lifted the Cup. The third star.",
+        image: {
+          src: "/images/moments/ar/qatar-2022.jpg",
+          alt: "Messi and the Cup, Qatar 2022",
+        },
+      },
     ],
   },
   2023: {
@@ -679,7 +1186,15 @@ const milestones: LifelineMilestones = {
       },
     ],
     id: "milei",
-    events: ["Elected Javier Milei."],
+    events: [
+      {
+        text: "Elected Javier Milei.",
+        image: {
+          src: "/images/people/javier-milei.jpg",
+          alt: "Javier Milei",
+        },
+      },
+    ],
   },
   2024: {
     id: "copa2024",
