@@ -66,7 +66,7 @@ const LifelineVerticalEntry = forwardRef<
     <li
       ref={ref}
       className={hasContent ? "pb-10" : "pb-3"}
-      aria-label={`${marker.year}`}
+      aria-label={marker.label ?? `${marker.year}`}
     >
       <div
         className={cn(
@@ -91,8 +91,8 @@ const LifelineVerticalEntry = forwardRef<
             <RailTick />
           </div>
 
-          <p className="text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 dark:text-zinc-400">
-            {marker.year}
+          <p className="whitespace-nowrap text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 dark:text-zinc-400">
+            {marker.label ?? marker.year}
           </p>
         </div>
 

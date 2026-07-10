@@ -50,6 +50,7 @@ export function LifelineHoverImageProvider({
 }: LifelineHoverImageProviderProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const state = useRef({
     x: 0,
     y: 0,
@@ -124,7 +125,43 @@ export function LifelineHoverImageProvider({
         const s = state.current
         const container = containerRef.current
         const img = imageRef.current
+        const video = videoRef.current
         if (!s.hoverCapable || !container || !img) return
+
+        if (image.video && video) {
+          // Video takes over the card; the image element sits this one out.
+          img.style.display = "none"
+          video.style.display = "block"
+
+          const targetVideo = new URL(image.video, window.location.origin).href
+          if (video.src !== targetVideo) {
+            video.src = targetVideo
+            video.poster = image.src
+          }
+          video.play().catch(() => {
+            // Autoplay rejection just leaves the poster frame showing.
+          })
+
+          if (!s.visible) {
+            s.x = s.targetX
+            s.y = s.targetY
+            s.tilt = 0
+          }
+
+          s.visible = true
+          container.style.opacity = "1"
+          video.style.transform = "scale(1)"
+
+          cancelAnimationFrame(s.frame)
+          s.frame = requestAnimationFrame(step)
+          return
+        }
+
+        if (video) {
+          video.pause()
+          video.style.display = "none"
+        }
+        img.style.display = "block"
 
         const targetSrc = new URL(image.src, window.location.origin).href
 
@@ -170,11 +207,16 @@ export function LifelineHoverImageProvider({
         const s = state.current
         const container = containerRef.current
         const img = imageRef.current
+        const video = videoRef.current
         if (!container || !img) return
 
         s.visible = false
         container.style.opacity = "0"
         img.style.transform = "scale(0.94)"
+        if (video) {
+          video.pause()
+          video.style.transform = "scale(0.94)"
+        }
       },
     }),
     [step],
@@ -194,6 +236,15 @@ export function LifelineHoverImageProvider({
           alt=""
           className="w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out dark:ring-white/15"
           decoding="async"
+        />
+        <video
+          ref={videoRef}
+          muted
+          loop
+          playsInline
+          preload="none"
+          className="w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out dark:ring-white/15"
+          style={{ display: "none" }}
         />
       </div>
     </LifelineHoverImageContext.Provider>

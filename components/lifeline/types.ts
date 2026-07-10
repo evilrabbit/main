@@ -25,6 +25,8 @@ export type LifelineEventSegment =
 export interface LifelineEventImage {
   src: string
   alt: string
+  /** Optional mp4/webm — hover shows this (muted, looping) with src as fallback. */
+  video?: string
 }
 
 export type LifelineEventEffect = "fireworks" | "fireworks-argentina"
@@ -46,8 +48,12 @@ export type LifelineEvent =
 
 export interface LifelineMarker {
   id: string
+  /** Position on the numeric axis — a year, or any sequential unit (e.g. tournament day). */
   year: number
-  age?: number
+  /** Shown above the label; defaults to year - birthYear. Strings allowed for round tags etc. */
+  age?: number | string
+  /** Shown in place of the raw year — e.g. "Jun 16" on a day-based timeline. */
+  label?: string
   events: LifelineEvent[]
   companies?: LifelineCompany[]
   mentors?: LifelineMentor[]

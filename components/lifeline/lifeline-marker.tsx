@@ -1,5 +1,5 @@
 import { forwardRef, type CSSProperties } from "react"
-import { Image as ImageIcon } from "lucide-react"
+import { Film, Image as ImageIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
 import {
@@ -46,7 +46,7 @@ export const LifelineMarkerColumn = forwardRef<
       ref={ref}
       className="group relative shrink-0 pr-8 transition-opacity duration-300 ease-out will-change-opacity"
       style={{ width: minWidth }}
-      aria-label={`${marker.year}`}
+      aria-label={marker.label ?? `${marker.year}`}
     >
       <div
         className={cn("relative", animateIntro && "lifeline-marker-intro")}
@@ -69,8 +69,8 @@ export const LifelineMarkerColumn = forwardRef<
             {age}
           </p>
 
-          <p className="mb-6 h-5 text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
-            {marker.year}
+          <p className="mb-6 h-5 whitespace-nowrap text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
+            {marker.label ?? marker.year}
           </p>
 
           <div className="relative w-full pb-10 text-zinc-500 transition-colors duration-300 group-hover:text-black dark:group-hover:text-zinc-300">
@@ -121,11 +121,19 @@ export const LifelineMarkerColumn = forwardRef<
                         // the icon can never wrap onto a line of its own.
                         <span className="whitespace-nowrap">
                           {" "}
-                          <ImageIcon
-                            className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
-                            strokeWidth={1.75}
-                            aria-hidden="true"
-                          />
+                          {image.video ? (
+                            <Film
+                              className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                              strokeWidth={1.75}
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <ImageIcon
+                              className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                              strokeWidth={1.75}
+                              aria-hidden="true"
+                            />
+                          )}
                         </span>
                       )}
                     </p>
