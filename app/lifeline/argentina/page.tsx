@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
+import { cookies, headers } from "next/headers"
 import { GeistSans } from "geist/font/sans"
 import { cn } from "@/lib/utils"
 import { ArgentinaFlag } from "@/components/argentina-flag"
-import { Lifeline } from "@/components/lifeline"
-import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
 import { ThemeColor } from "@/components/theme-color"
 import { argentina } from "@/lib/lifelines/argentina"
+import { ArgentinaLifeline, type ArgentinaLang } from "./argentina-lifeline"
 
 export const metadata: Metadata = {
   title: "Argentina — Lifeline",
@@ -26,6 +26,16 @@ export const metadata: Metadata = {
   },
 }
 
+/** Explicit choice from the footer toggle wins; Accept-Language otherwise. */
+function detectLang(): ArgentinaLang {
+  const cookie = cookies().get("lang")?.value
+  if (cookie === "es" || cookie === "en") return cookie
+
+  const acceptLanguage = headers().get("accept-language") ?? ""
+  const preferred = acceptLanguage.split(",")[0]?.trim().toLowerCase() ?? ""
+  return preferred.startsWith("es") ? "es" : "en"
+}
+
 export default function ArgentinaLifelinePage() {
   return (
     <div
@@ -36,16 +46,7 @@ export default function ArgentinaLifelinePage() {
     >
       <ThemeColor />
       <SiteNav logo={<ArgentinaFlag className="h-5 w-auto" />} />
-      <main className="flex-1 min-h-0 overflow-y-auto pt-16 md:overflow-hidden">
-        <Lifeline
-          markers={argentina.markers}
-          birthYear={argentina.birthYear}
-          legend={argentina.legend}
-          title="Argentina — Lifeline"
-          className="h-full"
-        />
-      </main>
-      <SiteFooter className="shrink-0 backdrop-blur-sm" />
+      <ArgentinaLifeline initialLang={detectLang()} />
     </div>
   )
 }

@@ -66,7 +66,6 @@ export interface LifelineLegendItem {
 export interface LifelineProps {
   markers: LifelineMarker[]
   birthYear: number
-  legend?: LifelineLegendItem[]
   className?: string
   title?: string
 }

@@ -10,7 +10,6 @@ import { LifelineMarkerColumn } from "./lifeline-marker"
 import type { LifelineEventImage, LifelineProps } from "./types"
 import { getLifelineEventImage } from "./lifeline-event"
 import { LifelineHoverImageProvider } from "./lifeline-hover-image"
-import { LifelineLegend } from "./lifeline-legend"
 import { useLifelineIntro } from "./use-lifeline-intro"
 import { useLifelineScroll } from "./use-lifeline-scroll"
 import { getMarkerWidth } from "./lifeline-utils"
@@ -18,7 +17,6 @@ import { getMarkerWidth } from "./lifeline-utils"
 export function LifelineDesktop({
   markers,
   birthYear,
-  legend,
   className,
   title = "Lifeline",
 }: LifelineProps) {
@@ -125,8 +123,6 @@ export function LifelineDesktop({
       </div>
 
       </LifelineHoverImageProvider>
-
-      <LifelineLegend items={legend} />
     </section>
   )
 }

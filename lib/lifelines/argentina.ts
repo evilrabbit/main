@@ -8,7 +8,7 @@ const milestones: LifelineMilestones = {
         text: "Declared independence in San Miguel de Tucumán on July 9.",
         image: {
           src: "/images/moments/ar/tucuman.jpg",
-          alt: "The Casa Histórica in Tucumán",
+          alt: "The plaza of San Miguel de Tucumán",
         },
       },
     ],
@@ -54,6 +54,13 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  1825: {
+    id: "1825",
+    events: [
+      "Britain recognized the young republic.",
+      "War with Brazil began over the Banda Oriental.",
+    ],
+  },
   1826: {
     mentors: [
       {
@@ -71,6 +78,10 @@ const milestones: LifelineMilestones = {
         },
       },
     ],
+  },
+  1828: {
+    id: "1828",
+    events: ["Peace with Brazil — and Uruguay was born between the two."],
   },
   1829: {
     id: "rosas",
@@ -97,6 +108,14 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  1835: {
+    id: "suma",
+    events: ["Rosas returned with the suma del poder público — absolute power."],
+  },
+  1838: {
+    id: "blockade",
+    events: ["France blockaded the port of Buenos Aires."],
+  },
   1845: {
     id: "obligado",
     events: [
@@ -107,6 +126,12 @@ const milestones: LifelineMilestones = {
           alt: "The Battle of the Vuelta de Obligado",
         },
       },
+    ],
+  },
+  1850: {
+    id: "san-martin",
+    events: [
+      "San Martín died in Boulogne-sur-Mer, an ocean away from the lands he freed.",
     ],
   },
   1852: {
@@ -131,6 +156,10 @@ const milestones: LifelineMilestones = {
     id: "constitution",
     events: ["The Constitution was written in Santa Fe."],
   },
+  1857: {
+    id: "railway",
+    events: ["La Porteña pulled the first train out of Estación del Parque."],
+  },
   1860: {
     id: "derqui",
     events: [],
@@ -140,6 +169,10 @@ const milestones: LifelineMilestones = {
         photo: "/images/people/santiago-derqui.jpg",
       },
     ],
+  },
+  1861: {
+    id: "pavon",
+    events: ["Pavón — Buenos Aires prevailed, and the nation followed."],
   },
   1862: {
     mentors: [
@@ -192,6 +225,13 @@ const milestones: LifelineMilestones = {
   1869: {
     id: "census",
     events: ["The first census counted 1.8 million people."],
+  },
+  1870: {
+    id: "1870",
+    events: [
+      "The Paraguayan war ended after five brutal years.",
+      "Mitre founded La Nación.",
+    ],
   },
   1871: {
     id: "yellow-fever",
@@ -268,6 +308,10 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  1888: {
+    id: "sarmiento-death",
+    events: ["Sarmiento died in Asunción, still writing."],
+  },
   1890: {
     mentors: [
       {
@@ -318,6 +362,10 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  1896: {
+    id: "alem",
+    events: ["Leandro Alem died by his own hand."],
+  },
   1901: {
     id: "river",
     events: ["River Plate was founded in La Boca."],
@@ -345,6 +393,10 @@ const milestones: LifelineMilestones = {
         photo: "/images/people/jose-figueroa-alcorta.jpg",
       },
     ],
+  },
+  1907: {
+    id: "oil",
+    events: ["Drilling for water at Comodoro Rivadavia, they struck oil."],
   },
   1908: {
     id: "colon",
@@ -428,6 +480,10 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  1917: {
+    id: "mi-noche-triste",
+    events: ["Gardel recorded Mi Noche Triste — the tango learned to sing."],
+  },
   1918: {
     id: "reforma",
     events: [
@@ -439,6 +495,14 @@ const milestones: LifelineMilestones = {
         },
       },
     ],
+  },
+  1919: {
+    id: "semana-tragica",
+    events: ["The Semana Trágica — a week of blood in Buenos Aires."],
+  },
+  1921: {
+    id: "patagonia",
+    events: ["The Patagonia Rebelde — strikes and firing squads in the far south."],
   },
   1922: {
     mentors: [
@@ -457,6 +521,14 @@ const milestones: LifelineMilestones = {
         },
       },
     ],
+  },
+  1923: {
+    id: "firpo",
+    events: ["Firpo knocked Dempsey out of the ring at the Polo Grounds."],
+  },
+  1928: {
+    id: "yrigoyen-returns",
+    events: ["Yrigoyen returned to the presidency, old and surrounded."],
   },
   1930: {
     mentors: [
@@ -485,6 +557,10 @@ const milestones: LifelineMilestones = {
         photo: "/images/people/agustin-pedro-justo.png",
       },
     ],
+  },
+  1933: {
+    id: "roca-runciman",
+    events: ["The Roca–Runciman Pact tied the beef trade to Britain — the Infamous Decade at work."],
   },
   1935: {
     id: "gardel",
@@ -582,6 +658,10 @@ const milestones: LifelineMilestones = {
       "Bernardo Houssay won Latin America's first Nobel in science.",
     ],
   },
+  1948: {
+    id: "railways",
+    events: ["The railways were nationalized — bought back from the British."],
+  },
   1949: {
     id: "constitution-49",
     events: ["A new Constitution enshrined labor rights."],
@@ -654,6 +734,10 @@ const milestones: LifelineMilestones = {
         },
       },
     ],
+  },
+  1960: {
+    id: "eichmann",
+    events: ["Mossad agents seized Adolf Eichmann on a street in San Fernando."],
   },
   1962: {
     id: "guido",
@@ -730,6 +814,7 @@ const milestones: LifelineMilestones = {
           alt: "Guerrillero Heroico, by Alberto Korda",
         },
       },
+      "René Favaloro pioneered the coronary bypass.",
     ],
   },
   1969: {
@@ -797,6 +882,10 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  1975: {
+    id: "rodrigazo",
+    events: ["The Rodrigazo — prices doubled overnight."],
+  },
   1976: {
     mentors: [
       {
@@ -838,6 +927,12 @@ const milestones: LifelineMilestones = {
           alt: "Passarella lifts the Cup — El Gráfico, 1978",
         },
       },
+    ],
+  },
+  1979: {
+    id: "japon79",
+    events: [
+      "The juniors won the World Youth Cup in Japan — a kid named Maradona announced himself.",
     ],
   },
   1980: {
@@ -993,12 +1088,8 @@ const milestones: LifelineMilestones = {
       "December 2001 — the corralito, the cacerolazos, a helicopter over Plaza de Mayo.",
       "Five presidents in eleven days.",
     ],
-    // The five, in order of succession.
+    // The successors, in order — de la Rúa already appears in 1999.
     mentors: [
-      {
-        name: "Fernando de la Rúa",
-        photo: "/images/people/fernando-de-la-rua.jpg",
-      },
       {
         name: "Ramón Puerta",
         photo: "/images/people/ramon-puerta.jpg",
@@ -1052,10 +1143,15 @@ const milestones: LifelineMilestones = {
         text: "Olympic gold in football and in basketball — the Golden Generation's Athens.",
         image: {
           src: "/images/moments/ar/atenas-2004.jpg",
-          alt: "Manu Ginóbili",
+          alt: "The Golden Generation on the podium in Athens",
         },
       },
+      "The Cromañón fire killed 194 — the year ended in mourning.",
     ],
+  },
+  2005: {
+    id: "2005",
+    events: ["The debt was restructured — the largest swap in history."],
   },
   2007: {
     mentors: [
@@ -1131,6 +1227,14 @@ const milestones: LifelineMilestones = {
       },
     ],
   },
+  2016: {
+    id: "bicentennial-independence",
+    events: ["Two hundred years since the oath in Tucumán — the Bicentennial of Independence."],
+  },
+  2017: {
+    id: "ara-san-juan",
+    events: ["The ARA San Juan was lost with all 44 aboard."],
+  },
   2019: {
     mentors: [
       {
@@ -1164,7 +1268,15 @@ const milestones: LifelineMilestones = {
   },
   2021: {
     id: "maracana",
-    events: ["Won the Copa América at the Maracanã — the first title in 28 years."],
+    events: [
+      {
+        text: "Won the Copa América at the Maracanã — the first title in 28 years.",
+        image: {
+          src: "/images/moments/ar/copa-2021.jpg",
+          alt: "Messi lifts the Copa América at the Maracanã",
+        },
+      },
+    ],
   },
   2022: {
     id: "qatar",
@@ -1199,6 +1311,12 @@ const milestones: LifelineMilestones = {
   2024: {
     id: "copa2024",
     events: ["Won a second straight Copa América."],
+  },
+  2025: {
+    id: "2025",
+    events: [
+      "Inflation fell to its lowest in seven years, poverty to its lowest since 2018.",
+    ],
   },
   2026: {
     id: "210",

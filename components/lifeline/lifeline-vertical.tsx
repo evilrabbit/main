@@ -9,7 +9,6 @@ import {
   LifelineEventText,
 } from "./lifeline-event"
 import { useLifelineFireworks } from "./lifeline-fireworks"
-import { LifelineLegend } from "./lifeline-legend"
 import { aggregateLifelinePeople, LifelinePeople } from "./lifeline-people"
 import type { LifelineMarker, LifelineProps } from "./types"
 import { getMarkerHeight, hasMarkerContent } from "./lifeline-utils"
@@ -153,7 +152,6 @@ const LifelineVerticalEntry = forwardRef<
 export function LifelineVertical({
   markers,
   birthYear,
-  legend,
   title = "Lifeline",
 }: LifelineProps) {
   const heights = useMemo(
@@ -291,12 +289,6 @@ export function LifelineVertical({
             />
           ))}
         </ol>
-      </div>
-
-      <div className={`${GRID_CLASS} mt-2`}>
-        <div aria-hidden="true" />
-        <div aria-hidden="true" />
-        <LifelineLegend inline items={legend} />
       </div>
     </article>
   )

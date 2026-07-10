@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { cn } from "@/lib/utils"
-import { Lifeline } from "@/components/lifeline"
+import { Lifeline, LifelineLegend } from "@/components/lifeline"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
 import { ThemeColor } from "@/components/theme-color"
@@ -45,7 +45,10 @@ export default function LifelinePage() {
           className="h-full"
         />
       </main>
-      <SiteFooter className="shrink-0 backdrop-blur-sm" />
+      <SiteFooter
+        className="shrink-0 backdrop-blur-sm"
+        legend={<LifelineLegend />}
+      />
     </div>
   )
 }

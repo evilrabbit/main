@@ -27,11 +27,11 @@ const PALETTES: Record<LifelineEventEffect, Palette> = {
     [1.0, 1.0, 1.0],
     [0.25, 0.45, 0.95],
   ],
-  // celeste / white / the gold of the sun
+  // celeste / white / pale celeste
   "fireworks-argentina": [
     [0.45, 0.75, 0.98],
     [1.0, 1.0, 1.0],
-    [1.0, 0.8, 0.25],
+    [0.7, 0.87, 1.0],
   ],
 }
 

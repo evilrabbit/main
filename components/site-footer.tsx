@@ -1,7 +1,14 @@
+import type { ReactNode } from "react"
 import { cn } from "@/lib/utils"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 
-export function SiteFooter({ className }: { className?: string }) {
+export function SiteFooter({
+  className,
+  legend,
+}: {
+  className?: string
+  legend?: ReactNode
+}) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -11,8 +18,11 @@ export function SiteFooter({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <ThemeSwitcher />
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-6 px-6">
+        <div className="flex items-center gap-6">
+          <ThemeSwitcher />
+          {legend}
+        </div>
         <p className="text-sm text-zinc-500 transition-colors duration-300 dark:text-zinc-600">
           © {currentYear}
         </p>

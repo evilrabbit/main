@@ -10,7 +10,11 @@ const DEFAULT_ITEMS: LifelineLegendItem[] = [
   { type: "met", label: "Met in person" },
 ]
 
-function LifelineLegendItems({ items }: { items: LifelineLegendItem[] }) {
+export function LifelineLegend({
+  items = DEFAULT_ITEMS,
+}: {
+  items?: LifelineLegendItem[]
+}) {
   return (
     <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-zinc-500">
       {items.map((item) => (
@@ -23,29 +27,5 @@ function LifelineLegendItems({ items }: { items: LifelineLegendItem[] }) {
         </li>
       ))}
     </ul>
-  )
-}
-
-export function LifelineLegend({
-  inline = false,
-  items = DEFAULT_ITEMS,
-}: {
-  inline?: boolean
-  items?: LifelineLegendItem[]
-}) {
-  if (inline) {
-    return (
-      <div className="mt-10">
-        <LifelineLegendItems items={items} />
-      </div>
-    )
-  }
-
-  return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30">
-      <div className="mx-auto max-w-5xl px-6 pb-6">
-        <LifelineLegendItems items={items} />
-      </div>
-    </div>
   )
 }
