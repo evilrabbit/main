@@ -243,7 +243,10 @@ export function LifelineHoverImageProvider({
           loop
           playsInline
           preload="none"
-          className="w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out dark:ring-white/15"
+          // Landscape fills the same 280px card as images; portrait is
+          // capped by height instead, matching the floating cards'
+          // scale (180x320) so tall clips don't tower over the cursor.
+          className="max-h-[320px] w-auto max-w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out dark:ring-white/15"
           style={{ display: "none" }}
         />
       </div>

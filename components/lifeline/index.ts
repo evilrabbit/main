@@ -13,5 +13,6 @@ export type {
   LifelineMarker,
   LifelineMetPerson,
   LifelineMentor,
+  LifelinePhoto,
   LifelineProps,
 } from "./types"

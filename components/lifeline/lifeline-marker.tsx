@@ -75,6 +75,20 @@ export const LifelineMarkerColumn = forwardRef<
 
           <div className="relative w-full pb-10 text-zinc-500 transition-colors duration-300 group-hover:text-black dark:group-hover:text-zinc-300">
             <div className="flex w-full flex-col items-start pt-6">
+              {marker.badges && marker.badges.length > 0 && (
+                <div className="mb-3 flex items-center justify-start gap-2">
+                  {marker.badges.map((badge) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={badge.src}
+                      src={badge.src}
+                      alt={badge.alt}
+                      className="h-6 w-6 object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  ))}
+                </div>
+              )}
+
               {marker.companies && marker.companies.length > 0 && (
                 <div className="mb-2 flex items-center justify-start gap-1.5">
                   {marker.companies.map((company) => (

@@ -10,6 +10,7 @@ import { LifelineMarkerColumn } from "./lifeline-marker"
 import type { LifelineEventImage, LifelineProps } from "./types"
 import { getLifelineEventImage } from "./lifeline-event"
 import { LifelineHoverImageProvider } from "./lifeline-hover-image"
+import { LifelineFloatingPhotos } from "./lifeline-photos"
 import { useLifelineIntro } from "./use-lifeline-intro"
 import { useLifelineScroll } from "./use-lifeline-scroll"
 import { getMarkerWidth } from "./lifeline-utils"
@@ -27,6 +28,18 @@ export function LifelineDesktop({
       ),
     [markers],
   )
+
+  // Left edge of each marker's slot within the track — anchors for the
+  // floating photo cards.
+  const offsets = useMemo(() => {
+    const result: number[] = []
+    let sum = 0
+    for (const width of widths) {
+      result.push(sum)
+      sum += width
+    }
+    return result
+  }, [widths])
 
   const hoverImages = useMemo(() => {
     const images: LifelineEventImage[] = []
@@ -118,6 +131,15 @@ export function LifelineDesktop({
                 />
               ))}
             </div>
+
+            <LifelineFloatingPhotos
+              markers={markers}
+              offsets={offsets}
+              widths={widths}
+              animateIntro={showIntro}
+              getIntroDelay={intro.getMarkerDelay}
+              getIntroDuration={intro.getMarkerFadeDuration}
+            />
           </div>
         </div>
       </div>

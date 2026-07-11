@@ -1,11 +1,18 @@
 "use client"
 
-import { forwardRef, useEffect, useMemo, type CSSProperties } from "react"
+import {
+  forwardRef,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+} from "react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
 import {
   getLifelineEventEffect,
   getLifelineEventKey,
+  LifelineEventMedia,
   LifelineEventText,
 } from "./lifeline-event"
 import { useLifelineFireworks } from "./lifeline-fireworks"
@@ -59,8 +66,23 @@ const LifelineVerticalEntry = forwardRef<
 ) {
   const age = marker.age ?? marker.year - birthYear
   const people = aggregateLifelinePeople(marker)
-  const hasContent = hasMarkerContent(marker)
+  const photos = marker.photos ?? []
+  const hasContent = hasMarkerContent(marker) || photos.length > 0
   const fireworks = useLifelineFireworks()
+  // Fresh tilts per visit; stacked neighbors lean apart.
+  const [photoTilts] = useState(() =>
+    (marker.photos ?? []).map((_, index) => {
+      const sign =
+        (marker.photos?.length ?? 0) > 1
+          ? index % 2 === 0
+            ? -1
+            : 1
+          : Math.random() > 0.5
+            ? 1
+            : -1
+      return sign * (2 + Math.random() * 4)
+    }),
+  )
 
   return (
     <li
@@ -101,6 +123,20 @@ const LifelineVerticalEntry = forwardRef<
             <div aria-hidden="true" />
             <div aria-hidden="true" />
             <div className="min-w-0 text-zinc-500 transition-colors duration-300 dark:text-zinc-400">
+              {marker.badges && marker.badges.length > 0 && (
+                <div className="mb-3 flex items-center justify-start gap-2">
+                  {marker.badges.map((badge) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={badge.src}
+                      src={badge.src}
+                      alt={badge.alt}
+                      className="h-6 w-6 object-contain opacity-80"
+                    />
+                  ))}
+                </div>
+              )}
+
               {marker.companies && marker.companies.length > 0 && (
                 <div className="mb-2 flex items-center justify-start gap-1.5">
                   {marker.companies.map((company) => (
@@ -133,6 +169,28 @@ const LifelineVerticalEntry = forwardRef<
                       </p>
                     )
                   })}
+                </div>
+              )}
+
+              {photos.length > 0 && (
+                <div className="mt-6 flex flex-wrap items-start">
+                  {photos.map((photo, index) => (
+                    <div
+                      key={`${photo.src}-${index}`}
+                      className={cn(
+                        "w-40 overflow-hidden rounded-xl shadow-xl ring-1 ring-black/10 dark:ring-white/15",
+                        index > 0 && "-ml-8 mt-6",
+                      )}
+                      style={{
+                        transform: `rotate(${photo.rotate ?? photoTilts[index] ?? 0}deg)`,
+                      }}
+                    >
+                      <LifelineEventMedia
+                        media={photo}
+                        className="block w-full"
+                      />
+                    </div>
+                  ))}
                 </div>
               )}
 

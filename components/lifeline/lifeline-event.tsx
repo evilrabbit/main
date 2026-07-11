@@ -69,6 +69,36 @@ export function LifelineEventText({
   )
 }
 
+/** Always-visible media embedded in the timeline (image.inline). */
+export function LifelineEventMedia({
+  media,
+  className,
+}: {
+  media: LifelineEventImage
+  className?: string
+}) {
+  if (media.video) {
+    return (
+      <video
+        src={media.video}
+        poster={media.src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={media.alt}
+        className={className}
+      />
+    )
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={media.src} alt={media.alt} loading="lazy" className={className} />
+  )
+}
+
 export function getLifelineEventKey(event: LifelineEvent, index: number) {
   const content = getEventContent(event)
 

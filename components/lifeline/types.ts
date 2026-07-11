@@ -29,6 +29,22 @@ export interface LifelineEventImage {
   video?: string
 }
 
+/**
+ * An always-visible photo/video card that floats over the timeline,
+ * anchored to its marker's position and scrolling with the track —
+ * scattered, tilted, and draggable, like photos loose in a notebook.
+ */
+export interface LifelinePhoto extends LifelineEventImage {
+  /** 0..1 across the marker's slot; defaults to a seeded scatter. */
+  x?: number
+  /** Pixels below the rail; defaults to a seeded scatter. */
+  y?: number
+  /** Degrees; defaults to a seeded tilt. */
+  rotate?: number
+  /** Card width in pixels. Default 180. */
+  width?: number
+}
+
 export type LifelineEventEffect = "fireworks" | "fireworks-argentina"
 
 /**
@@ -55,6 +71,10 @@ export interface LifelineMarker {
   /** Shown in place of the raw year — e.g. "Jun 16" on a day-based timeline. */
   label?: string
   events: LifelineEvent[]
+  /** Small emblems (team shields etc.) rendered above the events. */
+  badges?: { src: string; alt: string }[]
+  /** Floating media cards anchored to this marker's stretch of the timeline. */
+  photos?: LifelinePhoto[]
   companies?: LifelineCompany[]
   mentors?: LifelineMentor[]
   met?: LifelineMetPerson[]
