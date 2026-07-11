@@ -2,22 +2,30 @@
 
 import {
   forwardRef,
+  useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
 } from "react"
+import { Film, Image as ImageIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CompanyIcon } from "./company-icon"
 import {
   getLifelineEventEffect,
+  getLifelineEventImage,
   getLifelineEventKey,
-  LifelineEventMedia,
   LifelineEventText,
 } from "./lifeline-event"
 import { useLifelineFireworks } from "./lifeline-fireworks"
+import {
+  LifelineLightbox,
+  type LifelineLightboxStart,
+} from "./lifeline-lightbox"
 import { aggregateLifelinePeople, LifelinePeople } from "./lifeline-people"
-import type { LifelineMarker, LifelineProps } from "./types"
+import { LifelinePhotoCard } from "./lifeline-photos"
+import type { LifelineEvent, LifelineMarker, LifelineProps } from "./types"
 import { getMarkerHeight, hasMarkerContent } from "./lifeline-utils"
 import { useLifelineIntro } from "./use-lifeline-intro"
 import { useLifelineVerticalScroll } from "./use-lifeline-vertical-scroll"
@@ -40,6 +48,106 @@ function RailTick() {
       aria-hidden="true"
       className="block h-px w-[10px] bg-zinc-400 transition-colors duration-300 dark:bg-zinc-700"
     />
+  )
+}
+
+/**
+ * One event line. Touch layouts have no hover reveal, so an event with
+ * attached media becomes tappable: the media expands into the lightbox
+ * from the event's text, framed by the poster image's real aspect.
+ */
+function LifelineVerticalEvent({ event }: { event: LifelineEvent }) {
+  const fireworks = useLifelineFireworks()
+  const image = getLifelineEventImage(event)
+  const effect = getLifelineEventEffect(event)
+  const textRef = useRef<HTMLParagraphElement>(null)
+  const aspectRef = useRef(3 / 4)
+  const [lightboxStart, setLightboxStart] =
+    useState<LifelineLightboxStart | null>(null)
+
+  // The event text has no card geometry — synthesize a small seed
+  // centered on the text, carrying the media's aspect so the lightbox
+  // expands into the right frame.
+  const measureText = useCallback((): LifelineLightboxStart | null => {
+    const el = textRef.current
+    if (!el) return null
+    const rect = el.getBoundingClientRect()
+    const w = 96
+    return {
+      cx: rect.left + rect.width / 2,
+      cy: rect.top + rect.height / 2,
+      w,
+      h: w * aspectRef.current,
+    }
+  }, [])
+
+  const openMedia = () => {
+    if (!image || lightboxStart) return
+    // The poster sets the frame; for videos it shares the clip's aspect.
+    const probe = new window.Image()
+    probe.src = image.src
+    const open = () => {
+      if (probe.naturalWidth > 0) {
+        aspectRef.current = probe.naturalHeight / probe.naturalWidth
+      }
+      setLightboxStart(measureText())
+    }
+    if (probe.complete) {
+      open()
+    } else {
+      probe.onload = open
+      probe.onerror = open
+    }
+  }
+
+  return (
+    <>
+      <p
+        ref={textRef}
+        className={cn(
+          "max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]",
+          (image || effect) && "cursor-pointer",
+        )}
+        onClick={
+          image
+            ? openMedia
+            : effect && fireworks
+              ? () => fireworks.launch(effect)
+              : undefined
+        }
+      >
+        <LifelineEventText event={event} />
+        {image && (
+          // Glued to the last word with a no-break space so the icon
+          // can never wrap onto a line of its own.
+          <span className="whitespace-nowrap">
+            {" "}
+            {image.video ? (
+              <Film
+                className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            ) : (
+              <ImageIcon
+                className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            )}
+          </span>
+        )}
+      </p>
+      {lightboxStart && image && (
+        <LifelineLightbox
+          photo={image}
+          rotate={0}
+          start={lightboxStart}
+          getHome={measureText}
+          onClosed={() => setLightboxStart(null)}
+        />
+      )}
+    </>
   )
 }
 
@@ -68,7 +176,6 @@ const LifelineVerticalEntry = forwardRef<
   const people = aggregateLifelinePeople(marker)
   const photos = marker.photos ?? []
   const hasContent = hasMarkerContent(marker) || photos.length > 0
-  const fireworks = useLifelineFireworks()
   // Fresh tilts per visit; stacked neighbors lean apart.
   const [photoTilts] = useState(() =>
     (marker.photos ?? []).map((_, index) => {
@@ -152,44 +259,28 @@ const LifelineVerticalEntry = forwardRef<
 
               {marker.events.length > 0 && (
                 <div className="space-y-4">
-                  {marker.events.map((event, index) => {
-                    const effect = getLifelineEventEffect(event)
-
-                    return (
-                      <p
-                        key={getLifelineEventKey(event, index)}
-                        className="max-w-[18rem] text-left text-[14px] leading-[1.55] tracking-[-0.01em]"
-                        onClick={
-                          effect && fireworks
-                            ? () => fireworks.launch(effect)
-                            : undefined
-                        }
-                      >
-                        <LifelineEventText event={event} />
-                      </p>
-                    )
-                  })}
+                  {marker.events.map((event, index) => (
+                    <LifelineVerticalEvent
+                      key={getLifelineEventKey(event, index)}
+                      event={event}
+                    />
+                  ))}
                 </div>
               )}
 
               {photos.length > 0 && (
                 <div className="mt-6 flex flex-wrap items-start">
                   {photos.map((photo, index) => (
-                    <div
+                    <LifelinePhotoCard
                       key={`${photo.src}-${index}`}
+                      photo={photo}
+                      rotate={photo.rotate ?? photoTilts[index] ?? 0}
+                      width={160}
                       className={cn(
-                        "w-40 overflow-hidden rounded-xl shadow-xl ring-1 ring-black/10 dark:ring-white/15",
+                        "relative",
                         index > 0 && "-ml-8 mt-6",
                       )}
-                      style={{
-                        transform: `rotate(${photo.rotate ?? photoTilts[index] ?? 0}deg)`,
-                      }}
-                    >
-                      <LifelineEventMedia
-                        media={photo}
-                        className="block w-full"
-                      />
-                    </div>
+                    />
                   ))}
                 </div>
               )}

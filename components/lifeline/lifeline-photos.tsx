@@ -29,61 +29,57 @@ const CASCADE_Y = 170
 const TEXT_ZONE = 288 + 24
 /** Pointer travel below this is a click (opens the lightbox), not a drag. */
 const CLICK_SLOP = 4
+/** Fingers wobble more than mice — touch presses get extra tap room. */
+const TOUCH_CLICK_SLOP = 10
 
 /** A fresh tilt on every visit — rolled once per card mount. */
 function randomTilt() {
   return 2 + Math.random() * (MAX_TILT_DEG - 2)
 }
 
-function FloatingCard({
+/**
+ * The interactive photo card, positioning-agnostic: drag moves it for
+ * the session, a press without travel expands it into the lightbox.
+ * Desktop floats it over the track (absolute + left/top); the vertical
+ * layout drops it into normal flow.
+ */
+export function LifelinePhotoCard({
   photo,
-  stackIndex,
-  stackCount,
-  x,
-  defaultY,
+  rotate,
   width,
-  animateIntro,
-  introDelay,
-  introDuration,
+  className,
+  style,
+  animateIntro = false,
+  introDelay = 0,
+  introDuration = 420,
 }: {
   photo: LifelinePhoto
-  stackIndex: number
-  stackCount: number
-  /** Resolved left position within the track. */
-  x: number
-  /** Cascade position when the photo has no explicit y. */
-  defaultY: number
+  /** Resolved resting tilt, degrees. */
+  rotate: number
   width: number
-  animateIntro: boolean
-  introDelay: number
-  introDuration: number
+  /** Positioning context from the caller (e.g. "absolute"). */
+  className?: string
+  style?: CSSProperties
+  animateIntro?: boolean
+  introDelay?: number
+  introDuration?: number
 }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [active, setActive] = useState(false)
   const [lightboxStart, setLightboxStart] =
     useState<LifelineLightboxStart | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
-  const drag = useRef({ startX: 0, startY: 0, baseX: 0, baseY: 0, moved: false })
-
-  const y = photo.y ?? defaultY
-  // Rolled once per mount: solo cards flip a coin for direction;
-  // neighbors in a stack lean away from each other so the pile reads
-  // as scattered.
-  const [mountTilt] = useState(() => {
-    const sign =
-      stackCount > 1
-        ? stackIndex % 2 === 0
-          ? -1
-          : 1
-        : Math.random() > 0.5
-          ? 1
-          : -1
-    return sign * randomTilt()
+  const drag = useRef({
+    startX: 0,
+    startY: 0,
+    baseX: 0,
+    baseY: 0,
+    moved: false,
+    slop: CLICK_SLOP,
   })
-  const rotate = photo.rotate ?? mountTilt
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    // The track scrubs on drag — a card drag must not reach it.
+    // The desktop track scrubs on drag — a card drag must not reach it.
     event.stopPropagation()
     event.preventDefault()
     event.currentTarget.setPointerCapture(event.pointerId)
@@ -93,6 +89,7 @@ function FloatingCard({
       baseX: offset.x,
       baseY: offset.y,
       moved: false,
+      slop: event.pointerType === "touch" ? TOUCH_CLICK_SLOP : CLICK_SLOP,
     }
     setActive(true)
   }
@@ -101,7 +98,7 @@ function FloatingCard({
     if (!active) return
     const dx = event.clientX - drag.current.startX
     const dy = event.clientY - drag.current.startY
-    if (Math.hypot(dx, dy) > CLICK_SLOP) drag.current.moved = true
+    if (Math.hypot(dx, dy) > drag.current.slop) drag.current.moved = true
     setOffset({ x: drag.current.baseX + dx, y: drag.current.baseY + dy })
   }
 
@@ -143,14 +140,14 @@ function FloatingCard({
         ref={cardRef}
         data-lifeline-interactive=""
         className={cn(
-          "group/photo pointer-events-auto absolute cursor-grab touch-none",
+          "group/photo pointer-events-auto cursor-grab touch-none",
           active ? "z-50 cursor-grabbing" : "z-20 hover:z-40",
           lightboxStart && "invisible",
+          className,
         )}
         style={
           {
-            left: x,
-            top: `calc(var(--lifeline-rail) + ${y}px)`,
+            ...style,
             width,
             transform: `translate(${offset.x}px, ${offset.y}px) rotate(${rotate}deg)`,
           } as CSSProperties
@@ -193,6 +190,59 @@ function FloatingCard({
         />
       )}
     </>
+  )
+}
+
+function FloatingCard({
+  photo,
+  stackIndex,
+  stackCount,
+  x,
+  defaultY,
+  width,
+  animateIntro,
+  introDelay,
+  introDuration,
+}: {
+  photo: LifelinePhoto
+  stackIndex: number
+  stackCount: number
+  /** Resolved left position within the track. */
+  x: number
+  /** Cascade position when the photo has no explicit y. */
+  defaultY: number
+  width: number
+  animateIntro: boolean
+  introDelay: number
+  introDuration: number
+}) {
+  const y = photo.y ?? defaultY
+  // Rolled once per mount: solo cards flip a coin for direction;
+  // neighbors in a stack lean away from each other so the pile reads
+  // as scattered.
+  const [mountTilt] = useState(() => {
+    const sign =
+      stackCount > 1
+        ? stackIndex % 2 === 0
+          ? -1
+          : 1
+        : Math.random() > 0.5
+          ? 1
+          : -1
+    return sign * randomTilt()
+  })
+
+  return (
+    <LifelinePhotoCard
+      photo={photo}
+      rotate={photo.rotate ?? mountTilt}
+      width={width}
+      className="absolute"
+      style={{ left: x, top: `calc(var(--lifeline-rail) + ${y}px)` }}
+      animateIntro={animateIntro}
+      introDelay={introDelay}
+      introDuration={introDuration}
+    />
   )
 }
 

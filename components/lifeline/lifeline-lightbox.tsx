@@ -126,8 +126,17 @@ export function LifelineLightbox({
     }
   }, [reduceMotion])
 
+  // The press that opens the card also dispatches a click right after
+  // pointerup — by then the clone is mounted underneath the pointer and
+  // would dismiss itself. Ignore dismissals from the opening gesture.
+  const mountedAt = useRef(0)
+  useEffect(() => {
+    mountedAt.current = performance.now()
+  }, [])
+
   const dismiss = useCallback(() => {
     if (closing.current) return
+    if (performance.now() - mountedAt.current < 300) return
     closing.current = true
     if (reduceMotion) {
       onClosed()
