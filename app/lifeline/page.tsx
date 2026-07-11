@@ -19,9 +19,18 @@ export const metadata: Metadata = {
     siteName: "Evil Rabbit",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://www.evilrabbit.com/opengraph-image.png",
+        width: 1400,
+        height: 800,
+        alt: "Evil Rabbit",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://www.evilrabbit.com/opengraph-image.png"],
     title: "Lifeline — Evil Rabbit",
     description:
       "The life and career of Evil Rabbit — from Buenos Aires to Vercel.",

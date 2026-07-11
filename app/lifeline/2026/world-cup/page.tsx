@@ -15,13 +15,22 @@ export const metadata: Metadata = {
   openGraph: {
     title: "World Cup 2026 — Lifeline",
     description: argentinaWorldCup2026.description,
-    url: "https://lifeline.evilrabbit.com/world-cup-2026",
+    url: "https://lifeline.evilrabbit.com/2026/world-cup",
     siteName: "Lifeline",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://www.evilrabbit.com/opengraph-image.png",
+        width: 1400,
+        height: 800,
+        alt: "Evil Rabbit",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://www.evilrabbit.com/opengraph-image.png"],
     title: "World Cup 2026 — Lifeline",
     description: argentinaWorldCup2026.description,
   },
