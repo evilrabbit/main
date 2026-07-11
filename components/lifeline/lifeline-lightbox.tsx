@@ -13,8 +13,11 @@ import { LifelineEventMedia } from "./lifeline-event"
 import type { LifelinePhoto } from "./types"
 
 const OPEN_MS = 520
-/** easeOutQuint-ish — fast leave, soft landing. */
-const EASE = "cubic-bezier(0.22, 1, 0.36, 1)"
+/**
+ * Gentle start, soft landing — the quint curve front-loaded nearly all
+ * of the travel into the first 120ms, which read as a jump.
+ */
+const EASE = "cubic-bezier(0.32, 0.72, 0, 1)"
 /** Fraction of the viewport the expanded media may occupy. */
 const FIT = 0.85
 
@@ -126,17 +129,27 @@ export function LifelineLightbox({
     }
   }, [reduceMotion])
 
-  // The press that opens the card also dispatches a click right after
-  // pointerup — by then the clone is mounted underneath the pointer and
-  // would dismiss itself. Ignore dismissals from the opening gesture.
-  const mountedAt = useRef(0)
+  // The press that opens the card dispatches one more click right
+  // after pointerup — by then the clone is mounted underneath the
+  // pointer and would dismiss itself. Swallow exactly that click;
+  // every later click dismisses normally.
   useEffect(() => {
-    mountedAt.current = performance.now()
+    const swallow = (event: MouseEvent) => {
+      event.stopPropagation()
+      event.preventDefault()
+    }
+    window.addEventListener("click", swallow, { capture: true, once: true })
+    const timeout = window.setTimeout(() => {
+      window.removeEventListener("click", swallow, { capture: true })
+    }, 500)
+    return () => {
+      window.clearTimeout(timeout)
+      window.removeEventListener("click", swallow, { capture: true })
+    }
   }, [])
 
   const dismiss = useCallback(() => {
     if (closing.current) return
-    if (performance.now() - mountedAt.current < 300) return
     closing.current = true
     if (reduceMotion) {
       onClosed()
@@ -175,7 +188,9 @@ export function LifelineLightbox({
           "absolute inset-0 cursor-zoom-out bg-black/70 transition-opacity",
           entered ? "opacity-100" : "opacity-0",
         )}
-        style={{ transitionDuration: `${OPEN_MS * 0.7}ms` }}
+        // Synced to the media's travel — a faster fade left the clone
+        // flying over an undimmed page at the end of the dismiss.
+        style={{ transitionDuration: `${OPEN_MS}ms` }}
         onClick={dismiss}
       />
       <figure
