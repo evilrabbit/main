@@ -9,7 +9,6 @@ import {
 } from "react"
 import { createPortal } from "react-dom"
 import { cn } from "@/lib/utils"
-import { LifelineEventMedia } from "./lifeline-event"
 import type { LifelinePhoto } from "./types"
 
 const OPEN_MS = 520
@@ -42,6 +41,68 @@ export interface LifelineLightboxStart {
   h: number
   /** Playback position of the card's video, for a seamless swap. */
   mediaTime?: number
+}
+
+/**
+ * The clone's media. Videos mount paused, pre-seeked to the card's
+ * playback position — a static frame the compositor can scale without
+ * decoding — and only play once `playing` flips after the open
+ * transition settles. Dismissing pauses again for the return flight.
+ */
+function LightboxMedia({
+  photo,
+  playing,
+  mediaTime,
+}: {
+  photo: LifelinePhoto
+  playing: boolean
+  mediaTime?: number
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Seed once at mount, while still paused.
+  useLayoutEffect(() => {
+    const video = videoRef.current
+    if (video && mediaTime !== undefined) video.currentTime = mediaTime
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    if (playing) {
+      video.play().catch(() => {
+        // Autoplay rejection just leaves the seeded frame showing.
+      })
+    } else {
+      video.pause()
+    }
+  }, [playing])
+
+  if (!photo.video) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={photo.src}
+        alt={photo.alt}
+        className="block h-full w-full object-cover"
+      />
+    )
+  }
+
+  return (
+    <video
+      ref={videoRef}
+      src={photo.video}
+      poster={photo.src}
+      muted
+      loop
+      playsInline
+      preload="auto"
+      aria-label={photo.alt}
+      className="block h-full w-full object-cover"
+    />
+  )
 }
 
 function computeTarget(start: LifelineLightboxStart): Target {
@@ -104,14 +165,20 @@ export function LifelineLightbox({
     reduceMotion ? "none" : toTransform(start),
   )
   const closing = useRef(false)
+  // Playback waits for the open transition to finish — a playing
+  // video decodes frames while the transform animates and drops
+  // transition frames on mobile; a paused, pre-seeked frame is a
+  // static layer and animates cheaply.
+  const [settled, setSettled] = useState(reduceMotion)
 
-  // Pick the clone's video up where the card's left off.
-  useLayoutEffect(() => {
-    if (start.mediaTime === undefined) return
-    const video = figureRef.current?.querySelector("video")
-    if (video) video.currentTime = start.mediaTime
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // Safety net if transitionend never fires for the open.
+  useEffect(() => {
+    if (reduceMotion) return
+    const timeout = window.setTimeout(() => {
+      if (!closing.current) setSettled(true)
+    }, OPEN_MS + 80)
+    return () => window.clearTimeout(timeout)
+  }, [reduceMotion])
 
   // FLIP: first paint sits over the card, next frame eases to center.
   useLayoutEffect(() => {
@@ -155,6 +222,7 @@ export function LifelineLightbox({
       onClosed()
       return
     }
+    setSettled(false) // freeze the video so the return flight is cheap
     setEntered(false)
     setTransform(toTransform(getHome() ?? start))
     // transitionend is the primary signal; this is the safety net.
@@ -207,12 +275,15 @@ export function LifelineLightbox({
         }}
         onClick={dismiss}
         onTransitionEnd={(event) => {
-          if (event.propertyName === "transform" && closing.current) onClosed()
+          if (event.propertyName !== "transform") return
+          if (closing.current) onClosed()
+          else setSettled(true)
         }}
       >
-        <LifelineEventMedia
-          media={photo}
-          className="block h-full w-full object-cover"
+        <LightboxMedia
+          photo={photo}
+          playing={settled}
+          mediaTime={start.mediaTime}
         />
       </figure>
     </div>,
