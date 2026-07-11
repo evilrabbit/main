@@ -134,13 +134,25 @@ export function LifelinePhotoCard({
     }
   }
 
+  // The browser claiming the gesture (a vertical pan-y scroll on
+  // touch) is not a click — reset without opening.
+  const onPointerCancel = (event: PointerEvent<HTMLDivElement>) => {
+    event.currentTarget.releasePointerCapture(event.pointerId)
+    setActive(false)
+    setOffset({ x: drag.current.baseX, y: drag.current.baseY })
+  }
+
   return (
     <>
       <div
         ref={cardRef}
         data-lifeline-interactive=""
         className={cn(
-          "group/photo pointer-events-auto cursor-grab touch-none",
+          // pan-y keeps page scrolling alive on touch: a vertical swipe
+          // starting on a card scrolls the timeline (the browser claims
+          // the gesture and fires pointercancel); horizontal drags move
+          // the card.
+          "group/photo pointer-events-auto cursor-grab touch-pan-y",
           active ? "z-50 cursor-grabbing" : "z-20 hover:z-40",
           lightboxStart && "invisible",
           className,
@@ -155,7 +167,7 @@ export function LifelinePhotoCard({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        onPointerCancel={onPointerCancel}
       >
         <div
           className={cn(

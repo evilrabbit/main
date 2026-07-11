@@ -59,25 +59,25 @@ function LightboxMedia({
   mediaTime?: number
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
-
-  // Seed once at mount, while still paused.
-  useLayoutEffect(() => {
-    const video = videoRef.current
-    if (video && mediaTime !== undefined) video.currentTime = mediaTime
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const seeded = useRef(false)
 
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
     if (playing) {
+      // Seek only now, stationary — a seek during the transition
+      // decodes a new frame mid-flight and visibly swaps the image.
+      if (!seeded.current) {
+        seeded.current = true
+        if (mediaTime !== undefined) video.currentTime = mediaTime
+      }
       video.play().catch(() => {
-        // Autoplay rejection just leaves the seeded frame showing.
+        // Autoplay rejection just leaves the poster frame showing.
       })
     } else {
       video.pause()
     }
-  }, [playing])
+  }, [playing, mediaTime])
 
   if (!photo.video) {
     return (
@@ -272,6 +272,9 @@ export function LifelineLightbox({
           transform,
           transformOrigin: "center",
           transition: reduceMotion ? undefined : `transform ${OPEN_MS}ms ${EASE}`,
+          // Promoted for the whole flight — mobile otherwise
+          // re-rasterizes the shadowed, corner-clipped media mid-scale.
+          willChange: "transform",
         }}
         onClick={dismiss}
         onTransitionEnd={(event) => {
