@@ -189,7 +189,7 @@ const milestones: LifelineMilestones = {
     age: "SF",
     events: [
       "Semifinal — England at Mercedes-Benz Stadium, Atlanta.",
-      "Two wins from the first back-to-back crowns since Brazil in 1962.",
+      "Win two more and Argentina become the first team to retain the World Cup since Brazil in 1962.",
     ],
   },
 }
