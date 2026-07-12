@@ -2,7 +2,7 @@ import { defineLifeline, type LifelineMilestones } from "./build"
 
 /**
  * Argentina at the 2026 World Cup, day by day — June 11 (day 1) through
- * the quarterfinal at Kansas City on July 11 (day 31).
+ * the semifinal against England in Atlanta on July 15 (day 35).
  *
  * Drop match photos/videos into /public/images/moments/wc2026/ and
  * attach them two ways:
@@ -29,7 +29,7 @@ import { defineLifeline, type LifelineMilestones } from "./build"
 
 const TOURNAMENT_START_UTC = Date.UTC(2026, 5, 11)
 const FIRST_DAY = 1
-const LAST_DAY = 31 // July 11 — the quarterfinal at Arrowhead
+const LAST_DAY = 35 // July 15 — the semifinal in Atlanta
 
 function dayLabel(day: number) {
   const date = new Date(TOURNAMENT_START_UTC + (day - 1) * 86_400_000)
@@ -178,8 +178,18 @@ const milestones: LifelineMilestones = {
     badges: versus("ch", "Switzerland"),
     age: "QF",
     events: [
-      "Quarterfinal — Switzerland at Arrowhead, Kansas City.",
-      "The road to the bicampeonato runs through Kansas.",
+      "Argentina 3–1 Switzerland after extra time, Kansas City.",
+      "Mac Allister rose to a Messi corner at ten; Ndoye leveled — then Álvarez hammered the 112th-minute winner into the top corner and Lautaro sealed it at 120.",
+      "Messi's scoring streak ends at nine straight World Cup games. A third semifinal in four World Cups.",
+    ],
+  },
+  35: {
+    id: "england",
+    badges: versus("gb-eng", "England"),
+    age: "SF",
+    events: [
+      "Semifinal — England at Mercedes-Benz Stadium, Atlanta.",
+      "Two wins from the first back-to-back crowns since Brazil in 1962.",
     ],
   },
 }
@@ -190,7 +200,7 @@ const record = defineLifeline({
   birthYear: FIRST_DAY,
   endYear: LAST_DAY,
   description:
-    "Argentina at the 2026 World Cup, game by game — from the Kansas City hat-trick back to Arrowhead.",
+    "Argentina at the 2026 World Cup, game by game — from the Kansas City hat-trick to the semifinal in Atlanta.",
   milestones,
 })
 
