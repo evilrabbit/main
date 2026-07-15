@@ -196,6 +196,19 @@ export function LifelineLightbox({
     }
   }, [reduceMotion])
 
+  // No gesture may pan while the lightbox is up — iOS otherwise
+  // rubber-bands the body behind the fixed overlay and can leave the
+  // whole page stuck offset after dismiss. React's root touch
+  // listeners are passive, so this needs a native non-passive one.
+  const rootRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+    const block = (event: TouchEvent) => event.preventDefault()
+    root.addEventListener("touchmove", block, { passive: false })
+    return () => root.removeEventListener("touchmove", block)
+  }, [])
+
   // The press that opens the card dispatches one more click right
   // after pointerup — by then the clone is mounted underneath the
   // pointer and would dismiss itself. Swallow exactly that click;
@@ -239,7 +252,8 @@ export function LifelineLightbox({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[999]"
+      ref={rootRef}
+      className="fixed inset-0 z-[999] touch-none overscroll-contain"
       role="dialog"
       aria-modal="true"
       aria-label={photo.alt}

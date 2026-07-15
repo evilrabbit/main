@@ -314,6 +314,34 @@ export function LifelineVertical({
   const intro = useLifelineIntro(heights)
   const isIntroAnimating = intro.shouldPlay && intro.isPlaying
 
+  // Warm the event media posters during idle — the tap-to-open
+  // lightbox measures its frame from these, and a cold fetch at tap
+  // time reads as lag.
+  useEffect(() => {
+    const sources: string[] = []
+    for (const marker of markers) {
+      for (const event of marker.events) {
+        const image = getLifelineEventImage(event)
+        if (image) sources.push(image.src)
+      }
+    }
+    if (sources.length === 0) return
+
+    const warm = () => {
+      sources.forEach((src) => {
+        const image = new window.Image()
+        image.src = src
+      })
+    }
+
+    if (typeof window.requestIdleCallback === "function") {
+      const handle = window.requestIdleCallback(warm)
+      return () => window.cancelIdleCallback(handle)
+    }
+    const timeout = window.setTimeout(warm, 2000)
+    return () => window.clearTimeout(timeout)
+  }, [markers])
+
   const { sectionRef, setEntryRef, isLayoutReady } = useLifelineVerticalScroll(
     markers.length,
     {
