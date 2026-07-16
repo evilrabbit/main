@@ -2,7 +2,7 @@ import { defineLifeline, type LifelineMilestones } from "./build"
 
 /**
  * Argentina at the 2026 World Cup, day by day — June 11 (day 1) through
- * the semifinal against England in Atlanta on July 15 (day 35).
+ * the Final against Spain at MetLife on July 19 (day 39).
  *
  * Drop match photos/videos into /public/images/moments/wc2026/ and
  * attach them two ways:
@@ -29,7 +29,7 @@ import { defineLifeline, type LifelineMilestones } from "./build"
 
 const TOURNAMENT_START_UTC = Date.UTC(2026, 5, 11)
 const FIRST_DAY = 1
-const LAST_DAY = 35 // July 15 — the semifinal in Atlanta
+const LAST_DAY = 39 // July 19 — the Final at MetLife
 
 function dayLabel(day: number) {
   const date = new Date(TOURNAMENT_START_UTC + (day - 1) * 86_400_000)
@@ -188,7 +188,17 @@ const milestones: LifelineMilestones = {
     badges: versus("gb-eng", "England"),
     age: "SF",
     events: [
-      "Semifinal — England at Mercedes-Benz Stadium, Atlanta.",
+      "Argentina 2–1 England, Atlanta.",
+      "Down a goal with five minutes left — Enzo from distance at 85, Lautaro's header deep in stoppage time. Messi assisted both.",
+      "A fourth straight knockout escape, and a second consecutive final.",
+    ],
+  },
+  39: {
+    id: "spain",
+    badges: versus("es", "Spain"),
+    age: "F",
+    events: [
+      "The Final — Spain at MetLife Stadium, New York New Jersey.",
     ],
   },
 }
@@ -199,7 +209,7 @@ const record = defineLifeline({
   birthYear: FIRST_DAY,
   endYear: LAST_DAY,
   description:
-    "Argentina at the 2026 World Cup, game by game — from the Kansas City hat-trick to the semifinal in Atlanta.",
+    "Argentina at the 2026 World Cup, game by game — from the Kansas City hat-trick to the Final at MetLife.",
   milestones,
 })
 
