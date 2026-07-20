@@ -198,7 +198,9 @@ const milestones: LifelineMilestones = {
     badges: versus("es", "Spain"),
     age: "F",
     events: [
-      "The Final — Spain at MetLife Stadium, New York New Jersey.",
+      "Spain 1–0 Argentina after extra time, New York New Jersey.",
+      "Ten men from stoppage time — Ferran Torres struck forty seconds into the second half of extra time. Dibu made eleven saves, the most ever in a World Cup final.",
+      "The defense of the crown ends one game short.",
     ],
   },
 }
