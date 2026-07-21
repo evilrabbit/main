@@ -192,6 +192,15 @@ const milestones: LifelineMilestones = {
       "Down a goal with five minutes left — Enzo from distance at 85, Lautaro's header deep in stoppage time. Messi assisted both.",
       "A fourth straight knockout escape, and a second consecutive final.",
     ],
+    photos: [
+      {
+        src: "/images/moments/wc2026/england.jpg",
+        alt: "Argentina vs England in Atlanta",
+        video: "/images/moments/wc2026/england.mp4",
+        width: 260,
+        x: 0.9,
+      },
+    ],
   },
   39: {
     id: "spain",
