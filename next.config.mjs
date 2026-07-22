@@ -6,6 +6,17 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      // The shadcn registry (github.com/evilrabbit/lifeline) under a
+      // clean URL: evilrabbit.com/r/lifeline.json proxies the registry
+      // deployment, staying fresh with every registry deploy.
+      {
+        source: "/r/:path*",
+        destination: "https://lifeline-evil-rabbit.vercel.app/r/:path*",
+      },
+    ]
+  },
   async redirects() {
     return [
       // The World Cup lifeline moved to /2026/world-cup; middleware maps
